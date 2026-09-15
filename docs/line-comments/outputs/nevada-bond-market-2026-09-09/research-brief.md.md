@@ -1,0 +1,70 @@
+# Line explanations: outputs/nevada-bond-market-2026-09-09/research-brief.md
+
+Source: [outputs/nevada-bond-market-2026-09-09/research-brief.md](../../../../outputs/nevada-bond-market-2026-09-09/research-brief.md). Numbers refer to the original file before comments were added.
+
+The original file is unchanged. These companion notes preserve its strict syntax and rendering.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Introduce the "Bonds, mortgage rates and Nevada housing" section of this document. |
+| 2 | Blank line separating adjacent document blocks. |
+| 3 | Document this statement under "Bonds, mortgage rates and Nevada housing": Higher long-term Treasury yields are putting pressure on mortgage borrowing costs. |
+| 4 | Blank line separating adjacent document blocks. |
+| 5 | Introduce the "Current bond and mortgage snapshot" section of this document. |
+| 6 | Blank line separating adjacent document blocks. |
+| 7 | Provide the table columns/row under "Current bond and mortgage snapshot": Measure; Latest observation; Context. |
+| 8 | Separate the table header from its rows and specify Markdown column alignment. |
+| 9 | Provide the table columns/row under "Current bond and mortgage snapshot": 10-year U.S. Treasury yield; 4.83% on Sept. 9, 2026; 4.80% on Sept. 8; 4.79% on Sept. 2; 4.19% on Jan. 2. |
+| 10 | Provide the table columns/row under "Current bond and mortgage snapshot": 2-year / 30-year Treasury yields; 4.43% / 5.28% on Sept. 9; Long-term yields exceed the 2-year yield. |
+| 11 | Provide the table columns/row under "Current bond and mortgage snapshot": U.S. average 30-year fixed mortgage; 6.71% on Sept. 3, 2026; 6.66% the previous week; 6.50% a year earlier. |
+| 12 | Provide the table columns/row under "Current bond and mortgage snapshot": Federal funds target range; 3.50%–3.75% after July 29 decision; The Federal Reserve held its short-term policy rate unchanged. |
+| 13 | Blank line separating adjacent document blocks. |
+| 14 | Document this statement under "Current bond and mortgage snapshot": Treasury figures come from its daily par yield curve; they are market benchmarks, not consumer borrowing offers.[^1] The Freddie Mac mortgage figure is the latest available weekly national survey average. |
+| 15 | Blank line separating adjacent document blocks. |
+| 16 | Introduce the "Why bonds affect mortgage rates" section of this document. |
+| 17 | Blank line separating adjacent document blocks. |
+| 18 | Document this statement under "Why bonds affect mortgage rates": Bond prices and yields generally move in opposite directions. |
+| 19 | Blank line separating adjacent document blocks. |
+| 20 | Document this statement under "Why bonds affect mortgage rates": The 10-year Treasury provides a useful reference, but mortgage rates also include compensation for early repayment and refinancing risk, interest-rate volatility, loan origination and servicing, guarantees and lender returns. |
+| 21 | Blank line separating adjacent document blocks. |
+| 22 | Document this statement under "Why bonds affect mortgage rates": **Interpretation:** Rising longer-term yields can keep home financing expensive even when the Fed leaves its policy rate unchanged. |
+| 23 | Blank line separating adjacent document blocks. |
+| 24 | Introduce the "What investors are weighing" section of this document. |
+| 25 | Blank line separating adjacent document blocks. |
+| 26 | Document this statement under "What investors are weighing": The Fed’s July statement describes solid economic activity and inflation above its 2 percent goal, including energy-related supply shocks.[^3] August payrolls increased by 162,000 and the unemployment rate remained at 4.1 percent, according to the September 4 release.[^6] The latest available consumer inflation release covers July: headline prices rose 3.4 percent over the year, while the measure excluding food and energy r... |
+| 27 | Blank line separating adjacent document blocks. |
+| 28 | Document this statement under "What investors are weighing": These are relevant inputs to expectations for inflation, economic growth and future rates. |
+| 29 | Blank line separating adjacent document blocks. |
+| 30 | Introduce the "Reno and Las Vegas housing context" section of this document. |
+| 31 | Blank line separating adjacent document blocks. |
+| 32 | Document this statement under "Reno and Las Vegas housing context": Both regional snapshots below cover August 2026 single-family sales, with different reporting boundaries. |
+| 33 | Blank line separating adjacent document blocks. |
+| 34 | Provide the table columns/row under "Reno and Las Vegas housing context": Local reporting area; Median sale price; Change from August 2025; Available-home measure. |
+| 35 | Separate the table header from its rows and specify Markdown column alignment. |
+| 36 | Provide the table columns/row under "Reno and Las Vegas housing context": Reno area: SNR Washoe County reporting area; $620,000; +5.1%; 965 active listings; down 21.3%. |
+| 37 | Provide the table columns/row under "Reno and Las Vegas housing context": Las Vegas area: Southern Nevada, LVR MLS; $475,000; −1.0%; 7,590 single-family listings without offers; up 5.3%. |
+| 38 | Blank line separating adjacent document blocks. |
+| 39 | Document this statement under "Reno and Las Vegas housing context": The Sierra Nevada REALTORS report shows 2.5 months of inventory and a median 25 days to contract in its Washoe series. |
+| 40 | Blank line separating adjacent document blocks. |
+| 41 | Document this statement under "Reno and Las Vegas housing context": Las Vegas REALTORS reports existing single-family sales through its Southern Nevada Multiple Listing Service. |
+| 42 | Blank line separating adjacent document blocks. |
+| 43 | Document this statement under "Reno and Las Vegas housing context": **Interpretation for homebuyers:** Fewer available homes in the Washoe series can sustain competition, while more listings without offers in Southern Nevada may provide negotiating opportunities. |
+| 44 | Blank line separating adjacent document blocks. |
+| 45 | Introduce the "Practical takeaway" section of this document. |
+| 46 | Blank line separating adjacent document blocks. |
+| 47 | Document this statement under "Practical takeaway": Evaluate the home price and the monthly payment together. |
+| 48 | Blank line separating adjacent document blocks. |
+| 49 | Document this statement under "Practical takeaway": The social graphic summarizes the observed rates and regional prices. |
+| 50 | Blank line separating adjacent document blocks. |
+| 51 | Introduce the "Sources" section of this document. |
+| 52 | Blank line separating adjacent document blocks. |
+| 53 | Document this statement under "Sources": [^1]: U.S. |
+| 54 | Document this statement under "Sources": [^2]: Freddie Mac. |
+| 55 | Document this statement under "Sources": [^3]: Board of Governors of the Federal Reserve System. |
+| 56 | Document this statement under "Sources": [^4]: Federal Reserve Bank of Dallas. |
+| 57 | Document this statement under "Sources": [^5]: Fannie Mae. |
+| 58 | Document this statement under "Sources": [^6]: U.S. |
+| 59 | Document this statement under "Sources": [^7]: U.S. |
+| 60 | Document this statement under "Sources": [^8]: Sierra Nevada REALTORS / Northern Nevada Regional MLS. |
+| 61 | Document this statement under "Sources": [^9]: Sierra Nevada REALTORS. |
+| 62 | Document this statement under "Sources": [^10]: Las Vegas REALTORS, distributed by B&P. |

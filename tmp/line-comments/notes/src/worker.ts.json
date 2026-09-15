@@ -1,0 +1,19 @@
+{
+  "1": "Imports compile-time types JobPayload, WorkerUpdate from ./domain.js for shared validated application data, business rules, defaults, and domain types.",
+  "2": "Imports runPreparation from ./preparation.js for the full extraction, form preparation, review, and cleanup lifecycle.",
+  "4": "Creates the worker's cancellation controller for parent-requested automation stops.",
+  "5": "Accepts the first parent IPC message as this worker's job payload and starts its single-job lifecycle.",
+  "6": "Defines handling of later control messages received from the parent process.",
+  "7": "Aborts preparation only for an object carrying the explicit stop_preparation message type.",
+  "8": "Closes the scope or expression introduced here: Defines handling of later control messages received from the parent process.",
+  "9": "Registers the stop-control listener after the initial job payload arrives.",
+  "10": "Defines status forwarding over IPC only while the parent connection remains open.",
+  "11": "Starts preparation with status reporting and the worker abort signal, attaching a fallback for unexpected rejected failures.",
+  "12": "Sends a fixed failed status if preparation rejects outside its normal lifecycle handling.",
+  "13": "Sets the worker's eventual exit code to indicate failure.",
+  "14": "Starts IPC cleanup that runs after preparation settles successfully or unsuccessfully.",
+  "15": "Removes the control-message listener so the completed worker no longer accepts stop requests.",
+  "16": "Disconnects the parent IPC channel if it remains connected, allowing the worker to exit naturally.",
+  "17": "Closes the scope or expression introduced here: Starts IPC cleanup that runs after preparation settles successfully or unsuccessfully.",
+  "18": "Closes the scope or expression introduced here: Accepts the first parent IPC message as this worker's job payload and starts its single-job lifecycle."
+}

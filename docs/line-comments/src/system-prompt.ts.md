@@ -1,0 +1,27 @@
+# Line explanations: src/system-prompt.ts
+
+Source: [src/system-prompt.ts](../../../src/system-prompt.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports OBSERVED_BASELINE_PRODUCTS from ./browser/r3-fields.js for the observed baseline appraisal-product labels. |
+| 2 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 3 | Existing explanatory comment: Product recommendations do not turn an uncertain property classification into a fact. |
+| 4 | Defines appraisal-product instructions separating requested appraisal services from financing products and allowing only fact-supported tentative recommendations while keeping property classifications independent. |
+| 5 | Embeds the inspected baseline Conventional and FHA product labels grouped by property category into the product-selection prompt. |
+| 6 | Completes product-selection rules with FHA Zero Down mapping, recommendation evidence/warnings, unsupported-case handling, approved-plan restrictions, and mandatory human review/submission. |
+| 7 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 8 | Existing explanatory comment: Shared role terminology for document extraction and the bounded preparation agent. |
+| 9 | Defines shared agent-role terminology and access-contact rules, distinguishing seller/listing representation from buyer/selling representation and requiring evidence instead of inferred roles. |
+| 10 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 11 | Existing explanatory comment: Extract document facts independently of whether the contract has been executed. |
+| 12 | Defines contract sale-price extraction independent of signature/sample status, requires contract evidence, separates other monetary amounts, and restricts R3 population to purchases with a supplied contract. |
+| 13 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 14 | Existing explanatory comment: User-supplied appraisal workflow, with the requested manual-login and contact updates. |
+| 15 | Defines the base loan-processing prompt, including manual R3 login, exact order-page verification, fixed branch/status contact, source-based form fields, contact sections, FHA/VA restrictions, and the user's exclusive submission responsibility. |
+| 16 | Appends the fixed Amber Coleman loan-officer identity and contact values, keeping the officer section separate from the appraisal-status contact. |
+| 17 | Appends the shared seller/listing and buyer/selling role-mapping instructions to the agent system prompt. |
+| 18 | Appends the shared sale-price source, evidence, and purchase-only field rules to the system prompt. |
+| 19 | Appends the shared bounded appraisal-product selection instructions and completes the system prompt. |

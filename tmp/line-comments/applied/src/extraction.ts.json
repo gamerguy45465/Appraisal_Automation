@@ -1,0 +1,350 @@
+{
+  "originalSha256": "899467ce7acb91bb50242938b0af56394cbda1d835c6a301eb7194a713a9e173",
+  "annotatedSha256": "f4ed63b217722ef5b0e0c8e14757e3f6cb74a05e0dcd417d8add558113980f85",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports ChatOpenAI from @langchain/openai for the OpenAI chat model adapter.\r\n"
+    },
+    {
+      "offset": 135,
+      "text": "// [L2] Imports ChatAnthropic from @langchain/anthropic for the Anthropic chat model adapter.\r\n"
+    },
+    {
+      "offset": 284,
+      "text": "// [L3] Imports compile-time types ChatGoogle from @langchain/google for the Google Gemini chat model adapter.\r\n"
+    },
+    {
+      "offset": 449,
+      "text": "// [L4] Imports compile-time types ChatXAI from @langchain/xai for the xAI Grok chat model adapter.\r\n"
+    },
+    {
+      "offset": 597,
+      "text": "// [L5] Imports HumanMessage from @langchain/core/messages for typed human/tool messages and provider-compatible content.\r\n"
+    },
+    {
+      "offset": 778,
+      "text": "// [L6] Imports extractionSchema, type AiProvider, type ExtractedOrder, type JobPayload from ./domain.js for shared validated application data, business rules, defaults, and domain types.\r\n"
+    },
+    {
+      "offset": 1071,
+      "text": "// [L7] Imports APPRAISAL_PRODUCT_INSTRUCTIONS, CONTACT_ROLE_INSTRUCTIONS, SALE_PRICE_INSTRUCTIONS from ./system-prompt.js for shared appraisal workflow, contact, sale-price, and product instructions.\r\n"
+    },
+    {
+      "offset": 1395,
+      "text": "// [L8] Imports anthropicExtractionSchema, normalizeAnthropicExtraction from ./extraction-schema.js for Anthropic wire-schema adaptation and canonical value normalization.\r\n"
+    },
+    {
+      "offset": 1666,
+      "text": "// [L9] Imports createGoogleModel from ./google.js for the explicit-key Google model transport factory.\r\n"
+    },
+    {
+      "offset": 1820,
+      "text": "// [L10] Imports createXaiModel from ./xai.js for the explicit-key xAI model transport factory.\r\n"
+    },
+    {
+      "offset": 1960,
+      "text": "// [L11] Imports renderPdfPages from ./pdf-pages.js for local PDF-to-page-image rendering for Grok input.\r\n"
+    },
+    {
+      "offset": 2116,
+      "text": "// [L12] Blank line separating the surrounding declarations, statements, or document blocks.\r\n"
+    },
+    {
+      "offset": 2212,
+      "text": "// [L13] Defines the union of supported provider-specific chat model classes.\r\n"
+    },
+    {
+      "offset": 2371,
+      "text": "// [L14] Blank line separating the surrounding declarations, statements, or document blocks.\r\n"
+    },
+    {
+      "offset": 2467,
+      "text": "// [L15] Existing explanatory comment: Explicit credentials and official endpoints keep each job with its selected provider.\r\n"
+    },
+    {
+      "offset": 2687,
+      "text": "// [L16] Exports model creation with explicit credentials, model ID, and an OpenAI provider default.\r\n"
+    },
+    {
+      "offset": 2899,
+      "text": "  // [L17] Delegates xAI model construction to the isolated official-endpoint transport helper.\r\n"
+    },
+    {
+      "offset": 3060,
+      "text": "  // [L18] Delegates Google model construction to its API-key-only transport helper.\r\n"
+    },
+    {
+      "offset": 3216,
+      "text": "  // [L19] Selects the Anthropic SDK path when that provider was requested.\r\n"
+    },
+    {
+      "offset": 3328,
+      "text": "    // [L20] Constructs Anthropic with the selected key and model and at most one SDK retry.\r\n"
+    },
+    {
+      "offset": 3484,
+      "text": "      // [L21] Fixes Anthropic's official API endpoint and a 120-second client timeout.\r\n"
+    },
+    {
+      "offset": 3665,
+      "text": "  // [L22] Closes the scope or expression introduced here: Selects the Anthropic SDK path when that provider was requested.\r\n"
+    },
+    {
+      "offset": 3795,
+      "text": "  // [L23] Constructs the default OpenAI model using the Responses API, explicit key/model, one retry, and a 120-second timeout.\r\n"
+    },
+    {
+      "offset": 4022,
+      "text": "    // [L24] Disables OpenAI response storage and parallel tool calls and fixes the official OpenAI API endpoint.\r\n"
+    },
+    {
+      "offset": 4261,
+      "text": "// [L25] Closes the scope or expression introduced here: Exports model creation with explicit credentials, model ID, and an OpenAI provider default.\r\n"
+    },
+    {
+      "offset": 4414,
+      "text": "// [L26] Blank line separating the surrounding declarations, statements, or document blocks.\r\n"
+    },
+    {
+      "offset": 4510,
+      "text": "// [L27] Existing explanatory comment: Retry only an explicitly unsupported output format, never auth, quota, or model failures.\r\n"
+    },
+    {
+      "offset": 4738,
+      "text": "// [L28] Defines a narrow detector for output-format errors that permit a same-model structured-output fallback.\r\n"
+    },
+    {
+      "offset": 4938,
+      "text": "  // [L29] Rejects nonobject failures as ineligible for structured-output fallback.\r\n"
+    },
+    {
+      "offset": 5080,
+      "text": "  // [L30] Reads Google's statusCode or the common status property without assuming an error shape.\r\n"
+    },
+    {
+      "offset": 5312,
+      "text": "  // [L31] Permits fallback consideration only for HTTP 400 request failures.\r\n"
+    },
+    {
+      "offset": 5427,
+      "text": "  // [L32] Reads a string error message, substituting an empty string for other message shapes.\r\n"
+    },
+    {
+      "offset": 5620,
+      "text": "  // [L33] Uses Google-specific names when matching unsupported output-format errors.\r\n"
+    },
+    {
+      "offset": 5738,
+      "text": "    // [L34] Recognizes explicit Google schema/MIME/JSON-mode unsupported or unknown-field wording within a bounded distance.\r\n"
+    },
+    {
+      "offset": 6260,
+      "text": "  // [L35] Closes the scope or expression introduced here: Uses Google-specific names when matching unsupported output-format errors.\r\n"
+    },
+    {
+      "offset": 6399,
+      "text": "  // [L36] Recognizes explicit response_format, output_config, JSON-schema, or structured-output unsupported/unknown-parameter wording for other providers.\r\n"
+    },
+    {
+      "offset": 6850,
+      "text": "// [L37] Closes the scope or expression introduced here: Defines a narrow detector for output-format errors that permit a same-model structured-output fallback.\r\n"
+    },
+    {
+      "offset": 7015,
+      "text": "// [L38] Blank line separating the surrounding declarations, statements, or document blocks.\r\n"
+    },
+    {
+      "offset": 7111,
+      "text": "// [L39] Exports document extraction using the selected model and cancellation signal, returning validated order facts.\r\n"
+    },
+    {
+      "offset": 7360,
+      "text": "  // [L40] Records whether Anthropic requires its reduced-union wire schema.\r\n"
+    },
+    {
+      "offset": 7501,
+      "text": "  // [L41] Chooses Anthropic's adapted wire schema or the canonical extraction schema.\r\n"
+    },
+    {
+      "offset": 7673,
+      "text": "  // [L42] Chooses the provider-specific missing-text wording inserted into extraction instructions.\r\n"
+    },
+    {
+      "offset": 7845,
+      "text": "  // [L43] Begins selecting detailed missing-value instructions for Anthropic versus other providers.\r\n"
+    },
+    {
+      "offset": 7996,
+      "text": "    // [L44] Instructs Anthropic to encode only missing nullable text as empty strings while preserving null numbers, enums, booleans, evidence, and required fields.\r\n"
+    },
+    {
+      "offset": 8674,
+      "text": "    // [L45] Instructs other providers to retain null for missing text/numbers, Unknown classifications, and all required fields.\r\n"
+    },
+    {
+      "offset": 8933,
+      "text": "  // [L46] Defines construction of inline PDF content blocks for providers that accept native PDFs.\r\n"
+    },
+    {
+      "offset": 9094,
+      "text": "    // [L47] Selects a source-label-plus-file content block sequence for Google.\r\n"
+    },
+    {
+      "offset": 9230,
+      "text": "      // [L48] Existing explanatory comment: Gemini inlineData has no filename; identify each source before its PDF.\r\n"
+    },
+    {
+      "offset": 9429,
+      "text": "      // [L49] Adds a document-filename label before Google's PDF because its inline PDF payload does not carry one.\r\n"
+    },
+    {
+      "offset": 9644,
+      "text": "      // [L50] Encodes the PDF bytes as a base64 application/pdf file block for Google.\r\n"
+    },
+    {
+      "offset": 9843,
+      "text": "    // [L51] Closes the scope or expression introduced here: Selects a source-label-plus-file content block sequence for Google.\r\n"
+    },
+    {
+      "offset": 9980,
+      "text": "    // [L52] Builds Anthropic's document content block with title and base64 PDF source metadata.\r\n"
+    },
+    {
+      "offset": 10267,
+      "text": "    // [L53] Builds an OpenAI Responses input_file block with filename and a PDF data URL.\r\n"
+    },
+    {
+      "offset": 10477,
+      "text": "  // [L54] Closes the scope or expression introduced here: Defines construction of inline PDF content blocks for providers that accept native PDFs.\r\n"
+    },
+    {
+      "offset": 10631,
+      "text": "  // [L55] Selects rendered page images for xAI and native PDF blocks for the other providers.\r\n"
+    },
+    {
+      "offset": 10786,
+      "text": "    // [L56] Invokes local PDF rendering for the list of uploaded documents.\r\n"
+    },
+    {
+      "offset": 10893,
+      "text": "      // [L57] Adds the URLA buffer under its fixed internal source filename.\r\n"
+    },
+    {
+      "offset": 11029,
+      "text": "      // [L58] Includes the optional sales-contract buffer in the render list only when supplied.\r\n"
+    },
+    {
+      "offset": 11240,
+      "text": "    // [L59] Passes cancellation to local page rendering and finishes the xAI branch.\r\n"
+    },
+    {
+      "offset": 11342,
+      "text": "    // [L60] Starts the native-PDF branch with the required URLA content blocks.\r\n"
+    },
+    {
+      "offset": 11478,
+      "text": "      // [L61] Appends native sales-contract blocks only when the optional contract exists.\r\n"
+    },
+    {
+      "offset": 11675,
+      "text": "  // [L62] Begins the human message's extraction instructions and document content array.\r\n"
+    },
+    {
+      "offset": 11787,
+      "text": "    // [L63] Defines extraction instructions for source trust, authoritative URLA classifications, contract price, conservative property facts, evidence, sensitive-data exclusion, uncertainty, and required output fields.\r\n"
+    },
+    {
+      "offset": 13809,
+      "text": "      // [L64] Appends contact extraction instructions separating borrower, co-borrower, seller/listing agent, and buyer/selling agent roles and preserving supported contact details.\r\n"
+    },
+    {
+      "offset": 15011,
+      "text": "      // [L65] Appends the shared authoritative terminology for seller/listing versus buyer/selling representation.\r\n"
+    },
+    {
+      "offset": 15172,
+      "text": "      // [L66] Appends shared sale-price extraction and source-evidence rules.\r\n"
+    },
+    {
+      "offset": 15294,
+      "text": "      // [L67] Appends shared bounded appraisal-product selection and recommendation rules.\r\n"
+    },
+    {
+      "offset": 15436,
+      "text": "      // [L68] Appends contact source precedence, exact-path evidence requirements, phone classification constraints, identity matching, and missing/ambiguous-value handling.\r\n"
+    },
+    {
+      "offset": 16767,
+      "text": "    // [L69] Adds the provider-specific missing-value instructions as a separate text content block.\r\n"
+    },
+    {
+      "offset": 16924,
+      "text": "    // [L70] Existing explanatory comment: Grok receives labeled rendered pages; other providers receive native inline PDFs.\r\n"
+    },
+    {
+      "offset": 17139,
+      "text": "    // [L71] Appends the prepared native PDF blocks or locally rendered page-image blocks to the request content.\r\n"
+    },
+    {
+      "offset": 17278,
+      "text": "  // [L72] Closes the scope or expression introduced here: Begins the human message's extraction instructions and document content array.\r\n"
+    },
+    {
+      "offset": 17423,
+      "text": "  // [L73] Wraps the extraction content in a single LangChain human message.\r\n"
+    },
+    {
+      "offset": 17553,
+      "text": "  // [L74] Reserves an unknown-valued variable for structured model output before canonical validation.\r\n"
+    },
+    {
+      "offset": 17685,
+      "text": "  // [L75] Begins the primary native structured-output request with a narrowly controlled fallback.\r\n"
+    },
+    {
+      "offset": 17795,
+      "text": "    // [L76] Existing explanatory comment: Native JSON output also works with Claude models whose thinking is on by default.\r\n"
+    },
+    {
+      "offset": 18011,
+      "text": "    // [L77] Requests the named appraisal_document_data schema using native JSON Schema output.\r\n"
+    },
+    {
+      "offset": 18229,
+      "text": "      // [L78] Enables strict schema output only for OpenAI and xAI, invokes the selected model, and propagates cancellation.\r\n"
+    },
+    {
+      "offset": 18475,
+      "text": "  // [L79] Handles failures of the initial structured-output invocation.\r\n"
+    },
+    {
+      "offset": 18570,
+      "text": "    // [L80] Rethrows all failures except explicitly unsupported structured-output formats for this provider.\r\n"
+    },
+    {
+      "offset": 18763,
+      "text": "    // [L81] Checks cancellation before attempting the alternate structured-output method.\r\n"
+    },
+    {
+      "offset": 18885,
+      "text": "    // [L82] Existing explanatory comment: Older tool-capable models can use the same schema and selected model via a tool call.\r\n"
+    },
+    {
+      "offset": 19109,
+      "text": "    // [L83] Retries the same schema and selected model via function calling, passing the same request messages and cancellation signal.\r\n"
+    },
+    {
+      "offset": 19405,
+      "text": "  // [L84] Closes the scope or expression introduced here: Handles failures of the initial structured-output invocation.\r\n"
+    },
+    {
+      "offset": 19532,
+      "text": "  // [L85] Normalizes Anthropic's text sentinels when needed and validates every provider's result with the canonical extraction schema.\r\n"
+    },
+    {
+      "offset": 19771,
+      "text": "// [L86] Closes the scope or expression introduced here: Exports document extraction using the selected model and cancellation signal, returning validated order facts.\r\n"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "originalSha256": "ed9d3b50e376bb9d101e34fb206c546d3f588b7a535d462dd4e85734d0377875",
+  "annotatedSha256": "4d22f9212f1ed0b40e117a981f1fd01c6df576a6c1afff1b684414788f18ac85",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports toJsonSchema, type JSONSchema from @langchain/core/utils/json_schema for Zod-to-JSON-Schema conversion and its schema type.\n"
+    },
+    {
+      "offset": 223,
+      "text": "// [L2] Imports extractionSchema from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 404,
+      "text": "// [L3] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 497,
+      "text": "// [L4] Defines the generic object representation used while traversing JSON Schema values.\n"
+    },
+    {
+      "offset": 634,
+      "text": "// [L5] Returns non-null, nonarray objects as schema records and rejects other values as undefined.\n"
+    },
+    {
+      "offset": 903,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 996,
+      "text": "// [L7] Existing explanatory comment: Inline reuse keeps schema traversal and response normalization on identical paths.\n"
+    },
+    {
+      "offset": 1203,
+      "text": "// [L8] Converts the canonical Zod extraction schema into JSON Schema with repeated definitions inlined.\n"
+    },
+    {
+      "offset": 1386,
+      "text": "// [L9] Defines the extra instruction telling Anthropic to use an empty-string sentinel for missing nullable text.\n"
+    },
+    {
+      "offset": 1619,
+      "text": "// [L10] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1713,
+      "text": "// [L11] Defines detection of schema nodes representing unconstrained nullable text.\n"
+    },
+    {
+      "offset": 1855,
+      "text": "  // [L12] Requires the schema type to be an array containing exactly two alternatives.\n"
+    },
+    {
+      "offset": 2007,
+      "text": "    // [L13] Requires those two alternatives to be string and null.\n"
+    },
+    {
+      "offset": 2145,
+      "text": "    // [L14] Excludes enum and constant constraints so only ordinary nullable text receives sentinel adaptation.\n"
+    },
+    {
+      "offset": 2310,
+      "text": "// [L15] Closes the scope or expression introduced here: Defines detection of schema nodes representing unconstrained nullable text.\n"
+    },
+    {
+      "offset": 2445,
+      "text": "// [L16] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2539,
+      "text": "// [L17] Defines recursive conversion of canonical schema values to Anthropic's wire schema.\n"
+    },
+    {
+      "offset": 2680,
+      "text": "  // [L18] Recursively adapts each array item when traversing schema arrays.\n"
+    },
+    {
+      "offset": 2816,
+      "text": "  // [L19] Attempts to interpret the current value as a schema object.\n"
+    },
+    {
+      "offset": 2921,
+      "text": "  // [L20] Leaves primitive and unsupported nonobject schema values unchanged.\n"
+    },
+    {
+      "offset": 3029,
+      "text": "  // [L21] Recursively adapts every property of this schema object into a new object.\n"
+    },
+    {
+      "offset": 3226,
+      "text": "  // [L22] Applies the text-sentinel change only to canonical nullable-text schema nodes.\n"
+    },
+    {
+      "offset": 3348,
+      "text": "    // [L23] Changes nullable text's wire type to string, removing that string/null union.\n"
+    },
+    {
+      "offset": 3468,
+      "text": "    // [L24] Combines any existing textual description with the missing-text sentinel instruction.\n"
+    },
+    {
+      "offset": 3692,
+      "text": "  // [L25] Closes the scope or expression introduced here: Applies the text-sentinel change only to canonical nullable-text schema nodes.\n"
+    },
+    {
+      "offset": 3834,
+      "text": "  // [L26] Returns the recursively adapted schema object.\n"
+    },
+    {
+      "offset": 3910,
+      "text": "// [L27] Closes the scope or expression introduced here: Defines recursive conversion of canonical schema values to Anthropic's wire schema.\n"
+    },
+    {
+      "offset": 4053,
+      "text": "// [L28] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4147,
+      "text": "// [L29] Existing explanatory comment: Anthropic permits at most 16 union parameters; missing text uses a wire-only sentinel.\n"
+    },
+    {
+      "offset": 4367,
+      "text": "// [L30] Exports the Anthropic-specific JSON schema produced from the canonical extraction schema.\n"
+    },
+    {
+      "offset": 4551,
+      "text": "// [L31] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4645,
+      "text": "// [L32] Defines schema-guided normalization of provider output back to canonical values.\n"
+    },
+    {
+      "offset": 4803,
+      "text": "  // [L33] Interprets the corresponding canonical schema node as an object when possible.\n"
+    },
+    {
+      "offset": 4933,
+      "text": "  // [L34] Leaves output unchanged where no usable schema object exists.\n"
+    },
+    {
+      "offset": 5035,
+      "text": "  // [L35] Converts only whitespace-only strings at canonical nullable-text fields back to null.\n"
+    },
+    {
+      "offset": 5227,
+      "text": "  // [L36] Recursively normalizes array elements using the canonical item schema when available.\n"
+    },
+    {
+      "offset": 5425,
+      "text": "  // [L37] Interprets the current output value as an object for property-level traversal.\n"
+    },
+    {
+      "offset": 5549,
+      "text": "  // [L38] Reads the canonical schema's property definitions as an object.\n"
+    },
+    {
+      "offset": 5674,
+      "text": "  // [L39] Traverses output properties only when both output and schema properties are objects.\n"
+    },
+    {
+      "offset": 5800,
+      "text": "    // [L40] Rebuilds the output object by preserving each property name and choosing its normalized value.\n"
+    },
+    {
+      "offset": 5989,
+      "text": "      // [L41] Recurses through known own schema properties while leaving unknown output properties unchanged for later validation.\n"
+    },
+    {
+      "offset": 6206,
+      "text": "  // [L42] Closes the scope or expression introduced here: Traverses output properties only when both output and schema properties are objects.\n"
+    },
+    {
+      "offset": 6354,
+      "text": "  // [L43] Leaves values unchanged when no array, nullable-text, or object normalization applies.\n"
+    },
+    {
+      "offset": 6468,
+      "text": "// [L44] Closes the scope or expression introduced here: Defines schema-guided normalization of provider output back to canonical values.\n"
+    },
+    {
+      "offset": 6608,
+      "text": "// [L45] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6702,
+      "text": "// [L46] Existing explanatory comment: Only canonical nullable text fields are decoded; missing fields and invalid types stay invalid.\n"
+    },
+    {
+      "offset": 6940,
+      "text": "// [L47] Exports normalization of Anthropic's extraction response without validating or inventing missing fields.\n"
+    },
+    {
+      "offset": 7126,
+      "text": "  // [L48] Runs the normalization traversal against the unchanged canonical schema.\n"
+    },
+    {
+      "offset": 7254,
+      "text": "// [L49] Closes the scope or expression introduced here: Exports normalization of Anthropic's extraction response without validating or inventing missing fields.\n"
+    }
+  ]
+}

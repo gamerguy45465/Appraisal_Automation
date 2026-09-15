@@ -1,0 +1,7 @@
+{
+  "1": "Import Playwright's typed configuration helper.",
+  "2": "Export the browser-test configuration through defineConfig.",
+  "3": "Find spec.ts tests under tests, disable full parallel execution, and run with one worker.",
+  "4": "Allow 30 seconds per test; use headless browsers with traces and screenshots disabled.",
+  "5": "Finish the browser-test configuration and its export."
+}

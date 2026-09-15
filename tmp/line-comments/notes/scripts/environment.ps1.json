@@ -1,0 +1,21 @@
+{
+  "1": "Accepts a string operation parameter constrained to set or get.",
+  "2": "Makes PowerShell errors terminate the current operation so the catch block can handle failures.",
+  "3": "Explains why the helper explicitly uses UTF-8 for the standard-input and standard-output pipes.",
+  "4": "Configures standard-input decoding as UTF-8 without a byte-order mark.",
+  "5": "Configures standard-output encoding as UTF-8 without a byte-order mark.",
+  "6": "Begins guarded handling of the requested environment-variable operation.",
+  "7": "Reads all standard input and parses the incoming JSON request.",
+  "8": "Defines the only five environment-variable names this helper permits callers to access.",
+  "9": "Rejects requests whose variable name is outside the allowlist.",
+  "10": "Enters the assignment branch only when the operation is set.",
+  "11": "Sets the named environment variable in this PowerShell process using the request value converted to a string.",
+  "12": "Ends the optional environment-variable assignment branch.",
+  "13": "Documents that the worker captures this output privately instead of forwarding it to logs or model tools.",
+  "14": "Reads the named variable from this PowerShell process's environment.",
+  "15": "Serializes the resulting value into a compact JSON object on standard output.",
+  "16": "Handles errors from JSON parsing, validation, or the environment-variable operation.",
+  "17": "Writes a generic failure message to standard error without exposing the requested value.",
+  "18": "Exits the helper with status 1 to signal failure to its caller.",
+  "19": "Ends environment-operation error handling."
+}

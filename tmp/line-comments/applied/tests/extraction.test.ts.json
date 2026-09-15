@@ -1,0 +1,774 @@
+{
+  "originalSha256": "f505d1b88d3eb997ef846648115020ba2d2d7ffad2ab09398b6a5840d579ae0d",
+  "annotatedSha256": "5f87894b4863b67cff9761ef0e02fb83451dcd9fb931443a70f703ac35af4c67",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 183,
+      "text": "// [L2] Import { AIMessage, HumanMessage, ToolMessage } from \"@langchain/core/messages\" for these regression tests.\n"
+    },
+    {
+      "offset": 380,
+      "text": "// [L3] Import { createModel, extractOrder } from \"../src/extraction.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 547,
+      "text": "// [L4] Import { buildFieldPlan, DEFAULT_MODEL, type ExtractedOrder, type JobPayload } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 790,
+      "text": "// [L5] Import { SYSTEM_PROMPT } from \"../src/system-prompt.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 939,
+      "text": "// [L6] Import { toProviderMessages } from \"../src/model-messages.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1100,
+      "text": "// [L7] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1193,
+      "text": "// [L8] Declare `emptyContact` as an object containing firstName: null (unknown or absent), lastName: null (unknown or absent), workPhone: null (unknown or absent), homePhone: null (unknown or absent), mobilePhone: null (unknown or absent), email: null (unknown or absent).\n"
+    },
+    {
+      "offset": 1591,
+      "text": "// [L9] Declare `extracted` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 1700,
+      "text": "  // [L10] Set fixture property `loanProgram` to \"Conventional\". Set fixture property `loanProgramText` to \"Conventional\". Set fixture property `loanPurpose` to \"Purchase\".\n"
+    },
+    {
+      "offset": 1962,
+      "text": "  // [L11] Set fixture property `product` to null (unknown or absent). Set fixture property `propertyType` to null (unknown or absent). Set fixture property `occupancy` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 2214,
+      "text": "  // [L12] Set fixture property `property` to an object containing address: null (unknown or absent), unit: null (unknown or absent), postalCode: null (unknown or absent), city: null (unknown or absent), state: null (unknown or absent).\n"
+    },
+    {
+      "offset": 2537,
+      "text": "  // [L13] Set fixture property `secondaryLoanNumber` to null (unknown or absent). Set fixture property `loanType` to null (unknown or absent). Set fixture property `lienPosition` to null (unknown or absent). Set fixture property `loanAmount` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 2892,
+      "text": "  // [L14] Set fixture property `salePrice` to null (unknown or absent). Set fixture property `lastValuationAmount` to null (unknown or absent). Set fixture property `lastValuationDate` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 3178,
+      "text": "  // [L15] Set fixture property `borrower` to `emptyContact`. Set fixture property `coBorrower` to `emptyContact`. Set fixture property `listingAgent` to `emptyContact`. Set fixture property `buyerAgent` to `emptyContact`.\n"
+    },
+    {
+      "offset": 3507,
+      "text": "  // [L16] Set fixture property `complexProperty` to false. Set fixture property `highProfileCustomer` to false.\n"
+    },
+    {
+      "offset": 3674,
+      "text": "  // [L17] Set fixture property `evidence` to an array containing an object containing field: \"loanProgram\", document: \"urla\", page: 1, quote: \"Conventional\", an object containing field: \"loanPurpose\", document: \"urla\", page: 1, quote: \"Purchase\".\n"
+    },
+    {
+      "offset": 3936,
+      "text": "    // [L18] Set fixture property `field` to \"loanProgram\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Conventional\".\n"
+    },
+    {
+      "offset": 4201,
+      "text": "    // [L19] Set fixture property `field` to \"loanPurpose\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Purchase\".\n"
+    },
+    {
+      "offset": 4458,
+      "text": "  // [L20] Set fixture property `warnings` to an empty array.\n"
+    },
+    {
+      "offset": 4539,
+      "text": "// [L21] Close the fixture object for `extracted` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4627,
+      "text": "// [L22] Declare `payload` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 4729,
+      "text": "  // [L23] Set fixture property `input` to an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 4883,
+      "text": "    // [L24] Set fixture property `loanNumber` to \"685-2012345\". Set fixture property `fhaCaseNumber` to \"\". Set fixture property `paymentMethod` to \"Invoice\". Set fixture property `rushOrder` to false. Set fixture property `model` to `DEFAULT_MODEL`.\n"
+    },
+    {
+      "offset": 5253,
+      "text": "  // [L25] Set fixture property `urla` to an object containing name: \"urla.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7\\nSynthetic URLA\\n%%EOF\".\n"
+    },
+    {
+      "offset": 5497,
+      "text": "  // [L26] Set fixture property `salesContract` to an object containing name: \"sales-contract.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7\\nSynthetic contract\\n%%EOF\".\n"
+    },
+    {
+      "offset": 5787,
+      "text": "// [L27] Close the fixture object for `payload` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5873,
+      "text": "// [L28] Define the TypeScript shape `WireBody` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 5997,
+      "text": "  // [L29] Declare fixture property `model` with type `string`.\n"
+    },
+    {
+      "offset": 6078,
+      "text": "  // [L30] Declare optional fixture property `store` with type `boolean`.\n"
+    },
+    {
+      "offset": 6171,
+      "text": "  // [L31] Declare optional fixture property `temperature` with type `number`.\n"
+    },
+    {
+      "offset": 6274,
+      "text": "  // [L32] Declare fixture property `input` with type `Array<{ type: string; content?: Array<Record<string, unknown>>; output?: unknown }>`.\n"
+    },
+    {
+      "offset": 6509,
+      "text": "  // [L33] Declare optional fixture property `text` with type `{ format?: { type?: string; strict?: boolean; schema?: { properties?: Record<string, unknown>; required?: string[] } } }`.\n"
+    },
+    {
+      "offset": 6826,
+      "text": "// [L34] Finish the surrounding expression and delimiters.\n"
+    },
+    {
+      "offset": 6887,
+      "text": "// [L35] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6981,
+      "text": "// [L36] Existing comment: Responses API fixture: completed assistant message with structured JSON text.\n"
+    },
+    {
+      "offset": 7171,
+      "text": "// [L37] Define helper `completedResponse` with parameters data for the fixture operations below.\n"
+    },
+    {
+      "offset": 7332,
+      "text": "  // [L38] Return an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 7417,
+      "text": "    // [L39] Set fixture property `id` to \"resp_synthetic\". Set fixture property `object` to \"response\". Set fixture property `created_at` to 1. Set fixture property `status` to \"completed\". Set fixture property `model` to `DEFAULT_MODEL`.\n"
+    },
+    {
+      "offset": 7761,
+      "text": "    // [L40] Set fixture property `output` to an array containing an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 7962,
+      "text": "      // [L41] Set fixture property `content` to an array containing an object containing type: \"output_text\", text: the result of `JSON.stringify` using `data`, annotations: an empty array.\n"
+    },
+    {
+      "offset": 8243,
+      "text": "    // [L42] Set fixture property `usage` to an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 8398,
+      "text": "      // [L43] Set fixture property `input_tokens_details` to an object containing cached_tokens: 0. Set fixture property `output_tokens_details` to an object containing reasoning_tokens: 0.\n"
+    },
+    {
+      "offset": 8689,
+      "text": "  // [L44] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8765,
+      "text": "// [L45] Close the callback or control-flow body for `completedResponse` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8875,
+      "text": "// [L46] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 8969,
+      "text": "// [L47] Group regression tests for \"OpenAI Responses wire compatibility\".\n"
+    },
+    {
+      "offset": 9100,
+      "text": "  // [L48] Declare `requests` for assignment later.\n"
+    },
+    {
+      "offset": 9208,
+      "text": "  // [L49] Declare `responseData` for assignment later.\n"
+    },
+    {
+      "offset": 9300,
+      "text": "  // [L50] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 9379,
+      "text": "    // [L51] Assign an empty array to `requests`.\n"
+    },
+    {
+      "offset": 9448,
+      "text": "    // [L52] Assign `extracted` to `responseData`.\n"
+    },
+    {
+      "offset": 9529,
+      "text": "    // [L53] Temporarily set environment variable \"LANGSMITH_TRACING\" to \"false\" for this test.\n"
+    },
+    {
+      "offset": 9671,
+      "text": "    // [L54] Temporarily set environment variable \"LANGCHAIN_TRACING_V2\" to \"false\" for this test.\n"
+    },
+    {
+      "offset": 9819,
+      "text": "    // [L55] Temporarily set environment variable \"LANGCHAIN_TRACING\" to \"false\" for this test.\n"
+    },
+    {
+      "offset": 9961,
+      "text": "    // [L56] Temporarily replace global \"fetch\" with the result of `vi.fn` using a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 10163,
+      "text": "      // [L57] Declare `request` as a new `Request` instance initialized with `input`, `init`.\n"
+    },
+    {
+      "offset": 10306,
+      "text": "      // [L58] Append an object containing url: `request.url`, body: the resolved value from `request.json` with no arguments to `requests` for later inspection.\n"
+    },
+    {
+      "offset": 10551,
+      "text": "      // [L59] Return the result of `Response.json` using the result of `completedResponse` using `responseData` to the caller.\n"
+    },
+    {
+      "offset": 10740,
+      "text": "    // [L60] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10837,
+      "text": "  // [L61] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10929,
+      "text": "  // [L62] Run this cleanup after every test in the group. Use a callback that performs: Restore all temporarily replaced global values. Restore all temporarily replaced environment variables..\n"
+    },
+    {
+      "offset": 11190,
+      "text": "// [L63] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 11284,
+      "text": "  // [L64] Register a test that \"sends both PDFs as actual file inputs and receives strict structured output without a network call\".\n"
+    },
+    {
+      "offset": 11539,
+      "text": "    // [L65] Declare `result` as the resolved value from `extractOrder` using `payload`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 11863,
+      "text": "    // [L66] Assert that `result` deeply equals `extracted`.\n"
+    },
+    {
+      "offset": 11963,
+      "text": "    // [L67] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 12051,
+      "text": "    // [L68] Declare `request` as `requests[0]`.\n"
+    },
+    {
+      "offset": 12134,
+      "text": "    // [L69] Assert that `request.url` strictly equals \"https://api.openai.com/v1/responses\".\n"
+    },
+    {
+      "offset": 12297,
+      "text": "    // [L70] Assert that `request.body.model` strictly equals `DEFAULT_MODEL`.\n"
+    },
+    {
+      "offset": 12428,
+      "text": "    // [L71] Assert that `request.body.store` strictly equals false.\n"
+    },
+    {
+      "offset": 12541,
+      "text": "    // [L72] Assert that `request.body.temperature` is undefined.\n"
+    },
+    {
+      "offset": 12661,
+      "text": "    // [L73] Assert that `request.body.text?.format` contains the expected object fields an object containing type: \"json_schema\", strict: true.\n"
+    },
+    {
+      "offset": 12898,
+      "text": "    // [L74] Assert that `request.body.text?.format?.schema?.required` contains \"buyerAgent\".\n"
+    },
+    {
+      "offset": 13073,
+      "text": "    // [L75] Assert the structured extraction schema includes the separate buyerAgent property.\n"
+    },
+    {
+      "offset": 13257,
+      "text": "    // [L76] Declare `files` as the result of `request.body.input.flatMap(item => item.content ?? []).filter` using a callback that returns `item.type` strictly equals \"input_file\".\n"
+    },
+    {
+      "offset": 13556,
+      "text": "    // [L77] Assert that `files` deeply equals an array containing an object containing type: \"input_file\", filename: \"urla.pdf\", file_data: text interpolating the result of `payload.urla.buffer.toString` using `'base64'`, an object containing type: \"input_file\", filename: \"sales-contract.pdf\", file_data: text interpolating the result of `payload.salesContract!.buffer.toString` using `'base64'`.\n"
+    },
+    {
+      "offset": 13983,
+      "text": "      // [L78] Set fixture property `type` to \"input_file\". Set fixture property `filename` to \"urla.pdf\". Set fixture property `file_data` to text interpolating the result of `payload.urla.buffer.toString` using \"base64\".\n"
+    },
+    {
+      "offset": 14342,
+      "text": "      // [L79] Set fixture property `type` to \"input_file\". Set fixture property `filename` to \"sales-contract.pdf\". Set fixture property `file_data` to text interpolating the result of `payload.salesContract!.buffer.toString` using \"base64\".\n"
+    },
+    {
+      "offset": 14741,
+      "text": "    // [L80] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 14831,
+      "text": "    // [L81] Declare `bodyText` as the result of `JSON.stringify` using `request.body`.\n"
+    },
+    {
+      "offset": 14970,
+      "text": "    // [L82] Assert that `bodyText` does not satisfy: contains `payload.input.apiKey`.\n"
+    },
+    {
+      "offset": 15115,
+      "text": "  // [L83] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15207,
+      "text": "// [L84] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15301,
+      "text": "  // [L85] Register a test that \"sends only the URLA when no sales contract is supplied\".\n"
+    },
+    {
+      "offset": 15468,
+      "text": "    // [L86] Call `extractOrder` with an object containing input: `payload.input`, urla: `payload.urla`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 15869,
+      "text": "    // [L87] Declare `files` as the result of `requests[0]!.body.input.flatMap(item => item.content ?? []).filter` using a callback that returns `item.type` strictly equals \"input_file\".\n"
+    },
+    {
+      "offset": 16178,
+      "text": "    // [L88] Assert that `files` has length 1.\n"
+    },
+    {
+      "offset": 16260,
+      "text": "    // [L89] Assert that `files[0]!.filename` strictly equals \"urla.pdf\".\n"
+    },
+    {
+      "offset": 16383,
+      "text": "  // [L90] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 16475,
+      "text": "// [L91] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 16569,
+      "text": "  // [L92] Register a test that \"sends explicit seller versus selling-agent rules to extraction and preserves them for preparation\".\n"
+    },
+    {
+      "offset": 16822,
+      "text": "    // [L93] Call `extractOrder` with `payload`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 17130,
+      "text": "    // [L94] Declare `instructions` as the result of `requests[0]!.body.input.flatMap(item => item.content ?? []) .filter(item => item.type === 'input_text').map(item => String(item.text)).join` using \"\\n\".\n"
+    },
+    {
+      "offset": 17422,
+      "text": "      // [L95] Keep native input_text blocks, convert their text to strings, and join them with newlines for instruction assertions.\n"
+    },
+    {
+      "offset": 17648,
+      "text": "    // [L96] Iterate const prompt over an array containing `instructions`, `SYSTEM_PROMPT`.\n"
+    },
+    {
+      "offset": 17798,
+      "text": "      // [L97] Assert that `prompt` contains \"\\\"listing agent\\\", \\\"seller's agent\\\", \\\"seller agent\\\" and \\\"seller representative\\\" as listingAgent\".\n"
+    },
+    {
+      "offset": 18078,
+      "text": "      // [L98] Assert that `prompt` contains \"\\\"buyer's agent\\\", \\\"buyer agent\\\", \\\"buying agent\\\", \\\"selling agent\\\" and \\\"cooperating agent\\\" as buyerAgent only when the document explicitly establishes...\".\n"
+    },
+    {
+      "offset": 18499,
+      "text": "      // [L99] Assert that `prompt` contains \"\\\"Seller's agent\\\" and \\\"selling agent\\\" are different labels\".\n"
+    },
+    {
+      "offset": 18703,
+      "text": "      // [L100] Assert that `prompt` contains \"Purchase access uses listingAgent (the seller's agent); refinance access uses borrower\".\n"
+    },
+    {
+      "offset": 18962,
+      "text": "      // [L101] Assert that `prompt` contains \"If a role is unclear, leave the agent role/details unknown and flag it for review\".\n"
+    },
+    {
+      "offset": 19210,
+      "text": "      // [L102] Assert that `prompt` contains \"human review and submission remain mandatory\".\n"
+    },
+    {
+      "offset": 19384,
+      "text": "    // [L103] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19479,
+      "text": "  // [L104] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19572,
+      "text": "// [L105] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 19667,
+      "text": "  // [L106] Register a test that \"carries an unsigned sample contract purchase price through Responses extraction into the required sale-price plan\".\n"
+    },
+    {
+      "offset": 19953,
+      "text": "    // [L107] Declare `documentWarning` as \"Unsigned sample contract: confirm the final purchase price before submitting.\".\n"
+    },
+    {
+      "offset": 20186,
+      "text": "    // [L108] Declare `priceEvidence` as an object containing field: \"salePrice\", document: \"salesContract\", page: 1, quote: \"Purchase Price: $485,000.00\".\n"
+    },
+    {
+      "offset": 20475,
+      "text": "    // [L109] Assign an object whose fields are defined below to `responseData`.\n"
+    },
+    {
+      "offset": 20630,
+      "text": "      // [L110] Set fixture property `evidence` to an array containing `...extracted.evidence`, `priceEvidence`. Set fixture property `warnings` to an array containing `documentWarning`.\n"
+    },
+    {
+      "offset": 20904,
+      "text": "    // [L111] Declare `result` as the resolved value from `extractOrder` using `payload`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 21229,
+      "text": "    // [L112] Declare `instructions` as the result of `requests[0]!.body.input.flatMap(item => item.content ?? []) .filter(item => item.type === 'input_text').map(item => String(item.text)).join` using \"\\n\".\n"
+    },
+    {
+      "offset": 21522,
+      "text": "      // [L113] Keep native input_text blocks, convert their text to strings, and join them with newlines for instruction assertions.\n"
+    },
+    {
+      "offset": 21749,
+      "text": "    // [L114] Existing comment: This checks the instructions actually sent, not merely an exported prompt constant.\n"
+    },
+    {
+      "offset": 21956,
+      "text": "    // [L115] Iterate const prompt over an array containing `instructions`, `SYSTEM_PROMPT`.\n"
+    },
+    {
+      "offset": 22107,
+      "text": "      // [L116] Assert that `prompt` does not satisfy: matches `/Use the signed contract for sale price/i`.\n"
+    },
+    {
+      "offset": 22292,
+      "text": "      // [L117] Assert that `prompt` matches `/\\bunsigned\\b/i`.\n"
+    },
+    {
+      "offset": 22403,
+      "text": "      // [L118] Assert that `prompt` matches `/\\bsample\\b/i`.\n"
+    },
+    {
+      "offset": 22510,
+      "text": "      // [L119] Assert that `prompt` matches `/\\bdraft\\b/i`.\n"
+    },
+    {
+      "offset": 22615,
+      "text": "      // [L120] Assert that `prompt` matches `/\\bsalePrice\\b/`.\n"
+    },
+    {
+      "offset": 22726,
+      "text": "    // [L121] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 22821,
+      "text": "    // [L122] Assert that `result.salePrice` strictly equals 485000.\n"
+    },
+    {
+      "offset": 22933,
+      "text": "    // [L123] Assert that `result.loanAmount` strictly equals 388000.\n"
+    },
+    {
+      "offset": 23047,
+      "text": "    // [L124] Assert that `result.evidence` contains a deeply equal entry `priceEvidence`.\n"
+    },
+    {
+      "offset": 23197,
+      "text": "    // [L125] Declare `{ plan, warnings, missingRequiredFields }` as the result of `buildFieldPlan` using `result`, `payload.input`, true.\n"
+    },
+    {
+      "offset": 23435,
+      "text": "    // [L126] Assert that the result of `plan.filter` using a callback that returns `field.key` strictly equals \"salePrice\" deeply equals an array containing an object containing key: \"salePrice\", value: \"485000\", kind: \"text\", required: true.\n"
+    },
+    {
+      "offset": 23819,
+      "text": "    // [L127] Assert that `plan.find(field => field.key === 'loanAmount')?.value` strictly equals \"388000\".\n"
+    },
+    {
+      "offset": 24009,
+      "text": "    // [L128] Assert that `warnings` contains `documentWarning`.\n"
+    },
+    {
+      "offset": 24123,
+      "text": "    // [L129] Assert that `missingRequiredFields` does not satisfy: contains \"salePrice\".\n"
+    },
+    {
+      "offset": 24275,
+      "text": "  // [L130] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24368,
+      "text": "// [L131] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 24463,
+      "text": "  // [L132] Register a test that \"preserves a null model price as missing information without substituting zero or the loan amount\".\n"
+    },
+    {
+      "offset": 24715,
+      "text": "    // [L133] Assign an object containing values copied from `extracted`, salePrice: null (unknown or absent), loanAmount: 388000, warnings: an array containing \"The contract does not establish a purchase price.\" to `responseData`.\n"
+    },
+    {
+      "offset": 25086,
+      "text": "    // [L134] Declare `result` as the resolved value from `extractOrder` using `payload`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 25411,
+      "text": "    // [L135] Assert that `result.salePrice` is null.\n"
+    },
+    {
+      "offset": 25506,
+      "text": "    // [L136] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using `result`, `payload.input`, true.\n"
+    },
+    {
+      "offset": 25724,
+      "text": "    // [L137] Assert that the result of `plan.some` using a callback that returns `field.key` strictly equals \"salePrice\" strictly equals false.\n"
+    },
+    {
+      "offset": 25940,
+      "text": "    // [L138] Assert that `missingRequiredFields` contains \"salePrice\".\n"
+    },
+    {
+      "offset": 26070,
+      "text": "    // [L139] Assert that `plan.find(field => field.key === 'loanAmount')?.value` strictly equals \"388000\".\n"
+    },
+    {
+      "offset": 26260,
+      "text": "  // [L140] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 26353,
+      "text": "// [L141] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 26448,
+      "text": "  // [L142] Register a test that \"turns free-form extracted descriptions into supported required dropdown values\".\n"
+    },
+    {
+      "offset": 26664,
+      "text": "    // [L143] Configure mock `vi.mocked(fetch)` to resolve on its next call to the result of `Response.json` using the result of `completedResponse` using an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 26952,
+      "text": "      // [L144] Set fixture property `loanType` to \"Fixed Rate\". Set fixture property `propertyType` to \"Single-family detached residence\". Set fixture property `product` to \" \".\n"
+    },
+    {
+      "offset": 27230,
+      "text": "    // [L145] Declare `result` as the resolved value from `extractOrder` using `payload`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 27555,
+      "text": "    // [L146] Declare `{ plan }` as the result of `buildFieldPlan` using `result`, `payload.input`, true.\n"
+    },
+    {
+      "offset": 27727,
+      "text": "    // [L147] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"loanType\" contains the expected object fields an object containing value: \"Conventional\", required: true.\n"
+    },
+    {
+      "offset": 28059,
+      "text": "    // [L148] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"propertyType\" contains the expected object fields an object containing value: \"Single Family\", required: true.\n"
+    },
+    {
+      "offset": 28401,
+      "text": "    // [L149] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" contains the expected object fields an object containing value: \"1004 SFR CONV\", required: true.\n"
+    },
+    {
+      "offset": 28733,
+      "text": "  // [L150] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 28826,
+      "text": "// [L151] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 28921,
+      "text": "  // [L152] Register a test that \"preserves source-linked borrower and both agent identities through extraction and access planning\".\n"
+    },
+    {
+      "offset": 29175,
+      "text": "    // [L153] Assign an object whose fields are defined below to `responseData`.\n"
+    },
+    {
+      "offset": 29291,
+      "text": "      // [L154] Set fixture property `borrower` to an object containing values copied from `emptyContact`, firstName: \"Casey\", lastName: \"Borrower\", homePhone: \"7025550100\".\n"
+    },
+    {
+      "offset": 29569,
+      "text": "      // [L155] Set fixture property `listingAgent` to an object containing values copied from `emptyContact`, firstName: \"Lena\", lastName: \"Listing\", mobilePhone: \"7025550111\", email: \"listing@example.test\".\n"
+    },
+    {
+      "offset": 29917,
+      "text": "      // [L156] Set fixture property `buyerAgent` to an object containing values copied from `emptyContact`, firstName: \"Bailey\", lastName: \"Buyeragent\", workPhone: \"7025550222\", email: \"buyeragent@example.test\".\n"
+    },
+    {
+      "offset": 30273,
+      "text": "      // [L157] Set fixture property `evidence` to an array containing `...extracted.evidence`, an object containing field: \"borrower.homePhone\", document: \"urla\", page: 1, quote: \"Casey Borrower Home Phone 7025550100\", an object containing field: \"listingAgent.mobilePhone\", document: \"salesContract\", page: 9, quote: \"Seller's Agent: Lena Listing; Mobile: 7025550111\", an object containing field: \"buyerAgent.workPhone\", document: \"salesContract\", page: 10, quote: \"Buyer's Agent: Bailey Buyeragent; Office: 7025550222\".\n"
+    },
+    {
+      "offset": 30836,
+      "text": "        // [L158] Set fixture property `field` to \"borrower.homePhone\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Casey Borrower Home Phone 7025550100\".\n"
+    },
+    {
+      "offset": 31172,
+      "text": "        // [L159] Set fixture property `field` to \"listingAgent.mobilePhone\". Set fixture property `document` to \"salesContract\". Set fixture property `page` to 9. Set fixture property `quote` to \"Seller's Agent: Lena Listing; Mobile: 7025550111\".\n"
+    },
+    {
+      "offset": 31562,
+      "text": "        // [L160] Set fixture property `field` to \"buyerAgent.workPhone\". Set fixture property `document` to \"salesContract\". Set fixture property `page` to 10. Set fixture property `quote` to \"Buyer's Agent: Bailey Buyeragent; Office: 7025550222\".\n"
+    },
+    {
+      "offset": 31954,
+      "text": "      // [L161] Close the array of fixture values for `evidence` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 32063,
+      "text": "    // [L162] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 32144,
+      "text": "    // [L163] Declare `result` as the resolved value from `extractOrder` using `payload`, the result of `createModel` using `payload.input.apiKey`, `DEFAULT_MODEL`, `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 32469,
+      "text": "    // [L164] Assert that `result` deeply equals `responseData`.\n"
+    },
+    {
+      "offset": 32576,
+      "text": "    // [L165] Iterate const loanPurpose over an array containing \"Purchase\", \"Refinance\".\n"
+    },
+    {
+      "offset": 32734,
+      "text": "      // [L166] Declare `{ plan }` as the result of `buildFieldPlan` using an object containing values copied from `result`, loanPurpose, `payload.input`, true.\n"
+    },
+    {
+      "offset": 32983,
+      "text": "      // [L167] Assert that `plan.find(field => field.key === 'contact.firstName')?.value` strictly equals \"Lena\" when `loanPurpose` strictly equals \"Purchase\", otherwise \"Casey\".\n"
+    },
+    {
+      "offset": 33291,
+      "text": "      // [L168] Assert that `plan.find(field => field.key === 'contact.mobilePhone')?.value` strictly equals \"7025550111\" when `loanPurpose` strictly equals \"Purchase\", otherwise \"\".\n"
+    },
+    {
+      "offset": 33605,
+      "text": "      // [L169] Assert that `plan.find(field => field.key === 'contact.homePhone')?.value` strictly equals \"7025550100\" when `loanPurpose` strictly equals \"Refinance\", otherwise \"\".\n"
+    },
+    {
+      "offset": 33917,
+      "text": "      // [L170] Assert that `plan.find(field => field.key === 'listingAgent.email')?.value` strictly equals \"listing@example.test\".\n"
+    },
+    {
+      "offset": 34155,
+      "text": "      // [L171] Assert that `plan.find(field => field.key === 'buyerAgent.email')?.value` strictly equals \"buyeragent@example.test\".\n"
+    },
+    {
+      "offset": 34395,
+      "text": "    // [L172] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 34490,
+      "text": "  // [L173] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 34583,
+      "text": "// [L174] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 34678,
+      "text": "  // [L175] Register a test that \"transmits screenshot tool output as image input rather than a serialized text blob\".\n"
+    },
+    {
+      "offset": 34902,
+      "text": "    // [L176] Declare `screenshot` as an array containing an object containing type: \"text\", text: \"Synthetic order page screenshot.\", an object containing type: \"image_url\", image_url: an object containing url: \"data:image/png;base64,iVBORw0KGgo=\", detail: \"auto\".\n"
+    },
+    {
+      "offset": 35193,
+      "text": "      // [L177] Set fixture property `type` to \"text\". Set fixture property `text` to \"Synthetic order page screenshot.\".\n"
+    },
+    {
+      "offset": 35381,
+      "text": "      // [L178] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to an object containing url: \"data:image/png;base64,iVBORw0KGgo=\", detail: \"auto\".\n"
+    },
+    {
+      "offset": 35660,
+      "text": "    // [L179] Close the array of fixture values for `screenshot` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 35767,
+      "text": "    // [L180] Call `createModel(payload.input.apiKey, DEFAULT_MODEL).invoke` with the result of `toProviderMessages` using \"openai\", an array containing a new `HumanMessage` instance initialized with \"Inspect the order page.\", a new `AIMessage` instance initialized with an object containing content: `''`, tool_calls: `[{ id: 'call_screenshot', name: 'screenshot_page', args: {}, type: 'tool_call' }]`, a new `ToolMessage` instance initialized with an object containing tool_call_id: `'call_screenshot'`, name: `'screenshot_page'`, content: `screenshot`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 36459,
+      "text": "      // [L181] Add a synthetic human message asking the model to inspect the order page.\n"
+    },
+    {
+      "offset": 36600,
+      "text": "      // [L182] Set fixture property `content` to \"\". Set fixture property `tool_calls` to an array containing an object containing id: \"call_screenshot\", name: \"screenshot_page\", args: an empty object, type: \"tool_call\".\n"
+    },
+    {
+      "offset": 36955,
+      "text": "      // [L183] Set fixture property `tool_call_id` to \"call_screenshot\". Set fixture property `name` to \"screenshot_page\". Set fixture property `content` to `screenshot`.\n"
+    },
+    {
+      "offset": 37233,
+      "text": "    // [L184] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 37325,
+      "text": "    // [L185] Declare `toolOutput` as the result of `requests[0]!.body.input.find` using a callback that returns `item.type` strictly equals \"function_call_output\".\n"
+    },
+    {
+      "offset": 37589,
+      "text": "    // [L186] Assert that `toolOutput?.output` deeply equals an array containing an object containing type: \"input_text\", text: \"Synthetic order page screenshot.\", an object containing type: \"input_image\", image_url: \"data:image/png;base64,iVBORw0KGgo=\", detail: \"auto\".\n"
+    },
+    {
+      "offset": 37901,
+      "text": "      // [L187] Set fixture property `type` to \"input_text\". Set fixture property `text` to \"Synthetic order page screenshot.\".\n"
+    },
+    {
+      "offset": 38101,
+      "text": "      // [L188] Set fixture property `type` to \"input_image\". Set fixture property `image_url` to \"data:image/png;base64,iVBORw0KGgo=\". Set fixture property `detail` to \"auto\".\n"
+    },
+    {
+      "offset": 38374,
+      "text": "    // [L189] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 38465,
+      "text": "    // [L190] Assert that `typeof toolOutput?.output` does not satisfy: strictly equals \"string\".\n"
+    },
+    {
+      "offset": 38621,
+      "text": "  // [L191] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 38714,
+      "text": "// [L192] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

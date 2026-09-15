@@ -1,0 +1,378 @@
+{
+  "originalSha256": "9ca36e5439144bc5be28c53e4c5726bfc9b31dccee6d4d4aa5254abdfaa31cec",
+  "annotatedSha256": "5d4e35e9b0172df58c5a7f777f999029b931082a2cdc20586c359858d2b328f8",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports express,  type ErrorRequestHandler from express for HTTP application/routing support and middleware error types.\n"
+    },
+    {
+      "offset": 190,
+      "text": "// [L2] Imports helmet from helmet for HTTP security-header middleware.\n"
+    },
+    {
+      "offset": 291,
+      "text": "// [L3] Imports rateLimit from express-rate-limit for API request-rate limiting middleware.\n"
+    },
+    {
+      "offset": 427,
+      "text": "// [L4] Imports multer from multer for multipart upload parsing with in-memory file buffers.\n"
+    },
+    {
+      "offset": 549,
+      "text": "// [L5] Imports cookieParser from cookie-parser for incoming session-cookie parsing middleware.\n"
+    },
+    {
+      "offset": 687,
+      "text": "// [L6] Imports randomBytes, timingSafeEqual from node:crypto for cryptographically random identifiers/tokens or timing-safe token comparison.\n"
+    },
+    {
+      "offset": 890,
+      "text": "// [L7] Imports fileURLToPath from node:url for conversion of module-relative file URLs into local filesystem paths.\n"
+    },
+    {
+      "offset": 1049,
+      "text": "// [L8] Imports ZodError from zod for runtime schemas and validation-error handling.\n"
+    },
+    {
+      "offset": 1166,
+      "text": "// [L9] Imports DEFAULT_MODEL, DEFAULT_MODELS, DEFAULT_PROVIDER, inputSchema, MAX_PDF_BYTES, validatePdf, type UploadedPdf from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 1527,
+      "text": "// [L10] Imports AppError, publicError from ./errors.js for fixed public application errors and private provider-error classification.\n"
+    },
+    {
+      "offset": 1715,
+      "text": "// [L11] Imports createJobRunner, type JobRunner from ./jobs.js for owner-scoped isolated preparation worker management.\n"
+    },
+    {
+      "offset": 1897,
+      "text": "// [L12] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1991,
+      "text": "// [L13] Defines an in-memory session record containing its CSRF token and creation timestamp.\n"
+    },
+    {
+      "offset": 2159,
+      "text": "// [L14] Defines optional application dependencies for injecting a job runner and choosing the local port.\n"
+    },
+    {
+      "offset": 2343,
+      "text": "// [L15] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2437,
+      "text": "// [L16] Existing explanatory comment: Local, single-user application: reject remote hosts/origins before parsing uploads.\n"
+    },
+    {
+      "offset": 2651,
+      "text": "// [L17] Exports the Express application factory, defaulting to an empty options object.\n"
+    },
+    {
+      "offset": 2794,
+      "text": "  // [L18] Uses the injected job runner when supplied or creates the production worker runner.\n"
+    },
+    {
+      "offset": 2943,
+      "text": "  // [L19] Uses the requested local port or defaults to 3000.\n"
+    },
+    {
+      "offset": 3042,
+      "text": "  // [L20] Builds the exact localhost and loopback HTTP origins accepted for this port.\n"
+    },
+    {
+      "offset": 3215,
+      "text": "  // [L21] Creates the Express application instance.\n"
+    },
+    {
+      "offset": 3293,
+      "text": "  // [L22] Allocates the application's in-memory session map keyed by session identifier.\n"
+    },
+    {
+      "offset": 3430,
+      "text": "  // [L23] Configures in-memory PDF uploads with limits on file size, two files, ten text fields, field length, and multipart part count.\n"
+    },
+    {
+      "offset": 3714,
+      "text": "    // [L24] Rejects uploads unless their declared MIME type is PDF and filename ends in .pdf; otherwise accepts them for later content validation.\n"
+    },
+    {
+      "offset": 4081,
+      "text": "  // [L25] Completes the multer upload middleware configuration.\n"
+    },
+    {
+      "offset": 4152,
+      "text": "  // [L26] Removes Express's identifying X-Powered-By response header.\n"
+    },
+    {
+      "offset": 4254,
+      "text": "  // [L27] Installs security headers and a same-origin content policy, allows inline data images, blocks framing, and disables HTTPS upgrade/HSTS behavior for local HTTP use.\n"
+    },
+    {
+      "offset": 4732,
+      "text": "  // [L28] Adds Cache-Control: no-store to every response and advances to the next middleware.\n"
+    },
+    {
+      "offset": 4916,
+      "text": "  // [L29] Starts request middleware that validates the incoming host and browser origin before upload parsing.\n"
+    },
+    {
+      "offset": 5061,
+      "text": "    // [L30] Rejects a Host header outside the configured localhost/loopback origin set with HTTP 403.\n"
+    },
+    {
+      "offset": 5318,
+      "text": "    // [L31] Reads the request's Origin header for cross-origin checks.\n"
+    },
+    {
+      "offset": 5428,
+      "text": "    // [L32] Rejects an unapproved Origin header or explicitly cross-site browser request with HTTP 403.\n"
+    },
+    {
+      "offset": 5726,
+      "text": "    // [L33] Passes an accepted host/origin request to subsequent middleware.\n"
+    },
+    {
+      "offset": 5816,
+      "text": "  // [L34] Closes the scope or expression introduced here: Starts request middleware that validates the incoming host and browser origin before upload parsing.\n"
+    },
+    {
+      "offset": 5982,
+      "text": "  // [L35] Parses incoming Cookie headers so session middleware can read the session identifier.\n"
+    },
+    {
+      "offset": 6106,
+      "text": "  // [L36] Limits API requests to 120 per minute, emits draft-8 rate headers, and returns a fixed HTTP 429 JSON message when exceeded.\n"
+    },
+    {
+      "offset": 6502,
+      "text": "  // [L37] Registers the session bootstrap endpoint that returns defaults and session-specific state.\n"
+    },
+    {
+      "offset": 6646,
+      "text": "    // [L38] Removes sessions older than one day whenever the bootstrap endpoint runs.\n"
+    },
+    {
+      "offset": 6843,
+      "text": "    // [L39] Reads a string session cookie, falling back to an empty identifier for absent or malformed cookies.\n"
+    },
+    {
+      "offset": 7063,
+      "text": "    // [L40] Looks up the cookie's session in the server's in-memory map.\n"
+    },
+    {
+      "offset": 7173,
+      "text": "    // [L41] Creates a new session only when the supplied cookie did not identify an existing one.\n"
+    },
+    {
+      "offset": 7292,
+      "text": "      // [L42] Rejects creation once 500 sessions remain, asking the user to restart the local application.\n"
+    },
+    {
+      "offset": 7533,
+      "text": "      // [L43] Generates independent random 32-byte hexadecimal session and CSRF tokens, timestamps the session, and stores it.\n"
+    },
+    {
+      "offset": 7809,
+      "text": "      // [L44] Sends a one-day HTTP-only, Strict SameSite cookie scoped to the local application; secure is false for its HTTP server.\n"
+    },
+    {
+      "offset": 8070,
+      "text": "    // [L45] Closes the scope or expression introduced here: Creates a new session only when the supplied cookie did not identify an existing one.\n"
+    },
+    {
+      "offset": 8223,
+      "text": "    // [L46] Returns the CSRF token, default model/provider choices, and any active job belonging to this session.\n"
+    },
+    {
+      "offset": 8505,
+      "text": "  // [L47] Closes the scope or expression introduced here: Registers the session bootstrap endpoint that returns defaults and session-specific state.\n"
+    },
+    {
+      "offset": 8661,
+      "text": "  // [L48] Adds session ownership and CSRF validation for all later API routes.\n"
+    },
+    {
+      "offset": 8781,
+      "text": "    // [L49] Reads the session cookie as unknown so its runtime type must be checked.\n"
+    },
+    {
+      "offset": 8923,
+      "text": "    // [L50] Looks up a session only if the cookie identifier is a string.\n"
+    },
+    {
+      "offset": 9073,
+      "text": "    // [L51] Rejects missing or expired sessions with HTTP 401 before accessing protected API routes.\n"
+    },
+    {
+      "offset": 9336,
+      "text": "    // [L52] Records the validated session identifier as the request's job owner.\n"
+    },
+    {
+      "offset": 9445,
+      "text": "    // [L53] Requires CSRF validation for methods other than GET and HEAD.\n"
+    },
+    {
+      "offset": 9569,
+      "text": "      // [L54] Reads the submitted CSRF token header, using an empty string when absent.\n"
+    },
+    {
+      "offset": 9709,
+      "text": "      // [L55] Encodes the submitted CSRF token as bytes for comparison.\n"
+    },
+    {
+      "offset": 9827,
+      "text": "      // [L56] Encodes the stored session CSRF token as bytes for comparison.\n"
+    },
+    {
+      "offset": 9961,
+      "text": "      // [L57] Rejects unequal token lengths or a failed constant-time comparison with HTTP 403.\n"
+    },
+    {
+      "offset": 10253,
+      "text": "    // [L58] Closes the scope or expression introduced here: Requires CSRF validation for methods other than GET and HEAD.\n"
+    },
+    {
+      "offset": 10382,
+      "text": "    // [L59] Advances an authenticated API request after any required CSRF check succeeds.\n"
+    },
+    {
+      "offset": 10485,
+      "text": "  // [L60] Closes the scope or expression introduced here: Adds session ownership and CSRF validation for all later API routes.\n"
+    },
+    {
+      "offset": 10619,
+      "text": "  // [L61] Registers job creation with multipart parsing for one required URLA field and at most one sales-contract field.\n"
+    },
+    {
+      "offset": 10870,
+      "text": "    // [L62] Interprets multer's uploaded files as named arrays that may be absent.\n"
+    },
+    {
+      "offset": 11036,
+      "text": "    // [L63] Selects the first URLA upload if one was provided.\n"
+    },
+    {
+      "offset": 11139,
+      "text": "    // [L64] Selects the optional first sales-contract upload.\n"
+    },
+    {
+      "offset": 11254,
+      "text": "    // [L65] Starts validation and job creation under cleanup-aware error handling.\n"
+    },
+    {
+      "offset": 11348,
+      "text": "      // [L66] Treats form fields as unknown input values pending schema validation.\n"
+    },
+    {
+      "offset": 11489,
+      "text": "      // [L67] Validates and normalizes the submitted form fields with the application input schema.\n"
+    },
+    {
+      "offset": 11635,
+      "text": "      // [L68] Rejects job creation when no URLA was uploaded.\n"
+    },
+    {
+      "offset": 11792,
+      "text": "      // [L69] Assigns the URLA a fixed internal filename and validates the uploaded PDF bytes.\n"
+    },
+    {
+      "offset": 11986,
+      "text": "      // [L70] Wraps an uploaded contract with its fixed internal filename, or leaves it undefined.\n"
+    },
+    {
+      "offset": 12202,
+      "text": "      // [L71] Validates the optional contract's PDF bytes before passing it to a worker.\n"
+    },
+    {
+      "offset": 12345,
+      "text": "      // [L72] Creates a job owned by the validated local session with the parsed input and document buffers.\n"
+    },
+    {
+      "offset": 12548,
+      "text": "      // [L73] Responds HTTP 202 with the queued job view.\n"
+    },
+    {
+      "offset": 12644,
+      "text": "    // [L74] Starts the failure path for input validation, PDF validation, or job creation errors.\n"
+    },
+    {
+      "offset": 12765,
+      "text": "      // [L75] Overwrites available uploaded document buffers with zeros and rethrows the original failure for the error middleware.\n"
+    },
+    {
+      "offset": 12973,
+      "text": "    // [L76] Clears parsed request-body references whether job creation succeeds or fails.\n"
+    },
+    {
+      "offset": 13097,
+      "text": "  // [L77] Closes the scope or expression introduced here: Registers job creation with multipart parsing for one required URLA field and at most one sales-contract field.\n"
+    },
+    {
+      "offset": 13274,
+      "text": "  // [L78] Registers retrieval of an individual job by its URL identifier.\n"
+    },
+    {
+      "offset": 13392,
+      "text": "    // [L79] Requests the job view using both the current session owner and requested job ID.\n"
+    },
+    {
+      "offset": 13557,
+      "text": "    // [L80] Returns HTTP 404 if the job is absent or belongs to another session.\n"
+    },
+    {
+      "offset": 13746,
+      "text": "    // [L81] Returns the authorized job view as JSON.\n"
+    },
+    {
+      "offset": 13823,
+      "text": "  // [L82] Closes the scope or expression introduced here: Registers retrieval of an individual job by its URL identifier.\n"
+    },
+    {
+      "offset": 13952,
+      "text": "  // [L83] Converts unmatched API operations into a fixed HTTP 404 application error.\n"
+    },
+    {
+      "offset": 14160,
+      "text": "  // [L84] Serves the public directory resolved relative to this module, disabling ETags and denying dotfiles.\n"
+    },
+    {
+      "offset": 14387,
+      "text": "  // [L85] Defines the final Express error middleware with an unknown error type.\n"
+    },
+    {
+      "offset": 14552,
+      "text": "    // [L86] Converts Zod failures into HTTP 400 field-level JSON errors, joining nested paths with dots, then stops processing.\n"
+    },
+    {
+      "offset": 14921,
+      "text": "    // [L87] Converts multer failures into a fixed HTTP 400 upload-limit response and stops processing.\n"
+    },
+    {
+      "offset": 15232,
+      "text": "    // [L88] Classifies any remaining failure into an application-safe public error.\n"
+    },
+    {
+      "offset": 15354,
+      "text": "    // [L89] Returns only the classified status code, public error code, and safe message.\n"
+    },
+    {
+      "offset": 15538,
+      "text": "  // [L90] Closes the scope or expression introduced here: Defines the final Express error middleware with an unknown error type.\n"
+    },
+    {
+      "offset": 15673,
+      "text": "  // [L91] Installs the final error handler after all routes and static middleware.\n"
+    },
+    {
+      "offset": 15781,
+      "text": "  // [L92] Returns the Express app and job runner so callers can listen and shut down workers.\n"
+    },
+    {
+      "offset": 15902,
+      "text": "// [L93] Closes the scope or expression introduced here: Exports the Express application factory, defaulting to an empty options object.\n"
+    }
+  ]
+}

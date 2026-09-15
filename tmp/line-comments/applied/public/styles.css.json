@@ -1,0 +1,894 @@
+{
+  "originalSha256": "59e1e5968b27aa5f8729149d2691abdeea01938e2d210704fd2efae810a49f06",
+  "annotatedSha256": "3dcbee988bd145f4324f6d986eb7f52a87a1fb4aaddcd126bb730552c6e5c297",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "/* [L1] Begins document-wide design variables and inherited base typography/color settings. */\n"
+    },
+    {
+      "offset": 103,
+      "text": "  /* [L2] Defines reusable design variable --ink as #1a3039. */\n"
+    },
+    {
+      "offset": 185,
+      "text": "  /* [L3] Defines reusable design variable --muted as #5e6d73. */\n"
+    },
+    {
+      "offset": 271,
+      "text": "  /* [L4] Defines reusable design variable --teal as #235b59. */\n"
+    },
+    {
+      "offset": 355,
+      "text": "  /* [L5] Defines reusable design variable --teal-dark as #163f3e. */\n"
+    },
+    {
+      "offset": 449,
+      "text": "  /* [L6] Defines reusable design variable --line as #e3e6e2. */\n"
+    },
+    {
+      "offset": 533,
+      "text": "  /* [L7] Defines reusable design variable --paper as #ffffff. */\n"
+    },
+    {
+      "offset": 619,
+      "text": "  /* [L8] Defines reusable design variable --canvas as #f5f5f0. */\n"
+    },
+    {
+      "offset": 707,
+      "text": "  /* [L9] Defines reusable design variable --soft-teal as #edf4f0. */\n"
+    },
+    {
+      "offset": 801,
+      "text": "  /* [L10] Defines reusable design variable --danger as #923b2d. */\n"
+    },
+    {
+      "offset": 890,
+      "text": "  /* [L11] Defines reusable design variable --radius as 16px. */\n"
+    },
+    {
+      "offset": 973,
+      "text": "  /* [L12] Sets font fallback stack to \"Segoe UI\", -apple-system, BlinkMacSystemFont, Arial, sans-serif. */\n"
+    },
+    {
+      "offset": 1162,
+      "text": "  /* [L13] Sets text/foreground color to var(--ink). */\n"
+    },
+    {
+      "offset": 1239,
+      "text": "  /* [L14] Sets background to var(--canvas). */\n"
+    },
+    {
+      "offset": 1316,
+      "text": "  /* [L15] Sets synthetic font-face generation to none. */\n"
+    },
+    {
+      "offset": 1399,
+      "text": "  /* [L16] Sets WebKit font smoothing to antialiased. */\n"
+    },
+    {
+      "offset": 1495,
+      "text": "/* [L17] Ends the document-root style rule. */\n"
+    },
+    {
+      "offset": 1544,
+      "text": "/* [L18] Blank line separating the surrounding declarations, statements, or document blocks. */\n"
+    },
+    {
+      "offset": 1641,
+      "text": "/* [L19] For elements matching *: Sets width/height box measurement to border-box. */\n"
+    },
+    {
+      "offset": 1757,
+      "text": "/* [L20] For elements matching body: Sets outer spacing to 0; Sets text size to 14px; Sets line spacing to 1.5. */\n"
+    },
+    {
+      "offset": 1927,
+      "text": "/* [L21] For elements matching button, input, select: Sets font settings to inherit. */\n"
+    },
+    {
+      "offset": 2056,
+      "text": "/* [L22] For elements matching button, a, input, select, summary: Sets touch highlight color to transparent. */\n"
+    },
+    {
+      "offset": 2248,
+      "text": "/* [L23] For elements matching button, summary: Sets pointer appearance to pointer. */\n"
+    },
+    {
+      "offset": 2372,
+      "text": "/* [L24] For elements matching button:disabled: Sets pointer appearance to wait. */\n"
+    },
+    {
+      "offset": 2490,
+      "text": "/* [L25] For elements matching button, input, select: Sets animated property transitions to border-color 150ms, background-color 150ms, box-shadow 150ms. */\n"
+    },
+    {
+      "offset": 2747,
+      "text": "/* [L26] For elements matching :focus-visible: Sets focus outline to 3px solid #4b9391; Sets outline distance to 3px. */\n"
+    },
+    {
+      "offset": 2936,
+      "text": "/* [L27] For elements matching svg: Sets layout/display mode to block. */\n"
+    },
+    {
+      "offset": 3034,
+      "text": "/* [L28] For elements matching input:disabled, select:disabled: Sets text/foreground color to var(--muted); Sets background to #f7f8f6; Sets opacity to 1. */\n"
+    },
+    {
+      "offset": 3282,
+      "text": "/* [L29] For elements matching input:disabled, select:disabled, fieldset:disabled label, fieldset:disabled summary: Sets pointer appearance to default. */\n"
+    },
+    {
+      "offset": 3542,
+      "text": "/* [L30] For elements matching [hidden]: Sets layout/display mode to none !important. */\n"
+    },
+    {
+      "offset": 3670,
+      "text": "/* [L31] For elements matching .sr-only: Sets positioning mode to absolute; Sets width to 1px; Sets height to 1px; Sets inner spacing to 0; Sets outer spacing to -1px; Sets overflow handling to hidden; Sets legacy clipping rectangle to rect(0, 0, 0, 0); Sets whitespace wrapping to nowrap; Sets border to 0. */\n"
+    },
+    {
+      "offset": 4139,
+      "text": "/* [L32] For elements matching .skip-link: Sets positioning mode to fixed; Sets left offset to 20px; Sets top offset to -70px; Sets stacking level to 10; Sets inner spacing to 10px 16px; Sets corner rounding to 5px; Sets text/foreground color to white; Sets background to var(--teal). */\n"
+    },
+    {
+      "offset": 4575,
+      "text": "/* [L33] For elements matching .skip-link:focus: Sets top offset to 10px. */\n"
+    },
+    {
+      "offset": 4684,
+      "text": "/* [L34] For elements matching .site-header: Sets background to #fff; Sets bottom border to 1px solid var(--line). */\n"
+    },
+    {
+      "offset": 4875,
+      "text": "/* [L35] For elements matching .header-inner: Sets width to min(1180px, calc(100% - 80px)); Sets height to 86px; Sets outer spacing to auto; Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets main-axis distribution to space-between; Sets spacing between layout items to 24px. */\n"
+    },
+    {
+      "offset": 5343,
+      "text": "/* [L36] For elements matching .brand: Sets layout/display mode to inline-flex; Sets cross-axis alignment to center; Sets spacing between layout items to 12px; Sets text decoration to none; Sets text/foreground color to var(--ink); Sets text size to 24px; Sets font weight to 700; Sets character spacing to -1px. */\n"
+    },
+    {
+      "offset": 5823,
+      "text": "/* [L37] For elements matching .brand-light: Sets font weight to 400; Sets left outer spacing to 3px. */\n"
+    },
+    {
+      "offset": 5981,
+      "text": "/* [L38] For elements matching .brand-mark: Sets layout/display mode to grid; Sets grid alignment in both axes to center; Sets width to 44px; Sets height to 44px; Sets corner rounding to 12px; Sets background to var(--teal); Sets text/foreground color to #fff. */\n"
+    },
+    {
+      "offset": 6383,
+      "text": "/* [L39] For elements matching .brand-mark svg: Sets width to 30px; Sets height to 30px. */\n"
+    },
+    {
+      "offset": 6522,
+      "text": "/* [L40] For elements matching .workspace-label: Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets spacing between layout items to 8px; Sets inner spacing to 7px 12px; Sets border to 1px solid var(--line); Sets corner rounding to 30px; Sets text/foreground color to #566568; Sets text size to 12px; Sets font weight to 500. */\n"
+    },
+    {
+      "offset": 7064,
+      "text": "/* [L41] For elements matching .small-dot: Sets width to 6px; Sets height to 6px; Sets corner rounding to 50%; Sets background to var(--teal). */\n"
+    },
+    {
+      "offset": 7295,
+      "text": "/* [L42] For elements matching .page-shell: Sets width to min(1180px, calc(100% - 80px)); Sets outer spacing to auto. */\n"
+    },
+    {
+      "offset": 7485,
+      "text": "/* [L43] For elements matching .page-intro: Sets layout/display mode to flex; Sets cross-axis alignment to flex-end; Sets main-axis distribution to space-between; Sets spacing between layout items to 32px; Sets inner spacing to 47px 0 36px. */\n"
+    },
+    {
+      "offset": 7848,
+      "text": "/* [L44] For elements matching .eyebrow: Sets outer spacing to 0; Sets text size to 10px; Sets font weight to 700; Sets character spacing to 1.9px; Sets text/foreground color to var(--teal). */\n"
+    },
+    {
+      "offset": 8144,
+      "text": "/* [L45] For elements matching h1: Sets outer spacing to 13px 0 15px; Sets text size to clamp(35px, 3.5vw, 45px); Sets line spacing to 1.14; Sets font weight to 600; Sets character spacing to -1.8px. */\n"
+    },
+    {
+      "offset": 8473,
+      "text": "/* [L46] For elements matching h1 span: Sets text/foreground color to var(--teal). */\n"
+    },
+    {
+      "offset": 8591,
+      "text": "/* [L47] For elements matching .intro-copy: Sets maximum width to 565px; Sets outer spacing to 0; Sets text/foreground color to var(--muted); Sets text size to 15px; Sets line spacing to 1.7. */\n"
+    },
+    {
+      "offset": 8887,
+      "text": "/* [L48] For elements matching .branch-tag: Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets spacing between layout items to 12px; Sets inner spacing to 16px 0 8px; Sets flex shrinking factor to 0. */\n"
+    },
+    {
+      "offset": 9215,
+      "text": "/* [L49] For elements matching .branch-tag > svg: Sets width to 26px; Sets height to 26px; Sets text/foreground color to #6b807b. */\n"
+    },
+    {
+      "offset": 9413,
+      "text": "/* [L50] For elements matching .branch-tag span: Sets layout/display mode to block; Sets text/foreground color to var(--muted); Sets text size to 9px; Sets character spacing to 1.5px; Sets bottom outer spacing to 3px. */\n"
+    },
+    {
+      "offset": 9751,
+      "text": "/* [L51] For elements matching .branch-tag strong: Sets text size to 11px; Sets font weight to 600; Sets character spacing to 0.25px. */\n"
+    },
+    {
+      "offset": 9970,
+      "text": "/* [L52] For elements matching .workspace-grid: Sets layout/display mode to grid; Sets grid column sizes to minmax(0, 1fr) 330px; Sets spacing between layout items to 28px; Sets cross-axis alignment to start. */\n"
+    },
+    {
+      "offset": 10293,
+      "text": "/* [L53] For elements matching .order-card: Sets background to var(--paper); Sets border to 1px solid var(--line); Sets corner rounding to var(--radius); Sets overflow handling to hidden; Sets shadow to 0 3px 12px #193f3610. */\n"
+    },
+    {
+      "offset": 10676,
+      "text": "/* [L54] For elements matching .card-heading: Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets main-axis distribution to space-between; Sets inner spacing to 24px 32px; Sets bottom border to 1px solid var(--line); Sets spacing between layout items to 16px. */\n"
+    },
+    {
+      "offset": 11118,
+      "text": "/* [L55] For elements matching .card-heading h2: Sets outer spacing to 0; Sets text size to 19px; Sets font weight to 600; Sets character spacing to -0.3px. */\n"
+    },
+    {
+      "offset": 11369,
+      "text": "/* [L56] For elements matching .card-heading > span: Sets text size to 11px; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 11556,
+      "text": "/* [L57] For elements matching .required-mark: Sets text/foreground color to var(--teal). */\n"
+    },
+    {
+      "offset": 11688,
+      "text": "/* [L58] For elements matching .form-fields: Sets border to 0; Sets inner spacing to 0 32px; Sets outer spacing to 0; Sets minimum width to 0. */\n"
+    },
+    {
+      "offset": 11904,
+      "text": "/* [L59] For elements matching .form-section: Sets bottom border to 1px solid var(--line); Sets inner spacing to 29px 0 30px. */\n"
+    },
+    {
+      "offset": 12111,
+      "text": "/* [L60] For elements matching .last-section: Sets bottom border to 0. */\n"
+    },
+    {
+      "offset": 12221,
+      "text": "/* [L61] For elements matching .section-heading: Sets layout/display mode to flex; Sets cross-axis alignment to flex-start; Sets spacing between layout items to 12px; Sets bottom outer spacing to 23px. */\n"
+    },
+    {
+      "offset": 12519,
+      "text": "/* [L62] For elements matching .section-number: Sets layout/display mode to inline-grid; Sets grid alignment in both axes to center; Sets flex shrinking factor to 0; Sets width to 29px; Sets height to 29px; Sets top outer spacing to 1px; Sets border to 1px solid #dbe7df; Sets corner rounding to 8px; Sets text/foreground color to var(--teal); Sets background to #f4f8f4; Sets text size to 10px; Sets font weight to 600. */\n"
+    },
+    {
+      "offset": 13189,
+      "text": "/* [L63] For elements matching .section-heading h3: Sets outer spacing to 0; Sets text size to 16px; Sets font weight to 600; Sets character spacing to -0.25px. */\n"
+    },
+    {
+      "offset": 13448,
+      "text": "/* [L64] For elements matching .section-heading p: Sets outer spacing to 3px 0 0; Sets text size to 12px; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 13679,
+      "text": "/* [L65] For elements matching .field: Sets minimum width to 0. */\n"
+    },
+    {
+      "offset": 13771,
+      "text": "/* [L66] For elements matching .form-section > .field + .field: Sets top outer spacing to 19px. */\n"
+    },
+    {
+      "offset": 13924,
+      "text": "/* [L67] For elements matching .field + .field-grid: Sets top outer spacing to 19px. */\n"
+    },
+    {
+      "offset": 14055,
+      "text": "/* [L68] For elements matching .field-grid: Sets layout/display mode to grid; Sets grid column sizes to repeat(2, minmax(0, 1fr)); Sets spacing between layout items to 20px. */\n"
+    },
+    {
+      "offset": 14324,
+      "text": "/* [L69] For elements matching .field label, .document-field > label: Sets layout/display mode to block; Sets bottom outer spacing to 8px; Sets text size to 12px; Sets font weight to 600. */\n"
+    },
+    {
+      "offset": 14628,
+      "text": "/* [L70] For elements matching .field label .required-mark, .document-field > label .required-mark: Sets left inner spacing to 2px. */\n"
+    },
+    {
+      "offset": 14854,
+      "text": "/* [L71] For elements matching .optional-label: Sets left outer spacing to 5px; Sets text size to 10px; Sets font weight to 400; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 15124,
+      "text": "/* [L72] For elements matching .field input, .field select: Sets width to 100%; Sets height to 45px; Sets inner spacing to 10px 13px; Sets text/foreground color to var(--ink); Sets background color to #fff; Sets border to 1px solid #cbd3ce; Sets corner rounding to 7px; Sets text size to 13px. */\n"
+    },
+    {
+      "offset": 15607,
+      "text": "/* [L73] For elements matching .field input::placeholder: Sets text/foreground color to #788480; Sets opacity to 1. */\n"
+    },
+    {
+      "offset": 15784,
+      "text": "/* [L74] For elements matching .field input:hover:not(:disabled), .field select:hover:not(:disabled): Sets border color to #8ca59c. */\n"
+    },
+    {
+      "offset": 16016,
+      "text": "/* [L75] For elements matching .field input:focus, .field select:focus: Sets border color to var(--teal); Sets focus outline to 2px solid #235b5920; Sets outline distance to 1px. */\n"
+    },
+    {
+      "offset": 16320,
+      "text": "/* [L76] For elements matching .field input[aria-invalid=\"true\"], input[type=\"file\"][aria-invalid=\"true\"]: Sets border color to var(--danger). */\n"
+    },
+    {
+      "offset": 16574,
+      "text": "/* [L77] For elements matching .field select: Sets right inner spacing to 30px. */\n"
+    },
+    {
+      "offset": 16696,
+      "text": "/* [L78] For elements matching .field-help: Sets outer spacing to 7px 0 0; Sets text size to 11px; Sets line spacing to 1.6; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 16957,
+      "text": "/* [L79] For elements matching .advanced-settings: Sets top outer spacing to 20px; Sets text size to 11px; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 17190,
+      "text": "/* [L80] For elements matching .advanced-settings summary: Sets width to fit-content; Sets inner spacing to 4px 0. */\n"
+    },
+    {
+      "offset": 17375,
+      "text": "/* [L81] For elements matching .advanced-settings[open] summary: Sets bottom outer spacing to 12px; Sets text/foreground color to var(--teal). */\n"
+    },
+    {
+      "offset": 17599,
+      "text": "/* [L82] For elements matching .advanced-settings .field: Sets inner spacing to 15px; Sets corner rounding to 8px; Sets background to #f7f9f6. */\n"
+    },
+    {
+      "offset": 17831,
+      "text": "/* [L83] For elements matching .document-grid: Sets layout/display mode to grid; Sets grid column sizes to repeat(2, minmax(0, 1fr)); Sets spacing between layout items to 16px. */\n"
+    },
+    {
+      "offset": 18106,
+      "text": "/* [L84] For elements matching .document-field: Sets minimum width to 0; Sets inner spacing to 17px; Sets border to 1px dashed #baccc0; Sets corner rounding to 9px; Sets background to #fafcf9. */\n"
+    },
+    {
+      "offset": 18420,
+      "text": "/* [L85] For elements matching .document-field:focus-within: Sets border color to var(--teal); Sets background to #f3f8f2. */\n"
+    },
+    {
+      "offset": 18627,
+      "text": "/* [L86] For elements matching .document-top: Sets layout/display mode to flex; Sets cross-axis alignment to flex-start; Sets main-axis distribution to space-between; Sets bottom outer spacing to 12px. */\n"
+    },
+    {
+      "offset": 18943,
+      "text": "/* [L87] For elements matching .document-icon: Sets text/foreground color to var(--teal). */\n"
+    },
+    {
+      "offset": 19075,
+      "text": "/* [L88] For elements matching .document-icon svg: Sets height to 29px; Sets width to 29px. */\n"
+    },
+    {
+      "offset": 19220,
+      "text": "/* [L89] For elements matching .file-type: Sets text size to 9px; Sets character spacing to 0.5px; Sets text/foreground color to #5e7972; Sets border to 1px solid #d8e3d9; Sets corner rounding to 4px; Sets inner spacing to 2px 5px. */\n"
+    },
+    {
+      "offset": 19590,
+      "text": "/* [L90] For elements matching .document-field > label: Sets bottom outer spacing to 3px. */\n"
+    },
+    {
+      "offset": 19731,
+      "text": "/* [L91] For elements matching .document-description: Sets outer spacing to 0 0 16px; Sets minimum height to 32px; Sets text size to 11px; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 20017,
+      "text": "/* [L92] For elements matching input[type=\"file\"]: Sets layout/display mode to block; Sets width to 100%; Sets maximum width to 100%; Sets text size to 10px; Sets text/foreground color to var(--muted); Sets overflow handling to hidden; Sets corner rounding to 5px. */\n"
+    },
+    {
+      "offset": 20430,
+      "text": "/* [L93] For elements matching input[type=\"file\"]::file-selector-button: Sets inner spacing to 7px 9px; Sets right outer spacing to 7px; Sets border to 1px solid #bdcec4; Sets corner rounding to 5px; Sets text/foreground color to var(--teal); Sets background to #fff; Sets font fallback stack to inherit; Sets text size to 10px; Sets font weight to 600; Sets pointer appearance to pointer. */\n"
+    },
+    {
+      "offset": 21064,
+      "text": "/* [L94] For elements matching input[type=\"file\"]::file-selector-button:hover: Sets background to #edf5ee. */\n"
+    },
+    {
+      "offset": 21246,
+      "text": "/* [L95] For elements matching input[type=\"file\"]:disabled::file-selector-button: Sets pointer appearance to default. */\n"
+    },
+    {
+      "offset": 21438,
+      "text": "/* [L96] For elements matching .file-selection: Sets outer spacing to 8px 0 0; Sets text size to 10px; Sets text/foreground color to var(--muted); Sets long-word wrapping to anywhere. */\n"
+    },
+    {
+      "offset": 21725,
+      "text": "/* [L97] For elements matching .file-selection[data-selected=\"true\"]: Sets text/foreground color to var(--teal). */\n"
+    },
+    {
+      "offset": 21903,
+      "text": "/* [L98] For elements matching .checkbox-field: Sets layout/display mode to flex; Sets cross-axis alignment to flex-start; Sets spacing between layout items to 10px; Sets top outer spacing to 21px; Sets pointer appearance to pointer. */\n"
+    },
+    {
+      "offset": 22246,
+      "text": "/* [L99] For elements matching .checkbox-field input: Sets width to 16px; Sets height to 16px; Sets flex shrinking factor to 0; Sets outer spacing to 3px 0 0; Sets native control accent color to var(--teal). */\n"
+    },
+    {
+      "offset": 22570,
+      "text": "/* [L100] For elements matching .checkbox-field > span: Sets layout/display mode to grid; Sets spacing between layout items to 4px. */\n"
+    },
+    {
+      "offset": 22757,
+      "text": "/* [L101] For elements matching .checkbox-field strong: Sets font weight to 500; Sets text size to 12px. */\n"
+    },
+    {
+      "offset": 22927,
+      "text": "/* [L102] For elements matching .checkbox-field span span: Sets text/foreground color to var(--muted); Sets text size to 11px. */\n"
+    },
+    {
+      "offset": 23125,
+      "text": "/* [L103] For elements matching .form-footer: Sets inner spacing to 22px 32px 24px; Sets top border to 1px solid var(--line); Sets background to #fbfcfa. */\n"
+    },
+    {
+      "offset": 23380,
+      "text": "/* [L104] For elements matching .form-footer > p:first-child: Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets main-axis distribution to center; Sets spacing between layout items to 6px; Sets text/foreground color to var(--muted); Sets text size to 10px; Sets outer spacing to 0 0 17px. */\n"
+    },
+    {
+      "offset": 23857,
+      "text": "/* [L105] For elements matching .form-footer > p:first-child svg: Sets width to 15px; Sets height to 15px; Sets flex shrinking factor to 0. */\n"
+    },
+    {
+      "offset": 24080,
+      "text": "/* [L106] For elements matching .primary-button: Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets main-axis distribution to center; Sets spacing between layout items to 15px; Sets width to 100%; Sets minimum height to 49px; Sets inner spacing to 12px 18px; Sets border to 1px solid var(--teal); Sets corner rounding to 7px; Sets text/foreground color to white; Sets background to var(--teal); Sets text size to 13px; Sets font weight to 600. */\n"
+    },
+    {
+      "offset": 24820,
+      "text": "/* [L107] For elements matching .primary-button svg: Sets width to 19px; Sets height to 19px. */\n"
+    },
+    {
+      "offset": 24968,
+      "text": "/* [L108] For elements matching .primary-button:hover:not(:disabled): Sets background to var(--teal-dark); Sets border color to var(--teal-dark); Sets shadow to 0 3px 7px #163f3e20. */\n"
+    },
+    {
+      "offset": 25289,
+      "text": "/* [L109] For elements matching .primary-button:disabled: Sets background to #5d7b72; Sets border color to #5d7b72. */\n"
+    },
+    {
+      "offset": 25481,
+      "text": "/* [L110] For elements matching .submit-help: Sets outer spacing to 10px 0 0; Sets text alignment to center; Sets text size to 10px; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 25754,
+      "text": "/* [L111] For elements matching .sidebar: Sets positioning mode to sticky; Sets top offset to 24px; Sets layout/display mode to grid; Sets spacing between layout items to 20px. */\n"
+    },
+    {
+      "offset": 26002,
+      "text": "/* [L112] For elements matching .status-card: Sets inner spacing to 24px; Sets corner rounding to var(--radius); Sets text/foreground color to #fff; Sets background to #183b43. */\n"
+    },
+    {
+      "offset": 26278,
+      "text": "/* [L113] For elements matching .status-card-top: Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets main-axis distribution to space-between; Sets spacing between layout items to 10px. */\n"
+    },
+    {
+      "offset": 26591,
+      "text": "/* [L114] For elements matching .status-card .eyebrow: Sets text size to 9px; Sets character spacing to 1.6px; Sets text/foreground color to #bed1cb. */\n"
+    },
+    {
+      "offset": 26825,
+      "text": "/* [L115] For elements matching .status-badge: Sets inner spacing to 3px 9px; Sets corner rounding to 20px; Sets background to #34555b; Sets text/foreground color to #dceae5; Sets text size to 10px; Sets whitespace wrapping to nowrap. */\n"
+    },
+    {
+      "offset": 27195,
+      "text": "/* [L116] For elements matching .status-card h2: Sets outer spacing to 23px 0 12px; Sets text size to 25px; Sets line spacing to 1.3; Sets character spacing to -0.6px; Sets font weight to 500. */\n"
+    },
+    {
+      "offset": 27509,
+      "text": "/* [L117] For elements matching #status-message: Sets outer spacing to 0; Sets text size to 12px; Sets line spacing to 1.75; Sets text/foreground color to #c8d8d4; Sets long-word wrapping to anywhere. */\n"
+    },
+    {
+      "offset": 27821,
+      "text": "/* [L118] For elements matching .workflow-list: Sets list marker style to none; Sets inner spacing to 25px 0 0; Sets outer spacing to 24px 0 0; Sets top border to 1px solid #496269. */\n"
+    },
+    {
+      "offset": 28111,
+      "text": "/* [L119] For elements matching .workflow-list li: Sets positioning mode to relative; Sets layout/display mode to flex; Sets cross-axis alignment to flex-start; Sets spacing between layout items to 13px; Sets bottom inner spacing to 25px. */\n"
+    },
+    {
+      "offset": 28468,
+      "text": "/* [L120] For elements matching .workflow-list li::after: Sets generated pseudo-element content to \"\"; Sets positioning mode to absolute; Sets left offset to 13px; Sets top offset to 32px; Sets bottom offset to 5px; Sets width to 1px; Sets background to #496269. */\n"
+    },
+    {
+      "offset": 28865,
+      "text": "/* [L121] For elements matching .workflow-list li:last-child: Sets bottom inner spacing to 0. */\n"
+    },
+    {
+      "offset": 29014,
+      "text": "/* [L122] For elements matching .workflow-list li:last-child::after: Sets layout/display mode to none. */\n"
+    },
+    {
+      "offset": 29175,
+      "text": "/* [L123] For elements matching .workflow-marker: Sets flex shrinking factor to 0; Sets layout/display mode to grid; Sets grid alignment in both axes to center; Sets width to 27px; Sets height to 27px; Sets border to 1px solid #829c9c; Sets corner rounding to 50%; Sets text/foreground color to #d3e1dc; Sets text size to 10px. */\n"
+    },
+    {
+      "offset": 29686,
+      "text": "/* [L124] For elements matching .workflow-list strong: Sets layout/display mode to block; Sets outer spacing to 3px 0 5px; Sets text size to 12px; Sets font weight to 500; Sets text/foreground color to #eff5f3. */\n"
+    },
+    {
+      "offset": 30012,
+      "text": "/* [L125] For elements matching .workflow-list p: Sets outer spacing to 0; Sets text/foreground color to #bdcfca; Sets text size to 11px; Sets line spacing to 1.7. */\n"
+    },
+    {
+      "offset": 30262,
+      "text": "/* [L126] For elements matching .workflow-list li[data-state=\"active\"] .workflow-marker: Sets text/foreground color to #163b43; Sets background to #dae9cf; Sets border color to #dae9cf; Sets shadow to 0 0 0 4px #dae9cf15. */\n"
+    },
+    {
+      "offset": 30640,
+      "text": "/* [L127] For elements matching .workflow-list li[data-state=\"complete\"] .workflow-marker: Sets background to #395f60; Sets border color to #72938c; Sets text/foreground color to #e4efda. */\n"
+    },
+    {
+      "offset": 30953,
+      "text": "/* [L128] For elements matching .status-card[data-status=\"awaiting_review\"] .status-badge, .status-card[data-status=\"user_submitted\"] .status-badge, .status-card[data-status=\"browser_closed\"] .status-badge: Sets text/foreground color to #183b43; Sets background to #dcebcf. */\n"
+    },
+    {
+      "offset": 31445,
+      "text": "/* [L129] For elements matching .status-card[data-status=\"failed\"] .status-badge: Sets text/foreground color to #4e2420; Sets background to #f6d9d0. */\n"
+    },
+    {
+      "offset": 31687,
+      "text": "/* [L130] For elements matching .review-notice: Sets inner spacing to 13px; Sets top outer spacing to 23px; Sets corner rounding to 7px; Sets text/foreground color to #183b43; Sets background to #e0eccf; Sets text size to 11px; Sets line spacing to 1.7. */\n"
+    },
+    {
+      "offset": 32088,
+      "text": "/* [L131] For elements matching .review-notice p: Sets outer spacing to 5px 0 0. */\n"
+    },
+    {
+      "offset": 32210,
+      "text": "/* [L132] For elements matching .job-warnings: Sets top border to 1px solid #6e7770; Sets top inner spacing to 17px; Sets top outer spacing to 20px; Sets text/foreground color to #fff0cd; Sets text size to 11px; Sets line spacing to 1.7. */\n"
+    },
+    {
+      "offset": 32588,
+      "text": "/* [L133] For elements matching .job-warnings ul: Sets left inner spacing to 16px; Sets outer spacing to 8px 0 0. */\n"
+    },
+    {
+      "offset": 32763,
+      "text": "/* [L134] For elements matching .job-warnings li + li: Sets top outer spacing to 6px. */\n"
+    },
+    {
+      "offset": 32895,
+      "text": "/* [L135] For elements matching .connection-message: Sets text size to 11px; Sets line spacing to 1.6; Sets text/foreground color to #ffe5be; Sets outer spacing to 18px 0 0. */\n"
+    },
+    {
+      "offset": 33165,
+      "text": "/* [L136] For elements matching .secondary-button: Sets width to 100%; Sets top outer spacing to 14px; Sets inner spacing to 9px 12px; Sets border to 1px solid #9cbbb3; Sets corner rounding to 6px; Sets text/foreground color to #fff; Sets background to transparent; Sets text size to 12px. */\n"
+    },
+    {
+      "offset": 33632,
+      "text": "/* [L137] For elements matching .secondary-button:hover: Sets background to #34555b. */\n"
+    },
+    {
+      "offset": 33769,
+      "text": "/* [L138] For elements matching .review-card: Sets positioning mode to relative; Sets inner spacing to 23px; Sets border to 1px solid #dce4d7; Sets corner rounding to var(--radius); Sets background to #edf1e6. */\n"
+    },
+    {
+      "offset": 34112,
+      "text": "/* [L139] For elements matching .review-icon: Sets layout/display mode to grid; Sets grid alignment in both axes to center; Sets width to 33px; Sets height to 33px; Sets bottom outer spacing to 12px; Sets corner rounding to 9px; Sets text/foreground color to var(--teal); Sets background to #dfe9d5. */\n"
+    },
+    {
+      "offset": 34577,
+      "text": "/* [L140] For elements matching .review-icon svg: Sets width to 23px; Sets height to 23px. */\n"
+    },
+    {
+      "offset": 34719,
+      "text": "/* [L141] For elements matching .review-card h3: Sets outer spacing to 0 0 8px; Sets text size to 15px; Sets font weight to 600; Sets character spacing to -0.2px. */\n"
+    },
+    {
+      "offset": 34981,
+      "text": "/* [L142] For elements matching .review-card > p: Sets outer spacing to 0; Sets text/foreground color to #4a655f; Sets text size to 12px; Sets line spacing to 1.8. */\n"
+    },
+    {
+      "offset": 35231,
+      "text": "/* [L143] For elements matching .review-card-note: Sets top outer spacing to 17px; Sets top inner spacing to 15px; Sets top border to 1px solid #d1dccb; Sets text size to 11px; Sets line spacing to 1.8; Sets text/foreground color to #52675d. */\n"
+    },
+    {
+      "offset": 35617,
+      "text": "/* [L144] For elements matching .sidebar-footnote: Sets outer spacing to -1px 8px 0; Sets text size to 10px; Sets line spacing to 1.8; Sets text alignment to center; Sets text/foreground color to var(--muted). */\n"
+    },
+    {
+      "offset": 35948,
+      "text": "/* [L145] For elements matching .page-footer: Sets layout/display mode to flex; Sets main-axis distribution to space-between; Sets spacing between layout items to 20px; Sets inner spacing to 29px 1px 35px; Sets text/foreground color to #6b7772; Sets text size to 10px. */\n"
+    },
+    {
+      "offset": 36352,
+      "text": "/* [L146] For elements matching .page-footer > span:first-child: Sets font weight to 600. */\n"
+    },
+    {
+      "offset": 36499,
+      "text": "/* [L147] For elements matching .form-error, .noscript-message: Sets outer spacing to 22px 32px 0; Sets inner spacing to 15px; Sets border to 1px solid #e8c1b9; Sets corner rounding to 8px; Sets background to #fff4ef; Sets text/foreground color to #7e352b; Sets text size to 12px; Sets long-word wrapping to anywhere. */\n"
+    },
+    {
+      "offset": 37017,
+      "text": "/* [L148] For elements matching .form-error p: Sets outer spacing to 5px 0 0. */\n"
+    },
+    {
+      "offset": 37133,
+      "text": "/* [L149] For elements matching .form-error ul: Sets left inner spacing to 17px; Sets outer spacing to 8px 0 0. */\n"
+    },
+    {
+      "offset": 37304,
+      "text": "/* [L150] For elements matching .form-error li + li: Sets top outer spacing to 4px. */\n"
+    },
+    {
+      "offset": 37432,
+      "text": "/* [L151] Blank line separating the surrounding declarations, statements, or document blocks. */\n"
+    },
+    {
+      "offset": 37530,
+      "text": "/* [L152] Begins responsive/accessibility rules restricted to (min-width: 1500px). */\n"
+    },
+    {
+      "offset": 37645,
+      "text": "  /* [L153] For elements matching .page-intro within @media (min-width: 1500px): Sets top inner spacing to 59px; Sets bottom inner spacing to 44px. */\n"
+    },
+    {
+      "offset": 37855,
+      "text": "/* [L154] Ends the @media (min-width: 1500px) rule group. */\n"
+    },
+    {
+      "offset": 37918,
+      "text": "/* [L155] Blank line separating the surrounding declarations, statements, or document blocks. */\n"
+    },
+    {
+      "offset": 38016,
+      "text": "/* [L156] Begins responsive/accessibility rules restricted to (max-width: 1050px). */\n"
+    },
+    {
+      "offset": 38131,
+      "text": "  /* [L157] For elements matching .header-inner, .page-shell within @media (max-width: 1050px): Sets width to calc(100% - 48px). */\n"
+    },
+    {
+      "offset": 38322,
+      "text": "  /* [L158] For elements matching .workspace-grid within @media (max-width: 1050px): Sets grid column sizes to minmax(0, 1fr) 290px; Sets spacing between layout items to 22px. */\n"
+    },
+    {
+      "offset": 38579,
+      "text": "  /* [L159] For elements matching .card-heading, .form-footer within @media (max-width: 1050px): Sets left inner spacing to 25px; Sets right inner spacing to 25px. */\n"
+    },
+    {
+      "offset": 38821,
+      "text": "  /* [L160] For elements matching .form-fields within @media (max-width: 1050px): Sets inner spacing to 0 25px. */\n"
+    },
+    {
+      "offset": 38972,
+      "text": "  /* [L161] For elements matching .status-card within @media (max-width: 1050px): Sets inner spacing to 22px. */\n"
+    },
+    {
+      "offset": 39119,
+      "text": "  /* [L162] For elements matching .branch-tag within @media (max-width: 1050px): Sets maximum width to 235px. */\n"
+    },
+    {
+      "offset": 39268,
+      "text": "  /* [L163] For elements matching .document-grid within @media (max-width: 1050px): Sets spacing between layout items to 12px. */\n"
+    },
+    {
+      "offset": 39430,
+      "text": "  /* [L164] For elements matching .document-field within @media (max-width: 1050px): Sets inner spacing to 14px. */\n"
+    },
+    {
+      "offset": 39583,
+      "text": "/* [L165] Ends the @media (max-width: 1050px) rule group. */\n"
+    },
+    {
+      "offset": 39646,
+      "text": "/* [L166] Blank line separating the surrounding declarations, statements, or document blocks. */\n"
+    },
+    {
+      "offset": 39744,
+      "text": "/* [L167] Begins responsive/accessibility rules restricted to (max-width: 820px). */\n"
+    },
+    {
+      "offset": 39857,
+      "text": "  /* [L168] For elements matching .page-intro within @media (max-width: 820px): Sets cross-axis alignment to flex-start; Sets flex layout direction to column; Sets spacing between layout items to 12px; Sets top inner spacing to 33px; Sets bottom inner spacing to 25px. */\n"
+    },
+    {
+      "offset": 40248,
+      "text": "  /* [L169] For elements matching .branch-tag within @media (max-width: 820px): Sets maximum width to none; Sets top inner spacing to 5px. */\n"
+    },
+    {
+      "offset": 40443,
+      "text": "  /* [L170] For elements matching .branch-tag > svg within @media (max-width: 820px): Sets width to 21px; Sets height to 21px. */\n"
+    },
+    {
+      "offset": 40624,
+      "text": "  /* [L171] For elements matching .branch-tag div within @media (max-width: 820px): Sets layout/display mode to flex; Sets cross-axis alignment to center; Sets spacing between layout items to 9px. */\n"
+    },
+    {
+      "offset": 40892,
+      "text": "  /* [L172] For elements matching .branch-tag span within @media (max-width: 820px): Sets bottom outer spacing to 0. */\n"
+    },
+    {
+      "offset": 41053,
+      "text": "  /* [L173] For elements matching .workspace-grid within @media (max-width: 820px): Sets grid column sizes to minmax(0, 1fr) 255px; Sets spacing between layout items to 18px. */\n"
+    },
+    {
+      "offset": 41309,
+      "text": "  /* [L174] For elements matching .field-grid, .document-grid within @media (max-width: 820px): Sets grid column sizes to minmax(0, 1fr); Sets spacing between layout items to 18px. */\n"
+    },
+    {
+      "offset": 41577,
+      "text": "  /* [L175] For elements matching .card-heading, .form-footer within @media (max-width: 820px): Sets left inner spacing to 22px; Sets right inner spacing to 22px. */\n"
+    },
+    {
+      "offset": 41818,
+      "text": "  /* [L176] For elements matching .form-fields within @media (max-width: 820px): Sets inner spacing to 0 22px. */\n"
+    },
+    {
+      "offset": 41968,
+      "text": "  /* [L177] For elements matching .document-description within @media (max-width: 820px): Sets minimum height to 0. */\n"
+    },
+    {
+      "offset": 42130,
+      "text": "  /* [L178] For elements matching .status-card within @media (max-width: 820px): Sets inner spacing to 20px. */\n"
+    },
+    {
+      "offset": 42276,
+      "text": "  /* [L179] For elements matching .status-card h2 within @media (max-width: 820px): Sets text size to 22px. */\n"
+    },
+    {
+      "offset": 42426,
+      "text": "  /* [L180] For elements matching .status-card-top within @media (max-width: 820px): Sets flex item wrapping to wrap. */\n"
+    },
+    {
+      "offset": 42587,
+      "text": "  /* [L181] For elements matching .review-card within @media (max-width: 820px): Sets inner spacing to 20px. */\n"
+    },
+    {
+      "offset": 42733,
+      "text": "  /* [L182] For elements matching .form-error, .noscript-message within @media (max-width: 820px): Sets left outer spacing to 22px; Sets right outer spacing to 22px. */\n"
+    },
+    {
+      "offset": 42978,
+      "text": "/* [L183] Ends the @media (max-width: 820px) rule group. */\n"
+    },
+    {
+      "offset": 43040,
+      "text": "/* [L184] Blank line separating the surrounding declarations, statements, or document blocks. */\n"
+    },
+    {
+      "offset": 43138,
+      "text": "/* [L185] Begins responsive/accessibility rules restricted to (max-width: 640px). */\n"
+    },
+    {
+      "offset": 43251,
+      "text": "  /* [L186] For elements matching .header-inner, .page-shell within @media (max-width: 640px): Sets width to calc(100% - 32px). */\n"
+    },
+    {
+      "offset": 43441,
+      "text": "  /* [L187] For elements matching .header-inner within @media (max-width: 640px): Sets height to 72px; Sets spacing between layout items to 12px. */\n"
+    },
+    {
+      "offset": 43635,
+      "text": "  /* [L188] For elements matching .brand within @media (max-width: 640px): Sets spacing between layout items to 9px; Sets text size to 20px. */\n"
+    },
+    {
+      "offset": 43819,
+      "text": "  /* [L189] For elements matching .brand-mark within @media (max-width: 640px): Sets width to 36px; Sets height to 36px; Sets corner rounding to 10px. */\n"
+    },
+    {
+      "offset": 44039,
+      "text": "  /* [L190] For elements matching .brand-mark svg within @media (max-width: 640px): Sets width to 26px; Sets height to 26px. */\n"
+    },
+    {
+      "offset": 44216,
+      "text": "  /* [L191] For elements matching .workspace-label within @media (max-width: 640px): Sets inner spacing to 6px 8px; Sets text size to 9px; Sets spacing between layout items to 5px. */\n"
+    },
+    {
+      "offset": 44467,
+      "text": "  /* [L192] For elements matching .small-dot within @media (max-width: 640px): Sets width to 5px; Sets height to 5px. */\n"
+    },
+    {
+      "offset": 44630,
+      "text": "  /* [L193] For elements matching .page-intro within @media (max-width: 640px): Sets top inner spacing to 29px. */\n"
+    },
+    {
+      "offset": 44782,
+      "text": "  /* [L194] For elements matching .eyebrow within @media (max-width: 640px): Sets text size to 9px; Sets character spacing to 1.4px. */\n"
+    },
+    {
+      "offset": 44972,
+      "text": "  /* [L195] For elements matching h1 within @media (max-width: 640px): Sets text size to 37px; Sets character spacing to -1.7px. */\n"
+    },
+    {
+      "offset": 45154,
+      "text": "  /* [L196] For elements matching .intro-copy within @media (max-width: 640px): Sets text size to 13px. */\n"
+    },
+    {
+      "offset": 45296,
+      "text": "  /* [L197] For elements matching .branch-tag within @media (max-width: 640px): Sets spacing between layout items to 8px. */\n"
+    },
+    {
+      "offset": 45449,
+      "text": "  /* [L198] For elements matching .branch-tag strong within @media (max-width: 640px): Sets text size to 9px. */\n"
+    },
+    {
+      "offset": 45603,
+      "text": "  /* [L199] For elements matching .branch-tag span within @media (max-width: 640px): Sets text size to 8px; Sets character spacing to 1px. */\n"
+    },
+    {
+      "offset": 45805,
+      "text": "  /* [L200] For elements matching .workspace-grid within @media (max-width: 640px): Sets grid column sizes to minmax(0, 1fr); Sets spacing between layout items to 24px. */\n"
+    },
+    {
+      "offset": 46049,
+      "text": "  /* [L201] For elements matching .sidebar within @media (max-width: 640px): Sets positioning mode to static. */\n"
+    },
+    {
+      "offset": 46195,
+      "text": "  /* [L202] For elements matching .status-card within @media (max-width: 640px): Sets inner spacing to 24px; Sets scroll target top spacing to 18px. */\n"
+    },
+    {
+      "offset": 46406,
+      "text": "  /* [L203] For elements matching .status-card h2 within @media (max-width: 640px): Sets text size to 25px. */\n"
+    },
+    {
+      "offset": 46556,
+      "text": "  /* [L204] For elements matching .status-card h2 br within @media (max-width: 640px): Sets layout/display mode to none. */\n"
+    },
+    {
+      "offset": 46720,
+      "text": "  /* [L205] For elements matching .card-heading within @media (max-width: 640px): Sets inner spacing to 22px. */\n"
+    },
+    {
+      "offset": 46868,
+      "text": "  /* [L206] For elements matching .card-heading h2 within @media (max-width: 640px): Sets text size to 18px. */\n"
+    },
+    {
+      "offset": 47020,
+      "text": "  /* [L207] For elements matching .form-section within @media (max-width: 640px): Sets top inner spacing to 26px; Sets bottom inner spacing to 27px. */\n"
+    },
+    {
+      "offset": 47233,
+      "text": "  /* [L208] For elements matching .section-heading within @media (max-width: 640px): Sets spacing between layout items to 10px. */\n"
+    },
+    {
+      "offset": 47398,
+      "text": "  /* [L209] For elements matching .section-heading h3 within @media (max-width: 640px): Sets text size to 15px. */\n"
+    },
+    {
+      "offset": 47556,
+      "text": "  /* [L210] For elements matching .field input, .field select within @media (max-width: 640px): Sets text size to 16px. */\n"
+    },
+    {
+      "offset": 47730,
+      "text": "  /* [L211] For elements matching .form-footer > p:first-child within @media (max-width: 640px): Sets cross-axis alignment to flex-start; Sets text size to 10px; Sets line spacing to 1.6. */\n"
+    },
+    {
+      "offset": 48016,
+      "text": "  /* [L212] For elements matching .document-grid within @media (max-width: 640px): Sets spacing between layout items to 13px. */\n"
+    },
+    {
+      "offset": 48177,
+      "text": "  /* [L213] For elements matching .document-field within @media (max-width: 640px): Sets inner spacing to 17px. */\n"
+    },
+    {
+      "offset": 48329,
+      "text": "  /* [L214] For elements matching .document-description within @media (max-width: 640px): Sets bottom outer spacing to 13px. */\n"
+    },
+    {
+      "offset": 48506,
+      "text": "  /* [L215] For elements matching input[type=\"file\"] within @media (max-width: 640px): Sets text size to 11px. */\n"
+    },
+    {
+      "offset": 48662,
+      "text": "  /* [L216] For elements matching input[type=\"file\"]::file-selector-button within @media (max-width: 640px): Sets text size to 11px; Sets inner spacing to 8px 11px. */\n"
+    },
+    {
+      "offset": 48913,
+      "text": "  /* [L217] For elements matching .page-footer within @media (max-width: 640px): Sets text size to 9px; Sets top inner spacing to 25px. */\n"
+    },
+    {
+      "offset": 49106,
+      "text": "/* [L218] Ends the @media (max-width: 640px) rule group. */\n"
+    },
+    {
+      "offset": 49168,
+      "text": "/* [L219] Blank line separating the surrounding declarations, statements, or document blocks. */\n"
+    },
+    {
+      "offset": 49266,
+      "text": "/* [L220] Begins responsive/accessibility rules restricted to (prefers-reduced-motion: reduce). */\n"
+    },
+    {
+      "offset": 49407,
+      "text": "  /* [L221] For elements matching *, *::before, *::after within @media (prefers-reduced-motion: reduce): Sets scroll-behavior to auto !important; Sets animated property transitions to none !important. */\n"
+    },
+    {
+      "offset": 49703,
+      "text": "/* [L222] Ends the @media (prefers-reduced-motion: reduce) rule group. */\n"
+    }
+  ]
+}

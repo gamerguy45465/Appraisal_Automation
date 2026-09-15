@@ -1,0 +1,578 @@
+{
+  "originalSha256": "0c5dab5b956d31302e076cf0fd4e596e1a8c3fae791f1cfb645efa23423bcdcc",
+  "annotatedSha256": "2ae5d3a5a2f193adba9ff65cc1250a8bcb0959fe6002a6fd9b5efc094bff4c45",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports compile-time types AiProvider from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 193,
+      "text": "// [L2] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 286,
+      "text": "// [L3] Existing explanatory comment: An intentionally safe message that can cross the API/worker boundary.\n"
+    },
+    {
+      "offset": 471,
+      "text": "// [L4] Defines the application error class used to carry deliberately public messages and error metadata.\n"
+    },
+    {
+      "offset": 616,
+      "text": "  // [L5] Creates an error with a read-only public code and HTTP status, defaulting the status to 400.\n"
+    },
+    {
+      "offset": 816,
+      "text": "    // [L6] Initializes the standard Error base class with the public message.\n"
+    },
+    {
+      "offset": 915,
+      "text": "    // [L7] Assigns the custom error name for identification.\n"
+    },
+    {
+      "offset": 1005,
+      "text": "  // [L8] Closes the scope or expression introduced here: Creates an error with a read-only public code and HTTP status, defaulting the status to 400.\n"
+    },
+    {
+      "offset": 1160,
+      "text": "// [L9] Closes the scope or expression introduced here: Defines the application error class used to carry deliberately public messages and error metadata.\n"
+    },
+    {
+      "offset": 1317,
+      "text": "// [L10] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1411,
+      "text": "// [L11] Defines a helper for safely accessing properties of unknown error-like values.\n"
+    },
+    {
+      "offset": 1558,
+      "text": "  // [L12] Treats truthy objects as records and substitutes an empty record for other values.\n"
+    },
+    {
+      "offset": 1737,
+      "text": "// [L13] Closes the scope or expression introduced here: Defines a helper for safely accessing properties of unknown error-like values.\n"
+    },
+    {
+      "offset": 1875,
+      "text": "// [L14] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1969,
+      "text": "// [L15] Existing explanatory comment: Inspect known SDK error shapes privately; none of this text may leave this module.\n"
+    },
+    {
+      "offset": 2181,
+      "text": "// [L16] Defines private extraction of a provider message from known nested SDK error shapes.\n"
+    },
+    {
+      "offset": 2341,
+      "text": "  // [L17] Reads the first nested error object if present.\n"
+    },
+    {
+      "offset": 2437,
+      "text": "  // [L18] Reads a second nested error object if present.\n"
+    },
+    {
+      "offset": 2534,
+      "text": "  // [L19] Chooses the deepest available message, falling back through outer error objects.\n"
+    },
+    {
+      "offset": 2694,
+      "text": "  // [L20] Returns at most 8,000 characters of a string message, or an empty string for nontext values.\n"
+    },
+    {
+      "offset": 2866,
+      "text": "// [L21] Closes the scope or expression introduced here: Defines private extraction of a provider message from known nested SDK error shapes.\n"
+    },
+    {
+      "offset": 3010,
+      "text": "// [L22] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3104,
+      "text": "// [L23] Defines Anthropic-specific message classification into fixed application errors.\n"
+    },
+    {
+      "offset": 3266,
+      "text": "  // [L24] Detects message patterns indicating insufficient Anthropic API credits.\n"
+    },
+    {
+      "offset": 3449,
+      "text": "    // [L25] Returns a fixed HTTP 502 quota error directing the user to Anthropic billing and credits.\n"
+    },
+    {
+      "offset": 3704,
+      "text": "  // [L26] Closes the scope or expression introduced here: Detects message patterns indicating insufficient Anthropic API credits.\n"
+    },
+    {
+      "offset": 3839,
+      "text": "  // [L27] Detects Anthropic schema-complexity, compilation, union, or optional-parameter rejection wording.\n"
+    },
+    {
+      "offset": 4112,
+      "text": "    // [L28] Returns a fixed HTTP 502 structured-schema rejection error for Anthropic.\n"
+    },
+    {
+      "offset": 4348,
+      "text": "  // [L29] Closes the scope or expression introduced here: Detects Anthropic schema-complexity, compilation, union, or optional-parameter rejection wording.\n"
+    },
+    {
+      "offset": 4509,
+      "text": "  // [L30] Detects oversized Anthropic prompts, context, requests, PDFs, or page counts.\n"
+    },
+    {
+      "offset": 4806,
+      "text": "    // [L31] Returns a fixed HTTP 502 request-size error advising smaller or shorter PDFs.\n"
+    },
+    {
+      "offset": 5064,
+      "text": "  // [L32] Closes the scope or expression introduced here: Detects oversized Anthropic prompts, context, requests, PDFs, or page counts.\n"
+    },
+    {
+      "offset": 5205,
+      "text": "  // [L33] Detects unreadable, invalid, encrypted, password-protected, or corrupt PDF wording from Anthropic.\n"
+    },
+    {
+      "offset": 5466,
+      "text": "    // [L34] Returns a fixed HTTP 502 unreadable-PDF error without including the provider's raw response.\n"
+    },
+    {
+      "offset": 5736,
+      "text": "  // [L35] Closes the scope or expression introduced here: Detects unreadable, invalid, encrypted, password-protected, or corrupt PDF wording from Anthropic.\n"
+    },
+    {
+      "offset": 5898,
+      "text": "  // [L36] Detects unsupported structured-output, document, image, tool-choice, or thinking features reported by Anthropic.\n"
+    },
+    {
+      "offset": 6315,
+      "text": "    // [L37] Returns a fixed HTTP 502 model-capability error for the selected Anthropic model.\n"
+    },
+    {
+      "offset": 6612,
+      "text": "  // [L38] Closes the scope or expression introduced here: Detects unsupported structured-output, document, image, tool-choice, or thinking features reported by Anthropic.\n"
+    },
+    {
+      "offset": 6788,
+      "text": "  // [L39] Leaves an unrecognized Anthropic failure unclassified for the caller's generic fallback.\n"
+    },
+    {
+      "offset": 6908,
+      "text": "// [L40] Closes the scope or expression introduced here: Defines Anthropic-specific message classification into fixed application errors.\n"
+    },
+    {
+      "offset": 7048,
+      "text": "// [L41] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 7142,
+      "text": "// [L42] Existing explanatory comment: Google RequestError keeps its response in data, and may retain a key-bearing URL.\n"
+    },
+    {
+      "offset": 7352,
+      "text": "// [L43] Defines Google-specific error classification using nested response data and HTTP status.\n"
+    },
+    {
+      "offset": 7549,
+      "text": "  // [L44] Reads Google's nested error from the SDK's data property.\n"
+    },
+    {
+      "offset": 7668,
+      "text": "  // [L45] Uses Google's nested message when it is text, capped at 8,000 characters, otherwise applies the generic message extractor.\n"
+    },
+    {
+      "offset": 7912,
+      "text": "  // [L46] Reads reason codes from at most the first 32 structured detail records.\n"
+    },
+    {
+      "offset": 8114,
+      "text": "  // [L47] Tests structured reasons for invalid, expired, or restricted Google API keys.\n"
+    },
+    {
+      "offset": 8401,
+      "text": "    // [L48] Also detects textual key-invalidity, expiration, restriction, or leaked-key reports.\n"
+    },
+    {
+      "offset": 8641,
+      "text": "    // [L49] Returns a fixed HTTP 502 Google authentication error with API-key restriction guidance.\n"
+    },
+    {
+      "offset": 8897,
+      "text": "  // [L50] Closes the scope or expression introduced here: Detects unsupported structured-output, document, image, tool-choice, or thinking features reported by Anthropic.\n"
+    },
+    {
+      "offset": 9073,
+      "text": "  // [L51] Tests structured reasons for disabled or inactive Google billing.\n"
+    },
+    {
+      "offset": 9245,
+      "text": "    // [L52] Also recognizes textual billing configuration and exhausted-quota errors.\n"
+    },
+    {
+      "offset": 9512,
+      "text": "    // [L53] Returns a fixed HTTP 502 Google billing/quota error.\n"
+    },
+    {
+      "offset": 9746,
+      "text": "  // [L54] Closes the scope or expression introduced here: Detects unsupported structured-output, document, image, tool-choice, or thinking features reported by Anthropic.\n"
+    },
+    {
+      "offset": 9922,
+      "text": "  // [L55] Defers other HTTP 403 and 429 failures to the outer access/rate-limit classification.\n"
+    },
+    {
+      "offset": 10077,
+      "text": "  // [L56] Detects invalid or overly complex Google response schemas and nesting limits.\n"
+    },
+    {
+      "offset": 10355,
+      "text": "    // [L57] Returns a fixed HTTP 502 Google structured-schema rejection error.\n"
+    },
+    {
+      "offset": 10588,
+      "text": "  // [L58] Closes the scope or expression introduced here: Detects invalid or overly complex Google response schemas and nesting limits.\n"
+    },
+    {
+      "offset": 10729,
+      "text": "  // [L59] Detects unreadable, invalid, encrypted, password-protected, or corrupt Google PDF input reports.\n"
+    },
+    {
+      "offset": 10988,
+      "text": "    // [L60] Returns a fixed HTTP 502 Google unreadable-PDF error.\n"
+    },
+    {
+      "offset": 11223,
+      "text": "  // [L61] Closes the scope or expression introduced here: Detects unreadable, invalid, encrypted, password-protected, or corrupt Google PDF input reports.\n"
+    },
+    {
+      "offset": 11383,
+      "text": "  // [L62] Detects Google request, PDF, payload, page-count, token-count, or context limits.\n"
+    },
+    {
+      "offset": 11660,
+      "text": "    // [L63] Returns a fixed HTTP 502 Google document/request-size error.\n"
+    },
+    {
+      "offset": 11904,
+      "text": "  // [L64] Closes the scope or expression introduced here: Detects Google request, PDF, payload, page-count, token-count, or context limits.\n"
+    },
+    {
+      "offset": 12049,
+      "text": "  // [L65] Detects unsupported Google schema, output MIME type, PDF, image, tool, or function-calling capabilities.\n"
+    },
+    {
+      "offset": 12534,
+      "text": "    // [L66] Returns a fixed HTTP 502 capability error for the selected Google model.\n"
+    },
+    {
+      "offset": 12826,
+      "text": "  // [L67] Closes the scope or expression introduced here: Detects unsupported Google schema, output MIME type, PDF, image, tool, or function-calling capabilities.\n"
+    },
+    {
+      "offset": 12994,
+      "text": "  // [L68] Leaves an unrecognized Google failure for the outer generic classification.\n"
+    },
+    {
+      "offset": 13101,
+      "text": "// [L69] Closes the scope or expression introduced here: Defines Google-specific error classification using nested response data and HTTP status.\n"
+    },
+    {
+      "offset": 13249,
+      "text": "// [L70] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 13343,
+      "text": "// [L71] Existing explanatory comment: xAI uses OpenAI-compatible errors; inspect their details only to choose fixed messages.\n"
+    },
+    {
+      "offset": 13565,
+      "text": "// [L72] Defines xAI-specific classification while keeping OpenAI-compatible raw error details private.\n"
+    },
+    {
+      "offset": 13765,
+      "text": "  // [L73] Reads xAI's first nested error object if present.\n"
+    },
+    {
+      "offset": 13863,
+      "text": "  // [L74] Reads a second nested xAI error object if present.\n"
+    },
+    {
+      "offset": 13964,
+      "text": "  // [L75] Selects the deepest available error code with fallbacks to outer records.\n"
+    },
+    {
+      "offset": 14105,
+      "text": "  // [L76] Accepts string-valued nested or outer xAI errors before falling back to the generic message extractor.\n"
+    },
+    {
+      "offset": 14359,
+      "text": "  // [L77] Limits privately inspected xAI message text to 8,000 characters.\n"
+    },
+    {
+      "offset": 14480,
+      "text": "  // [L78] Detects the invalid_api_key code or textual invalid, incorrect, or expired xAI key errors.\n"
+    },
+    {
+      "offset": 14746,
+      "text": "    // [L79] Returns a fixed HTTP 502 Grok authentication error directing the user to the xAI Console.\n"
+    },
+    {
+      "offset": 14989,
+      "text": "  // [L80] Closes the scope or expression introduced here: Detects the invalid_api_key code or textual invalid, incorrect, or expired xAI key errors.\n"
+    },
+    {
+      "offset": 15143,
+      "text": "  // [L81] Recognizes HTTP 402 and explicit insufficient-quota or billing-limit codes.\n"
+    },
+    {
+      "offset": 15325,
+      "text": "    // [L82] Also recognizes message patterns for missing/exhausted credits and reached spending or billing limits.\n"
+    },
+    {
+      "offset": 15684,
+      "text": "    // [L83] Returns a fixed HTTP 502 Grok credits/spending-limit error.\n"
+    },
+    {
+      "offset": 15930,
+      "text": "  // [L84] Closes the scope or expression introduced here: Detects the invalid_api_key code or textual invalid, incorrect, or expired xAI key errors.\n"
+    },
+    {
+      "offset": 16084,
+      "text": "  // [L85] Detects xAI's explicit unavailable-model error code.\n"
+    },
+    {
+      "offset": 16184,
+      "text": "    // [L86] Returns a fixed HTTP 502 Grok model-access error.\n"
+    },
+    {
+      "offset": 16404,
+      "text": "  // [L87] Closes the scope or expression introduced here: Detects xAI's explicit unavailable-model error code.\n"
+    },
+    {
+      "offset": 16520,
+      "text": "  // [L88] Defers remaining HTTP 403 and 429 failures to generic model-access and rate-limit handling.\n"
+    },
+    {
+      "offset": 16681,
+      "text": "  // [L89] Detects xAI JSON schema invalidity, complexity, compilation, or nesting limits.\n"
+    },
+    {
+      "offset": 16891,
+      "text": "    // [L90] Returns a fixed HTTP 502 Grok structured-schema rejection error.\n"
+    },
+    {
+      "offset": 17124,
+      "text": "  // [L91] Closes the scope or expression introduced here: Detects xAI JSON schema invalidity, complexity, compilation, or nesting limits.\n"
+    },
+    {
+      "offset": 17267,
+      "text": "  // [L92] Detects xAI request, document-image, input-token, or context size limits.\n"
+    },
+    {
+      "offset": 17541,
+      "text": "    // [L93] Returns a fixed HTTP 502 Grok request-size error.\n"
+    },
+    {
+      "offset": 17776,
+      "text": "  // [L94] Closes the scope or expression introduced here: Detects xAI request, document-image, input-token, or context size limits.\n"
+    },
+    {
+      "offset": 17913,
+      "text": "  // [L95] Detects unsupported xAI structured-output, image/vision, tool, or function-calling capabilities.\n"
+    },
+    {
+      "offset": 18334,
+      "text": "    // [L96] Returns a fixed HTTP 502 capability error for the selected Grok model.\n"
+    },
+    {
+      "offset": 18623,
+      "text": "  // [L97] Closes the scope or expression introduced here: Detects unsupported xAI structured-output, image/vision, tool, or function-calling capabilities.\n"
+    },
+    {
+      "offset": 18783,
+      "text": "  // [L98] Leaves an unrecognized xAI failure for the outer generic classifier.\n"
+    },
+    {
+      "offset": 18883,
+      "text": "// [L99] Closes the scope or expression introduced here: Defines xAI-specific classification while keeping OpenAI-compatible raw error details private.\n"
+    },
+    {
+      "offset": 19037,
+      "text": "// [L100] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 19132,
+      "text": "// [L101] Existing explanatory comment: Classify provider failures without logging keys, document content, or raw responses.\n"
+    },
+    {
+      "offset": 19349,
+      "text": "// [L102] Exports conversion of any failure to a public AppError, using OpenAI labels when no provider is supplied.\n"
+    },
+    {
+      "offset": 19554,
+      "text": "  // [L103] Preserves an existing application-safe error without reclassifying it.\n"
+    },
+    {
+      "offset": 19684,
+      "text": "  // [L104] Coerces the unknown failure into a property-accessible record or an empty record.\n"
+    },
+    {
+      "offset": 19808,
+      "text": "  // [L105] Chooses the user-facing provider name from the selected provider identifier.\n"
+    },
+    {
+      "offset": 20047,
+      "text": "  // [L106] Reads Google's numeric statusCode when present; other cases use the common status property.\n"
+    },
+    {
+      "offset": 20262,
+      "text": "  // [L107] Starts provider-specific handling for xAI failures.\n"
+    },
+    {
+      "offset": 20354,
+      "text": "    // [L108] Applies xAI detail classification only for the selected client, quota, and rate-limit status codes.\n"
+    },
+    {
+      "offset": 20566,
+      "text": "      // [L109] Attempts to classify xAI's private error details into a fixed message.\n"
+    },
+    {
+      "offset": 20707,
+      "text": "      // [L110] Returns the xAI-specific error when a pattern matched.\n"
+    },
+    {
+      "offset": 20815,
+      "text": "    // [L111] Closes the scope or expression introduced here: Applies xAI detail classification only for the selected client, quota, and rate-limit status codes.\n"
+    },
+    {
+      "offset": 20983,
+      "text": "    // [L112] Maps xAI HTTP 408 or 504 to an application timeout with HTTP 504.\n"
+    },
+    {
+      "offset": 21235,
+      "text": "    // [L113] Maps xAI HTTP 500 or 502 to a fixed temporary-unavailability error.\n"
+    },
+    {
+      "offset": 21470,
+      "text": "  // [L114] Closes the scope or expression introduced here: Starts provider-specific handling for xAI failures.\n"
+    },
+    {
+      "offset": 21586,
+      "text": "  // [L115] Starts provider-specific handling for Google failures.\n"
+    },
+    {
+      "offset": 21684,
+      "text": "    // [L116] Maps Google's named AuthError directly to a fixed authentication message.\n"
+    },
+    {
+      "offset": 21958,
+      "text": "    // [L117] Applies Google's detailed classifier to selected request, access, and rate-limit status codes.\n"
+    },
+    {
+      "offset": 22147,
+      "text": "      // [L118] Attempts to classify Google's structured private error details.\n"
+    },
+    {
+      "offset": 22284,
+      "text": "      // [L119] Returns the Google-specific error when recognized.\n"
+    },
+    {
+      "offset": 22388,
+      "text": "    // [L120] Closes the scope or expression introduced here: Applies Google's detailed classifier to selected request, access, and rate-limit status codes.\n"
+    },
+    {
+      "offset": 22551,
+      "text": "    // [L121] Maps Google's blocked-prompt exception to a fixed model-output-blocked error.\n"
+    },
+    {
+      "offset": 22853,
+      "text": "    // [L122] Maps missing candidates or malformed output to a fixed unusable-extraction-output error.\n"
+    },
+    {
+      "offset": 23200,
+      "text": "    // [L123] Recognizes Google input, configuration, invalid-tool, and missing-tool-call exceptions as request-preparation failures.\n"
+    },
+    {
+      "offset": 23494,
+      "text": "      // [L124] Returns a fixed HTTP 502 Google request-preparation error.\n"
+    },
+    {
+      "offset": 23733,
+      "text": "    // [L125] Closes the scope or expression introduced here: Recognizes Google input, configuration, invalid-tool, and missing-tool-call exceptions as request-preparation failures.\n"
+    },
+    {
+      "offset": 23921,
+      "text": "    // [L126] Maps Google HTTP 408 or 504 to a fixed HTTP 504 timeout.\n"
+    },
+    {
+      "offset": 24162,
+      "text": "    // [L127] Maps Google HTTP 500 or 502 to a fixed temporary-unavailability error.\n"
+    },
+    {
+      "offset": 24398,
+      "text": "  // [L128] Closes the scope or expression introduced here: Starts provider-specific handling for Google failures.\n"
+    },
+    {
+      "offset": 24517,
+      "text": "  // [L129] Maps the shared insufficient_quota code to a provider-labeled billing/quota error.\n"
+    },
+    {
+      "offset": 24767,
+      "text": "  // [L130] Maps HTTP 401 to a fixed authentication error for the selected provider.\n"
+    },
+    {
+      "offset": 24997,
+      "text": "  // [L131] Maps HTTP 403, HTTP 404, or model_not_found to a fixed model-access error.\n"
+    },
+    {
+      "offset": 25305,
+      "text": "  // [L132] Maps HTTP 429 to a provider-labeled rate-limit error.\n"
+    },
+    {
+      "offset": 25528,
+      "text": "  // [L133] Maps HTTP 413 to a provider-labeled document-request-size error.\n"
+    },
+    {
+      "offset": 25758,
+      "text": "  // [L134] Handles remaining HTTP 400 and 422 request rejections.\n"
+    },
+    {
+      "offset": 25867,
+      "text": "    // [L135] Attempts Anthropic-specific message classification only when Anthropic is the selected provider.\n"
+    },
+    {
+      "offset": 26084,
+      "text": "    // [L136] Returns a recognized Anthropic error or a fixed provider-labeled generic request rejection.\n"
+    },
+    {
+      "offset": 26390,
+      "text": "  // [L137] Closes the scope or expression introduced here: Handles remaining HTTP 400 and 422 request rejections.\n"
+    },
+    {
+      "offset": 26509,
+      "text": "  // [L138] Maps HTTP 529 or 503 to a fixed temporary provider-unavailability error.\n"
+    },
+    {
+      "offset": 26738,
+      "text": "  // [L139] Recognizes standard abort/timeout names and the OpenAI SDK connection-timeout class.\n"
+    },
+    {
+      "offset": 26989,
+      "text": "    // [L140] Returns the fixed preparation-timeout error with HTTP 504.\n"
+    },
+    {
+      "offset": 27165,
+      "text": "  // [L141] Closes the scope or expression introduced here: Recognizes standard abort/timeout names and the OpenAI SDK connection-timeout class.\n"
+    },
+    {
+      "offset": 27314,
+      "text": "  // [L142] Falls back to a fixed HTTP 500 preparation failure without exposing original exception details.\n"
+    },
+    {
+      "offset": 27599,
+      "text": "// [L143] Closes the scope or expression introduced here: Exports conversion of any failure to a public AppError, using OpenAI labels when no provider is supplied.\n"
+    }
+  ]
+}

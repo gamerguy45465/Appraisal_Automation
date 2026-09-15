@@ -1,0 +1,82 @@
+{
+  "originalSha256": "4004be3f6a0efc4bc30800ffdcb687301169e9d08fc688bb003ef469b8c2b9eb",
+  "annotatedSha256": "0a151f7c6e42d56e54a75e27b62f1a707855da41e1035b94bcc582585456d796",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "# [L1] Accepts a string operation parameter constrained to set or get.\n"
+    },
+    {
+      "offset": 124,
+      "text": "# [L2] Makes PowerShell errors terminate the current operation so the catch block can handle failures.\n"
+    },
+    {
+      "offset": 259,
+      "text": "# [L3] Explains why the helper explicitly uses UTF-8 for the standard-input and standard-output pipes.\n"
+    },
+    {
+      "offset": 452,
+      "text": "# [L4] Configures standard-input decoding as UTF-8 without a byte-order mark.\n"
+    },
+    {
+      "offset": 601,
+      "text": "# [L5] Configures standard-output encoding as UTF-8 without a byte-order mark.\n"
+    },
+    {
+      "offset": 752,
+      "text": "# [L6] Begins guarded handling of the requested environment-variable operation.\n"
+    },
+    {
+      "offset": 838,
+      "text": "    # [L7] Reads all standard input and parses the incoming JSON request.\n"
+    },
+    {
+      "offset": 976,
+      "text": "    # [L8] Defines the only five environment-variable names this helper permits callers to access.\n"
+    },
+    {
+      "offset": 1227,
+      "text": "    # [L9] Rejects requests whose variable name is outside the allowlist.\n"
+    },
+    {
+      "offset": 1390,
+      "text": "    # [L10] Enters the assignment branch only when the operation is set.\n"
+    },
+    {
+      "offset": 1495,
+      "text": "        # [L11] Sets the named environment variable in this PowerShell process using the request value converted to a string.\n"
+    },
+    {
+      "offset": 1725,
+      "text": "    # [L12] Ends the optional environment-variable assignment branch.\n"
+    },
+    {
+      "offset": 1801,
+      "text": "    # [L13] Documents that the worker captures this output privately instead of forwarding it to logs or model tools.\n"
+    },
+    {
+      "offset": 2009,
+      "text": "    # [L14] Reads the named variable from this PowerShell process's environment.\n"
+    },
+    {
+      "offset": 2177,
+      "text": "    # [L15] Serializes the resulting value into a compact JSON object on standard output.\n"
+    },
+    {
+      "offset": 2324,
+      "text": "# [L16] Handles errors from JSON parsing, validation, or the environment-variable operation.\n"
+    },
+    {
+      "offset": 2427,
+      "text": "    # [L17] Writes a generic failure message to standard error without exposing the requested value.\n"
+    },
+    {
+      "offset": 2592,
+      "text": "    # [L18] Exits the helper with status 1 to signal failure to its caller.\n"
+    },
+    {
+      "offset": 2679,
+      "text": "# [L19] Ends environment-operation error handling.\n"
+    }
+  ]
+}

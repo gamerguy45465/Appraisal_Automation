@@ -1,0 +1,62 @@
+{
+  "originalSha256": "92512e5e7596ed5dc04a408f8f6046f7c1eac12aa1bbb6bad5452dfcf9fb5253",
+  "annotatedSha256": "8ad656661202b4a4594e94e29d6e9fe751571f7daedfce8df405d49767d5cf63",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "# [L1] Tell Git to ignore matching directories using the pattern node_modules/.\n"
+    },
+    {
+      "offset": 94,
+      "text": "# [L2] Tell Git to ignore matching directories using the pattern dist/.\n"
+    },
+    {
+      "offset": 172,
+      "text": "# [L3] Tell Git to ignore matching files using the pattern .env.\n"
+    },
+    {
+      "offset": 242,
+      "text": "# [L4] Tell Git to ignore matching files using the pattern .env.*.\n"
+    },
+    {
+      "offset": 316,
+      "text": "# [L5] Keep .env.example eligible for Git tracking despite an earlier ignore rule.\n"
+    },
+    {
+      "offset": 413,
+      "text": "# [L6] Tell Git to ignore matching directories using the pattern output/.\n"
+    },
+    {
+      "offset": 495,
+      "text": "# [L7] Tell Git to ignore matching directories using the pattern test-results/.\n"
+    },
+    {
+      "offset": 589,
+      "text": "# [L8] Tell Git to ignore matching directories using the pattern playwright-report/.\n"
+    },
+    {
+      "offset": 693,
+      "text": "# [L9] Tell Git to ignore matching directories using the pattern .playwright-mcp/.\n"
+    },
+    {
+      "offset": 793,
+      "text": "# [L10] Tell Git to ignore matching files using the pattern *.log.\n"
+    },
+    {
+      "offset": 866,
+      "text": "# [L11] Tell Git to ignore matching files using the pattern *.pdf.\n"
+    },
+    {
+      "offset": 939,
+      "text": "# [L12] Tell Git to ignore matching files using the pattern *.png.\n"
+    },
+    {
+      "offset": 1012,
+      "text": "# [L13] Tell Git to ignore matching files using the pattern *.har.\n"
+    },
+    {
+      "offset": 1085,
+      "text": "# [L14] Tell Git to ignore matching files using the pattern auth.json.\n"
+    }
+  ]
+}

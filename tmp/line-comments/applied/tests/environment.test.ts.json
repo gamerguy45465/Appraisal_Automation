@@ -1,0 +1,446 @@
+{
+  "originalSha256": "d04f72999e4de71cbd7c6cf1d96d615c51976f91f2d7c2fb0ab835d3b892aff4",
+  "annotatedSha256": "a4d6d96ef690ae3a1a463d431421da98824210468394b478708c94397bd81584",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import * as childProcess from \"node:child_process\" for these regression tests.\n"
+    },
+    {
+      "offset": 139,
+      "text": "// [L2] Import { EventEmitter } from \"node:events\" for these regression tests.\n"
+    },
+    {
+      "offset": 262,
+      "text": "// [L3] Import { PassThrough } from \"node:stream\" for these regression tests.\n"
+    },
+    {
+      "offset": 383,
+      "text": "// [L4] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 566,
+      "text": "// [L5] Import { createEnvironmentTools, environmentNames, runEnvironmentOperation } from \"../src/environment.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 815,
+      "text": "// [L6] Import { aiProviders, DEFAULT_MODEL, DEFAULT_MODELS, type OrderInput } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1042,
+      "text": "// [L7] Import { browserEnvironment } from \"../src/browser/r3-fields.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1209,
+      "text": "// [L8] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1302,
+      "text": "// [L9] Replace imports from \"node:child_process\" with the synthetic exports supplied by this mock factory.\n"
+    },
+    {
+      "offset": 1462,
+      "text": "  // [L10] Declare `actual` as the resolved value from `original` with no arguments.\n"
+    },
+    {
+      "offset": 1603,
+      "text": "  // [L11] Return an object containing values copied from `actual`, spawn: the result of `vi.fn` using `actual.spawn` to the caller.\n"
+    },
+    {
+      "offset": 1788,
+      "text": "// [L12] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 1876,
+      "text": "// [L13] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1970,
+      "text": "// [L14] Declare `input` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 2068,
+      "text": "  // [L15] Set fixture property `provider` to \"openai\". Set fixture property `apiKey` to \"sk-synthetic-key-do-not-use\".\n"
+    },
+    {
+      "offset": 2249,
+      "text": "  // [L16] Set fixture property `loanNumber` to \"685-2012345\". Set fixture property `fhaCaseNumber` to \"\". Set fixture property `paymentMethod` to \"Invoice\". Set fixture property `rushOrder` to false. Set fixture property `model` to `DEFAULT_MODEL`.\n"
+    },
+    {
+      "offset": 2613,
+      "text": "// [L17] Close the fixture object for `input` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 2697,
+      "text": "// [L18] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2791,
+      "text": "// [L19] Group regression tests for \"PowerShell process environment\".\n"
+    },
+    {
+      "offset": 2949,
+      "text": "  // [L20] Declare `previous` for assignment later.\n"
+    },
+    {
+      "offset": 3050,
+      "text": "  // [L21] Run this setup before every test in the group. Use a callback that performs: Assign a new `Map` instance initialized with the result of `Object.values(environmentNames).map` using a callback that returns an array containing `name`, `process.env[name]` to `previous`..\n"
+    },
+    {
+      "offset": 3446,
+      "text": "  // [L22] Run this cleanup after every test in the group.\n"
+    },
+    {
+      "offset": 3525,
+      "text": "    // [L23] Configure mock `vi.mocked(childProcess.spawn)` to clear its implementation and call history.\n"
+    },
+    {
+      "offset": 3678,
+      "text": "    // [L24] Restore all temporarily replaced environment variables.\n"
+    },
+    {
+      "offset": 3771,
+      "text": "    // [L25] Iterate const [name, value] over `previous`.\n"
+    },
+    {
+      "offset": 3873,
+      "text": "      // [L26] Run the following branch when `value` strictly equals `undefined`. Delete property `process.env[name]` from the fixture object.\n"
+    },
+    {
+      "offset": 4073,
+      "text": "      // [L27] Assign `value` to `process.env[name]`.\n"
+    },
+    {
+      "offset": 4165,
+      "text": "    // [L28] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4259,
+      "text": "  // [L29] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4351,
+      "text": "// [L30] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4445,
+      "text": "  // [L31] Register a test that \"round-trips Unicode and shell metacharacters as literal values without running them\".\n"
+    },
+    {
+      "offset": 4670,
+      "text": "    // [L32] Declare `literal` as \"Synthetique é漢字 🔑 \\\"quoted\\\" 'single' $([Environment]::Exit(13)); & | `tick`\\nline two\".\n"
+    },
+    {
+      "offset": 4906,
+      "text": "    // [L33] Assert that the resolved value from `runEnvironmentOperation` using \"set\", \"api_key\", `literal` strictly equals `literal`.\n"
+    },
+    {
+      "offset": 5126,
+      "text": "    // [L34] Assert that the resolved value from `runEnvironmentOperation` using \"get\", \"api_key\" strictly equals `literal`.\n"
+    },
+    {
+      "offset": 5326,
+      "text": "    // [L35] Assert that `process.env.APPRAISAL_AI_API_KEY` strictly equals `literal`.\n"
+    },
+    {
+      "offset": 5473,
+      "text": "  // [L36] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5565,
+      "text": "// [L37] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5659,
+      "text": "  // [L38] Register a parameterized test that \"keeps %s credentials private in the generic environment and clears them at handoff\".\n"
+    },
+    {
+      "offset": 5922,
+      "text": "    // [L39] Temporarily set environment variable \"OPENAI_API_KEY\" to \"synthetic-unrelated-openai-key\" for this test.\n"
+    },
+    {
+      "offset": 6108,
+      "text": "    // [L40] Temporarily set environment variable \"ANTHROPIC_API_KEY\" to \"synthetic-unrelated-anthropic-key\" for this test.\n"
+    },
+    {
+      "offset": 6306,
+      "text": "    // [L41] Temporarily set environment variable \"GOOGLE_API_KEY\" to \"synthetic-unrelated-google-key\" for this test.\n"
+    },
+    {
+      "offset": 6492,
+      "text": "    // [L42] Temporarily set environment variable \"GEMINI_API_KEY\" to \"synthetic-unrelated-gemini-key\" for this test.\n"
+    },
+    {
+      "offset": 6678,
+      "text": "    // [L43] Temporarily set environment variable \"XAI_API_KEY\" to \"synthetic-unrelated-xai-key\" for this test.\n"
+    },
+    {
+      "offset": 6852,
+      "text": "    // [L44] Temporarily set environment variable \"GROK_API_KEY\" to \"synthetic-unrelated-grok-key\" for this test.\n"
+    },
+    {
+      "offset": 7030,
+      "text": "    // [L45] Declare `providerInput` as an object containing values copied from `input`, provider, model: `DEFAULT_MODELS[provider]`, apiKey: text interpolating `provider`.\n"
+    },
+    {
+      "offset": 7332,
+      "text": "    // [L46] Declare `environment` as the result of `createEnvironmentTools` using `providerInput`.\n"
+    },
+    {
+      "offset": 7495,
+      "text": "    // [L47] Run the following fixture operation inside a try block so its cleanup/error branch can execute.\n"
+    },
+    {
+      "offset": 7614,
+      "text": "      // [L48] Call `environment.initialize` without arguments. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7755,
+      "text": "      // [L49] Assert that `environmentNames.api_key` strictly equals \"APPRAISAL_AI_API_KEY\".\n"
+    },
+    {
+      "offset": 7918,
+      "text": "      // [L50] Assert that `process.env.APPRAISAL_AI_API_KEY` strictly equals `providerInput.apiKey`.\n"
+    },
+    {
+      "offset": 8095,
+      "text": "      // [L51] Assert that the resolved value from `environment.retrieve` using \"api_key\" strictly equals `providerInput.apiKey`.\n"
+    },
+    {
+      "offset": 8305,
+      "text": "      // [L52] Assert that `process.env.OPENAI_API_KEY` strictly equals \"synthetic-unrelated-openai-key\".\n"
+    },
+    {
+      "offset": 8492,
+      "text": "      // [L53] Assert that `process.env.ANTHROPIC_API_KEY` strictly equals \"synthetic-unrelated-anthropic-key\".\n"
+    },
+    {
+      "offset": 8691,
+      "text": "      // [L54] Assert that `process.env.GOOGLE_API_KEY` strictly equals \"synthetic-unrelated-google-key\".\n"
+    },
+    {
+      "offset": 8878,
+      "text": "      // [L55] Assert that `process.env.GEMINI_API_KEY` strictly equals \"synthetic-unrelated-gemini-key\".\n"
+    },
+    {
+      "offset": 9065,
+      "text": "      // [L56] Assert that `process.env.XAI_API_KEY` strictly equals \"synthetic-unrelated-xai-key\".\n"
+    },
+    {
+      "offset": 9240,
+      "text": "      // [L57] Assert that `process.env.GROK_API_KEY` strictly equals \"synthetic-unrelated-grok-key\".\n"
+    },
+    {
+      "offset": 9419,
+      "text": "      // [L58] Declare `getApiKey` as the result of `environment.tools.find` using a callback that returns `candidate.name` strictly equals `'get_api_key'`.\n"
+    },
+    {
+      "offset": 9672,
+      "text": "      // [L59] Declare `secretResult` as the resolved value from `getApiKey.invoke` using an empty object.\n"
+    },
+    {
+      "offset": 9834,
+      "text": "      // [L60] Assert that `secretResult` deeply equals an object containing configured: true, usage: \"Consumed privately by the backend; never exposed to the model.\".\n"
+    },
+    {
+      "offset": 10133,
+      "text": "      // [L61] Assert that the result of `JSON.stringify` using `secretResult` does not satisfy: contains `providerInput.apiKey`.\n"
+    },
+    {
+      "offset": 10343,
+      "text": "      // [L62] Assert that the result of `environment.tools.some` using a callback that returns the result of `/username|password|credentials/.test` using `candidate.name` strictly equals false.\n"
+    },
+    {
+      "offset": 10655,
+      "text": "      // [L63] Assert that the resolved value from `environment.retrieve` using \"loan_number\" strictly equals `input.loanNumber`.\n"
+    },
+    {
+      "offset": 10865,
+      "text": "      // [L64] Call `environment.clear` without arguments.\n"
+    },
+    {
+      "offset": 10951,
+      "text": "      // [L65] Assert that every approved environment variable has been removed from the worker process after clear().\n"
+    },
+    {
+      "offset": 11171,
+      "text": "      // [L66] Assert that the result of `environment.retrieve` using \"api_key\" rejects and the rejection contains the expected object fields an object containing code: \"ENVIRONMENT_CLOSED\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 11516,
+      "text": "      // [L67] Assert that the resolved value from `runEnvironmentOperation` using \"get\", \"api_key\" strictly equals \"\".\n"
+    },
+    {
+      "offset": 11708,
+      "text": "    // [L68] Call `environment.clear` without arguments.\n"
+    },
+    {
+      "offset": 11804,
+      "text": "  // [L69] Finish the test body and allow 25,000 milliseconds for its PowerShell subprocess checks.\n"
+    },
+    {
+      "offset": 11917,
+      "text": "// [L70] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12011,
+      "text": "  // [L71] Register a parameterized test that \"rejects an in-flight %s when its helper returns after cleanup\".\n"
+    },
+    {
+      "offset": 12266,
+      "text": "    // [L72] Declare `child` as the result of `Object.assign` using a new `EventEmitter` instance, an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 12461,
+      "text": "      // [L73] Set fixture property `stdin` to a new `PassThrough` instance. Set fixture property `stdout` to a new `PassThrough` instance. Set fixture property `stderr` to a new `PassThrough` instance.\n"
+    },
+    {
+      "offset": 12750,
+      "text": "    // [L74] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12831,
+      "text": "    // [L75] Declare `received` as a new `Promise` instance initialized with a callback that performs: Call `child.stdin.once` with \"finish\", `resolve`..\n"
+    },
+    {
+      "offset": 13078,
+      "text": "    // [L76] Declare `spawn` as the result of `vi.mocked(childProcess.spawn).mockReturnValueOnce` using `child`.\n"
+    },
+    {
+      "offset": 13307,
+      "text": "    // [L77] Declare `environment` as the result of `createEnvironmentTools` using `input`.\n"
+    },
+    {
+      "offset": 13454,
+      "text": "    // [L78] Declare `selected` as the result of `environment.tools.find` using a callback that returns `candidate.name` strictly equals `toolName`.\n"
+    },
+    {
+      "offset": 13691,
+      "text": "    // [L79] Declare `pending` as the result of `selected.invoke` using an empty object.\n"
+    },
+    {
+      "offset": 13821,
+      "text": "    // [L80] Declare `rejected` as the result of `expect(pending).rejects.toMatchObject` using an object containing code: \"ENVIRONMENT_CLOSED\".\n"
+    },
+    {
+      "offset": 14057,
+      "text": "    // [L81] Wait for `received` to settle before continuing.\n"
+    },
+    {
+      "offset": 14139,
+      "text": "    // [L82] Call `environment.clear` without arguments.\n"
+    },
+    {
+      "offset": 14221,
+      "text": "    // [L83] Existing comment: The already-started helper still holds its original value after application cleanup.\n"
+    },
+    {
+      "offset": 14429,
+      "text": "    // [L84] Call `child.stdout.write` with the result of `JSON.stringify` using an object containing value: `input.apiKey` when `toolName` strictly equals `'store_api_key'`, otherwise `input.loanNumber`.\n"
+    },
+    {
+      "offset": 14749,
+      "text": "    // [L85] Call `child.emit` with \"close\", 0.\n"
+    },
+    {
+      "offset": 14825,
+      "text": "    // [L86] Wait for `rejected` to settle before continuing.\n"
+    },
+    {
+      "offset": 14907,
+      "text": "    // [L87] Assert that every approved environment variable remains absent after the in-flight tool operation races with cleanup.\n"
+    },
+    {
+      "offset": 15137,
+      "text": "    // [L88] Assert that the result of `selected.invoke` using an empty object rejects and the rejection contains the expected object fields an object containing code: \"ENVIRONMENT_CLOSED\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 15467,
+      "text": "    // [L89] Assert that `spawn` was called exactly once.\n"
+    },
+    {
+      "offset": 15567,
+      "text": "  // [L90] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15659,
+      "text": "// [L91] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15747,
+      "text": "// [L92] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15841,
+      "text": "// [L93] Group regression tests for \"provider credential and routing isolation from Chromium\".\n"
+    },
+    {
+      "offset": 16012,
+      "text": "  // [L94] Register a test that \"inherits Windows runtime values but excludes provider, ADC, Vertex, endpoint and proxy settings in any case\".\n"
+    },
+    {
+      "offset": 16279,
+      "text": "    // [L95] Declare `excluded` as an array containing \"APPRAISAL_AI_API_KEY\", \"GOOGLE_API_KEY\", \"GEMINI_API_KEY\", \"GOOGLE_APPLICATION_CREDENTIALS\", \"GOOGLE_CLOUD_CREDENTIALS\", \"GOOGLE_GENAI_USE_VERTEXAI\", \"GOOGLE_CLOUD_PROJECT\", \"GCLOUD_PROJECT\", \"GOOGLE_CLOUD_LOCATION\", \"GOOGLE_BASE_URL\", \"GEMINI_BASE_URL\", \"GOOGLE_API_BASE_URL\", \"GOOGLE_GENAI_BASE_URL\", \"GOOGLE_GENAI_API_ENDPOINT\", \"GOOGLE_VERTEX_AI_ENDPOINT\", \"HTTP_PROXY\", \"HTTPS_PROXY\", \"ALL_PROXY\", \"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"LANGSMITH_API_KEY\", \"NODE_OPTIONS\", \"XAI_API_KEY\", \"GROK_API_KEY\", \"XAI_BASE_URL\", \"XAI_API_BASE\", \"XAI_API_BASE_URL\", \"GROK_BASE_URL\", \"XAI_API_HOST\", \"XAI_API_ENDPOINT\", \"XAI_TRACING\", \"XAI_TRACE_API_KEY\", \"GROK_API_ENDPOINT\".\n"
+    },
+    {
+      "offset": 17030,
+      "text": "      // [L96] Include 'APPRAISAL_AI_API_KEY', 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_CLOUD_CREDENTIALS' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 17359,
+      "text": "      // [L97] Include 'GOOGLE_GENAI_USE_VERTEXAI', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'GOOGLE_CLOUD_LOCATION' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 17636,
+      "text": "      // [L98] Include 'GOOGLE_BASE_URL', 'GEMINI_BASE_URL', 'GOOGLE_API_BASE_URL', 'GOOGLE_GENAI_BASE_URL' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 17893,
+      "text": "      // [L99] Include 'GOOGLE_GENAI_API_ENDPOINT', 'GOOGLE_VERTEX_AI_ENDPOINT', 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 18178,
+      "text": "      // [L100] Include 'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'LANGSMITH_API_KEY', 'NODE_OPTIONS' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 18416,
+      "text": "      // [L101] Include 'XAI_API_KEY', 'GROK_API_KEY', 'XAI_BASE_URL', 'XAI_API_BASE', 'XAI_API_BASE_URL', 'GROK_BASE_URL' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 18702,
+      "text": "      // [L102] Include 'XAI_API_HOST', 'XAI_API_ENDPOINT', 'XAI_TRACING', 'XAI_TRACE_API_KEY', 'GROK_API_ENDPOINT' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 18974,
+      "text": "    // [L103] Close the array of fixture values for `excluded` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19079,
+      "text": "    // [L104] Declare `source` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 19251,
+      "text": "      // [L105] Copy the entries of the result of `Object.fromEntries` using the result of `excluded.flatMap` using a callback that returns an array containing `[name, 'synthetic-private-setting']`, `[name.toLowerCase(), 'synthetic-private-setting']` into this fixture.\n"
+    },
+    {
+      "offset": 19668,
+      "text": "    // [L106] Assert that the result of `browserEnvironment` using `source` deeply equals an object containing Path: \"synthetic-windows-path\", TEMP: \"synthetic-temp\".\n"
+    },
+    {
+      "offset": 19943,
+      "text": "    // [L107] Assert that `source.GOOGLE_API_KEY` strictly equals \"synthetic-private-setting\".\n"
+    },
+    {
+      "offset": 20107,
+      "text": "    // [L108] Assert that `source.XAI_API_KEY` strictly equals \"synthetic-private-setting\".\n"
+    },
+    {
+      "offset": 20265,
+      "text": "  // [L109] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 20358,
+      "text": "// [L110] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

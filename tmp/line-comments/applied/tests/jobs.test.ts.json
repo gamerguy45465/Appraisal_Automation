@@ -1,0 +1,786 @@
+{
+  "originalSha256": "f3211b537117eeb522f03d6bde971ec12365c1725a26d4391ed9a56d71542487",
+  "annotatedSha256": "f8ce45fbca6580d895d89ed45fa3ddda00a1212215815ec68a948cd9422fffb5",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { EventEmitter } from \"node:events\" for these regression tests.\n"
+    },
+    {
+      "offset": 123,
+      "text": "// [L2] Import { fork, type ChildProcess } from \"node:child_process\" for these regression tests.\n"
+    },
+    {
+      "offset": 282,
+      "text": "// [L3] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 465,
+      "text": "// [L4] Import { createJobRunner, type JobRunner } from \"../src/jobs.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 632,
+      "text": "// [L5] Import { DEFAULT_MODEL, type JobPayload, type WorkerUpdate } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 839,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 932,
+      "text": "// [L7] Mock node:child_process so fork is a spy-controlled function and the lifecycle tests create no real worker process.\n"
+    },
+    {
+      "offset": 1114,
+      "text": "// [L8] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1207,
+      "text": "// [L9] Define synthetic class `FakeWorker` with extends EventEmitter for the test fixture.\n"
+    },
+    {
+      "offset": 1339,
+      "text": "  // [L10] Declare class field `kill` initialized to the result of `vi.fn` using a callback that returns true.\n"
+    },
+    {
+      "offset": 1487,
+      "text": "  // [L11] Declare class field `transferredUrla` for assignment later.\n"
+    },
+    {
+      "offset": 1586,
+      "text": "  // [L12] Declare class field `transferredContract` for assignment later.\n"
+    },
+    {
+      "offset": 1693,
+      "text": "  // [L13] Declare class field `controls` initialized to an empty array.\n"
+    },
+    {
+      "offset": 1802,
+      "text": "  // [L14] Declare class field `transferCallback` for assignment later.\n"
+    },
+    {
+      "offset": 1934,
+      "text": "// [L15] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2028,
+      "text": "  // [L16] Define fixture method `send` with parameters payload, callback.\n"
+    },
+    {
+      "offset": 2214,
+      "text": "    // [L17] For stop-control payloads, record the control type, call the IPC callback with null to signal success, and return true without copying document buffers.\n"
+    },
+    {
+      "offset": 2474,
+      "text": "    // [L18] Existing comment: IPC serialization makes the child's own copy before the send callback runs.\n"
+    },
+    {
+      "offset": 2664,
+      "text": "    // [L19] Assign the result of `Buffer.from` using `payload.urla.buffer` to `this.transferredUrla`.\n"
+    },
+    {
+      "offset": 2828,
+      "text": "    // [L20] Assign `payload.salesContract` and the result of `Buffer.from` using `payload.salesContract.buffer` to `this.transferredContract`.\n"
+    },
+    {
+      "offset": 3071,
+      "text": "    // [L21] Assign `callback` to `this.transferCallback`.\n"
+    },
+    {
+      "offset": 3168,
+      "text": "    // [L22] Return true to the caller.\n"
+    },
+    {
+      "offset": 3225,
+      "text": "  // [L23] Close the callback or control-flow body for `send` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 3326,
+      "text": "// [L24] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3420,
+      "text": "  // [L25] Define finishTransfer to invoke the saved IPC callback when present, using null by default for successful transfer or the supplied error for failure.\n"
+    },
+    {
+      "offset": 3668,
+      "text": "  // [L26] Define update to emit a typed synthetic status IPC message with the chosen status and a matching public message.\n"
+    },
+    {
+      "offset": 3948,
+      "text": "  // [L27] Define close to emit a successful child-close event with exit code zero and no terminating signal.\n"
+    },
+    {
+      "offset": 4107,
+      "text": "// [L28] Finish the surrounding expression and delimiters.\n"
+    },
+    {
+      "offset": 4168,
+      "text": "// [L29] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4262,
+      "text": "// [L30] Define helper `syntheticPayload` with no parameters for the fixture operations below.\n"
+    },
+    {
+      "offset": 4399,
+      "text": "  // [L31] Return an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 4484,
+      "text": "    // [L32] Set fixture property `input` to an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 4641,
+      "text": "      // [L33] Set fixture property `loanNumber` to \"685-2012345\". Set fixture property `fhaCaseNumber` to \"\". Set fixture property `paymentMethod` to \"Invoice\". Set fixture property `rushOrder` to false. Set fixture property `model` to `DEFAULT_MODEL`.\n"
+    },
+    {
+      "offset": 5015,
+      "text": "    // [L34] Set fixture property `urla` to an object containing name: \"urla.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic URLA\".\n"
+    },
+    {
+      "offset": 5247,
+      "text": "    // [L35] Set fixture property `salesContract` to an object containing name: \"sales-contract.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic contract\".\n"
+    },
+    {
+      "offset": 5525,
+      "text": "  // [L36] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5601,
+      "text": "// [L37] Close the callback or control-flow body for `syntheticPayload` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5710,
+      "text": "// [L38] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5804,
+      "text": "// [L39] Group regression tests for \"isolated job process lifecycle\".\n"
+    },
+    {
+      "offset": 5925,
+      "text": "  // [L40] Declare `runner` for assignment later.\n"
+    },
+    {
+      "offset": 6000,
+      "text": "  // [L41] Declare `children` for assignment later.\n"
+    },
+    {
+      "offset": 6082,
+      "text": "  // [L42] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 6161,
+      "text": "    // [L43] Replace real timers with controllable test timers.\n"
+    },
+    {
+      "offset": 6249,
+      "text": "    // [L44] Assign an empty array to `children`.\n"
+    },
+    {
+      "offset": 6318,
+      "text": "    // [L45] Configure mock `vi.mocked(fork).mockReset()` to run a callback whose body follows.\n"
+    },
+    {
+      "offset": 6473,
+      "text": "      // [L46] Declare `child` as a new `FakeWorker` instance.\n"
+    },
+    {
+      "offset": 6574,
+      "text": "      // [L47] Append `child` to `children` for later inspection.\n"
+    },
+    {
+      "offset": 6668,
+      "text": "      // [L48] Return `child` to the caller.\n"
+    },
+    {
+      "offset": 6760,
+      "text": "    // [L49] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6856,
+      "text": "    // [L50] Assign the result of `createJobRunner` with no arguments to `runner`.\n"
+    },
+    {
+      "offset": 6971,
+      "text": "  // [L51] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7063,
+      "text": "  // [L52] Run this cleanup after every test in the group.\n"
+    },
+    {
+      "offset": 7142,
+      "text": "    // [L53] Call `runner.shutdown` without arguments.\n"
+    },
+    {
+      "offset": 7220,
+      "text": "    // [L54] Discard pending fake timers.\n"
+    },
+    {
+      "offset": 7287,
+      "text": "    // [L55] Restore real timer behavior.\n"
+    },
+    {
+      "offset": 7353,
+      "text": "    // [L56] Restore all temporarily replaced environment variables.\n"
+    },
+    {
+      "offset": 7446,
+      "text": "  // [L57] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7538,
+      "text": "// [L58] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 7632,
+      "text": "  // [L59] Register a test that \"scopes job access to its session and keeps the active slot until the review browser closes\".\n"
+    },
+    {
+      "offset": 7865,
+      "text": "    // [L60] Declare `job` as the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 8056,
+      "text": "    // [L61] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 8135,
+      "text": "    // [L62] Call `child.finishTransfer` without arguments.\n"
+    },
+    {
+      "offset": 8223,
+      "text": "    // [L63] Assert that `runner.get('owner-a', job.id)?.status` strictly equals \"queued\".\n"
+    },
+    {
+      "offset": 8380,
+      "text": "    // [L64] Assert that the result of `runner.get` using \"owner-b\", `job.id` is undefined.\n"
+    },
+    {
+      "offset": 8531,
+      "text": "    // [L65] Assert that `runner.getActive?.('owner-a')?.id` strictly equals `job.id`.\n"
+    },
+    {
+      "offset": 8678,
+      "text": "    // [L66] Assert that the result of `runner.getActive` using \"owner-b\" is undefined.\n"
+    },
+    {
+      "offset": 8825,
+      "text": "    // [L67] Assert that a callback that returns the result of `runner.create` using \"owner-b\", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: \"JOB_ACTIVE\".\n"
+    },
+    {
+      "offset": 9210,
+      "text": "    // [L68] Call `child.update` with \"awaiting_review\".\n"
+    },
+    {
+      "offset": 9304,
+      "text": "    // [L69] Call `vi.advanceTimersByTime` with 60 times 60 times 1000.\n"
+    },
+    {
+      "offset": 9420,
+      "text": "    // [L70] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 9535,
+      "text": "    // [L71] Call `child.update` with \"user_submitted\".\n"
+    },
+    {
+      "offset": 9627,
+      "text": "    // [L72] Assert that `runner.getActive?.('owner-a')?.status` strictly equals \"user_submitted\".\n"
+    },
+    {
+      "offset": 9800,
+      "text": "    // [L73] Assert that a callback that returns the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: \"JOB_ACTIVE\".\n"
+    },
+    {
+      "offset": 10185,
+      "text": "    // [L74] Call `child.update` with \"browser_closed\".\n"
+    },
+    {
+      "offset": 10277,
+      "text": "    // [L75] Close `child` and release its test resources.\n"
+    },
+    {
+      "offset": 10355,
+      "text": "    // [L76] Assert that the result of `runner.getActive` using \"owner-a\" is undefined.\n"
+    },
+    {
+      "offset": 10502,
+      "text": "    // [L77] Assert that `runner.create('owner-b', syntheticPayload()).status` strictly equals \"queued\".\n"
+    },
+    {
+      "offset": 10687,
+      "text": "  // [L78] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10779,
+      "text": "// [L79] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 10873,
+      "text": "  // [L80] Register a test that \"recovers from a failed spawn when close occurs without an exit event\".\n"
+    },
+    {
+      "offset": 11062,
+      "text": "    // [L81] Declare `job` as the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 11253,
+      "text": "    // [L82] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 11332,
+      "text": "    // [L83] Call `child.finishTransfer` with a new `Error` instance initialized with \"Synthetic transport failure\".\n"
+    },
+    {
+      "offset": 11517,
+      "text": "    // [L84] Call `child.emit` with \"error\", a new `Error` instance initialized with \"Synthetic spawn failure with internal details\".\n"
+    },
+    {
+      "offset": 11736,
+      "text": "    // [L85] Close `child` and release its test resources.\n"
+    },
+    {
+      "offset": 11814,
+      "text": "    // [L86] Assert that the result of `runner.get` using \"owner-a\", `job.id` contains the expected object fields an object containing status: \"failed\", message: \"The Windows preparation worker could not start.\".\n"
+    },
+    {
+      "offset": 12166,
+      "text": "    // [L87] Assert that the result of `runner.getActive` using \"owner-a\" is undefined.\n"
+    },
+    {
+      "offset": 12313,
+      "text": "    // [L88] Assert that a callback that returns the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments does not satisfy: throws an error.\n"
+    },
+    {
+      "offset": 12573,
+      "text": "  // [L89] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12665,
+      "text": "// [L90] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12759,
+      "text": "  // [L91] Register a parameterized test that \"wipes parent PDF buffers after IPC callback (transfer failed: %s)\".\n"
+    },
+    {
+      "offset": 12982,
+      "text": "    // [L92] Declare `payload` as the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 13108,
+      "text": "    // [L93] Declare `expectedUrla` as the result of `Buffer.from` using `payload.urla.buffer`.\n"
+    },
+    {
+      "offset": 13263,
+      "text": "    // [L94] Declare `expectedContract` as the result of `Buffer.from` using `payload.salesContract!.buffer`.\n"
+    },
+    {
+      "offset": 13446,
+      "text": "    // [L95] Declare `job` as the result of `runner.create` using \"owner-a\", `payload`.\n"
+    },
+    {
+      "offset": 13585,
+      "text": "    // [L96] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 13664,
+      "text": "    // [L97] Assert that `payload.urla.buffer` deeply equals `expectedUrla`.\n"
+    },
+    {
+      "offset": 13796,
+      "text": "    // [L98] Complete the synthetic IPC transfer with an Error in the failure case or null to indicate success, triggering the parent-buffer cleanup callback.\n"
+    },
+    {
+      "offset": 14033,
+      "text": "    // [L99] Assert every byte in the parent URLA buffer is zero after IPC transfer completion.\n"
+    },
+    {
+      "offset": 14199,
+      "text": "    // [L100] Assert every byte in the parent sales-contract buffer is zero after IPC transfer completion.\n"
+    },
+    {
+      "offset": 14386,
+      "text": "    // [L101] Assert that `child.transferredUrla` deeply equals `expectedUrla`.\n"
+    },
+    {
+      "offset": 14523,
+      "text": "    // [L102] Assert that `child.transferredContract` deeply equals `expectedContract`.\n"
+    },
+    {
+      "offset": 14676,
+      "text": "    // [L103] Run the following branch when `failed`.\n"
+    },
+    {
+      "offset": 14748,
+      "text": "      // [L104] Assert that `child.kill` was called exactly once.\n"
+    },
+    {
+      "offset": 14863,
+      "text": "      // [L105] Assert that `runner.get('owner-a', job.id)?.status` strictly equals \"failed\".\n"
+    },
+    {
+      "offset": 15025,
+      "text": "    // [L106] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15120,
+      "text": "  // [L107] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15213,
+      "text": "// [L108] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15308,
+      "text": "  // [L109] Register a test that \"asks stalled preparation to stop without killing its review browser or releasing its slot\".\n"
+    },
+    {
+      "offset": 15540,
+      "text": "    // [L110] Declare `job` as the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 15732,
+      "text": "    // [L111] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 15812,
+      "text": "    // [L112] Call `child.finishTransfer` without arguments.\n"
+    },
+    {
+      "offset": 15901,
+      "text": "    // [L113] Call `vi.advanceTimersByTime` with 12 times 60 times 1000.\n"
+    },
+    {
+      "offset": 16018,
+      "text": "    // [L114] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 16134,
+      "text": "    // [L115] Assert that `child.controls` deeply equals an array containing \"stop_preparation\".\n"
+    },
+    {
+      "offset": 16289,
+      "text": "    // [L116] Assert that `runner.get('owner-a', job.id)?.message` contains \"keeping the R3 browser open\".\n"
+    },
+    {
+      "offset": 16489,
+      "text": "    // [L117] Assert that a callback that returns the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: \"JOB_ACTIVE\".\n"
+    },
+    {
+      "offset": 16875,
+      "text": "    // [L118] Call `child.update` with \"awaiting_review\".\n"
+    },
+    {
+      "offset": 16970,
+      "text": "    // [L119] Call `vi.advanceTimersByTime` with 6 times 60 times 60 times 1000.\n"
+    },
+    {
+      "offset": 17099,
+      "text": "    // [L120] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 17215,
+      "text": "    // [L121] Assert that `runner.getActive?.('owner-a')?.status` strictly equals \"awaiting_review\".\n"
+    },
+    {
+      "offset": 17391,
+      "text": "    // [L122] Assert that the result of `runner.getActive` using \"owner-b\" is undefined.\n"
+    },
+    {
+      "offset": 17539,
+      "text": "    // [L123] Call `child.update` with \"browser_closed\".\n"
+    },
+    {
+      "offset": 17632,
+      "text": "    // [L124] Close `child` and release its test resources.\n"
+    },
+    {
+      "offset": 17711,
+      "text": "    // [L125] Assert that a callback that returns the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments does not satisfy: throws an error.\n"
+    },
+    {
+      "offset": 17972,
+      "text": "  // [L126] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 18065,
+      "text": "// [L127] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 18160,
+      "text": "  // [L128] Register a test that \"keeps a long manual sign-in wait active and recoverable only by its owning session\".\n"
+    },
+    {
+      "offset": 18378,
+      "text": "    // [L129] Declare `job` as the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 18570,
+      "text": "    // [L130] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 18650,
+      "text": "    // [L131] Call `child.finishTransfer` without arguments.\n"
+    },
+    {
+      "offset": 18739,
+      "text": "    // [L132] Call `child.update` with \"awaiting_login\".\n"
+    },
+    {
+      "offset": 18832,
+      "text": "    // [L133] Call `vi.advanceTimersByTime` with 6 times 60 times 60 times 1000.\n"
+    },
+    {
+      "offset": 18961,
+      "text": "    // [L134] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 19077,
+      "text": "    // [L135] Assert that `runner.get('owner-a', job.id)?.status` strictly equals \"awaiting_login\".\n"
+    },
+    {
+      "offset": 19251,
+      "text": "    // [L136] Assert that the result of `runner.getActive` using \"owner-a\" contains the expected object fields an object containing id: `job.id`, status: \"awaiting_login\".\n"
+    },
+    {
+      "offset": 19522,
+      "text": "    // [L137] Assert that the result of `runner.get` using \"owner-b\", `job.id` is undefined.\n"
+    },
+    {
+      "offset": 19674,
+      "text": "    // [L138] Assert that the result of `runner.getActive` using \"owner-b\" is undefined.\n"
+    },
+    {
+      "offset": 19822,
+      "text": "    // [L139] Assert that a callback that returns the result of `runner.create` using \"owner-b\", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: \"JOB_ACTIVE\".\n"
+    },
+    {
+      "offset": 20208,
+      "text": "    // [L140] Call `child.update` with \"browser_closed\".\n"
+    },
+    {
+      "offset": 20301,
+      "text": "    // [L141] Close `child` and release its test resources.\n"
+    },
+    {
+      "offset": 20380,
+      "text": "    // [L142] Assert that the result of `runner.getActive` using \"owner-a\" is undefined.\n"
+    },
+    {
+      "offset": 20528,
+      "text": "    // [L143] Assert that a callback that returns the result of `runner.create` using \"owner-b\", the result of `syntheticPayload` with no arguments does not satisfy: throws an error.\n"
+    },
+    {
+      "offset": 20789,
+      "text": "  // [L144] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 20882,
+      "text": "// [L145] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 20977,
+      "text": "  // [L146] Register a test that \"resumes the remaining preparation budget after manual sign-in completes\".\n"
+    },
+    {
+      "offset": 21173,
+      "text": "    // [L147] Declare `job` as the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 21365,
+      "text": "    // [L148] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 21445,
+      "text": "    // [L149] Call `child.finishTransfer` without arguments.\n"
+    },
+    {
+      "offset": 21534,
+      "text": "    // [L150] Call `vi.advanceTimersByTime` with 2 times 60 times 1000.\n"
+    },
+    {
+      "offset": 21649,
+      "text": "    // [L151] Call `child.update` with \"awaiting_login\".\n"
+    },
+    {
+      "offset": 21742,
+      "text": "    // [L152] Call `vi.advanceTimersByTime` with 60 times 60 times 1000.\n"
+    },
+    {
+      "offset": 21859,
+      "text": "    // [L153] Call `child.update` with \"preparing\".\n"
+    },
+    {
+      "offset": 21942,
+      "text": "    // [L154] Call `vi.advanceTimersByTime` with 10 times 60 times 1000 minus 1.\n"
+    },
+    {
+      "offset": 22071,
+      "text": "    // [L155] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 22187,
+      "text": "    // [L156] Assert that `runner.get('owner-a', job.id)?.status` strictly equals \"preparing\".\n"
+    },
+    {
+      "offset": 22351,
+      "text": "    // [L157] Call `vi.advanceTimersByTime` with 1.\n"
+    },
+    {
+      "offset": 22434,
+      "text": "    // [L158] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 22550,
+      "text": "    // [L159] Assert that `child.controls` deeply equals an array containing \"stop_preparation\".\n"
+    },
+    {
+      "offset": 22705,
+      "text": "    // [L160] Assert that `runner.get('owner-a', job.id)?.status` strictly equals \"preparing\".\n"
+    },
+    {
+      "offset": 22869,
+      "text": "  // [L161] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 22962,
+      "text": "// [L162] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 23057,
+      "text": "  // [L163] Register a parameterized test that \"disarms the resumed watchdog on %s\".\n"
+    },
+    {
+      "offset": 23262,
+      "text": "    // [L164] Declare `job` as the result of `runner.create` using \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 23454,
+      "text": "    // [L165] Declare `child` as `children[0]`.\n"
+    },
+    {
+      "offset": 23534,
+      "text": "    // [L166] Call `child.finishTransfer` without arguments.\n"
+    },
+    {
+      "offset": 23623,
+      "text": "    // [L167] Call `child.update` with \"awaiting_login\".\n"
+    },
+    {
+      "offset": 23716,
+      "text": "    // [L168] Call `vi.advanceTimersByTime` with 60 times 60 times 1000.\n"
+    },
+    {
+      "offset": 23833,
+      "text": "    // [L169] Call `child.update` with \"preparing\".\n"
+    },
+    {
+      "offset": 23916,
+      "text": "    // [L170] Call `vi.advanceTimersByTime` with 60 times 1000.\n"
+    },
+    {
+      "offset": 24019,
+      "text": "    // [L171] Call `child.update` with `status`.\n"
+    },
+    {
+      "offset": 24094,
+      "text": "    // [L172] Call `vi.advanceTimersByTime` with 60 times 60 times 1000.\n"
+    },
+    {
+      "offset": 24211,
+      "text": "    // [L173] Assert that `child.kill` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 24327,
+      "text": "    // [L174] Assert that `runner.get('owner-a', job.id)?.status` strictly equals `status`.\n"
+    },
+    {
+      "offset": 24483,
+      "text": "  // [L175] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24576,
+      "text": "// [L176] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 24671,
+      "text": "  // [L177] Register a test that \"starts workers without inherited API credentials, tracing, proxies, or Node preload hooks\".\n"
+    },
+    {
+      "offset": 24903,
+      "text": "    // [L178] Declare `excludedNames` as the result of `[ 'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'APPRAISAL_AI_API_KEY', 'R3_PASSWORD', 'LANGSMITH_API_KEY', 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGL...` using a callback that returns an array containing `name`, the result of `name.toLowerCase` with no arguments.\n"
+    },
+    {
+      "offset": 25279,
+      "text": "      // [L179] Include 'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'APPRAISAL_AI_API_KEY', 'R3_PASSWORD', 'LANGSMITH_API_KEY' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 25563,
+      "text": "      // [L180] Include 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_CLOUD_CREDENTIALS', 'GOOGLE_GENAI_USE_VERTEXAI' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 25903,
+      "text": "      // [L181] Include 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'GOOGLE_CLOUD_LOCATION', 'GOOGLE_BASE_URL', 'GEMINI_BASE_URL' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 26199,
+      "text": "      // [L182] Include 'GOOGLE_API_BASE_URL', 'GOOGLE_GENAI_BASE_URL', 'GOOGLE_GENAI_API_ENDPOINT', 'GOOGLE_VERTEX_AI_ENDPOINT' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 26497,
+      "text": "      // [L183] Include 'XAI_API_KEY', 'GROK_API_KEY', 'XAI_BASE_URL', 'XAI_API_BASE', 'XAI_API_BASE_URL', 'GROK_BASE_URL' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 26783,
+      "text": "      // [L184] Include 'XAI_API_HOST', 'XAI_API_ENDPOINT', 'XAI_TRACING', 'XAI_TRACE_API_KEY', 'GROK_API_ENDPOINT' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 27055,
+      "text": "      // [L185] Include 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'NODE_OPTIONS' in the names that the isolated process must not inherit.\n"
+    },
+    {
+      "offset": 27257,
+      "text": "    // [L186] Expand each disallowed environment-variable name into its original and lowercase spellings to test case-insensitive isolation.\n"
+    },
+    {
+      "offset": 27449,
+      "text": "    // [L187] Set every excluded environment name, including each tested case variant, to a synthetic marker that must not reach the isolated worker.\n"
+    },
+    {
+      "offset": 27687,
+      "text": "    // [L188] Call `runner.create` with \"owner-a\", the result of `syntheticPayload` with no arguments.\n"
+    },
+    {
+      "offset": 27840,
+      "text": "    // [L189] Declare `options` as `vi.mocked(fork).mock.calls[0]?.[2]`.\n"
+    },
+    {
+      "offset": 27969,
+      "text": "    // [L190] Assert that `options` contains the expected object fields an object containing windowsHide: true, serialization: \"advanced\", stdio: an array containing \"ignore\", \"ignore\", \"ignore\", \"ipc\".\n"
+    },
+    {
+      "offset": 28303,
+      "text": "    // [L191] Assert that the fork options omit every excluded environment variable and case variant.\n"
+    },
+    {
+      "offset": 28489,
+      "text": "    // [L192] Assert that `options?.env?.LANGSMITH_TRACING` strictly equals \"false\".\n"
+    },
+    {
+      "offset": 28633,
+      "text": "    // [L193] Assert that `options?.env?.LANGCHAIN_TRACING_V2` strictly equals \"false\".\n"
+    },
+    {
+      "offset": 28783,
+      "text": "  // [L194] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 28876,
+      "text": "// [L195] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "originalSha256": "39f0063ef810f01b45dbb3fc46db522d9fb19665dc310f4ff4e26caae0205413",
+  "annotatedSha256": "1c433ee14e01291f7db3478e0381c7f51f65094266f72d50691fd4555fd0189d",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import Playwright's typed configuration helper.\n"
+    },
+    {
+      "offset": 105,
+      "text": "// [L2] Export the browser-test configuration through defineConfig.\n"
+    },
+    {
+      "offset": 203,
+      "text": "  // [L3] Find spec.ts tests under tests, disable full parallel execution, and run with one worker.\n"
+    },
+    {
+      "offset": 386,
+      "text": "  // [L4] Allow 30 seconds per test; use headless browsers with traces and screenshots disabled.\n"
+    },
+    {
+      "offset": 559,
+      "text": "// [L5] Finish the browser-test configuration and its export.\n"
+    }
+  ]
+}

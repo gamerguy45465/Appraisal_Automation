@@ -1,0 +1,554 @@
+{
+  "originalSha256": "24cb91663acb9dcd97c8f05337a254015f5b849a92d804b37397664860571a7b",
+  "annotatedSha256": "df1d83c07fabe50835791453305a355bd2d97079931495d74a7ffbec981ce84f",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import request from \"supertest\" for these regression tests.\n"
+    },
+    {
+      "offset": 101,
+      "text": "// [L2] Import { beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 262,
+      "text": "// [L3] Import { createApp } from \"../src/app.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 383,
+      "text": "// [L4] Import type { JobRunner } from \"../src/jobs.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 516,
+      "text": "// [L5] Import { DEFAULT_MODEL, DEFAULT_MODELS, DEFAULT_PROVIDER, type JobPayload } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 753,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 846,
+      "text": "// [L7] Declare `pdf` as the result of `Buffer.from` using \"%PDF-1.7\\n% synthetic test only\\n%%EOF\".\n"
+    },
+    {
+      "offset": 1014,
+      "text": "// [L8] Declare `form` as an object containing apiKey: \"test-key-not-real-1234567890\", loanNumber: \"685-2012345\", paymentMethod: \"Invoice\".\n"
+    },
+    {
+      "offset": 1264,
+      "text": "// [L9] Declare `invalidAiSettings` as an array containing an object containing caseName: \"provider\", fields: an object containing provider: \"invalid\", an object containing caseName: \"display-only provider name\", fields: an object containing provider: \"SpaceXAI\", an object containing caseName: \"empty key\", fields: an object containing apiKey: \"\", an object containing caseName: \"short key\", fields: an object containing apiKey: \"short\", an object containing caseName: \"oversized key\", fields: an object containing apiKey: the result of `'x'.repeat` using `513`, an object containing caseName: \"model whitespace\", fields: an object containing model: \"model with spaces\", an object containing caseName: \"oversized model\", fields: an object containing model: the result of `'x'.repeat` using `201`.\n"
+    },
+    {
+      "offset": 2151,
+      "text": "  // [L10] Set fixture property `caseName` to \"provider\". Set fixture property `fields` to an object containing provider: \"invalid\".\n"
+    },
+    {
+      "offset": 2345,
+      "text": "  // [L11] Set fixture property `caseName` to \"display-only provider name\". Set fixture property `fields` to an object containing provider: \"SpaceXAI\".\n"
+    },
+    {
+      "offset": 2577,
+      "text": "  // [L12] Set fixture property `caseName` to \"empty key\". Set fixture property `fields` to an object containing apiKey: \"\".\n"
+    },
+    {
+      "offset": 2755,
+      "text": "  // [L13] Set fixture property `caseName` to \"short key\". Set fixture property `fields` to an object containing apiKey: \"short\".\n"
+    },
+    {
+      "offset": 2943,
+      "text": "  // [L14] Set fixture property `caseName` to \"oversized key\". Set fixture property `fields` to an object containing apiKey: the result of `'x'.repeat` using 513.\n"
+    },
+    {
+      "offset": 3176,
+      "text": "  // [L15] Set fixture property `caseName` to \"model whitespace\". Set fixture property `fields` to an object containing model: \"model with spaces\".\n"
+    },
+    {
+      "offset": 3400,
+      "text": "  // [L16] Set fixture property `caseName` to \"oversized model\". Set fixture property `fields` to an object containing model: the result of `'x'.repeat` using 201.\n"
+    },
+    {
+      "offset": 3635,
+      "text": "// [L17] Close the array of fixture values for `invalidAiSettings` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 3740,
+      "text": "// [L18] Declare `runner` for assignment later.\n"
+    },
+    {
+      "offset": 3811,
+      "text": "// [L19] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 3886,
+      "text": "  // [L20] Assign an object containing create: the result of `vi.fn` using a callback that returns `{ id: 'job-id', status: 'queued', message: 'Queued' }`, get: the result of `vi.fn` using a callback that returns `undefined`, shutdown: the result of `vi.fn` with no arguments to `runner`.\n"
+    },
+    {
+      "offset": 4337,
+      "text": "// [L21] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4425,
+      "text": "// [L22] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4519,
+      "text": "// [L23] Define helper `setup` with no parameters for the fixture operations below.\n"
+    },
+    {
+      "offset": 4628,
+      "text": "  // [L24] Declare `{ app }` as the result of `createApp` using an object containing runner.\n"
+    },
+    {
+      "offset": 4762,
+      "text": "  // [L25] Declare `client` as the result of `request.agent` using `app`.\n"
+    },
+    {
+      "offset": 4873,
+      "text": "  // [L26] Declare `session` as the resolved value from `client.get('/api/session').set('Host', '127.0.0.1:3000').expect` using 200.\n"
+    },
+    {
+      "offset": 5100,
+      "text": "  // [L27] Return an object containing app, client, token: `session.body.csrfToken` to the caller.\n"
+    },
+    {
+      "offset": 5266,
+      "text": "// [L28] Close the callback or control-flow body for `setup` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5364,
+      "text": "// [L29] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5458,
+      "text": "// [L30] Group regression tests for \"local upload boundary\".\n"
+    },
+    {
+      "offset": 5561,
+      "text": "  // [L31] Register a test that \"publishes provider-specific model defaults without exposing credentials\".\n"
+    },
+    {
+      "offset": 5762,
+      "text": "    // [L32] Declare `{ app }` as the result of `createApp` using an object containing runner.\n"
+    },
+    {
+      "offset": 5900,
+      "text": "    // [L33] Declare `response` as the resolved value from `request(app).get('/api/session').set('Host', '127.0.0.1:3000').expect` using 200.\n"
+    },
+    {
+      "offset": 6145,
+      "text": "    // [L34] Assert that `response.body` contains the expected object fields an object containing defaultProvider: `DEFAULT_PROVIDER`, model: `DEFAULT_MODEL`, modelDefaults: `DEFAULT_MODELS`.\n"
+    },
+    {
+      "offset": 6470,
+      "text": "    // [L35] Assert that response.body does not contain the \"apiKey\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 6651,
+      "text": "  // [L36] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6743,
+      "text": "  // [L37] Register a test that \"requires a session and rejects remote hosts/origins before accepting uploads\".\n"
+    },
+    {
+      "offset": 6954,
+      "text": "    // [L38] Declare `{ app }` as the result of `createApp` using an object containing runner.\n"
+    },
+    {
+      "offset": 7092,
+      "text": "    // [L39] Call `request(app).get('/api/session').set('Host', 'attacker.example:3000').expect` with 403. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7331,
+      "text": "    // [L40] Call `request(app).get('/api/session').set('Host', '127.0.0.1:3000').set('Origin', 'https://attacker.example').expect` with 403. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7640,
+      "text": "    // [L41] Call `request(app).post('/api/jobs').set('Host', '127.0.0.1:3000').expect` with 401. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7861,
+      "text": "  // [L42] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7953,
+      "text": "  // [L43] Register a parameterized test that \"rejects missing and malformed CSRF tokens for a %s upload\".\n"
+    },
+    {
+      "offset": 8172,
+      "text": "    // [L44] Declare `{ client }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 8298,
+      "text": "    // [L45] Call `client.post('/api/jobs').set('Host', '127.0.0.1:3000') .field({ ...form, provider }).attach('urla', pdf, 'urla.pdf').expect` with 403. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 8556,
+      "text": "      // [L46] Copy the entries of `form` into this fixture. Include the current `provider` value under the same property name.\n"
+    },
+    {
+      "offset": 8765,
+      "text": "    // [L47] Call `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set('X-CSRF-Token', 'é'.repeat(64)).expect` with 403. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 9046,
+      "text": "    // [L48] Assert that `runner.create` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 9167,
+      "text": "  // [L49] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 9259,
+      "text": "  // [L50] Register a test that \"accepts the required multipart form and provides only a safe job response\".\n"
+    },
+    {
+      "offset": 9464,
+      "text": "    // [L51] Declare `{ client, token }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 9604,
+      "text": "    // [L52] Declare `response` as the resolved value from `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set('X-CSRF-Token', token).field(form).attach('urla', pdf, { filename: 'urla.pdf', contentType: 'application/pdf' }).expect` using 202.\n"
+    },
+    {
+      "offset": 10067,
+      "text": "    // [L53] Assert that `response.body` deeply equals an object containing job: an object containing id: \"job-id\", status: \"queued\", message: \"Queued\".\n"
+    },
+    {
+      "offset": 10319,
+      "text": "    // [L54] Declare `payload` as `vi.mocked(runner.create).mock.calls[0]?.[1]`.\n"
+    },
+    {
+      "offset": 10479,
+      "text": "    // [L55] Assert that `payload.input.loanNumber` strictly equals \"685-2012345\".\n"
+    },
+    {
+      "offset": 10620,
+      "text": "    // [L56] Assert that `payload.input` contains the expected object fields an object containing provider: \"openai\", model: `DEFAULT_MODEL`, apiKey: `form.apiKey`.\n"
+    },
+    {
+      "offset": 10893,
+      "text": "    // [L57] Assert that `payload.urla.name` strictly equals \"urla.pdf\".\n"
+    },
+    {
+      "offset": 11014,
+      "text": "    // [L58] Assert that `payload.salesContract` is undefined.\n"
+    },
+    {
+      "offset": 11128,
+      "text": "    // [L59] Assert that payload.input does not contain the \"username\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 11313,
+      "text": "    // [L60] Assert that payload.input does not contain the \"password\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 11498,
+      "text": "    // [L61] Assert that the result of `JSON.stringify` using `response.body` does not satisfy: contains `form.apiKey`.\n"
+    },
+    {
+      "offset": 11688,
+      "text": "  // [L62] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 11780,
+      "text": "  // [L63] Register a parameterized test that \"passes resolved provider/model from a $provider upload to its isolated job ($model)\".\n"
+    },
+    {
+      "offset": 11925,
+      "text": "    // [L64] Set fixture property `provider` to \"openai\". Set fixture property `model` to \"\". Set fixture property `expected` to `DEFAULT_MODELS.openai`.\n"
+    },
+    {
+      "offset": 12151,
+      "text": "    // [L65] Set fixture property `provider` to \"anthropic\". Set fixture property `expected` to `DEFAULT_MODELS.anthropic`.\n"
+    },
+    {
+      "offset": 12342,
+      "text": "    // [L66] Set fixture property `provider` to \"anthropic\". Set fixture property `model` to \"  \". Set fixture property `expected` to `DEFAULT_MODELS.anthropic`.\n"
+    },
+    {
+      "offset": 12584,
+      "text": "    // [L67] Set fixture property `provider` to \"anthropic\". Set fixture property `model` to \"  claude-sonnet-4-20250514  \". Set fixture property `expected` to \"claude-sonnet-4-20250514\".\n"
+    },
+    {
+      "offset": 12880,
+      "text": "    // [L68] Set fixture property `provider` to \"google\". Set fixture property `expected` to `DEFAULT_MODELS.google`.\n"
+    },
+    {
+      "offset": 13059,
+      "text": "    // [L69] Set fixture property `provider` to \"google\". Set fixture property `model` to \"  \". Set fixture property `expected` to `DEFAULT_MODELS.google`.\n"
+    },
+    {
+      "offset": 13289,
+      "text": "    // [L70] Set fixture property `provider` to \"google\". Set fixture property `model` to \"  gemini-custom:2026  \". Set fixture property `expected` to \"gemini-custom:2026\".\n"
+    },
+    {
+      "offset": 13555,
+      "text": "    // [L71] Set fixture property `provider` to \"xai\". Set fixture property `expected` to `DEFAULT_MODELS.xai`.\n"
+    },
+    {
+      "offset": 13722,
+      "text": "    // [L72] Set fixture property `provider` to \"xai\". Set fixture property `model` to \"  \". Set fixture property `expected` to `DEFAULT_MODELS.xai`.\n"
+    },
+    {
+      "offset": 13940,
+      "text": "    // [L73] Set fixture property `provider` to \"xai\". Set fixture property `model` to \"grok-4.6 \". Set fixture property `expected` to \"grok-4.6\".\n"
+    },
+    {
+      "offset": 14154,
+      "text": "    // [L74] Set fixture property `provider` to \"xai\". Set fixture property `model` to \"  custom/grok-model:2026  \". Set fixture property `expected` to \"custom/grok-model:2026\".\n"
+    },
+    {
+      "offset": 14430,
+      "text": "    // [L75] Set fixture property `provider` to \"openai\". Set fixture property `model` to \"ft:gpt-4.1:organization:custom:id\". Set fixture property `expected` to \"ft:gpt-4.1:organization:custom:id\".\n"
+    },
+    {
+      "offset": 14748,
+      "text": "  // [L76] Apply the preceding scenario rows to the parameterized test \"passes resolved provider/model from a $provider upload to its isolated job ($model)\" and begin its callback.\n"
+    },
+    {
+      "offset": 15064,
+      "text": "    // [L77] Declare `{ client, token }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 15204,
+      "text": "    // [L78] Declare `fields` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 15366,
+      "text": "      // [L79] Include the current `provider` value under the same property name. Copy the entries of an empty object when `model` strictly equals `undefined`, otherwise an object containing model into this fixture.\n"
+    },
+    {
+      "offset": 15643,
+      "text": "    // [L80] Declare `response` as the resolved value from `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set('X-CSRF-Token', token) .field(fields).attach('urla', pdf, 'urla.pdf').expect` using 202.\n"
+    },
+    {
+      "offset": 15960,
+      "text": "      // [L81] Attach all form fields and the synthetic URLA PDF to the multipart request, then require HTTP 202 Accepted.\n"
+    },
+    {
+      "offset": 16149,
+      "text": "    // [L82] Declare `payload` as `vi.mocked(runner.create).mock.calls[0]?.[1]`.\n"
+    },
+    {
+      "offset": 16309,
+      "text": "    // [L83] Assert that `runner.create` was called this many times: 1.\n"
+    },
+    {
+      "offset": 16433,
+      "text": "    // [L84] Assert that `payload.input` contains the expected object fields an object containing provider, model: `expected`, apiKey: `fields.apiKey`.\n"
+    },
+    {
+      "offset": 16680,
+      "text": "    // [L85] Assert that payload.input does not contain the \"username\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 16865,
+      "text": "    // [L86] Assert that payload.input does not contain the \"password\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 17050,
+      "text": "    // [L87] Assert that `response.body` deeply equals an object containing job: an object containing id: \"job-id\", status: \"queued\", message: \"Queued\".\n"
+    },
+    {
+      "offset": 17302,
+      "text": "    // [L88] Assert that the result of `JSON.stringify` using `response.body` does not satisfy: contains `fields.apiKey`.\n"
+    },
+    {
+      "offset": 17496,
+      "text": "  // [L89] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 17588,
+      "text": "  // [L90] Register a parameterized test that \"rejects invalid $caseName before starting a worker\".\n"
+    },
+    {
+      "offset": 17795,
+      "text": "    // [L91] Declare `{ client, token }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 17935,
+      "text": "    // [L92] Declare `response` as the resolved value from `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set('X-CSRF-Token', token) .field({ ...form, ...fields }).attach('urla', pdf, 'urla.pdf').expect` using 400.\n"
+    },
+    {
+      "offset": 18268,
+      "text": "      // [L93] Copy the entries of `form` into this fixture. Copy the entries of `fields` into this fixture.\n"
+    },
+    {
+      "offset": 18459,
+      "text": "    // [L94] Assert that `response.body.error.code` strictly equals \"VALIDATION_ERROR\".\n"
+    },
+    {
+      "offset": 18610,
+      "text": "    // [L95] Assert that the result of `JSON.stringify` using `response.body` does not satisfy: contains `form.apiKey`.\n"
+    },
+    {
+      "offset": 18800,
+      "text": "    // [L96] Assert that `runner.create` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 18921,
+      "text": "  // [L97] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19013,
+      "text": "  // [L98] Register a parameterized test that \"discards outdated R3 credentials from a %s upload instead of passing them to the worker\".\n"
+    },
+    {
+      "offset": 19302,
+      "text": "    // [L99] Declare `{ client, token }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 19442,
+      "text": "    // [L100] Declare `response` as the resolved value from `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set('X-CSRF-Token', token) .field({ ...form, provider, username: 'obsolete-user', password: 'obsolete-password' }).attach(...` using 202.\n"
+    },
+    {
+      "offset": 19805,
+      "text": "      // [L101] Copy the entries of `form` into this fixture. Include the current `provider` value under the same property name. Set fixture property `username` to \"obsolete-user\". Set fixture property `password` to \"obsolete-password\".\n"
+    },
+    {
+      "offset": 20181,
+      "text": "    // [L102] Declare `payload` as `vi.mocked(runner.create).mock.calls[0]?.[1]`.\n"
+    },
+    {
+      "offset": 20342,
+      "text": "    // [L103] Assert that payload.input does not contain the \"username\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 20528,
+      "text": "    // [L104] Assert that payload.input does not contain the \"password\" property, preserving the credential-exclusion boundary.\n"
+    },
+    {
+      "offset": 20714,
+      "text": "    // [L105] Assert that `response.body` deeply equals an object containing job: an object containing id: \"job-id\", status: \"queued\", message: \"Queued\".\n"
+    },
+    {
+      "offset": 20967,
+      "text": "  // [L106] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 21060,
+      "text": "  // [L107] Register a test that \"rejects missing URLA, invalid loan numbers, fake PDFs and excess files\".\n"
+    },
+    {
+      "offset": 21260,
+      "text": "    // [L108] Declare `{ client, token }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 21401,
+      "text": "    // [L109] Declare `post` as a callback that returns the result of `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set` using \"X-CSRF-Token\", `token`.\n"
+    },
+    {
+      "offset": 21669,
+      "text": "    // [L110] Assert that `(await post().field(form).expect(400)).body.error.code` strictly equals \"URLA_REQUIRED\".\n"
+    },
+    {
+      "offset": 21875,
+      "text": "    // [L111] Call `post().field({ ...form, loanNumber: 'bad' }).attach('urla', pdf, 'urla.pdf').expect` with 400. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 22129,
+      "text": "    // [L112] Call `post().field(form).attach('urla', Buffer.from('this is not a PDF'), { filename: 'fake.pdf', contentType: 'application/pdf' }).expect` with 400. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 22481,
+      "text": "    // [L113] Call `post().field(form).attach('urla', pdf, 'urla.pdf').attach('urla', pdf, 'second.pdf').expect` with 400. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 22751,
+      "text": "    // [L114] Assert that `runner.create` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 22873,
+      "text": "  // [L115] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 22966,
+      "text": "  // [L116] Register a test that \"makes status session-specific and denies unknown operations\".\n"
+    },
+    {
+      "offset": 23144,
+      "text": "    // [L117] Declare `{ client }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 23271,
+      "text": "    // [L118] Call `client.get('/api/jobs/not-owned').set('Host', '127.0.0.1:3000').expect` with 404. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 23499,
+      "text": "    // [L119] Call `client.get('/api/secrets').set('Host', '127.0.0.1:3000').expect` with 404. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 23713,
+      "text": "  // [L120] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23806,
+      "text": "  // [L121] Register a test that \"rejects oversized documents before starting a worker\".\n"
+    },
+    {
+      "offset": 23970,
+      "text": "    // [L122] Declare `{ client, token }` as the resolved value from `setup` with no arguments.\n"
+    },
+    {
+      "offset": 24111,
+      "text": "    // [L123] Declare `oversized` as the result of `Buffer.alloc` using `15` times `1024` times 1024 plus 1.\n"
+    },
+    {
+      "offset": 24278,
+      "text": "    // [L124] Call `pdf.copy` with `oversized`.\n"
+    },
+    {
+      "offset": 24351,
+      "text": "    // [L125] Declare `response` as the resolved value from `client.post('/api/jobs').set('Host', '127.0.0.1:3000').set('X-CSRF-Token', token).field(form).attach('urla', oversized, 'urla.pdf').expect` using 400.\n"
+    },
+    {
+      "offset": 24735,
+      "text": "    // [L126] Assert that `response.body.error.code` strictly equals \"UPLOAD_LIMIT\".\n"
+    },
+    {
+      "offset": 24879,
+      "text": "    // [L127] Assert that `runner.create` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 25001,
+      "text": "  // [L128] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 25094,
+      "text": "  // [L129] Register a test that \"serves the working form with strict CSP, no caching, and no server version\".\n"
+    },
+    {
+      "offset": 25302,
+      "text": "    // [L130] Declare `{ app }` as the result of `createApp` using an object containing runner.\n"
+    },
+    {
+      "offset": 25441,
+      "text": "    // [L131] Declare `response` as the resolved value from `request(app).get('/').set('Host', '127.0.0.1:3000').expect` using 200.\n"
+    },
+    {
+      "offset": 25665,
+      "text": "    // [L132] Assert that `response.text` contains \"enctype=\\\"multipart/form-data\\\"\".\n"
+    },
+    {
+      "offset": 25821,
+      "text": "    // [L133] Assert that `response.headers['content-security-policy']` contains \"script-src 'self'\".\n"
+    },
+    {
+      "offset": 26011,
+      "text": "    // [L134] Assert that `response.headers['cache-control']` strictly equals \"no-store\".\n"
+    },
+    {
+      "offset": 26165,
+      "text": "    // [L135] Assert that `response.headers['x-powered-by']` is undefined.\n"
+    },
+    {
+      "offset": 26302,
+      "text": "  // [L136] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 26395,
+      "text": "// [L137] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

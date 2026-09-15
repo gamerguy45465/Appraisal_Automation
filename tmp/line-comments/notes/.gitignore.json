@@ -1,0 +1,16 @@
+{
+  "1": "Tell Git to ignore matching directories using the pattern node_modules/.",
+  "2": "Tell Git to ignore matching directories using the pattern dist/.",
+  "3": "Tell Git to ignore matching files using the pattern .env.",
+  "4": "Tell Git to ignore matching files using the pattern .env.*.",
+  "5": "Keep .env.example eligible for Git tracking despite an earlier ignore rule.",
+  "6": "Tell Git to ignore matching directories using the pattern output/.",
+  "7": "Tell Git to ignore matching directories using the pattern test-results/.",
+  "8": "Tell Git to ignore matching directories using the pattern playwright-report/.",
+  "9": "Tell Git to ignore matching directories using the pattern .playwright-mcp/.",
+  "10": "Tell Git to ignore matching files using the pattern *.log.",
+  "11": "Tell Git to ignore matching files using the pattern *.pdf.",
+  "12": "Tell Git to ignore matching files using the pattern *.png.",
+  "13": "Tell Git to ignore matching files using the pattern *.har.",
+  "14": "Tell Git to ignore matching files using the pattern auth.json."
+}

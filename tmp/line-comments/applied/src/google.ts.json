@@ -1,0 +1,158 @@
+{
+  "originalSha256": "500b5f09d4cac06b655afa67e165d83edf0f5cf69fec851353608d222e4981ba",
+  "annotatedSha256": "08afb09afd89ff9d4096cb5577cfdb5b2e9318c1a52f9bb510a35396bf5b02e6",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports ChatGoogle from @langchain/google for the Google Gemini chat model adapter.\n"
+    },
+    {
+      "offset": 140,
+      "text": "// [L2] Imports AppError from ./errors.js for fixed public application errors and private provider-error classification.\n"
+    },
+    {
+      "offset": 301,
+      "text": "// [L3] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 394,
+      "text": "// [L4] Defines the single approved Google Generative Language API origin.\n"
+    },
+    {
+      "offset": 536,
+      "text": "// [L5] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 629,
+      "text": "// [L6] Existing explanatory comment: Use only the selected Gemini API key; never discover Cloud credentials or a gateway.\n"
+    },
+    {
+      "offset": 844,
+      "text": "// [L7] Exports construction of a Google model using only the job's selected API key and model ID.\n"
+    },
+    {
+      "offset": 1022,
+      "text": "  // [L8] Creates the LangChain Google chat model with an explicitly configured transport.\n"
+    },
+    {
+      "offset": 1139,
+      "text": "    // [L9] Selects the Google AI API-key platform, official origin, chosen model, and v1beta API version.\n"
+    },
+    {
+      "offset": 1333,
+      "text": "    // [L10] Limits SDK retries to one and disables streaming model invocation.\n"
+    },
+    {
+      "offset": 1456,
+      "text": "    // [L11] Existing explanatory comment: The default SDK client also reads service-account credentials even with an API\n"
+    },
+    {
+      "offset": 1664,
+      "text": "    // [L12] Existing explanatory comment: key. This API-key-only transport preserves this application's per-job isolation.\n"
+    },
+    {
+      "offset": 1876,
+      "text": "    // [L13] Supplies a custom API client to avoid unrelated ambient Google credential discovery.\n"
+    },
+    {
+      "offset": 1991,
+      "text": "      // [L14] Reports that the custom transport uses an API key.\n"
+    },
+    {
+      "offset": 2086,
+      "text": "      // [L15] Rejects project-ID lookup with a fixed configuration error because this path requires a Google AI Studio key.\n"
+    },
+    {
+      "offset": 2339,
+      "text": "      // [L16] Defines the custom transport's asynchronous request handler.\n"
+    },
+    {
+      "offset": 2472,
+      "text": "        // [L17] Parses the SDK-generated request URL for validation.\n"
+    },
+    {
+      "offset": 2584,
+      "text": "        // [L18] Recognizes the nonstreaming generateContent operation by its URL path suffix.\n"
+    },
+    {
+      "offset": 2764,
+      "text": "          // [L19] Recognizes streamGenerateContent or marks any other operation invalid.\n"
+    },
+    {
+      "offset": 2948,
+      "text": "        // [L20] Requires the approved Google origin, POST method, recognized operation, and no URL fragment.\n"
+    },
+    {
+      "offset": 3151,
+      "text": "          // [L21] Allows only an empty query string or the known SSE query string.\n"
+    },
+    {
+      "offset": 3300,
+      "text": "          // [L22] Rejects any request outside those approved endpoint constraints with a fixed configuration error.\n"
+    },
+    {
+      "offset": 3544,
+      "text": "        // [L23] Ends the rejection block for requests outside the approved Google endpoint constraints.\n"
+    },
+    {
+      "offset": 3659,
+      "text": "        // [L24] Existing explanatory comment: Model IDs are data, including custom IDs with punctuation, not URL routing.\n"
+    },
+    {
+      "offset": 3869,
+      "text": "        // [L25] Reconstructs the approved v1beta model URL, percent-encoding the selected model ID as data.\n"
+    },
+    {
+      "offset": 4082,
+      "text": "        // [L26] Sets the SSE query only when calling the streaming operation.\n"
+    },
+    {
+      "offset": 4236,
+      "text": "        // [L27] Combines the caller's abort signal with a 120-second transport timeout.\n"
+    },
+    {
+      "offset": 4413,
+      "text": "        // [L28] Rejects an already-cancelled or timed-out request before reading its body.\n"
+    },
+    {
+      "offset": 4538,
+      "text": "        // [L29] Copies the SDK request body into an ArrayBuffer for forwarding.\n"
+    },
+    {
+      "offset": 4669,
+      "text": "        // [L30] Rechecks cancellation after the asynchronous body read.\n"
+    },
+    {
+      "offset": 4775,
+      "text": "        // [L31] Starts the fetch to the reconstructed approved Google endpoint.\n"
+    },
+    {
+      "offset": 4887,
+      "text": "          // [L32] Sends JSON via POST with only the selected job's Google API key authentication header.\n"
+    },
+    {
+      "offset": 5094,
+      "text": "          // [L33] Forwards the body and combined cancellation signal and rejects HTTP redirects.\n"
+    },
+    {
+      "offset": 5235,
+      "text": "        // [L34] Closes the scope or expression introduced here: Starts the fetch to the reconstructed approved Google endpoint.\n"
+    },
+    {
+      "offset": 5376,
+      "text": "      // [L35] Closes the scope or expression introduced here: Defines the custom transport's asynchronous request handler.\n"
+    },
+    {
+      "offset": 5509,
+      "text": "    // [L36] Closes the scope or expression introduced here: Supplies a custom API client to avoid unrelated ambient Google credential discovery.\n"
+    },
+    {
+      "offset": 5662,
+      "text": "  // [L37] Closes the scope or expression introduced here: Creates the LangChain Google chat model with an explicitly configured transport.\n"
+    },
+    {
+      "offset": 5808,
+      "text": "// [L38] Closes the scope or expression introduced here: Exports construction of a Google model using only the job's selected API key and model ID.\n"
+    }
+  ]
+}

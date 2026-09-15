@@ -1,0 +1,14 @@
+{
+  "originalSha256": "7bb99d1e114db7fa8c121c3e0e0773210ddab90f032469b94320897790bd7589",
+  "annotatedSha256": "de16a679e6443cad83202daa7e37b6646719e2670de987d341fa639df305b93e",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Exposes the browser-session factory and its public session, configuration, field-plan, verification, and form-element types through the browser module entry point.\n"
+    },
+    {
+      "offset": 337,
+      "text": "// [L2] Re-exports the approved order-page URL and its validation helper for browser-module consumers.\n"
+    }
+  ]
+}

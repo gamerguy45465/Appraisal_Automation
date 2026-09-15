@@ -1,0 +1,32 @@
+# Line explanations: src/pausable-timeout.ts
+
+Source: [src/pausable-timeout.ts](../../../src/pausable-timeout.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Existing explanatory comment: Count active processing time without charging the user's manual sign-in wait. |
+| 2 | Exports a timer that tracks remaining active time and can be paused, resumed, or permanently cleared. |
+| 3 | Initializes the remaining active-time budget from the requested duration. |
+| 4 | Records the starting timestamp used to subtract elapsed active time on pause. |
+| 5 | Holds the current timeout handle, or undefined while paused or finished. |
+| 6 | Tracks permanent cancellation or expiry so the timer cannot restart afterward. |
+| 7 | Defines idempotent resumption of the remaining active-time budget. |
+| 8 | Does nothing when permanently stopped or when a timer is already running. |
+| 9 | Records when this active timing interval begins. |
+| 10 | Schedules expiration for the remaining duration, clears its handle, permanently stops the timer, and invokes the timeout callback. |
+| 11 | Allows the process to exit naturally even if this timeout is still pending. |
+| 12 | Closes the scope or expression introduced here: Defines idempotent resumption of the remaining active-time budget. |
+| 13 | Starts timing immediately after the helper is constructed. |
+| 14 | Returns the pause, resume, and clear controls. |
+| 15 | Defines pausing of a currently active timer. |
+| 16 | Leaves paused or permanently stopped timers unchanged. |
+| 17 | Cancels the scheduled callback for the current active interval. |
+| 18 | Removes the handle so the timer is considered paused. |
+| 19 | Subtracts elapsed active time from the remaining budget without allowing a negative duration. |
+| 20 | Closes the scope or expression introduced here: Defines pausing of a currently active timer. |
+| 21 | Exposes the shared resume function. |
+| 22 | Permanently stops the timer, cancels any scheduled callback, and clears the handle. |
+| 23 | Closes the scope or expression introduced here: Returns the pause, resume, and clear controls. |
+| 24 | Closes the scope or expression introduced here: Exports a timer that tracks remaining active time and can be paused, resumed, or permanently cleared. |

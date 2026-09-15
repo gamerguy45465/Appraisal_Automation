@@ -1,0 +1,730 @@
+{
+  "originalSha256": "03b85aee2e64c421803f3f5645fab85c4e60f722252091d842e31fb0938b2dd4",
+  "annotatedSha256": "6c0349a9e2dcc926570f8ea9e81aa94bf422de5040d188fd7bc4bf86f24acfa1",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "# [L1] Imports Path for locating the project and constructing PDF, backup, and rendering paths.\n"
+    },
+    {
+      "offset": 121,
+      "text": "# [L2] Imports the in-memory byte-stream class used to build and read the new exhibit PDF.\n"
+    },
+    {
+      "offset": 235,
+      "text": "# [L3] Imports JSON serialization for the final machine-readable result report.\n"
+    },
+    {
+      "offset": 327,
+      "text": "# [L4] Imports filesystem-copy utilities used to preserve a source backup.\n"
+    },
+    {
+      "offset": 416,
+      "text": "# [L5] Imports Python system-stream controls used to set standard-output encoding.\n"
+    },
+    {
+      "offset": 510,
+      "text": "# [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 602,
+      "text": "# [L7] Imports pypdf's reader and writer for inspecting, cloning, updating, and assembling PDF documents.\n"
+    },
+    {
+      "offset": 747,
+      "text": "# [L8] Imports ReportLab color helpers for styled exhibit text, table backgrounds, and borders.\n"
+    },
+    {
+      "offset": 876,
+      "text": "# [L9] Imports the centered paragraph-alignment constant.\n"
+    },
+    {
+      "offset": 976,
+      "text": "# [L10] Imports U.S. Letter page dimensions for the generated exhibits.\n"
+    },
+    {
+      "offset": 1091,
+      "text": "# [L11] Imports paragraph-style creation and the default style collection.\n"
+    },
+    {
+      "offset": 1235,
+      "text": "# [L12] Imports ReportLab's document, paragraph, spacer, table, table-style, and page-break classes; Spacer is not used later in this script.\n"
+    },
+    {
+      "offset": 1475,
+      "text": "# [L13] Imports PDFium bindings under the pdfium alias for rendering review images with form fields.\n"
+    },
+    {
+      "offset": 1603,
+      "text": "# [L14] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1696,
+      "text": "# [L15] Configures printed reports to use UTF-8.\n"
+    },
+    {
+      "offset": 1786,
+      "text": "# [L16] Resolves the project root as the third parent directory of this script file.\n"
+    },
+    {
+      "offset": 1914,
+      "text": "# [L17] Locates the original sample Nevada purchase-contract PDF.\n"
+    },
+    {
+      "offset": 2047,
+      "text": "# [L18] Defines the separate output PDF path for the version with fictional agent contacts.\n"
+    },
+    {
+      "offset": 2216,
+      "text": "# [L19] Defines the backup path holding the sample contract before this script's agent additions.\n"
+    },
+    {
+      "offset": 2408,
+      "text": "# [L20] Defines the directory for rendered review images of selected output pages.\n"
+    },
+    {
+      "offset": 2535,
+      "text": "# [L21] Creates the output PDF's parent directory and any missing ancestors.\n"
+    },
+    {
+      "offset": 2661,
+      "text": "# [L22] Creates the backup PDF's parent directory and any missing ancestors.\n"
+    },
+    {
+      "offset": 2787,
+      "text": "# [L23] Creates the page-review image directory and any missing ancestors.\n"
+    },
+    {
+      "offset": 2908,
+      "text": "# [L24] Checks whether the source backup has not yet been created.\n"
+    },
+    {
+      "offset": 2999,
+      "text": "    # [L25] Copies the source PDF and its filesystem metadata into the backup when absent.\n"
+    },
+    {
+      "offset": 3123,
+      "text": "# [L26] Opens the backup PDF as the stable input document.\n"
+    },
+    {
+      "offset": 3209,
+      "text": "# [L27] Asserts that the backup document contains the expected nine pages.\n"
+    },
+    {
+      "offset": 3314,
+      "text": "# [L28] Reads the source interactive-field dictionary, using an empty dictionary when no fields exist.\n"
+    },
+    {
+      "offset": 3461,
+      "text": "# [L29] Asserts that none of the source interactive fields has the PDF signature-field type.\n"
+    },
+    {
+      "offset": 3635,
+      "text": "# [L30] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3728,
+      "text": "# [L31] Creates the base ReportLab stylesheet that will be extended for the exhibits.\n"
+    },
+    {
+      "offset": 3845,
+      "text": "# [L32] Adds the body style with Helvetica, 9.5-point text, 12-point line spacing, and 7 points after paragraphs.\n"
+    },
+    {
+      "offset": 4062,
+      "text": "# [L33] Adds the smaller gray explanatory style with 7.5-point text and 9.5-point line spacing.\n"
+    },
+    {
+      "offset": 4301,
+      "text": "# [L34] Adds the centered bold 17-point exhibit-title style.\n"
+    },
+    {
+      "offset": 4491,
+      "text": "# [L35] Adds the centered bold 12-point exhibit-subtitle style.\n"
+    },
+    {
+      "offset": 4688,
+      "text": "# [L36] Adds the bold 11.5-point section-heading style with space before and after each heading.\n"
+    },
+    {
+      "offset": 4912,
+      "text": "# [L37] Adds a 9.2-point Helvetica style for table values.\n"
+    },
+    {
+      "offset": 5062,
+      "text": "# [L38] Adds a matching bold 9.2-point style for table labels.\n"
+    },
+    {
+      "offset": 5222,
+      "text": "# [L39] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5315,
+      "text": "# [L40] Defines a shorthand for constructing a paragraph with the requested named style, defaulting to body text.\n"
+    },
+    {
+      "offset": 5462,
+      "text": "    # [L41] Returns a ReportLab Paragraph that interprets its text using the selected stylesheet entry.\n"
+    },
+    {
+      "offset": 5608,
+      "text": "# [L42] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5701,
+      "text": "# [L43] Defines a two-column exhibit-table builder with default widths of 159 and 357 points.\n"
+    },
+    {
+      "offset": 5831,
+      "text": "    # [L44] Converts each label/value pair into styled paragraphs and creates a left-aligned table with the requested widths.\n"
+    },
+    {
+      "offset": 6071,
+      "text": "    # [L45] Begins applying background, grid, alignment, and padding rules to the table.\n"
+    },
+    {
+      "offset": 6193,
+      "text": "        # [L46] Colors the first column's background light blue-gray for every row.\n"
+    },
+    {
+      "offset": 6346,
+      "text": "        # [L47] Draws a 0.4-point grid around all table cells with the specified border color.\n"
+    },
+    {
+      "offset": 6510,
+      "text": "        # [L48] Top-aligns the contents of every table cell.\n"
+    },
+    {
+      "offset": 6616,
+      "text": "        # [L49] Applies 8 points of inner padding on the left and right of every cell.\n"
+    },
+    {
+      "offset": 6788,
+      "text": "        # [L50] Applies 5 points of inner padding above and below every cell.\n"
+    },
+    {
+      "offset": 6951,
+      "text": "    # [L51] Completes the table-style list and applies it to the table.\n"
+    },
+    {
+      "offset": 7031,
+      "text": "    # [L52] Returns the formatted table flowable for insertion into the document story.\n"
+    },
+    {
+      "offset": 7137,
+      "text": "# [L53] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 7230,
+      "text": "# [L54] Defines the header/footer drawing callback used on both generated exhibit pages.\n"
+    },
+    {
+      "offset": 7343,
+      "text": "    # [L55] Saves the drawing canvas's current graphics state before adding page decorations.\n"
+    },
+    {
+      "offset": 7460,
+      "text": "    # [L56] Selects the red fill color for the sample-status heading.\n"
+    },
+    {
+      "offset": 7582,
+      "text": "    # [L57] Selects 8.5-point Helvetica Bold for the sample-status heading.\n"
+    },
+    {
+      "offset": 7700,
+      "text": "    # [L58] Draws the centered SAMPLE/FICTIONAL/NOT FOR EXECUTION banner near the top of the page.\n"
+    },
+    {
+      "offset": 7880,
+      "text": "    # [L59] Switches the drawing color to gray for footer text.\n"
+    },
+    {
+      "offset": 7996,
+      "text": "    # [L60] Selects 7-point Helvetica for the disclaimers and page labels.\n"
+    },
+    {
+      "offset": 8106,
+      "text": "    # [L61] Draws the centered footer explaining that the inserted details are synthetic and unsigned.\n"
+    },
+    {
+      "offset": 8337,
+      "text": "    # [L62] Labels the first generated page Exhibit A and subsequent generated pages Exhibit B.\n"
+    },
+    {
+      "offset": 8491,
+      "text": "    # [L63] Draws the exhibit label and its one-page page count at the lower left.\n"
+    },
+    {
+      "offset": 8630,
+      "text": "    # [L64] Draws the combined-document page number at the lower right, offsetting generated page numbers by eight.\n"
+    },
+    {
+      "offset": 8831,
+      "text": "    # [L65] Restores the canvas graphics state so page decorations do not affect document content.\n"
+    },
+    {
+      "offset": 8956,
+      "text": "# [L66] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 9049,
+      "text": "# [L67] Creates the memory buffer that will receive the two-page exhibit PDF.\n"
+    },
+    {
+      "offset": 9145,
+      "text": "# [L68] Creates a Letter-sized document template in memory with 48-point side margins, a 44-point top margin, and a 60-point bottom margin.\n"
+    },
+    {
+      "offset": 9400,
+      "text": "                             # [L69] Sets the generated exhibit PDF's title and author metadata and completes template construction.\n"
+    },
+    {
+      "offset": 9655,
+      "text": "# [L70] Begins the ordered story of headings, paragraphs, tables, and the exhibit page break.\n"
+    },
+    {
+      "offset": 9759,
+      "text": "    # [L71] Adds the Exhibit A title in the large centered title style.\n"
+    },
+    {
+      "offset": 9866,
+      "text": "    # [L72] Adds the subtitle describing fictional transaction terms and sample status.\n"
+    },
+    {
+      "offset": 10028,
+      "text": "    # [L73] Begins the Exhibit A introductory paragraph identifying the sample Nevada agreement and its illustrative date.\n"
+    },
+    {
+      "offset": 10273,
+      "text": "      # [L74] Continues that paragraph with the fictional buyer and seller names and the illustrative-data explanation.\n"
+    },
+    {
+      "offset": 10525,
+      "text": "    # [L75] Adds the Property and financing section heading.\n"
+    },
+    {
+      "offset": 10636,
+      "text": "    # [L76] Begins the property-and-financing label/value table.\n"
+    },
+    {
+      "offset": 10713,
+      "text": "        # [L77] Adds the fictional subject-property address to the transaction table.\n"
+    },
+    {
+      "offset": 10869,
+      "text": "        # [L78] Adds the detached, single-unit, primary-residence property description.\n"
+    },
+    {
+      "offset": 11051,
+      "text": "        # [L79] Adds the explicitly fictional sample parcel and legal description.\n"
+    },
+    {
+      "offset": 11267,
+      "text": "        # [L80] Adds the illustrative $485,000 purchase price.\n"
+    },
+    {
+      "offset": 11373,
+      "text": "        # [L81] Adds the illustrative $388,000 conventional mortgage amount, 30-year term, and 6.25% fixed rate.\n"
+    },
+    {
+      "offset": 11588,
+      "text": "        # [L82] Adds the illustrative $97,000 down payment and buyer-funds source.\n"
+    },
+    {
+      "offset": 11751,
+      "text": "        # [L83] Adds the illustrative $10,000 earnest-money amount and due date/time.\n"
+    },
+    {
+      "offset": 11923,
+      "text": "        # [L84] Adds the illustrative closing deadline and possession-at-recording terms.\n"
+    },
+    {
+      "offset": 12114,
+      "text": "        # [L85] Adds the fictional escrow-holder name.\n"
+    },
+    {
+      "offset": 12239,
+      "text": "    # [L86] Completes the property-and-financing table and adds it to the document story.\n"
+    },
+    {
+      "offset": 12337,
+      "text": "    # [L87] Adds the Closing funds and allocation section heading.\n"
+    },
+    {
+      "offset": 12460,
+      "text": "    # [L88] Begins the paragraph specifying illustrative buyer costs and seller contribution.\n"
+    },
+    {
+      "offset": 12678,
+      "text": "      # [L89] Continues that paragraph with allocation of remaining costs, seller liens, and earnest-money credit.\n"
+    },
+    {
+      "offset": 12944,
+      "text": "    # [L90] Begins the paragraph displaying the hardcoded $94,000 estimated remaining cash and its arithmetic explanation.\n"
+    },
+    {
+      "offset": 13195,
+      "text": "      # [L91] Completes the cash-to-close explanation and clarifies that earnest money is planned rather than already paid.\n"
+    },
+    {
+      "offset": 13456,
+      "text": "    # [L92] Adds the Sample assumptions section heading.\n"
+    },
+    {
+      "offset": 13559,
+      "text": "    # [L93] Begins the paragraph describing the fictional build year, lack of HOA, and financing assumptions.\n"
+    },
+    {
+      "offset": 13789,
+      "text": "      # [L94] Continues the assumptions paragraph with the absence of a sale contingency and a lead-in to agent contacts.\n"
+    },
+    {
+      "offset": 14031,
+      "text": "      # [L95] Completes the assumptions paragraph by referencing Exhibit B and the agreement's selected contingencies.\n"
+    },
+    {
+      "offset": 14301,
+      "text": "    # [L96] Begins the emphasized paragraph explaining that the PDF is an unsigned practice example.\n"
+    },
+    {
+      "offset": 14530,
+      "text": "      # [L97] Continues that paragraph with the absence of legal obligations and actual transaction approvals/receipts.\n"
+    },
+    {
+      "offset": 14776,
+      "text": "      # [L98] Completes the sample-status paragraph by stating that no real signatures or license numbers are supplied.\n"
+    },
+    {
+      "offset": 14958,
+      "text": "    # [L99] Begins the small-print attribution paragraph naming the purchase-agreement template source.\n"
+    },
+    {
+      "offset": 15189,
+      "text": "      # [L100] Continues the attribution paragraph with the fictional nature of inserted content and a lead-in to section-reference mapping.\n"
+    },
+    {
+      "offset": 15456,
+      "text": "      # [L101] Completes the sample's section-reference mapping and applies the small-print paragraph style.\n"
+    },
+    {
+      "offset": 15666,
+      "text": "    # [L102] Inserts an explicit page break so Exhibit B starts on its own page.\n"
+    },
+    {
+      "offset": 15764,
+      "text": "    # [L103] Adds the Exhibit B title in the large centered title style.\n"
+    },
+    {
+      "offset": 15872,
+      "text": "    # [L104] Adds the fictional real-estate-agent contact subtitle.\n"
+    },
+    {
+      "offset": 16005,
+      "text": "    # [L105] Begins Exhibit B's introduction with the fictional subject-property address and agreement reference.\n"
+    },
+    {
+      "offset": 16244,
+      "text": "      # [L106] Completes the introduction with the illustrative date and fictional-test-data statement.\n"
+    },
+    {
+      "offset": 16435,
+      "text": "    # [L107] Adds the Listing Agent / Seller's Agent section heading.\n"
+    },
+    {
+      "offset": 16563,
+      "text": "    # [L108] Adds text identifying Avery Ellis as the fictional seller's representative and equating the listing/seller-agent roles.\n"
+    },
+    {
+      "offset": 16855,
+      "text": "    # [L109] Begins the fictional listing-agent contact table.\n"
+    },
+    {
+      "offset": 16930,
+      "text": "        # [L110] Adds Avery and Ellis as separate first-name and last-name rows.\n"
+    },
+    {
+      "offset": 17068,
+      "text": "        # [L111] Adds the listing agent's fictional brokerage.\n"
+    },
+    {
+      "offset": 17189,
+      "text": "        # [L112] Adds the listing agent's fictional work, home, and mobile phone numbers as separate rows.\n"
+    },
+    {
+      "offset": 17408,
+      "text": "        # [L113] Adds the listing agent's example.com email address.\n"
+    },
+    {
+      "offset": 17523,
+      "text": "    # [L114] Completes the listing-agent contact table and adds it to the story.\n"
+    },
+    {
+      "offset": 17612,
+      "text": "    # [L115] Adds the Buyer's Agent section heading.\n"
+    },
+    {
+      "offset": 17706,
+      "text": "    # [L116] Begins the paragraph identifying Morgan Rivera as the fictional buyer's representative.\n"
+    },
+    {
+      "offset": 17906,
+      "text": "      # [L117] Completes the paragraph distinguishing the buyer's agent from the listing/seller's agent.\n"
+    },
+    {
+      "offset": 18104,
+      "text": "    # [L118] Begins the fictional buyer-agent contact table.\n"
+    },
+    {
+      "offset": 18177,
+      "text": "        # [L119] Adds Morgan and Rivera as separate first-name and last-name rows.\n"
+    },
+    {
+      "offset": 18319,
+      "text": "        # [L120] Adds the buyer agent's fictional brokerage.\n"
+    },
+    {
+      "offset": 18438,
+      "text": "        # [L121] Adds the buyer agent's fictional work, home, and mobile phone numbers as separate rows.\n"
+    },
+    {
+      "offset": 18655,
+      "text": "        # [L122] Adds the buyer agent's example.com email address.\n"
+    },
+    {
+      "offset": 18770,
+      "text": "    # [L123] Completes the buyer-agent contact table and adds it to the story.\n"
+    },
+    {
+      "offset": 18857,
+      "text": "    # [L124] Adds the Property access contact section heading.\n"
+    },
+    {
+      "offset": 18971,
+      "text": "    # [L125] Adds a paragraph assigning fictional purchase access to Avery Ellis, the listing/seller's agent.\n"
+    },
+    {
+      "offset": 19232,
+      "text": "    # [L126] Adds small-print text distinguishing the two sample agents and disclaiming real agreements, signatures, licensing, or contact authorization.\n"
+    },
+    {
+      "offset": 19585,
+      "text": "# [L127] Ends the ordered document-story list.\n"
+    },
+    {
+      "offset": 19634,
+      "text": "# [L128] Builds the in-memory exhibit PDF and uses frame to draw headers and footers on every page.\n"
+    },
+    {
+      "offset": 19795,
+      "text": "# [L129] Opens the generated exhibit bytes as a PDF reader.\n"
+    },
+    {
+      "offset": 19904,
+      "text": "# [L130] Asserts that the exhibits occupy exactly two pages, reporting the actual count if layout overflow occurs.\n"
+    },
+    {
+      "offset": 20106,
+      "text": "# [L131] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 20200,
+      "text": "# [L132] Creates the PDF writer used to assemble the final document.\n"
+    },
+    {
+      "offset": 20290,
+      "text": "# [L133] Clones the source document into the writer, preserving its document structure and form fields.\n"
+    },
+    {
+      "offset": 20436,
+      "text": "# [L134] Begins the map of existing form-field names to replacement values.\n"
+    },
+    {
+      "offset": 20524,
+      "text": "    # [L135] Sets the Print Name_5 replacement to the fictional buyer-agent name Morgan Rivera.\n"
+    },
+    {
+      "offset": 20657,
+      "text": "    # [L136] Sets the Print Name_6 replacement to the fictional listing-agent name Avery Ellis.\n"
+    },
+    {
+      "offset": 20788,
+      "text": "    # [L137] Sets field 1_2 to the one-page Exhibit A description.\n"
+    },
+    {
+      "offset": 20939,
+      "text": "    # [L138] Sets field 2_2 to the one-page Exhibit B description.\n"
+    },
+    {
+      "offset": 21081,
+      "text": "    # [L139] Sets the existing undefined_11 button/checkbox field to its /On value.\n"
+    },
+    {
+      "offset": 21192,
+      "text": "# [L140] Ends the form-field replacement map.\n"
+    },
+    {
+      "offset": 21240,
+      "text": "# [L141] Updates matching page form fields across the writer's pages and disables the document's automatic appearance-regeneration flag.\n"
+    },
+    {
+      "offset": 21452,
+      "text": "# [L142] Deletes the cloned document's ninth page, which will be replaced by the new exhibits.\n"
+    },
+    {
+      "offset": 21567,
+      "text": "# [L143] Iterates the two newly generated exhibit pages.\n"
+    },
+    {
+      "offset": 21653,
+      "text": "    # [L144] Appends each generated exhibit page to the cloned agreement.\n"
+    },
+    {
+      "offset": 21753,
+      "text": "# [L145] Sets the combined PDF's title metadata to identify the fictional agent-contact version.\n"
+    },
+    {
+      "offset": 21944,
+      "text": "# [L146] Opens the designated output PDF in binary-write mode, creating or replacing that output file.\n"
+    },
+    {
+      "offset": 22081,
+      "text": "    # [L147] Serializes the assembled PDF to the open output file.\n"
+    },
+    {
+      "offset": 22173,
+      "text": "# [L148] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 22267,
+      "text": "# [L149] Reopens the saved output for post-write validation.\n"
+    },
+    {
+      "offset": 22356,
+      "text": "# [L150] Asserts that the combined agreement and exhibits contain ten pages.\n"
+    },
+    {
+      "offset": 22465,
+      "text": "# [L151] Reads the output's interactive fields, substituting an empty dictionary if absent.\n"
+    },
+    {
+      "offset": 22593,
+      "text": "# [L152] Asserts that no interactive-field names were added or removed compared with the source.\n"
+    },
+    {
+      "offset": 22772,
+      "text": "# [L153] Visits every original field to validate its saved canonical value.\n"
+    },
+    {
+      "offset": 22893,
+      "text": "    # [L154] Chooses the requested replacement value for changed fields and the original /V value for all others.\n"
+    },
+    {
+      "offset": 23058,
+      "text": "    # [L155] Asserts that the saved field value matches the expected changed or preserved value.\n"
+    },
+    {
+      "offset": 23247,
+      "text": "    # [L156] Performs additional widget and appearance checks for fields intentionally updated.\n"
+    },
+    {
+      "offset": 23367,
+      "text": "        # [L157] Finds all page annotation objects whose field name matches the updated field.\n"
+    },
+    {
+      "offset": 23592,
+      "text": "        # [L158] Asserts that exactly one widget annotation exists for that updated field.\n"
+    },
+    {
+      "offset": 23716,
+      "text": "        # [L159] Asserts that the widget's own /V value matches the expected canonical field value.\n"
+    },
+    {
+      "offset": 23864,
+      "text": "        # [L160] Reads the widget's normal appearance entry from its appearance dictionary.\n"
+    },
+    {
+      "offset": 24001,
+      "text": "        # [L161] Checks whether the widget is a PDF button/checkbox field with state-specific appearances.\n"
+    },
+    {
+      "offset": 24152,
+      "text": "            # [L162] Asserts that the button widget's selected appearance-state name matches the expected value.\n"
+    },
+    {
+      "offset": 24323,
+      "text": "            # [L163] Selects the normal appearance stream for the expected button state.\n"
+    },
+    {
+      "offset": 24458,
+      "text": "        # [L164] Asserts that the applicable appearance stream has nonempty content.\n"
+    },
+    {
+      "offset": 24589,
+      "text": "# [L165] Concatenates extracted text from every saved output page with newline separators.\n"
+    },
+    {
+      "offset": 24748,
+      "text": "# [L166] Concatenates all saved interactive-field values with newline separators for stale-value checks.\n"
+    },
+    {
+      "offset": 24931,
+      "text": "# [L167] Iterates obsolete no-agent descriptions that should have been removed from text and field values.\n"
+    },
+    {
+      "offset": 25153,
+      "text": "    # [L168] Asserts that the current obsolete description is absent from both readable text and form values.\n"
+    },
+    {
+      "offset": 25309,
+      "text": "# [L169] Begins the list of fictional agent names, emails, and phone numbers required in readable PDF text.\n"
+    },
+    {
+      "offset": 25518,
+      "text": "             # [L170] Completes that required-contact-fact list with all six work/mobile/home phone numbers.\n"
+    },
+    {
+      "offset": 25749,
+      "text": "    # [L171] Asserts that each required contact fact appears in extracted output text.\n"
+    },
+    {
+      "offset": 25906,
+      "text": "# [L172] Iterates the key hardcoded transaction amounts that must remain readable in the output.\n"
+    },
+    {
+      "offset": 26108,
+      "text": "    # [L173] Asserts that each required transaction amount is present in extracted output text.\n"
+    },
+    {
+      "offset": 26271,
+      "text": "# [L174] Asserts specifically that Exhibit A, the ninth output page, contains the purchase price.\n"
+    },
+    {
+      "offset": 26425,
+      "text": "# [L175] Iterates zero-based page indexes 6 through 9 to render agreement and exhibit review images.\n"
+    },
+    {
+      "offset": 26553,
+      "text": "    # [L176] Opens the saved PDF through PDFium for the current rendering pass.\n"
+    },
+    {
+      "offset": 26670,
+      "text": "    # [L177] Initializes PDF form rendering so widget appearances are included.\n"
+    },
+    {
+      "offset": 26771,
+      "text": "    # [L178] Renders the selected page at 1.6 scale, converts it to a Pillow image, and saves a one-based page-number PNG.\n"
+    },
+    {
+      "offset": 26979,
+      "text": "    # [L179] Closes the PDFium document after rendering the current page.\n"
+    },
+    {
+      "offset": 27069,
+      "text": "# [L180] Begins printing an indented JSON report with output and backup paths and the validated page count.\n"
+    },
+    {
+      "offset": 27270,
+      "text": "                  # [L181] Adds the interactive-field count, replacement map, and passed-validation marker and completes the JSON report.\n"
+    }
+  ]
+}

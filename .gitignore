@@ -1,0 +1,28 @@
+# [L1] Tell Git to ignore matching directories using the pattern node_modules/.
+node_modules/
+# [L2] Tell Git to ignore matching directories using the pattern dist/.
+dist/
+# [L3] Tell Git to ignore matching files using the pattern .env.
+.env
+# [L4] Tell Git to ignore matching files using the pattern .env.*.
+.env.*
+# [L5] Keep .env.example eligible for Git tracking despite an earlier ignore rule.
+!.env.example
+# [L6] Tell Git to ignore matching directories using the pattern output/.
+output/
+# [L7] Tell Git to ignore matching directories using the pattern test-results/.
+test-results/
+# [L8] Tell Git to ignore matching directories using the pattern playwright-report/.
+playwright-report/
+# [L9] Tell Git to ignore matching directories using the pattern .playwright-mcp/.
+.playwright-mcp/
+# [L10] Tell Git to ignore matching files using the pattern *.log.
+*.log
+# [L11] Tell Git to ignore matching files using the pattern *.pdf.
+*.pdf
+# [L12] Tell Git to ignore matching files using the pattern *.png.
+*.png
+# [L13] Tell Git to ignore matching files using the pattern *.har.
+*.har
+# [L14] Tell Git to ignore matching files using the pattern auth.json.
+auth.json

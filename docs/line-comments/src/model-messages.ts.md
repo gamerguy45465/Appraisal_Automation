@@ -1,0 +1,91 @@
+# Line explanations: src/model-messages.ts
+
+Source: [src/model-messages.ts](../../../src/model-messages.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports HumanMessage, ToolMessage, type BaseMessage, type MessageContent from @langchain/core/messages for typed human/tool messages and provider-compatible content. |
+| 2 | Imports createMiddleware from langchain for agent construction or model-call middleware. |
+| 3 | Imports compile-time types AiProvider from ./domain.js for shared validated application data, business rules, defaults, and domain types. |
+| 4 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 5 | Defines copying a tool message with replacement content while preserving its identifying and diagnostic metadata. |
+| 6 | Constructs the replacement LangChain ToolMessage instance. |
+| 7 | Replaces content while preserving message ID, tool name, and associated tool-call ID. |
+| 8 | Preserves execution status, metadata, and artifact fields from the original tool result. |
+| 9 | Preserves additional SDK arguments and response metadata from the original tool result. |
+| 10 | Closes the scope or expression introduced here: Constructs the replacement LangChain ToolMessage instance. |
+| 11 | Closes the scope or expression introduced here: Defines copying a tool message with replacement content while preserving its identifying and diagnostic metadata. |
+| 12 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 13 | Existing explanatory comment: Chat Completions tool results are text; images belong in a subsequent user message. |
+| 14 | Defines xAI message conversion that moves valid screenshot images out of tool result content. |
+| 15 | Allocates the converted conversation message sequence. |
+| 16 | Accumulates screenshot content blocks for a subsequent human message. |
+| 17 | Defines emission of accumulated screenshot blocks after contiguous tool responses. |
+| 18 | Appends a human message only if screenshot blocks have been accumulated. |
+| 19 | Resets the pending screenshot collection after a flush. |
+| 20 | Closes the scope or expression introduced here: Defines emission of accumulated screenshot blocks after contiguous tool responses. |
+| 21 | Walks the original messages in order. |
+| 22 | Existing explanatory comment: Keep all tool responses together before adding screenshot images. |
+| 23 | Flushes pending screenshots before a non-tool message so all preceding tool replies stay contiguous. |
+| 24 | Identifies messages outside the array-valued screenshot_page tool-result shape. |
+| 25 | Preserves an ineligible message unchanged and advances to the next message. |
+| 26 | Closes the scope or expression introduced here: Identifies messages outside the array-valued screenshot_page tool-result shape. |
+| 27 | Allocates recognized text blocks for the current screenshot tool result. |
+| 28 | Allocates validated screenshot image blocks for the current tool result. |
+| 29 | Starts with the current screenshot content considered valid. |
+| 30 | Examines every content block before converting this screenshot result. |
+| 31 | Collects text blocks only when their text property is a string. |
+| 32 | Starts validation for an image_url screenshot block. |
+| 33 | Reads the image_url payload, which may be a URL string or object. |
+| 34 | Treats non-null image payload objects as records for safe property lookup. |
+| 35 | Extracts the URL from either accepted image payload representation. |
+| 36 | Uses the explicit image-detail value or defaults to auto. |
+| 37 | Requires a string URL containing a PNG base64 data URL with the expected encoding characters. |
+| 38 | Requires an auto, low, or high string detail value; otherwise invalidates the result and stops examining blocks. |
+| 39 | Appends the normalized validated image_url block to the current screenshot collection. |
+| 40 | Invalidates unsupported content block types and stops conversion of this result. |
+| 41 | Closes the scope or expression introduced here: Examines every content block before converting this screenshot result. |
+| 42 | Preserves the original tool message when validation failed or no screenshot image was found. |
+| 43 | Emits a metadata-preserving text-only tool result using joined text blocks or a default screenshot confirmation. |
+| 44 | Queues an untrusted-browser-content label and the validated screenshot images for a later human message. |
+| 45 | Closes the scope or expression introduced here: Walks the original messages in order. |
+| 46 | Flushes any screenshot blocks remaining after the final tool-message group. |
+| 47 | Returns the converted xAI message sequence. |
+| 48 | Closes the scope or expression introduced here: Defines xAI message conversion that moves valid screenshot images out of tool result content. |
+| 49 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 50 | Existing explanatory comment: Keep browser content portable; the installed Responses adapter requires native tool image blocks. |
+| 51 | Exports provider-specific screenshot-message conversion without changing other message types. |
+| 52 | Uses the dedicated tool-text-plus-human-images conversion for xAI. |
+| 53 | Returns messages unchanged for providers other than OpenAI and xAI. |
+| 54 | Maps OpenAI messages into the Responses-compatible screenshot content representation. |
+| 55 | Preserves every message that is not an array-valued screenshot_page tool result. |
+| 56 | Allocates replacement OpenAI Responses content blocks for this tool result. |
+| 57 | Tracks whether this result contains at least one validated image. |
+| 58 | Inspects the screenshot tool result's blocks in order. |
+| 59 | Recognizes textual screenshot content with a string text value. |
+| 60 | Converts the text block to the Responses API input_text shape. |
+| 61 | Begins converting an image_url screenshot block. |
+| 62 | Reads the image payload for URL and detail extraction. |
+| 63 | Treats a non-null object payload as a property-accessible record. |
+| 64 | Gets the URL from a direct string or image object's url property. |
+| 65 | Uses the supplied detail value or defaults to auto. |
+| 66 | Requires a PNG base64 data URL with the expected encoding characters. |
+| 67 | Preserves the entire original message if image detail is invalid or the URL check fails. |
+| 68 | Appends the screenshot as a native Responses input_image block. |
+| 69 | Records that a valid screenshot image was converted. |
+| 70 | Preserves the original message when any unsupported content block is encountered. |
+| 71 | Closes the scope or expression introduced here: Inspects the screenshot tool result's blocks in order. |
+| 72 | Preserves image-free messages instead of converting only their text. |
+| 73 | Returns a copy containing Responses-native blocks while retaining the original tool metadata. |
+| 74 | Closes the scope or expression introduced here: Maps OpenAI messages into the Responses-compatible screenshot content representation. |
+| 75 | Closes the scope or expression introduced here: Exports provider-specific screenshot-message conversion without changing other message types. |
+| 76 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 77 | Existing explanatory comment: Adapt only the invocation input; preserve the agent's original shared message history. |
+| 78 | Exports LangChain middleware bound to the selected provider. |
+| 79 | Creates the middleware definition for adapting model invocation messages. |
+| 80 | Assigns a stable name to the screenshot-content middleware. |
+| 81 | Calls the next model handler with provider-adapted messages in a copied request, leaving shared history untouched. |
+| 82 | Closes the scope or expression introduced here: Creates the middleware definition for adapting model invocation messages. |
+| 83 | Closes the scope or expression introduced here: Exports LangChain middleware bound to the selected provider. |

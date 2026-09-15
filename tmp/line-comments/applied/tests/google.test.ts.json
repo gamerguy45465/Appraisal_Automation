@@ -1,0 +1,1034 @@
+{
+  "originalSha256": "549f2c27f22913285bc619ced742bc4681dd6db54e938fcbab67b56d3ca0e64b",
+  "annotatedSha256": "dc883cdfd4ccaec5430f0bc4c6b0f21f1ae7bfb2a0a88abdc14fc534fabf7446",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 183,
+      "text": "// [L2] Import { tool } from \"@langchain/core/tools\" for these regression tests.\n"
+    },
+    {
+      "offset": 310,
+      "text": "// [L3] Import { z } from \"zod\" for these regression tests.\n"
+    },
+    {
+      "offset": 395,
+      "text": "// [L4] Import { createModel, extractOrder } from \"../src/extraction.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 562,
+      "text": "// [L5] Import { prepareOrderWithAgent } from \"../src/agent.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 711,
+      "text": "// [L6] Import { buildFieldPlan, DEFAULT_MODELS, type ExtractedOrder, type JobPayload } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 956,
+      "text": "// [L7] Import type { createEnvironmentTools } from \"../src/environment.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1129,
+      "text": "// [L8] Import type { BrowserSession } from \"../src/browser/session.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1294,
+      "text": "// [L9] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1387,
+      "text": "// [L10] Declare `emptyContact` as an object containing firstName: null (unknown or absent), lastName: null (unknown or absent), workPhone: null (unknown or absent), homePhone: null (unknown or absent), mobilePhone: null (unknown or absent), email: null (unknown or absent).\n"
+    },
+    {
+      "offset": 1786,
+      "text": "// [L11] Declare `extracted` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 1896,
+      "text": "  // [L12] Set fixture property `loanProgram` to \"Conventional\". Set fixture property `loanProgramText` to \"Conventional\". Set fixture property `loanPurpose` to \"Purchase\".\n"
+    },
+    {
+      "offset": 2158,
+      "text": "  // [L13] Set fixture property `product` to null (unknown or absent). Set fixture property `propertyType` to \"Single Family\". Set fixture property `occupancy` to \"Primary Residence\".\n"
+    },
+    {
+      "offset": 2422,
+      "text": "  // [L14] Set fixture property `property` to an object containing address: null (unknown or absent), unit: null (unknown or absent), postalCode: null (unknown or absent), city: null (unknown or absent), state: null (unknown or absent).\n"
+    },
+    {
+      "offset": 2745,
+      "text": "  // [L15] Set fixture property `secondaryLoanNumber` to null (unknown or absent). Set fixture property `loanType` to null (unknown or absent). Set fixture property `lienPosition` to null (unknown or absent). Set fixture property `loanAmount` to 388000.\n"
+    },
+    {
+      "offset": 3084,
+      "text": "  // [L16] Set fixture property `salePrice` to 485000. Set fixture property `lastValuationAmount` to null (unknown or absent). Set fixture property `lastValuationDate` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 3354,
+      "text": "  // [L17] Set fixture property `borrower` to `emptyContact`. Set fixture property `coBorrower` to `emptyContact`.\n"
+    },
+    {
+      "offset": 3521,
+      "text": "  // [L18] Set fixture property `listingAgent` to an object containing values copied from `emptyContact`, firstName: \"Avery\", lastName: \"Ellis\", email: \"listing@example.test\". Set fixture property `buyerAgent` to `emptyContact`.\n"
+    },
+    {
+      "offset": 3883,
+      "text": "  // [L19] Set fixture property `complexProperty` to false. Set fixture property `highProfileCustomer` to false.\n"
+    },
+    {
+      "offset": 4050,
+      "text": "  // [L20] Set fixture property `evidence` to an array containing an object containing field: \"loanProgram\", document: \"urla\", page: 1, quote: \"Conventional\", an object containing field: \"loanPurpose\", document: \"urla\", page: 1, quote: \"Purchase\", an object containing field: \"salePrice\", document: \"salesContract\", page: 1, quote: \"Purchase price $485,000\".\n"
+    },
+    {
+      "offset": 4423,
+      "text": "    // [L21] Set fixture property `field` to \"loanProgram\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Conventional\".\n"
+    },
+    {
+      "offset": 4688,
+      "text": "    // [L22] Set fixture property `field` to \"loanPurpose\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Purchase\".\n"
+    },
+    {
+      "offset": 4945,
+      "text": "    // [L23] Set fixture property `field` to \"salePrice\". Set fixture property `document` to \"salesContract\". Set fixture property `page` to 1. Set fixture property `quote` to \"Purchase price $485,000\".\n"
+    },
+    {
+      "offset": 5246,
+      "text": "  // [L24] Set fixture property `warnings` to an empty array.\n"
+    },
+    {
+      "offset": 5327,
+      "text": "// [L25] Close the fixture object for `extracted` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5415,
+      "text": "// [L26] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5509,
+      "text": "// [L27] Define helper `payload` with parameters model for the fixture operations below.\n"
+    },
+    {
+      "offset": 5668,
+      "text": "  // [L28] Return an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 5927,
+      "text": "    // [L29] Set fixture property `urla` to an object containing name: \"sample.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic URLA\".\n"
+    },
+    {
+      "offset": 6163,
+      "text": "    // [L30] Set fixture property `salesContract` to an object containing name: \"purchase.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic contract\".\n"
+    },
+    {
+      "offset": 6431,
+      "text": "// [L31] Close the callback or control-flow body for `payload` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6531,
+      "text": "// [L32] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6625,
+      "text": "// [L33] Define the TypeScript shape `JsonSchema` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 6753,
+      "text": "  // [L34] Declare optional fixture property `type` with type `string | string[]`.\n"
+    },
+    {
+      "offset": 6864,
+      "text": "  // [L35] Declare optional fixture property `nullable` with type `boolean`.\n"
+    },
+    {
+      "offset": 6963,
+      "text": "  // [L36] Declare optional fixture property `required` with type `string[]`.\n"
+    },
+    {
+      "offset": 7064,
+      "text": "  // [L37] Declare optional fixture property `properties` with type `Record<string, JsonSchema>`.\n"
+    },
+    {
+      "offset": 7205,
+      "text": "  // [L38] Declare optional fixture property `exclusiveMinimum` with type `number`.\n"
+    },
+    {
+      "offset": 7318,
+      "text": "  // [L39] Declare optional fixture property `anyOf` with type `JsonSchema[]`.\n"
+    },
+    {
+      "offset": 7421,
+      "text": "// [L40] Finish the surrounding expression and delimiters.\n"
+    },
+    {
+      "offset": 7482,
+      "text": "// [L41] Define the TypeScript shape `GooglePart` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 7610,
+      "text": "  // [L42] Declare optional fixture property `text` with type `string`.\n"
+    },
+    {
+      "offset": 7699,
+      "text": "  // [L43] Declare optional fixture property `inlineData` with type `{ mimeType: string; data: string }`.\n"
+    },
+    {
+      "offset": 7856,
+      "text": "  // [L44] Declare optional fixture property `fileData` with type `unknown`.\n"
+    },
+    {
+      "offset": 7955,
+      "text": "  // [L45] Declare optional fixture property `functionCall` with type `{ id?: string; name: string; args: unknown }`.\n"
+    },
+    {
+      "offset": 8136,
+      "text": "  // [L46] Declare optional fixture property `functionResponse` with type `{ id?: string; name: string; response: { result: unknown } }`.\n"
+    },
+    {
+      "offset": 8357,
+      "text": "  // [L47] Declare optional fixture property `thoughtSignature` with type `string`.\n"
+    },
+    {
+      "offset": 8470,
+      "text": "// [L48] Finish the surrounding expression and delimiters.\n"
+    },
+    {
+      "offset": 8531,
+      "text": "// [L49] Define the TypeScript shape `GoogleBody` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 8659,
+      "text": "  // [L50] Declare fixture property `contents` with type `Array<{ role: string; parts: GooglePart[] }>`.\n"
+    },
+    {
+      "offset": 8822,
+      "text": "  // [L51] Declare optional fixture property `systemInstruction` with type `{ parts: Array<{ text: string }> }`.\n"
+    },
+    {
+      "offset": 8993,
+      "text": "  // [L52] Declare optional fixture property `generationConfig` with type `{ responseMimeType?: string; responseJsonSchema?: JsonSchema; temperature?: number; thinkingConfig?: unknown }`.\n"
+    },
+    {
+      "offset": 9314,
+      "text": "  // [L53] Declare optional fixture property `tools` with type `Array<{ functionDeclarations?: Array<{ name: string; parameters: JsonSchema }> }>`.\n"
+    },
+    {
+      "offset": 9555,
+      "text": "  // [L54] Declare optional fixture property `toolConfig` with type `{ functionCallingConfig?: { mode?: string; allowedFunctionNames?: string[] } }`.\n"
+    },
+    {
+      "offset": 9800,
+      "text": "  // [L55] Declare optional fixture property `store` with type `unknown`.\n"
+    },
+    {
+      "offset": 9893,
+      "text": "// [L56] Finish the surrounding expression and delimiters.\n"
+    },
+    {
+      "offset": 9954,
+      "text": "// [L57] Define helper `googleResponse` with parameters parts for the fixture operations below.\n"
+    },
+    {
+      "offset": 10137,
+      "text": "  // [L58] Return an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 10307,
+      "text": "    // [L59] Set fixture property `usageMetadata` to an object containing promptTokenCount: 10, candidatesTokenCount: 10, totalTokenCount: 20. Set fixture property `modelVersion` to `DEFAULT_MODELS.google`.\n"
+    },
+    {
+      "offset": 10645,
+      "text": "// [L60] Close the callback or control-flow body for `googleResponse` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10752,
+      "text": "// [L61] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 10846,
+      "text": "// [L62] Group regression tests for \"Google Gemini actual adapter transport\".\n"
+    },
+    {
+      "offset": 10983,
+      "text": "  // [L63] Declare `requests` for assignment later.\n"
+    },
+    {
+      "offset": 11192,
+      "text": "  // [L64] Declare `respond` for assignment later.\n"
+    },
+    {
+      "offset": 11325,
+      "text": "  // [L65] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 11404,
+      "text": "    // [L66] Assign an empty array to `requests`.\n"
+    },
+    {
+      "offset": 11473,
+      "text": "    // [L67] Assign a callback that returns the result of `Response.json` using the result of `googleResponse` with no arguments to `respond`.\n"
+    },
+    {
+      "offset": 11669,
+      "text": "    // [L68] Set all three LangSmith/LangChain tracing environment flags to false for the test.\n"
+    },
+    {
+      "offset": 11883,
+      "text": "    // [L69] Set ambient Google, Gemini, OpenAI, and Anthropic keys to synthetic unselected values so the transport must use the explicit job key.\n"
+    },
+    {
+      "offset": 12176,
+      "text": "    // [L70] Temporarily set environment variable \"GOOGLE_CLOUD_CREDENTIALS\" to \"malformed-synthetic-credentials-must-not-be-parsed\" for this test.\n"
+    },
+    {
+      "offset": 12422,
+      "text": "    // [L71] Temporarily set environment variable \"GOOGLE_APPLICATION_CREDENTIALS\" to \"C:/synthetic-missing-credentials.json\" for this test.\n"
+    },
+    {
+      "offset": 12654,
+      "text": "    // [L72] Temporarily set environment variable \"GOOGLE_GENAI_USE_VERTEXAI\" to \"true\" for this test.\n"
+    },
+    {
+      "offset": 12810,
+      "text": "    // [L73] Temporarily set environment variable \"LANGSMITH_GATEWAY\" to \"https://untrusted.invalid/google\" for this test.\n"
+    },
+    {
+      "offset": 13006,
+      "text": "    // [L74] Temporarily set environment variable \"GOOGLE_GEMINI_BASE_URL\" to \"https://untrusted.invalid/google\" for this test.\n"
+    },
+    {
+      "offset": 13212,
+      "text": "    // [L75] Temporarily replace global \"fetch\" with the result of `vi.fn` using a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 13414,
+      "text": "      // [L76] Declare `request` as a new `Request` instance initialized with `input`, `init`.\n"
+    },
+    {
+      "offset": 13557,
+      "text": "      // [L77] Declare `body` as the resolved value from `request.json` with no arguments.\n"
+    },
+    {
+      "offset": 13703,
+      "text": "      // [L78] Append an object whose fields are defined below to `requests` for later inspection.\n"
+    },
+    {
+      "offset": 13926,
+      "text": "        // [L79] Set fixture property `authorization` to the result of `request.headers.get` using \"authorization\". Set fixture property `redirect` to `request.redirect`. Set fixture property `signal` to `request.signal`.\n"
+    },
+    {
+      "offset": 14264,
+      "text": "      // [L80] Return the result of `respond` using `body`, `requests.length` to the caller.\n"
+    },
+    {
+      "offset": 14402,
+      "text": "    // [L81] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 14499,
+      "text": "  // [L82] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 14591,
+      "text": "  // [L83] Run this cleanup after every test in the group. Use a callback that performs: Restore all temporarily replaced global values. Restore all temporarily replaced environment variables..\n"
+    },
+    {
+      "offset": 14852,
+      "text": "// [L84] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 14946,
+      "text": "  // [L85] Register a parameterized test that \"uses the explicitly selected key/model with inline PDFs and native JSON schema for %s\".\n"
+    },
+    {
+      "offset": 15276,
+      "text": "    // [L86] Declare `documents` as the result of `payload` using `modelId`.\n"
+    },
+    {
+      "offset": 15393,
+      "text": "    // [L87] Declare `result` as the resolved value from `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `modelId`, \"google\", `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 15733,
+      "text": "    // [L88] Assert that `result` deeply equals `extracted`.\n"
+    },
+    {
+      "offset": 15833,
+      "text": "    // [L89] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 15921,
+      "text": "    // [L90] Declare `request` as `requests[0]`.\n"
+    },
+    {
+      "offset": 16004,
+      "text": "    // [L91] Assert that `request.url` strictly equals text interpolating the result of `encodeURIComponent` using `modelId`.\n"
+    },
+    {
+      "offset": 16266,
+      "text": "    // [L92] Assert that `request.keyMatches` strictly equals true.\n"
+    },
+    {
+      "offset": 16377,
+      "text": "    // [L93] Assert that `request.authorization` is null.\n"
+    },
+    {
+      "offset": 16481,
+      "text": "    // [L94] Assert that `request.redirect` strictly equals \"error\".\n"
+    },
+    {
+      "offset": 16594,
+      "text": "    // [L95] Assert that `request.body.store` is undefined.\n"
+    },
+    {
+      "offset": 16702,
+      "text": "    // [L96] Assert that `request.body.tools` is undefined.\n"
+    },
+    {
+      "offset": 16810,
+      "text": "    // [L97] Assert that `request.body.generationConfig?.temperature` is undefined.\n"
+    },
+    {
+      "offset": 16966,
+      "text": "    // [L98] Assert that `request.body.generationConfig?.thinkingConfig` is undefined.\n"
+    },
+    {
+      "offset": 17128,
+      "text": "    // [L99] Assert that `request.body.generationConfig?.responseMimeType` strictly equals \"application/json\".\n"
+    },
+    {
+      "offset": 17325,
+      "text": "    // [L100] Declare `schema` as `request.body.generationConfig?.responseJsonSchema`.\n"
+    },
+    {
+      "offset": 17482,
+      "text": "    // [L101] Assert that the result of `schema?.required?.slice().sort` with no arguments deeply equals the result of `Object.keys(extracted).sort` with no arguments.\n"
+    },
+    {
+      "offset": 17735,
+      "text": "    // [L102] Assert that `schema?.properties?.borrower?.properties?.firstName?.type` deeply equals an array containing \"string\", \"null\".\n"
+    },
+    {
+      "offset": 17972,
+      "text": "    // [L103] Assert that `schema?.properties?.loanAmount` contains the expected object fields an object containing anyOf: an array containing an object containing type: \"number\", exclusiveMinimum: 0, an object containing type: \"null\".\n"
+    },
+    {
+      "offset": 18338,
+      "text": "    // [L104] Declare `parts` as the result of `request.body.contents.flatMap` using a callback that returns `content.parts`.\n"
+    },
+    {
+      "offset": 18539,
+      "text": "    // [L105] Assert that the result of `parts.filter` using a callback that returns `part.inlineData` deeply equals an array containing an object containing inlineData: an object containing mimeType: \"application/pdf\", data: the result of `documents.urla.buffer.toString` using `'base64'`, an object containing inlineData: an object containing mimeType: \"application/pdf\", data: the result of `documents.salesContract!.buffer.toString` using `'base64'`.\n"
+    },
+    {
+      "offset": 19054,
+      "text": "      // [L106] Set fixture property `inlineData` to an object containing mimeType: \"application/pdf\", data: the result of `documents.urla.buffer.toString` using \"base64\".\n"
+    },
+    {
+      "offset": 19329,
+      "text": "      // [L107] Set fixture property `inlineData` to an object containing mimeType: \"application/pdf\", data: the result of `documents.salesContract!.buffer.toString` using \"base64\".\n"
+    },
+    {
+      "offset": 19624,
+      "text": "    // [L108] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19715,
+      "text": "    // [L109] Iterate const [filename, otherFilename, data] over an array containing an array containing \"urla.pdf\", \"sales-contract.pdf\", the result of `documents.urla.buffer.toString` using `'base64'`, an array containing \"sales-contract.pdf\", \"urla.pdf\", the result of `documents.salesContract!.buffer.toString` using `'base64'`.\n"
+    },
+    {
+      "offset": 20100,
+      "text": "      // [L110] Provide a parameterized test row with ['urla.pdf', 'sales-contract.pdf', documents.urla.buffer.toString('base64')],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 20380,
+      "text": "      // [L111] Provide a parameterized test row with ['sales-contract.pdf', 'urla.pdf', documents.salesContract!.buffer.toString('base64')],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 20680,
+      "text": "    // [L112] Finish the scenario array and begin the loop body that checks each listed case.\n"
+    },
+    {
+      "offset": 20792,
+      "text": "      // [L113] Declare `pdfIndex` as the result of `parts.findIndex` using a callback that returns `part.inlineData?.data` strictly equals `data`.\n"
+    },
+    {
+      "offset": 21020,
+      "text": "      // [L114] Declare `sourceMarker` as `parts[pdfIndex - 1]?.text`.\n"
+    },
+    {
+      "offset": 21145,
+      "text": "      // [L115] Assert that `sourceMarker` contains `filename`.\n"
+    },
+    {
+      "offset": 21257,
+      "text": "      // [L116] Assert that `sourceMarker` does not satisfy: contains `otherFilename`.\n"
+    },
+    {
+      "offset": 21401,
+      "text": "    // [L117] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 21496,
+      "text": "    // [L118] Assert that the result of `parts.some` using a callback that returns `part.fileData` strictly equals false.\n"
+    },
+    {
+      "offset": 21677,
+      "text": "    // [L119] Assert that the result of `parts.map(part => part.text ?? '').join` using \"\\n\" contains \"Keep unavailable text and numeric amounts null\".\n"
+    },
+    {
+      "offset": 21948,
+      "text": "    // [L120] Assert that the result of `JSON.stringify` using `request.body` does not satisfy: contains `documents.input.apiKey`.\n"
+    },
+    {
+      "offset": 22159,
+      "text": "    // [L121] Assert that the result of `JSON.stringify` using `request.body` does not satisfy: contains \"synthetic-unselected-key\".\n"
+    },
+    {
+      "offset": 22376,
+      "text": "    // [L122] Declare `{ plan }` as the result of `buildFieldPlan` using `result`, `documents.input`, true.\n"
+    },
+    {
+      "offset": 22552,
+      "text": "    // [L123] Assert that `plan.find(field => field.key === 'salePrice')?.value` strictly equals \"485000\".\n"
+    },
+    {
+      "offset": 22740,
+      "text": "    // [L124] Assert that `plan.find(field => field.key === 'loanAmount')?.value` strictly equals \"388000\".\n"
+    },
+    {
+      "offset": 22930,
+      "text": "  // [L125] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23023,
+      "text": "// [L126] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 23118,
+      "text": "  // [L127] Register a test that \"sends only the URLA when the optional contract is absent\".\n"
+    },
+    {
+      "offset": 23290,
+      "text": "    // [L128] Declare `{ salesContract: _contract, ...documents }` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 23469,
+      "text": "    // [L129] Call `extractOrder` with `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"google\", `new AbortController().signal`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 23822,
+      "text": "    // [L130] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 23911,
+      "text": "    // [L131] Declare `parts` as the result of `requests[0]!.body.contents.flatMap` using a callback that returns `content.parts`.\n"
+    },
+    {
+      "offset": 24122,
+      "text": "    // [L132] Assert that the result of `parts.filter` using a callback that returns `part.inlineData` deeply equals an array containing an object containing inlineData: an object containing mimeType: \"application/pdf\", data: the result of `documents.urla.buffer.toString` using `'base64'`.\n"
+    },
+    {
+      "offset": 24473,
+      "text": "      // [L133] Set fixture property `inlineData` to an object containing mimeType: \"application/pdf\", data: the result of `documents.urla.buffer.toString` using \"base64\".\n"
+    },
+    {
+      "offset": 24748,
+      "text": "    // [L134] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24839,
+      "text": "    // [L135] Declare `sourceMarker` as `parts[parts.findIndex(part => part.inlineData) - 1]?.text`.\n"
+    },
+    {
+      "offset": 25024,
+      "text": "    // [L136] Assert that `sourceMarker` contains \"urla.pdf\".\n"
+    },
+    {
+      "offset": 25134,
+      "text": "    // [L137] Assert that `sourceMarker` does not satisfy: contains \"sales-contract.pdf\".\n"
+    },
+    {
+      "offset": 25286,
+      "text": "  // [L138] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 25379,
+      "text": "// [L139] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 25474,
+      "text": "  // [L140] Register a test that \"sends no request when the caller cancels before extraction starts\".\n"
+    },
+    {
+      "offset": 25664,
+      "text": "    // [L141] Declare `controller` as a new `AbortController` instance.\n"
+    },
+    {
+      "offset": 25782,
+      "text": "    // [L142] Abort `controller` with a new `DOMException` instance initialized with \"Synthetic caller cancellation\", \"AbortError\".\n"
+    },
+    {
+      "offset": 26001,
+      "text": "    // [L143] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 26114,
+      "text": "    // [L144] Assert that the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"google\", `controller.signal` rejects with an error. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 26523,
+      "text": "    // [L145] Assert that `requests` has length 0.\n"
+    },
+    {
+      "offset": 26612,
+      "text": "    // [L146] Assert that `fetch` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 26718,
+      "text": "  // [L147] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 26811,
+      "text": "// [L148] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 26906,
+      "text": "  // [L149] Register a test that \"propagates in-flight caller cancellation to the actual Google transport without retrying\".\n"
+    },
+    {
+      "offset": 27142,
+      "text": "    // [L150] Declare `markStarted` for assignment later.\n"
+    },
+    {
+      "offset": 27234,
+      "text": "    // [L151] Declare `started` as a new `Promise` instance initialized with a callback that performs: Assign `resolve` to `markStarted`..\n"
+    },
+    {
+      "offset": 27451,
+      "text": "    // [L152] Declare `transportAborted` as false.\n"
+    },
+    {
+      "offset": 27536,
+      "text": "    // [L153] Assign a callback that returns a new `Promise` instance initialized with a callback whose body follows to `respond`.\n"
+    },
+    {
+      "offset": 27733,
+      "text": "      // [L154] Declare `transportSignal` as `requests.at(-1)!.signal`.\n"
+    },
+    {
+      "offset": 27860,
+      "text": "      // [L155] Call `transportSignal.addEventListener` with \"abort\", a callback whose body follows, an object containing once: true.\n"
+    },
+    {
+      "offset": 28050,
+      "text": "        // [L156] Assign true to `transportAborted`.\n"
+    },
+    {
+      "offset": 28136,
+      "text": "        // [L157] Call `reject` with `transportSignal.reason`.\n"
+    },
+    {
+      "offset": 28239,
+      "text": "      // [L158] Set fixture property `once` to true.\n"
+    },
+    {
+      "offset": 28318,
+      "text": "      // [L159] Call `markStarted` without arguments.\n"
+    },
+    {
+      "offset": 28393,
+      "text": "    // [L160] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 28490,
+      "text": "    // [L161] Declare `controller` as a new `AbortController` instance.\n"
+    },
+    {
+      "offset": 28608,
+      "text": "    // [L162] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 28721,
+      "text": "    // [L163] Declare `result` as the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"google\", `controller.signal`.\n"
+    },
+    {
+      "offset": 29052,
+      "text": "    // [L164] Declare `rejected` as the result of `expect(result).rejects.toThrow` with no arguments.\n"
+    },
+    {
+      "offset": 29209,
+      "text": "    // [L165] Wait for `started` to settle before continuing.\n"
+    },
+    {
+      "offset": 29290,
+      "text": "    // [L166] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 29379,
+      "text": "    // [L167] Assert that `requests[0]!.signal.aborted` strictly equals false.\n"
+    },
+    {
+      "offset": 29511,
+      "text": "    // [L168] Abort `controller` with a new `DOMException` instance initialized with \"Synthetic caller cancellation\", \"AbortError\".\n"
+    },
+    {
+      "offset": 29730,
+      "text": "    // [L169] Wait for `rejected` to settle before continuing.\n"
+    },
+    {
+      "offset": 29813,
+      "text": "    // [L170] Assert that `transportAborted` strictly equals true.\n"
+    },
+    {
+      "offset": 29921,
+      "text": "    // [L171] Assert that `requests[0]!.signal.aborted` strictly equals true.\n"
+    },
+    {
+      "offset": 30051,
+      "text": "    // [L172] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 30140,
+      "text": "  // [L173] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 30233,
+      "text": "// [L174] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 30328,
+      "text": "  // [L175] Register a parameterized test that \"locally rejects $name despite a successful native JSON response\".\n"
+    },
+    {
+      "offset": 30454,
+      "text": "    // [L176] Set fixture property `name` to \"zero sale price\". Set fixture property `data` to an object containing values copied from `extracted`, salePrice: 0.\n"
+    },
+    {
+      "offset": 30687,
+      "text": "    // [L177] Set fixture property `name` to \"missing required contact property\". Set fixture property `data` to an object containing values copied from `extracted`, listingAgent: an object containing email: \"listing@example.test\".\n"
+    },
+    {
+      "offset": 31043,
+      "text": "    // [L178] Set fixture property `name` to \"invalid classification\". Set fixture property `data` to an object containing values copied from `extracted`, loanProgram: \"Invalid\".\n"
+    },
+    {
+      "offset": 31310,
+      "text": "    // [L179] Set fixture property `name` to \"invalid evidence source\". Set fixture property `data` to an object containing values copied from `extracted`, evidence: an array containing an object containing field: \"salePrice\", document: \"unknown\", page: 1, quote: \"Synthetic\".\n"
+    },
+    {
+      "offset": 31738,
+      "text": "  // [L180] Apply the preceding scenario rows to the parameterized test \"locally rejects $name despite a successful native JSON response\" and begin its callback.\n"
+    },
+    {
+      "offset": 31994,
+      "text": "    // [L181] Assign a callback that returns the result of `Response.json` using the result of `googleResponse` using an array containing `{ text: JSON.stringify(data) }` to `respond`.\n"
+    },
+    {
+      "offset": 32264,
+      "text": "    // [L182] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 32377,
+      "text": "    // [L183] Assert that the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"google\", `new AbortController().signal` rejects with an error. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 32808,
+      "text": "    // [L184] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 32897,
+      "text": "  // [L185] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 32990,
+      "text": "// [L186] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 33085,
+      "text": "  // [L187] Register a test that \"retries an explicitly unsupported native schema once with a tool schema on the same provider/model/key\".\n"
+    },
+    {
+      "offset": 33349,
+      "text": "    // [L188] Declare `documents` as the result of `payload` using \"custom-supported-model\".\n"
+    },
+    {
+      "offset": 33499,
+      "text": "    // [L189] Assign a callback that returns the result of `Response.json` using an object containing error: `{ code: 400, status: 'INVALID_ARGUMENT', message: 'responseJsonSchema is not supported with this model' }`, an object containing status: `400` when `index` strictly equals 1, otherwise the result of `Response.json` using the result of `googleResponse` using `[{ functionCall: { name: 'appraisal_document_data', args: extracted }, thoughtSignature: 'c3ludGhldGljLWV4dHJhY3Q=' }]` to `respond`.\n"
+    },
+    {
+      "offset": 34046,
+      "text": "      // [L190] Set fixture property `error` to an object containing code: 400, status: \"INVALID_ARGUMENT\", message: \"responseJsonSchema is not supported with this model\". Set fixture property `status` to 400.\n"
+    },
+    {
+      "offset": 34413,
+      "text": "      // [L191] Set fixture property `functionCall` to an object containing name: \"appraisal_document_data\", args: `extracted`. Set fixture property `thoughtSignature` to \"c3ludGhldGljLWV4dHJhY3Q=\".\n"
+    },
+    {
+      "offset": 34771,
+      "text": "    // [L192] Declare `result` as the resolved value from `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"google\", `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 35140,
+      "text": "    // [L193] Assert that `result` deeply equals `extracted`.\n"
+    },
+    {
+      "offset": 35241,
+      "text": "    // [L194] Assert that `requests` has length 2.\n"
+    },
+    {
+      "offset": 35330,
+      "text": "    // [L195] Assert that `new Set(requests.map(request => request.url)).size` strictly equals 1.\n"
+    },
+    {
+      "offset": 35500,
+      "text": "    // [L196] Assert that the result of `requests.every` using a callback that returns `request.keyMatches` and `request.authorization` strictly equals `null` strictly equals true.\n"
+    },
+    {
+      "offset": 35785,
+      "text": "    // [L197] Assert that `requests[0]!.body.generationConfig?.responseJsonSchema` is defined.\n"
+    },
+    {
+      "offset": 35962,
+      "text": "    // [L198] Assert that `requests[1]!.body.generationConfig?.responseJsonSchema` is undefined.\n"
+    },
+    {
+      "offset": 36143,
+      "text": "    // [L199] Declare `functions` as the result of `requests[1]!.body.tools?.flatMap` using a callback that returns `tool.functionDeclarations` or, if null/undefined, an empty array.\n"
+    },
+    {
+      "offset": 36423,
+      "text": "    // [L200] Assert that the result of `functions?.map` using a callback that returns `fn.name` deeply equals an array containing \"appraisal_document_data\".\n"
+    },
+    {
+      "offset": 36661,
+      "text": "    // [L201] Assert that the result of `functions?.[0]?.parameters.required?.slice().sort` with no arguments deeply equals the result of `Object.keys(extracted).sort` with no arguments.\n"
+    },
+    {
+      "offset": 36952,
+      "text": "    // [L202] Assert that `functions?.[0]?.parameters.properties?.borrower?.properties?.firstName` contains the expected object fields an object containing type: \"string\", nullable: true.\n"
+    },
+    {
+      "offset": 37274,
+      "text": "    // [L203] Assert that `requests[1]!.body.toolConfig?.functionCallingConfig` contains the expected object fields an object containing mode: \"ANY\", allowedFunctionNames: an array containing \"appraisal_document_data\".\n"
+    },
+    {
+      "offset": 37640,
+      "text": "  // [L204] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 37733,
+      "text": "// [L205] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 37828,
+      "text": "  // [L206] Register a parameterized test that \"does not retry output formats or reroute after HTTP $status: $message\".\n"
+    },
+    {
+      "offset": 37960,
+      "text": "    // [L207] Set fixture property `status` to 400. Set fixture property `message` to \"Invalid schema: too many nested fields in responseJsonSchema\".\n"
+    },
+    {
+      "offset": 38204,
+      "text": "    // [L208] Set fixture property `status` to 400. Set fixture property `message` to \"Billing is not enabled for this project.\".\n"
+    },
+    {
+      "offset": 38408,
+      "text": "    // [L209] Set fixture property `status` to 401. Set fixture property `message` to \"Invalid API key.\".\n"
+    },
+    {
+      "offset": 38564,
+      "text": "    // [L210] Set fixture property `status` to 403. Set fixture property `message` to \"Permission denied for this model.\".\n"
+    },
+    {
+      "offset": 38754,
+      "text": "    // [L211] Set fixture property `status` to 404. Set fixture property `message` to \"Requested model was not found.\".\n"
+    },
+    {
+      "offset": 38938,
+      "text": "    // [L212] Set fixture property `status` to 422. Set fixture property `message` to \"responseJsonSchema is not supported with this model\".\n"
+    },
+    {
+      "offset": 39164,
+      "text": "  // [L213] Apply the preceding scenario rows to the parameterized test \"does not retry output formats or reroute after HTTP $status: $message\" and begin its callback.\n"
+    },
+    {
+      "offset": 39443,
+      "text": "    // [L214] Assign a callback that returns the result of `Response.json` using an object containing error: an object containing code: `status`, status: `'INVALID_ARGUMENT'`, message, an object containing status to `respond`.\n"
+    },
+    {
+      "offset": 39783,
+      "text": "    // [L215] Declare `documents` as the result of `payload` using \"selected-custom-model\".\n"
+    },
+    {
+      "offset": 39931,
+      "text": "    // [L216] Assert that the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"google\", `new AbortController().signal` rejects with an error. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 40362,
+      "text": "    // [L217] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 40451,
+      "text": "    // [L218] Assert that `requests[0]!.url` strictly equals \"https://generativelanguage.googleapis.com/v1beta/models/selected-custom-model:generateContent\".\n"
+    },
+    {
+      "offset": 40741,
+      "text": "    // [L219] Assert that `requests[0]!.keyMatches` strictly equals true.\n"
+    },
+    {
+      "offset": 40863,
+      "text": "    // [L220] Assert that `requests[0]!.body.tools` is undefined.\n"
+    },
+    {
+      "offset": 40982,
+      "text": "  // [L221] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 41075,
+      "text": "// [L222] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 41170,
+      "text": "  // [L223] Register a test that \"preserves real screenshot image parts and both thought signatures across bounded agent tool steps\".\n"
+    },
+    {
+      "offset": 41424,
+      "text": "    // [L224] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 41537,
+      "text": "    // [L225] Declare `imageContent` as an array containing an object containing type: \"text\", text: \"Synthetic order page only.\", an object containing type: \"image_url\", image_url: an object containing url: \"data:image/png;base64,iVBORw0KGgo=\", detail: \"auto\".\n"
+    },
+    {
+      "offset": 41826,
+      "text": "      // [L226] Set fixture property `type` to \"text\". Set fixture property `text` to \"Synthetic order page only.\".\n"
+    },
+    {
+      "offset": 42002,
+      "text": "      // [L227] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to an object containing url: \"data:image/png;base64,iVBORw0KGgo=\", detail: \"auto\".\n"
+    },
+    {
+      "offset": 42281,
+      "text": "    // [L228] Close the array of fixture values for `imageContent` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 42390,
+      "text": "    // [L229] Declare `originalContent` as the result of `structuredClone` using `imageContent`.\n"
+    },
+    {
+      "offset": 42546,
+      "text": "    // [L230] Declare `screenshot` as the result of `tool` using a promise-returning callback that returns `imageContent`, an object containing name: \"screenshot_page\", description: \"Read a synthetic page image.\", schema: the result of `z.object` using an empty object.\n"
+    },
+    {
+      "offset": 42967,
+      "text": "    // [L231] Declare `signatureA` as \"c3ludGhldGljLXNpZ25hdHVyZS1h\".\n"
+    },
+    {
+      "offset": 43092,
+      "text": "    // [L232] Declare `signatureB` as \"c3ludGhldGljLXNpZ25hdHVyZS1i\".\n"
+    },
+    {
+      "offset": 43217,
+      "text": "    // [L233] Assign a callback that returns the result of `Response.json` using the result of `googleResponse` using `[{ functionCall: { id: 'synthetic_screenshot', name: 'screenshot_page', args: {} }, thoughtSignature: signatureA }]` when `index === 1`, otherwise `index === 2 ? [{ functionCall: { id: 'synthetic_plan', name: 'get_order_field_plan', args: {} }, thoughtSignature: signatureB }] : [{ text: 'Ready for human review.' }]` to `respond`.\n"
+    },
+    {
+      "offset": 43741,
+      "text": "      // [L234] Set fixture property `functionCall` to an object containing id: \"synthetic_screenshot\", name: \"screenshot_page\", args: an empty object. Set fixture property `thoughtSignature` to `signatureA`.\n"
+    },
+    {
+      "offset": 44074,
+      "text": "      // [L235] Set fixture property `functionCall` to an object containing id: \"synthetic_plan\", name: \"get_order_field_plan\", args: an empty object. Set fixture property `thoughtSignature` to `signatureB`.\n"
+    },
+    {
+      "offset": 44419,
+      "text": "        // [L236] Set fixture property `text` to \"Ready for human review.\".\n"
+    },
+    {
+      "offset": 44546,
+      "text": "    // [L237] Call `prepareOrderWithAgent` with an object whose fields are defined below. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 44806,
+      "text": "      // [L238] Set fixture property `environment` to an object containing tools: an empty array.\n"
+    },
+    {
+      "offset": 44994,
+      "text": "      // [L239] Set fixture property `session` to an object containing tools: an array containing `screenshot`. Set fixture property `plan` to an empty array. Set fixture property `signal` to `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 45338,
+      "text": "    // [L240] Assert that `requests` has length 3.\n"
+    },
+    {
+      "offset": 45427,
+      "text": "    // [L241] Assert that the result of `requests.every` using a callback that returns `request.keyMatches` and `request.url` strictly equals `requests[0]!.url` strictly equals true.\n"
+    },
+    {
+      "offset": 45716,
+      "text": "    // [L242] Assert that `imageContent` deeply equals `originalContent`.\n"
+    },
+    {
+      "offset": 45841,
+      "text": "    // [L243] Declare `secondParts` as the result of `requests[1]!.body.contents.flatMap` using a callback that returns `content.parts`.\n"
+    },
+    {
+      "offset": 46064,
+      "text": "    // [L244] Assert that the result of `secondParts.filter` using a callback that returns `part.inlineData` deeply equals an array containing an object containing inlineData: an object containing mimeType: \"image/png\", data: \"iVBORw0KGgo=\".\n"
+    },
+    {
+      "offset": 46438,
+      "text": "    // [L245] Declare `result` as `secondParts.find(part => part.functionResponse?.name === 'screenshot_page')?.functionResponse`.\n"
+    },
+    {
+      "offset": 46683,
+      "text": "    // [L246] Assert that `result?.response.result` deeply equals an array containing an object containing type: \"text\", text: \"Synthetic order page only.\".\n"
+    },
+    {
+      "offset": 46941,
+      "text": "    // [L247] Assert that the result of `JSON.stringify` using `result` does not satisfy: contains \"iVBORw0KGgo=\".\n"
+    },
+    {
+      "offset": 47122,
+      "text": "    // [L248] Declare `signedCalls` as the result of `requests[2]!.body.contents.filter(content => content.role === 'model') .flatMap(content => content.parts).filter` using a callback that returns `part.functionCall`.\n"
+    },
+    {
+      "offset": 47436,
+      "text": "      // [L249] Flatten all message parts and keep only native functionCall parts for tool-history assertions.\n"
+    },
+    {
+      "offset": 47623,
+      "text": "    // [L250] Assert that `signedCalls` deeply equals an array containing an object containing functionCall: an object containing id: \"synthetic_screenshot\", name: \"screenshot_page\", args: an empty object, thoughtSignature: `signatureA`, an object containing functionCall: an object containing id: \"synthetic_plan\", name: \"get_order_field_plan\", args: an empty object, thoughtSignature: `signatureB`.\n"
+    },
+    {
+      "offset": 48058,
+      "text": "      // [L251] Set fixture property `functionCall` to an object containing id: \"synthetic_screenshot\", name: \"screenshot_page\", args: an empty object. Set fixture property `thoughtSignature` to `signatureA`.\n"
+    },
+    {
+      "offset": 48388,
+      "text": "      // [L252] Set fixture property `functionCall` to an object containing id: \"synthetic_plan\", name: \"get_order_field_plan\", args: an empty object. Set fixture property `thoughtSignature` to `signatureB`.\n"
+    },
+    {
+      "offset": 48716,
+      "text": "    // [L253] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 48807,
+      "text": "    // [L254] Assert that the result of `requests[2]!.body.tools?.flatMap(tool => tool.functionDeclarations ?? []).map(fn => fn.name).sort` with no arguments deeply equals an array containing \"get_order_field_plan\", \"screenshot_page\".\n"
+    },
+    {
+      "offset": 49208,
+      "text": "    // [L255] Assert that the result of `requests[2]!.body.systemInstruction?.parts.map(part => part.text).join` using \"\\n\" contains \"Do not submit\".\n"
+    },
+    {
+      "offset": 49475,
+      "text": "  // [L256] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 49568,
+      "text": "// [L257] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

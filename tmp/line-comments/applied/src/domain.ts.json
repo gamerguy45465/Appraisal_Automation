@@ -1,0 +1,882 @@
+{
+  "originalSha256": "cf6e0e824612e53b7d2de4784977779bb76379198475bac04ae42a60d491b056",
+  "annotatedSha256": "8d5c83c64c05fc462183ae0e157f806ceb3af5f442889a4ddb0974cde3838fd1",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports Zod for runtime validation and inferred TypeScript types.\n"
+    },
+    {
+      "offset": 99,
+      "text": "// [L2] Imports the application's coded error class for input and business-rule failures.\n"
+    },
+    {
+      "offset": 229,
+      "text": "// [L3] Imports observed R3 appraisal-product labels and their constrained alternate-label resolver.\n"
+    },
+    {
+      "offset": 420,
+      "text": "// [L4] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 513,
+      "text": "// [L5] Exports the default OpenAI model identifier.\n"
+    },
+    {
+      "offset": 610,
+      "text": "// [L6] Defines the immutable list of supported AI provider identifiers.\n"
+    },
+    {
+      "offset": 761,
+      "text": "// [L7] Derives the provider union type from the supported provider list.\n"
+    },
+    {
+      "offset": 888,
+      "text": "// [L8] Exports OpenAI as the default provider.\n"
+    },
+    {
+      "offset": 978,
+      "text": "// [L9] Maps each supported provider to its configured default model identifier.\n"
+    },
+    {
+      "offset": 1198,
+      "text": "// [L10] Defines the per-PDF upload size limit as fifteen mebibytes.\n"
+    },
+    {
+      "offset": 1314,
+      "text": "// [L11] Defines the three supported payment-method labels as literal values.\n"
+    },
+    {
+      "offset": 1503,
+      "text": "// [L12] Begins runtime validation of order-submission inputs.\n"
+    },
+    {
+      "offset": 1604,
+      "text": "  // [L13] Restricts provider selection to the supported list and defaults missing selection to OpenAI.\n"
+    },
+    {
+      "offset": 1767,
+      "text": "  // [L14] Trims the API key and requires a length between 20 and 512 characters.\n"
+    },
+    {
+      "offset": 1895,
+      "text": "  // [L15] Requires the loan-number pattern 685-20 followed by exactly five digits and supplies a validation message.\n"
+    },
+    {
+      "offset": 2101,
+      "text": "  // [L16] Trims the optional FHA case number, limits it to 40 characters, and defaults it to blank.\n"
+    },
+    {
+      "offset": 2258,
+      "text": "  // [L17] Restricts payment method to the three defined labels.\n"
+    },
+    {
+      "offset": 2364,
+      "text": "  // [L18] Accepts optional boolean/form-string rush flags and converts only true, 'true', and 'on' into true.\n"
+    },
+    {
+      "offset": 2613,
+      "text": "  // [L19] Trims and limits the model ID, rejects whitespace/control characters, and defaults missing input to blank.\n"
+    },
+    {
+      "offset": 2882,
+      "text": "// [L20] Completes validation and replaces an empty model ID with the selected provider's default.\n"
+    },
+    {
+      "offset": 3074,
+      "text": "// [L21] Derives the validated order-input TypeScript type from the schema.\n"
+    },
+    {
+      "offset": 3204,
+      "text": "// [L22] Defines an uploaded PDF as a readonly filename and in-memory byte buffer.\n"
+    },
+    {
+      "offset": 3367,
+      "text": "// [L23] Defines a readonly job payload containing validated input, a required URLA, and an optional sales contract.\n"
+    },
+    {
+      "offset": 3609,
+      "text": "// [L24] Defines the job lifecycle status values exposed by the application.\n"
+    },
+    {
+      "offset": 3837,
+      "text": "// [L25] Defines status updates with a message and optional warning list.\n"
+    },
+    {
+      "offset": 4025,
+      "text": "// [L26] Adds the fixed status-message discriminator to worker updates.\n"
+    },
+    {
+      "offset": 4173,
+      "text": "// [L27] Adds a job identifier to the public status view.\n"
+    },
+    {
+      "offset": 4298,
+      "text": "// [L28] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4392,
+      "text": "// [L29] Defines a reusable schema for a string value or null when unknown.\n"
+    },
+    {
+      "offset": 4510,
+      "text": "// [L30] Defines nullable name, phone, and email attributes shared by extracted contacts.\n"
+    },
+    {
+      "offset": 4747,
+      "text": "// [L31] Starts the structured document-extraction result schema.\n"
+    },
+    {
+      "offset": 4856,
+      "text": "  // [L32] Restricts extracted loan program to the listed supported/unknown classifications.\n"
+    },
+    {
+      "offset": 5040,
+      "text": "  // [L33] Defines nullable source program wording and a bounded loan-purpose classification.\n"
+    },
+    {
+      "offset": 5229,
+      "text": "  // [L34] Defines a nullable appraisal product and directs extraction to distinguish explicit requests from evidence-backed recommendations.\n"
+    },
+    {
+      "offset": 5673,
+      "text": "  // [L35] Defines nullable property classification and occupancy values.\n"
+    },
+    {
+      "offset": 5790,
+      "text": "  // [L36] Defines nullable subject-property address, unit, postal code, city, and state fields.\n"
+    },
+    {
+      "offset": 5993,
+      "text": "  // [L37] Defines nullable loan identifiers/type/lien information and a positive nullable loan amount.\n"
+    },
+    {
+      "offset": 6214,
+      "text": "  // [L38] Requires a positive sale price or null and describes extracting the contract's stated total without confusing it with loan amount or cash to close.\n"
+    },
+    {
+      "offset": 6665,
+      "text": "  // [L39] Defines a positive nullable prior valuation amount and a nullable valuation date.\n"
+    },
+    {
+      "offset": 6842,
+      "text": "  // [L40] Applies the contact schema to borrower, co-borrower, listing-agent, and buyer-agent records.\n"
+    },
+    {
+      "offset": 7056,
+      "text": "  // [L41] Requires boolean complex-property and prominent-customer flags.\n"
+    },
+    {
+      "offset": 7197,
+      "text": "  // [L42] Requires evidence entries with a field name, supported document identifier, positive integer page number, and quotation of at most 300 characters.\n"
+    },
+    {
+      "offset": 7517,
+      "text": "  // [L43] Requires an array of extraction warnings.\n"
+    },
+    {
+      "offset": 7603,
+      "text": "// [L44] Ends the extraction-result schema.\n"
+    },
+    {
+      "offset": 7651,
+      "text": "// [L45] Derives the extracted-order TypeScript type from runtime validation.\n"
+    },
+    {
+      "offset": 7792,
+      "text": "// [L46] Defines readonly approved field-plan entries with a value, control kind, optional required flag, and approved label aliases.\n"
+    },
+    {
+      "offset": 8123,
+      "text": "// [L47] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 8217,
+      "text": "// [L48] Starts the explicit property-description alias table for inspected R3 options.\n"
+    },
+    {
+      "offset": 8355,
+      "text": "  // [L49] Maps common single-family descriptions to the Single Family option.\n"
+    },
+    {
+      "offset": 8553,
+      "text": "  // [L50] Maps explicit single-family detached descriptions to the Single Family option.\n"
+    },
+    {
+      "offset": 8789,
+      "text": "  // [L51] Maps detached-single-family word orders and the SFR abbreviation to Single Family.\n"
+    },
+    {
+      "offset": 9053,
+      "text": "  // [L52] Maps condo/condominium descriptions to Condominium.\n"
+    },
+    {
+      "offset": 9207,
+      "text": "  // [L53] Maps manufactured-housing descriptions to Manufactured Home.\n"
+    },
+    {
+      "offset": 9405,
+      "text": "  // [L54] Maps numeric two-to-four-unit descriptions to Two To Four Family.\n"
+    },
+    {
+      "offset": 9628,
+      "text": "  // [L55] Maps spelled-out two-to-four-family/unit descriptions to Two To Four Family.\n"
+    },
+    {
+      "offset": 9847,
+      "text": "  // [L56] Maps townhouse, townhome, and rowhouse descriptions to Townhouse or Rowhouse.\n"
+    },
+    {
+      "offset": 10100,
+      "text": "// [L57] Ends the property alias table.\n"
+    },
+    {
+      "offset": 10143,
+      "text": "// [L58] Starts the occupancy-label alias table.\n"
+    },
+    {
+      "offset": 10243,
+      "text": "  // [L59] Maps primary-residence and owner-occupied wording to the primary owner-occupancy option.\n"
+    },
+    {
+      "offset": 10442,
+      "text": "  // [L60] Maps second-home wording to the secondary owner-residence option.\n"
+    },
+    {
+      "offset": 10621,
+      "text": "  // [L61] Maps tenant-occupied and vacant descriptions to their respective occupancy options.\n"
+    },
+    {
+      "offset": 10767,
+      "text": "// [L62] Ends the occupancy alias table.\n"
+    },
+    {
+      "offset": 10811,
+      "text": "// [L63] Defines nullable label normalization using a caller-supplied alias map.\n"
+    },
+    {
+      "offset": 10988,
+      "text": "  // [L64] Preserves null; otherwise looks up trimmed lowercase wording and falls back to the original value.\n"
+    },
+    {
+      "offset": 11177,
+      "text": "// [L65] Ends the general label-normalization helper.\n"
+    },
+    {
+      "offset": 11233,
+      "text": "// [L66] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 11327,
+      "text": "// [L67] Documents that property classification requires an explicit description, not isolated unit count or project status.\n"
+    },
+    {
+      "offset": 11554,
+      "text": "// [L68] Defines the property-type normalizer for nullable extracted wording.\n"
+    },
+    {
+      "offset": 11702,
+      "text": "  // [L69] Trims and lowercases the description, replaces supported hyphen/dash characters with spaces, and collapses whitespace.\n"
+    },
+    {
+      "offset": 11930,
+      "text": "  // [L70] Returns a known property option only for an explicit alias match, otherwise null.\n"
+    },
+    {
+      "offset": 12107,
+      "text": "// [L71] Ends property-type normalization.\n"
+    },
+    {
+      "offset": 12152,
+      "text": "// [L72] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12246,
+      "text": "// [L73] Documents that baseline product inference is limited to inspected property/program combinations.\n"
+    },
+    {
+      "offset": 12444,
+      "text": "// [L74] Defines baseline appraisal-product selection from normalized property type and loan classification.\n"
+    },
+    {
+      "offset": 12664,
+      "text": "  // [L75] Starts the mapping from R3 property labels to baseline-product table categories.\n"
+    },
+    {
+      "offset": 12838,
+      "text": "    // [L76] Maps the four supported property options to their baseline category keys.\n"
+    },
+    {
+      "offset": 13074,
+      "text": "  // [L77] Ends the property-to-product-category mapping.\n"
+    },
+    {
+      "offset": 13137,
+      "text": "  // [L78] Looks up a baseline category only when a property type is available.\n"
+    },
+    {
+      "offset": 13286,
+      "text": "  // [L79] Supports conventional programs and FHA-prefixed programs for automatic baseline selection.\n"
+    },
+    {
+      "offset": 13502,
+      "text": "  // [L80] Returns the corresponding observed product when both keys are supported, otherwise null.\n"
+    },
+    {
+      "offset": 13683,
+      "text": "// [L81] Ends baseline product selection.\n"
+    },
+    {
+      "offset": 13727,
+      "text": "// [L82] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 13821,
+      "text": "// [L83] Documents that appraisal recommendations need bounded approval separate from extracted facts.\n"
+    },
+    {
+      "offset": 14017,
+      "text": "// [L84] Defines product selection using extracted data, normalized property type, contract availability, and an accumulating warning list.\n"
+    },
+    {
+      "offset": 14290,
+      "text": "  // [L85] Trims the extracted/requested product and converts an empty result to null.\n"
+    },
+    {
+      "offset": 14427,
+      "text": "  // [L86] Collects evidence entries explicitly marked as product recommendations.\n"
+    },
+    {
+      "offset": 14605,
+      "text": "  // [L87] Collects evidence entries explicitly marked as requested appraisal products.\n"
+    },
+    {
+      "offset": 14768,
+      "text": "  // [L88] Starts a predicate requiring at least one supporting evidence entry.\n"
+    },
+    {
+      "offset": 14939,
+      "text": "    // [L89] Requires every evidence quote to be nonblank and to cite URLA or an actually supplied sales contract.\n"
+    },
+    {
+      "offset": 15186,
+      "text": "  // [L90] Explains why the presence of recommendation markers must force the stricter recommendation branch.\n"
+    },
+    {
+      "offset": 15390,
+      "text": "  // [L91] Begins validation when recommendation evidence exists.\n"
+    },
+    {
+      "offset": 15487,
+      "text": "    // [L92] Defines case/whitespace normalization for appraisal-product label comparison.\n"
+    },
+    {
+      "offset": 15676,
+      "text": "    // [L93] Normalizes the requested label and its approved aliases, or uses an empty candidate list.\n"
+    },
+    {
+      "offset": 15878,
+      "text": "    // [L94] Limits recommendation matching to conventional or FHA program categories.\n"
+    },
+    {
+      "offset": 16091,
+      "text": "    // [L95] Starts searching observed baseline products when a supported program exists.\n"
+    },
+    {
+      "offset": 16255,
+      "text": "      // [L96] Chooses the first program-specific observed label matching the normalized request or its aliases.\n"
+    },
+    {
+      "offset": 16472,
+      "text": "    // [L97] Computes the baseline implied by the normalized property type and loan program.\n"
+    },
+    {
+      "offset": 16643,
+      "text": "    // [L98] Accepts missing property wording, but otherwise requires a known property baseline equal to the candidate product.\n"
+    },
+    {
+      "offset": 16893,
+      "text": "    // [L99] Rejects recommendations missing a request, valid evidence, unique recommendation status, a known candidate, or property consistency.\n"
+    },
+    {
+      "offset": 17147,
+      "text": "      // [L100] Adds a review warning explaining unsupported or conflicting product recommendations.\n"
+    },
+    {
+      "offset": 17438,
+      "text": "      // [L101] Leaves the product unresolved when recommendation checks fail.\n"
+    },
+    {
+      "offset": 17536,
+      "text": "    // [L102] Ends rejection of unsupported recommendations.\n"
+    },
+    {
+      "offset": 17603,
+      "text": "    // [L103] Warns that the accepted product is an agent recommendation requiring property/lender review.\n"
+    },
+    {
+      "offset": 17872,
+      "text": "    // [L104] Returns the supported requested recommendation label.\n"
+    },
+    {
+      "offset": 17962,
+      "text": "  // [L105] Ends the recommendation-evidence branch.\n"
+    },
+    {
+      "offset": 18019,
+      "text": "  // [L106] Begins handling a stated product without recommendation markers.\n"
+    },
+    {
+      "offset": 18115,
+      "text": "    // [L107] Accepts the stated product when explicit-request evidence passes the support check.\n"
+    },
+    {
+      "offset": 18260,
+      "text": "    // [L108] Adds a warning when the stated product lacks a usable document citation.\n"
+    },
+    {
+      "offset": 18469,
+      "text": "    // [L109] Leaves an unsupported stated product unresolved.\n"
+    },
+    {
+      "offset": 18549,
+      "text": "  // [L110] Ends explicit-product handling.\n"
+    },
+    {
+      "offset": 18597,
+      "text": "  // [L111] Computes a baseline product when no product was stated.\n"
+    },
+    {
+      "offset": 18733,
+      "text": "  // [L112] Adds a lender-requirements review warning when automatic baseline selection succeeds.\n"
+    },
+    {
+      "offset": 19000,
+      "text": "  // [L113] Returns the selected baseline or null.\n"
+    },
+    {
+      "offset": 19070,
+      "text": "// [L114] Ends appraisal-product selection.\n"
+    },
+    {
+      "offset": 19116,
+      "text": "// [L115] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 19211,
+      "text": "// [L116] Documents that loan business rules run before opening the R3 sign-in browser.\n"
+    },
+    {
+      "offset": 19370,
+      "text": "// [L117] Defines validation of extracted loan facts against user inputs.\n"
+    },
+    {
+      "offset": 19522,
+      "text": "  // [L118] Detects VA classification from either the structured program or the source program wording.\n"
+    },
+    {
+      "offset": 19725,
+      "text": "    // [L119] Rejects VA work with a coded error directing the user to the VA portal.\n"
+    },
+    {
+      "offset": 19952,
+      "text": "  // [L120] Ends the VA rejection branch.\n"
+    },
+    {
+      "offset": 19998,
+      "text": "  // [L121] Detects unknown loan-program or loan-purpose classifications.\n"
+    },
+    {
+      "offset": 20146,
+      "text": "    // [L122] Rejects unresolved classification and requests a legible complete URLA.\n"
+    },
+    {
+      "offset": 20384,
+      "text": "  // [L123] Ends the unknown-classification branch.\n"
+    },
+    {
+      "offset": 20440,
+      "text": "  // [L124] Checks URLA evidence for loan program and loan purpose in turn.\n"
+    },
+    {
+      "offset": 20572,
+      "text": "    // [L125] Requires a matching field citation from the URLA with a nonblank quote.\n"
+    },
+    {
+      "offset": 20768,
+      "text": "      // [L126] Rejects classifications that lack supporting URLA evidence.\n"
+    },
+    {
+      "offset": 20997,
+      "text": "    // [L127] Ends rejection of a missing classification citation.\n"
+    },
+    {
+      "offset": 21070,
+      "text": "  // [L128] Ends the required-classification evidence loop.\n"
+    },
+    {
+      "offset": 21134,
+      "text": "  // [L129] Detects FHA classification or source wording when the user supplied no FHA case number.\n"
+    },
+    {
+      "offset": 21351,
+      "text": "    // [L130] Rejects FHA and FHA Zero Down preparation without a case number.\n"
+    },
+    {
+      "offset": 21542,
+      "text": "  // [L131] Ends the FHA case-number requirement branch.\n"
+    },
+    {
+      "offset": 21603,
+      "text": "// [L132] Ends loan business-rule validation.\n"
+    },
+    {
+      "offset": 21651,
+      "text": "// [L133] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 21746,
+      "text": "// [L134] Documents that this builder defines all browser-writable values and leaves unknown facts blank.\n"
+    },
+    {
+      "offset": 21945,
+      "text": "// [L135] Defines approved field-plan construction and its plan, warnings, and missing-required-field result.\n"
+    },
+    {
+      "offset": 22227,
+      "text": "  // [L136] Applies loan validation before producing any browser field values.\n"
+    },
+    {
+      "offset": 22335,
+      "text": "  // [L137] Creates the ordered list of approved field entries.\n"
+    },
+    {
+      "offset": 22434,
+      "text": "  // [L138] Creates the list of unresolved required field keys.\n"
+    },
+    {
+      "offset": 22544,
+      "text": "  // [L139] Starts warnings with mandatory source-document review and up to twelve extracted warnings truncated to 500 characters each.\n"
+    },
+    {
+      "offset": 22840,
+      "text": "  // [L140] Normalizes the extracted property description to a known R3 option.\n"
+    },
+    {
+      "offset": 22985,
+      "text": "  // [L141] Warns when a nonblank property description cannot map to an inspected option.\n"
+    },
+    {
+      "offset": 23242,
+      "text": "  // [L142] Selects the appraisal product while accumulating any recommendation/evidence warnings.\n"
+    },
+    {
+      "offset": 23417,
+      "text": "  // [L143] Defines the entry-adding helper with text/default optional settings and optional approved dropdown aliases.\n"
+    },
+    {
+      "offset": 23695,
+      "text": "    // [L144] Begins handling unknown or empty values.\n"
+    },
+    {
+      "offset": 23792,
+      "text": "      // [L145] Begins required-value handling for an absent value.\n"
+    },
+    {
+      "offset": 23882,
+      "text": "        // [L146] Records the missing required field key.\n"
+    },
+    {
+      "offset": 23981,
+      "text": "        // [L147] Adds a warning instructing the user to complete that missing fact during review.\n"
+    },
+    {
+      "offset": 24173,
+      "text": "      // [L148] Ends missing-required-value reporting.\n"
+    },
+    {
+      "offset": 24236,
+      "text": "      // [L149] Adds an explicit blank only for an optional text field, so stale defaults can be cleared.\n"
+    },
+    {
+      "offset": 24439,
+      "text": "      // [L150] Stops adding the current value after absent-value handling.\n"
+    },
+    {
+      "offset": 24529,
+      "text": "    // [L151] Ends the absent-value branch.\n"
+    },
+    {
+      "offset": 24579,
+      "text": "    // [L152] Appends a populated entry, converting numbers to strings and carrying its kind/required flag.\n"
+    },
+    {
+      "offset": 24785,
+      "text": "      // [L153] Includes approved aliases only when the alias list is nonempty, then completes the entry insertion.\n"
+    },
+    {
+      "offset": 24963,
+      "text": "  // [L154] Ends the entry-adding helper.\n"
+    },
+    {
+      "offset": 25010,
+      "text": "  // [L155] Requires the configured Guild Summerlin branch dropdown value.\n"
+    },
+    {
+      "offset": 25145,
+      "text": "  // [L156] Adds the required selected appraisal product with its constrained alternate labels when available.\n"
+    },
+    {
+      "offset": 25351,
+      "text": "  // [L157] Adds the required normalized property-type selection.\n"
+    },
+    {
+      "offset": 25470,
+      "text": "  // [L158] Normalizes extracted occupancy through the known label aliases.\n"
+    },
+    {
+      "offset": 25616,
+      "text": "  // [L159] Adds required occupancy, mapping investment-property wording to Unknown rather than inferring tenant/vacant status.\n"
+    },
+    {
+      "offset": 25895,
+      "text": "  // [L160] Warns that investment classification alone does not determine tenant versus vacant occupancy.\n"
+    },
+    {
+      "offset": 26202,
+      "text": "  // [L161] Adds each property-address component, making state a dropdown and every component except unit required.\n"
+    },
+    {
+      "offset": 26462,
+      "text": "  // [L162] Sets the optional county dropdown to Unknown.\n"
+    },
+    {
+      "offset": 26558,
+      "text": "  // [L163] Adds the user's loan number as a required text value.\n"
+    },
+    {
+      "offset": 26677,
+      "text": "  // [L164] Adds the extracted secondary loan number as optional text.\n"
+    },
+    {
+      "offset": 26804,
+      "text": "  // [L165] Adds the extracted loan purpose as a required dropdown selection.\n"
+    },
+    {
+      "offset": 26938,
+      "text": "  // [L166] Explains that evidence-backed program classification controls loan type instead of free-form loan text.\n"
+    },
+    {
+      "offset": 27154,
+      "text": "  // [L167] Converts conventional or FHA-prefixed program classification into a supported R3 loan-type label, otherwise null.\n"
+    },
+    {
+      "offset": 27405,
+      "text": "  // [L168] Adds the resulting loan type as a required dropdown entry.\n"
+    },
+    {
+      "offset": 27521,
+      "text": "  // [L169] Adds the user-supplied FHA case number and marks it required for FHA-prefixed programs.\n"
+    },
+    {
+      "offset": 27710,
+      "text": "  // [L170] Maps first/second lien aliases into an optional dropdown entry and adds the extracted loan amount as required text.\n"
+    },
+    {
+      "offset": 28070,
+      "text": "  // [L171] Adds a required sale price only for purchases with a supplied contract.\n"
+    },
+    {
+      "offset": 28256,
+      "text": "  // [L172] Adds optional prior valuation amount and converts an ISO-formatted prior valuation date to month/day/year while preserving other supplied formats.\n"
+    },
+    {
+      "offset": 28579,
+      "text": "  // [L173] Defines a helper for adding a contact section with optional overall requiredness.\n"
+    },
+    {
+      "offset": 28785,
+      "text": "    // [L174] Lists the six contact attributes that will be processed in a fixed order.\n"
+    },
+    {
+      "offset": 28978,
+      "text": "    // [L175] Starts with no known phone/email reachability for the contact.\n"
+    },
+    {
+      "offset": 29082,
+      "text": "    // [L176] Iterates through the supported contact attributes.\n"
+    },
+    {
+      "offset": 29179,
+      "text": "      // [L177] Trims the contact attribute and treats absent or blank values as unknown.\n"
+    },
+    {
+      "offset": 29321,
+      "text": "      // [L178] Identifies first and last names separately from communication details.\n"
+    },
+    {
+      "offset": 29472,
+      "text": "      // [L179] Marks the contact reachable when any non-name field contains a value.\n"
+    },
+    {
+      "offset": 29604,
+      "text": "      // [L180] Documents that any supported phone or email is sufficient and missing phone categories are not fabricated.\n"
+    },
+    {
+      "offset": 29828,
+      "text": "      // [L181] Adds the contact attribute, requiring names and supplied communication fields only when the contact is required.\n"
+    },
+    {
+      "offset": 30044,
+      "text": "      // [L182] Explains that missing required names still require review while stale copied/account names must be cleared.\n"
+    },
+    {
+      "offset": 30269,
+      "text": "      // [L183] Adds an optional explicit blank to clear a missing required name after recording its absence.\n"
+    },
+    {
+      "offset": 30457,
+      "text": "    // [L184] Ends the contact-attribute loop.\n"
+    },
+    {
+      "offset": 30510,
+      "text": "    // [L185] Checks whether a required contact lacks every supported phone/email value.\n"
+    },
+    {
+      "offset": 30633,
+      "text": "      // [L186] Records a synthetic phoneOrEmail missing-field key for the contact section.\n"
+    },
+    {
+      "offset": 30786,
+      "text": "      // [L187] Warns the user to supply contact reachability during review.\n"
+    },
+    {
+      "offset": 30973,
+      "text": "    // [L188] Ends missing-reachability reporting.\n"
+    },
+    {
+      "offset": 31030,
+      "text": "  // [L189] Ends the contact-section helper.\n"
+    },
+    {
+      "offset": 31080,
+      "text": "  // [L190] Adds the borrower as a required contact.\n"
+    },
+    {
+      "offset": 31180,
+      "text": "  // [L191] Adds optional co-borrower details.\n"
+    },
+    {
+      "offset": 31272,
+      "text": "  // [L192] Requires the borrower-as-access-contact checkbox to reflect whether the loan is a refinance.\n"
+    },
+    {
+      "offset": 31463,
+      "text": "  // [L193] Adds a required access contact using the borrower for refinance, listing agent for purchase, or unresolved values for other purposes.\n"
+    },
+    {
+      "offset": 31751,
+      "text": "  // [L194] Iterates through listing-agent and buyer-agent sections.\n"
+    },
+    {
+      "offset": 31887,
+      "text": "    // [L195] Adds an optional agent section only when at least one of its extracted values is nonblank.\n"
+    },
+    {
+      "offset": 32095,
+      "text": "  // [L196] Ends optional agent-section processing.\n"
+    },
+    {
+      "offset": 32151,
+      "text": "  // [L197] Documents that the user-configured loan officer applies independently of document extraction.\n"
+    },
+    {
+      "offset": 32347,
+      "text": "  // [L198] Requires Amber as the loan officer's first name.\n"
+    },
+    {
+      "offset": 32463,
+      "text": "  // [L199] Requires Coleman as the loan officer's last name.\n"
+    },
+    {
+      "offset": 32581,
+      "text": "  // [L200] Requires the configured loan-officer work phone.\n"
+    },
+    {
+      "offset": 32704,
+      "text": "  // [L201] Requires the configured loan-officer email address.\n"
+    },
+    {
+      "offset": 32840,
+      "text": "  // [L202] Adds the user's rush-order setting as a required checkbox value.\n"
+    },
+    {
+      "offset": 32972,
+      "text": "  // [L203] Adds the extracted complex-property and prominent-customer flags as optional checkbox entries.\n"
+    },
+    {
+      "offset": 33205,
+      "text": "  // [L204] Explicitly disables side-by-side ordering and requires the user's payment-method selection.\n"
+    },
+    {
+      "offset": 33413,
+      "text": "  // [L205] Requires the configured team name in the status-contact first-name field.\n"
+    },
+    {
+      "offset": 33569,
+      "text": "  // [L206] Requires the configured team email in the status-contact email field.\n"
+    },
+    {
+      "offset": 33733,
+      "text": "  // [L207] Explains that explicit empty entries clear account defaults from the new order.\n"
+    },
+    {
+      "offset": 33902,
+      "text": "  // [L208] Iterates through unsupported/unprovided identifiers, access and scheduling fields, management notes, and selected status-contact fields to clear them.\n"
+    },
+    {
+      "offset": 34355,
+      "text": "    // [L209] Adds an optional empty text entry for the current field to remove any existing default.\n"
+    },
+    {
+      "offset": 34526,
+      "text": "  // [L210] Ends the explicit-blank field loop.\n"
+    },
+    {
+      "offset": 34578,
+      "text": "  // [L211] Explicitly clears sale price whenever the job is not a purchase with a supplied contract.\n"
+    },
+    {
+      "offset": 34815,
+      "text": "  // [L212] Returns the assembled approved plan, accumulated warnings, and unresolved required field keys.\n"
+    },
+    {
+      "offset": 34983,
+      "text": "// [L213] Ends field-plan construction.\n"
+    },
+    {
+      "offset": 35025,
+      "text": "// [L214] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 35120,
+      "text": "// [L215] Defines validation of an uploaded PDF's size and signature.\n"
+    },
+    {
+      "offset": 35245,
+      "text": "  // [L216] Rejects buffers over fifteen mebibytes, under ten bytes, or without a PDF signature in their first 1024 bytes.\n"
+    },
+    {
+      "offset": 35504,
+      "text": "    // [L217] Throws the coded invalid-PDF error with the upload-size requirement.\n"
+    },
+    {
+      "offset": 35680,
+      "text": "  // [L218] Ends invalid-PDF rejection.\n"
+    },
+    {
+      "offset": 35724,
+      "text": "// [L219] Ends uploaded-PDF validation.\n"
+    }
+  ]
+}

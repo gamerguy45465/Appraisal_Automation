@@ -1,0 +1,142 @@
+{
+  "originalSha256": "e6b007166c5412344e72a4575585e0fe0549af0275e1b422661fc1e89965522e",
+  "annotatedSha256": "c03c83ab6747d7501d0863125712693e25e81ba325dc5b6cb345d1c49be1bf9e",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports ChatXAI from @langchain/xai for the xAI Grok chat model adapter.\n"
+    },
+    {
+      "offset": 123,
+      "text": "// [L2] Imports AppError from ./errors.js for fixed public application errors and private provider-error classification.\n"
+    },
+    {
+      "offset": 284,
+      "text": "// [L3] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 377,
+      "text": "// [L4] Defines the official xAI API base URL.\n"
+    },
+    {
+      "offset": 464,
+      "text": "// [L5] Defines the exact chat-completions endpoint allowed by the custom transport.\n"
+    },
+    {
+      "offset": 605,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 698,
+      "text": "// [L7] Existing explanatory comment: Keep Grok credentials, model calls, and cancellation inside the selected job.\n"
+    },
+    {
+      "offset": 899,
+      "text": "// [L8] Exports creation of an xAI chat model isolated to the selected job credentials and model ID.\n"
+    },
+    {
+      "offset": 1073,
+      "text": "  // [L9] Constructs ChatXAI with the explicit job API key/model and official API base.\n"
+    },
+    {
+      "offset": 1224,
+      "text": "    // [L10] Limits SDK retries to one and disables streaming responses.\n"
+    },
+    {
+      "offset": 1337,
+      "text": "  // [L11] Sets the model's request timeout to 120 seconds.\n"
+    },
+    {
+      "offset": 1423,
+      "text": "  // [L12] Disables parallel tool calls in the model's extra request parameters.\n"
+    },
+    {
+      "offset": 1557,
+      "text": "  // [L13] Existing explanatory comment: ChatXAI replaces the constructor's configuration object. Configure its public\n"
+    },
+    {
+      "offset": 1759,
+      "text": "  // [L14] Existing explanatory comment: lazy client settings afterwards so the selected key cannot follow a redirect\n"
+    },
+    {
+      "offset": 1959,
+      "text": "  // [L15] Existing explanatory comment: or acquire unrelated OpenAI organization/project headers from the environment.\n"
+    },
+    {
+      "offset": 2163,
+      "text": "  // [L16] Replaces the lazy SDK client's configuration after ChatXAI construction.\n"
+    },
+    {
+      "offset": 2271,
+      "text": "    // [L17] Preserves other client settings while explicitly pinning the key/base URL and clearing inherited OpenAI organization/project values.\n"
+    },
+    {
+      "offset": 2505,
+      "text": "    // [L18] Supplies a custom transport handler for SDK fetch calls.\n"
+    },
+    {
+      "offset": 2606,
+      "text": "      // [L19] Normalizes SDK fetch arguments into a Request for validation and body access.\n"
+    },
+    {
+      "offset": 2747,
+      "text": "      // [L20] Rejects any URL other than the exact approved chat-completions endpoint or any method other than POST.\n"
+    },
+    {
+      "offset": 2939,
+      "text": "        // [L21] Throws a fixed configuration error when the Grok request would use an unapproved endpoint.\n"
+    },
+    {
+      "offset": 3164,
+      "text": "      // [L22] Closes the scope or expression introduced here: Rejects any URL other than the exact approved chat-completions endpoint or any method other than POST.\n"
+    },
+    {
+      "offset": 3338,
+      "text": "      // [L23] Combines the request's cancellation signal with a 120-second timeout.\n"
+    },
+    {
+      "offset": 3509,
+      "text": "      // [L24] Rejects an already-aborted request before reading the body.\n"
+    },
+    {
+      "offset": 3615,
+      "text": "      // [L25] Reads the SDK request body into an ArrayBuffer for forwarding.\n"
+    },
+    {
+      "offset": 3741,
+      "text": "      // [L26] Rechecks cancellation after asynchronous body reading.\n"
+    },
+    {
+      "offset": 3842,
+      "text": "      // [L27] Sends the validated request to the fixed xAI completions endpoint.\n"
+    },
+    {
+      "offset": 3962,
+      "text": "        // [L28] Uses POST with JSON content type and only the selected job's bearer API-key authentication.\n"
+    },
+    {
+      "offset": 4179,
+      "text": "        // [L29] Forwards body and combined signal and rejects redirects so credentials cannot be forwarded to another location.\n"
+    },
+    {
+      "offset": 4349,
+      "text": "      // [L30] Closes the scope or expression introduced here: Sends the validated request to the fixed xAI completions endpoint.\n"
+    },
+    {
+      "offset": 4489,
+      "text": "    // [L31] Closes the scope or expression introduced here: Supplies a custom transport handler for SDK fetch calls.\n"
+    },
+    {
+      "offset": 4614,
+      "text": "  // [L32] Closes the scope or expression introduced here: Replaces the lazy SDK client's configuration after ChatXAI construction.\n"
+    },
+    {
+      "offset": 4751,
+      "text": "  // [L33] Returns the configured xAI model instance.\n"
+    },
+    {
+      "offset": 4820,
+      "text": "// [L34] Closes the scope or expression introduced here: Exports creation of an xAI chat model isolated to the selected job credentials and model ID.\n"
+    }
+  ]
+}

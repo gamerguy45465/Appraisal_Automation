@@ -1,0 +1,189 @@
+# Line explanations: tmp/pdfs/add_sample_agents.py
+
+Source: [tmp/pdfs/add_sample_agents.py](../../../../tmp/pdfs/add_sample_agents.py). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports Path for locating the project and constructing PDF, backup, and rendering paths. |
+| 2 | Imports the in-memory byte-stream class used to build and read the new exhibit PDF. |
+| 3 | Imports JSON serialization for the final machine-readable result report. |
+| 4 | Imports filesystem-copy utilities used to preserve a source backup. |
+| 5 | Imports Python system-stream controls used to set standard-output encoding. |
+| 6 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 7 | Imports pypdf's reader and writer for inspecting, cloning, updating, and assembling PDF documents. |
+| 8 | Imports ReportLab color helpers for styled exhibit text, table backgrounds, and borders. |
+| 9 | Imports the centered paragraph-alignment constant. |
+| 10 | Imports U.S. Letter page dimensions for the generated exhibits. |
+| 11 | Imports paragraph-style creation and the default style collection. |
+| 12 | Imports ReportLab's document, paragraph, spacer, table, table-style, and page-break classes; Spacer is not used later in this script. |
+| 13 | Imports PDFium bindings under the pdfium alias for rendering review images with form fields. |
+| 14 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 15 | Configures printed reports to use UTF-8. |
+| 16 | Resolves the project root as the third parent directory of this script file. |
+| 17 | Locates the original sample Nevada purchase-contract PDF. |
+| 18 | Defines the separate output PDF path for the version with fictional agent contacts. |
+| 19 | Defines the backup path holding the sample contract before this script's agent additions. |
+| 20 | Defines the directory for rendered review images of selected output pages. |
+| 21 | Creates the output PDF's parent directory and any missing ancestors. |
+| 22 | Creates the backup PDF's parent directory and any missing ancestors. |
+| 23 | Creates the page-review image directory and any missing ancestors. |
+| 24 | Checks whether the source backup has not yet been created. |
+| 25 | Copies the source PDF and its filesystem metadata into the backup when absent. |
+| 26 | Opens the backup PDF as the stable input document. |
+| 27 | Asserts that the backup document contains the expected nine pages. |
+| 28 | Reads the source interactive-field dictionary, using an empty dictionary when no fields exist. |
+| 29 | Asserts that none of the source interactive fields has the PDF signature-field type. |
+| 30 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 31 | Creates the base ReportLab stylesheet that will be extended for the exhibits. |
+| 32 | Adds the body style with Helvetica, 9.5-point text, 12-point line spacing, and 7 points after paragraphs. |
+| 33 | Adds the smaller gray explanatory style with 7.5-point text and 9.5-point line spacing. |
+| 34 | Adds the centered bold 17-point exhibit-title style. |
+| 35 | Adds the centered bold 12-point exhibit-subtitle style. |
+| 36 | Adds the bold 11.5-point section-heading style with space before and after each heading. |
+| 37 | Adds a 9.2-point Helvetica style for table values. |
+| 38 | Adds a matching bold 9.2-point style for table labels. |
+| 39 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 40 | Defines a shorthand for constructing a paragraph with the requested named style, defaulting to body text. |
+| 41 | Returns a ReportLab Paragraph that interprets its text using the selected stylesheet entry. |
+| 42 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 43 | Defines a two-column exhibit-table builder with default widths of 159 and 357 points. |
+| 44 | Converts each label/value pair into styled paragraphs and creates a left-aligned table with the requested widths. |
+| 45 | Begins applying background, grid, alignment, and padding rules to the table. |
+| 46 | Colors the first column's background light blue-gray for every row. |
+| 47 | Draws a 0.4-point grid around all table cells with the specified border color. |
+| 48 | Top-aligns the contents of every table cell. |
+| 49 | Applies 8 points of inner padding on the left and right of every cell. |
+| 50 | Applies 5 points of inner padding above and below every cell. |
+| 51 | Completes the table-style list and applies it to the table. |
+| 52 | Returns the formatted table flowable for insertion into the document story. |
+| 53 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 54 | Defines the header/footer drawing callback used on both generated exhibit pages. |
+| 55 | Saves the drawing canvas's current graphics state before adding page decorations. |
+| 56 | Selects the red fill color for the sample-status heading. |
+| 57 | Selects 8.5-point Helvetica Bold for the sample-status heading. |
+| 58 | Draws the centered SAMPLE/FICTIONAL/NOT FOR EXECUTION banner near the top of the page. |
+| 59 | Switches the drawing color to gray for footer text. |
+| 60 | Selects 7-point Helvetica for the disclaimers and page labels. |
+| 61 | Draws the centered footer explaining that the inserted details are synthetic and unsigned. |
+| 62 | Labels the first generated page Exhibit A and subsequent generated pages Exhibit B. |
+| 63 | Draws the exhibit label and its one-page page count at the lower left. |
+| 64 | Draws the combined-document page number at the lower right, offsetting generated page numbers by eight. |
+| 65 | Restores the canvas graphics state so page decorations do not affect document content. |
+| 66 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 67 | Creates the memory buffer that will receive the two-page exhibit PDF. |
+| 68 | Creates a Letter-sized document template in memory with 48-point side margins, a 44-point top margin, and a 60-point bottom margin. |
+| 69 | Sets the generated exhibit PDF's title and author metadata and completes template construction. |
+| 70 | Begins the ordered story of headings, paragraphs, tables, and the exhibit page break. |
+| 71 | Adds the Exhibit A title in the large centered title style. |
+| 72 | Adds the subtitle describing fictional transaction terms and sample status. |
+| 73 | Begins the Exhibit A introductory paragraph identifying the sample Nevada agreement and its illustrative date. |
+| 74 | Continues that paragraph with the fictional buyer and seller names and the illustrative-data explanation. |
+| 75 | Adds the Property and financing section heading. |
+| 76 | Begins the property-and-financing label/value table. |
+| 77 | Adds the fictional subject-property address to the transaction table. |
+| 78 | Adds the detached, single-unit, primary-residence property description. |
+| 79 | Adds the explicitly fictional sample parcel and legal description. |
+| 80 | Adds the illustrative $485,000 purchase price. |
+| 81 | Adds the illustrative $388,000 conventional mortgage amount, 30-year term, and 6.25% fixed rate. |
+| 82 | Adds the illustrative $97,000 down payment and buyer-funds source. |
+| 83 | Adds the illustrative $10,000 earnest-money amount and due date/time. |
+| 84 | Adds the illustrative closing deadline and possession-at-recording terms. |
+| 85 | Adds the fictional escrow-holder name. |
+| 86 | Completes the property-and-financing table and adds it to the document story. |
+| 87 | Adds the Closing funds and allocation section heading. |
+| 88 | Begins the paragraph specifying illustrative buyer costs and seller contribution. |
+| 89 | Continues that paragraph with allocation of remaining costs, seller liens, and earnest-money credit. |
+| 90 | Begins the paragraph displaying the hardcoded $94,000 estimated remaining cash and its arithmetic explanation. |
+| 91 | Completes the cash-to-close explanation and clarifies that earnest money is planned rather than already paid. |
+| 92 | Adds the Sample assumptions section heading. |
+| 93 | Begins the paragraph describing the fictional build year, lack of HOA, and financing assumptions. |
+| 94 | Continues the assumptions paragraph with the absence of a sale contingency and a lead-in to agent contacts. |
+| 95 | Completes the assumptions paragraph by referencing Exhibit B and the agreement's selected contingencies. |
+| 96 | Begins the emphasized paragraph explaining that the PDF is an unsigned practice example. |
+| 97 | Continues that paragraph with the absence of legal obligations and actual transaction approvals/receipts. |
+| 98 | Completes the sample-status paragraph by stating that no real signatures or license numbers are supplied. |
+| 99 | Begins the small-print attribution paragraph naming the purchase-agreement template source. |
+| 100 | Continues the attribution paragraph with the fictional nature of inserted content and a lead-in to section-reference mapping. |
+| 101 | Completes the sample's section-reference mapping and applies the small-print paragraph style. |
+| 102 | Inserts an explicit page break so Exhibit B starts on its own page. |
+| 103 | Adds the Exhibit B title in the large centered title style. |
+| 104 | Adds the fictional real-estate-agent contact subtitle. |
+| 105 | Begins Exhibit B's introduction with the fictional subject-property address and agreement reference. |
+| 106 | Completes the introduction with the illustrative date and fictional-test-data statement. |
+| 107 | Adds the Listing Agent / Seller's Agent section heading. |
+| 108 | Adds text identifying Avery Ellis as the fictional seller's representative and equating the listing/seller-agent roles. |
+| 109 | Begins the fictional listing-agent contact table. |
+| 110 | Adds Avery and Ellis as separate first-name and last-name rows. |
+| 111 | Adds the listing agent's fictional brokerage. |
+| 112 | Adds the listing agent's fictional work, home, and mobile phone numbers as separate rows. |
+| 113 | Adds the listing agent's example.com email address. |
+| 114 | Completes the listing-agent contact table and adds it to the story. |
+| 115 | Adds the Buyer's Agent section heading. |
+| 116 | Begins the paragraph identifying Morgan Rivera as the fictional buyer's representative. |
+| 117 | Completes the paragraph distinguishing the buyer's agent from the listing/seller's agent. |
+| 118 | Begins the fictional buyer-agent contact table. |
+| 119 | Adds Morgan and Rivera as separate first-name and last-name rows. |
+| 120 | Adds the buyer agent's fictional brokerage. |
+| 121 | Adds the buyer agent's fictional work, home, and mobile phone numbers as separate rows. |
+| 122 | Adds the buyer agent's example.com email address. |
+| 123 | Completes the buyer-agent contact table and adds it to the story. |
+| 124 | Adds the Property access contact section heading. |
+| 125 | Adds a paragraph assigning fictional purchase access to Avery Ellis, the listing/seller's agent. |
+| 126 | Adds small-print text distinguishing the two sample agents and disclaiming real agreements, signatures, licensing, or contact authorization. |
+| 127 | Ends the ordered document-story list. |
+| 128 | Builds the in-memory exhibit PDF and uses frame to draw headers and footers on every page. |
+| 129 | Opens the generated exhibit bytes as a PDF reader. |
+| 130 | Asserts that the exhibits occupy exactly two pages, reporting the actual count if layout overflow occurs. |
+| 131 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 132 | Creates the PDF writer used to assemble the final document. |
+| 133 | Clones the source document into the writer, preserving its document structure and form fields. |
+| 134 | Begins the map of existing form-field names to replacement values. |
+| 135 | Sets the Print Name_5 replacement to the fictional buyer-agent name Morgan Rivera. |
+| 136 | Sets the Print Name_6 replacement to the fictional listing-agent name Avery Ellis. |
+| 137 | Sets field 1_2 to the one-page Exhibit A description. |
+| 138 | Sets field 2_2 to the one-page Exhibit B description. |
+| 139 | Sets the existing undefined_11 button/checkbox field to its /On value. |
+| 140 | Ends the form-field replacement map. |
+| 141 | Updates matching page form fields across the writer's pages and disables the document's automatic appearance-regeneration flag. |
+| 142 | Deletes the cloned document's ninth page, which will be replaced by the new exhibits. |
+| 143 | Iterates the two newly generated exhibit pages. |
+| 144 | Appends each generated exhibit page to the cloned agreement. |
+| 145 | Sets the combined PDF's title metadata to identify the fictional agent-contact version. |
+| 146 | Opens the designated output PDF in binary-write mode, creating or replacing that output file. |
+| 147 | Serializes the assembled PDF to the open output file. |
+| 148 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 149 | Reopens the saved output for post-write validation. |
+| 150 | Asserts that the combined agreement and exhibits contain ten pages. |
+| 151 | Reads the output's interactive fields, substituting an empty dictionary if absent. |
+| 152 | Asserts that no interactive-field names were added or removed compared with the source. |
+| 153 | Visits every original field to validate its saved canonical value. |
+| 154 | Chooses the requested replacement value for changed fields and the original /V value for all others. |
+| 155 | Asserts that the saved field value matches the expected changed or preserved value. |
+| 156 | Performs additional widget and appearance checks for fields intentionally updated. |
+| 157 | Finds all page annotation objects whose field name matches the updated field. |
+| 158 | Asserts that exactly one widget annotation exists for that updated field. |
+| 159 | Asserts that the widget's own /V value matches the expected canonical field value. |
+| 160 | Reads the widget's normal appearance entry from its appearance dictionary. |
+| 161 | Checks whether the widget is a PDF button/checkbox field with state-specific appearances. |
+| 162 | Asserts that the button widget's selected appearance-state name matches the expected value. |
+| 163 | Selects the normal appearance stream for the expected button state. |
+| 164 | Asserts that the applicable appearance stream has nonempty content. |
+| 165 | Concatenates extracted text from every saved output page with newline separators. |
+| 166 | Concatenates all saved interactive-field values with newline separators for stale-value checks. |
+| 167 | Iterates obsolete no-agent descriptions that should have been removed from text and field values. |
+| 168 | Asserts that the current obsolete description is absent from both readable text and form values. |
+| 169 | Begins the list of fictional agent names, emails, and phone numbers required in readable PDF text. |
+| 170 | Completes that required-contact-fact list with all six work/mobile/home phone numbers. |
+| 171 | Asserts that each required contact fact appears in extracted output text. |
+| 172 | Iterates the key hardcoded transaction amounts that must remain readable in the output. |
+| 173 | Asserts that each required transaction amount is present in extracted output text. |
+| 174 | Asserts specifically that Exhibit A, the ninth output page, contains the purchase price. |
+| 175 | Iterates zero-based page indexes 6 through 9 to render agreement and exhibit review images. |
+| 176 | Opens the saved PDF through PDFium for the current rendering pass. |
+| 177 | Initializes PDF form rendering so widget appearances are included. |
+| 178 | Renders the selected page at 1.6 scale, converts it to a Pillow image, and saves a one-based page-number PNG. |
+| 179 | Closes the PDFium document after rendering the current page. |
+| 180 | Begins printing an indented JSON report with output and backup paths and the validated page count. |
+| 181 | Adds the interactive-field count, replacement map, and passed-validation marker and completes the JSON report. |

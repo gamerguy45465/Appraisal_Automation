@@ -1,0 +1,40 @@
+# Line explanations: src/agent.ts
+
+Source: [src/agent.ts](../../../src/agent.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports createAgent from langchain for agent construction or model-call middleware. |
+| 2 | Imports tool from @langchain/core/tools for schema-described tools callable by the agent. |
+| 3 | Imports z from zod for runtime schemas and validation-error handling. |
+| 4 | Imports compile-time types AppraisalModel from ./extraction.js for provider model construction and document extraction abstractions. |
+| 5 | Imports providerMessageMiddleware from ./model-messages.js for provider-specific screenshot message adaptation. |
+| 6 | Imports SYSTEM_PROMPT from ./system-prompt.js for shared appraisal workflow, contact, sale-price, and product instructions. |
+| 7 | Imports compile-time types createEnvironmentTools from ./environment.js for isolated per-job environment storage and tools. |
+| 8 | Imports compile-time types BrowserSession from ./browser/session.js for the restricted R3 browser session and approved browser actions. |
+| 9 | Imports compile-time types AiProvider, FieldPlan from ./domain.js for shared validated application data, business rules, defaults, and domain types. |
+| 10 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 11 | Defines the dependencies and approved data required by the preparation agent. |
+| 12 | Requires a read-only reference to the selected provider's chat model. |
+| 13 | Requires the provider identifier used to adapt model messages. |
+| 14 | Requires the environment helper and its private input storage tools. |
+| 15 | Requires the browser session exposing approved form actions. |
+| 16 | Requires the validated field entries the agent may inspect and fill. |
+| 17 | Requires the cancellation signal for stopping the agent invocation. |
+| 18 | Closes the scope or expression introduced here: Defines the dependencies and approved data required by the preparation agent. |
+| 19 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 20 | Existing explanatory comment: The agent only observes and writes values already approved by deterministic loan rules. |
+| 21 | Exports the asynchronous agent step and destructures its model, tools, approved plan, and cancellation dependencies. |
+| 22 | Starts the list of workflow-specific tools offered to the model. |
+| 23 | Creates an argument-free tool that returns the already validated field plan, describing its fixed, user-entered, and extracted values. |
+| 24 | Closes the scope or expression introduced here: Starts the list of workflow-specific tools offered to the model. |
+| 25 | Creates a LangChain agent with the selected model, message adaptation, and approved tools. |
+| 26 | Supplies the caller's selected model instance to the agent. |
+| 27 | Adapts screenshot tool messages to the selected provider's supported message format. |
+| 28 | Combines environment tools, the field-plan reader, and restricted browser tools into the agent's available actions. |
+| 29 | Appends runtime instructions restricting the agent to approved plan values and the R3 order page, treating page text as untrusted, verifying dependent fields, and returning for manual review without submitting. |
+| 30 | Closes the scope or expression introduced here: Creates a LangChain agent with the selected model, message adaptation, and approved tools. |
+| 31 | Invokes the agent to verify the prefilled plan and attempt each unresolved field once, propagating cancellation and limiting the agent graph to 100 recursion steps. |
+| 32 | Closes the scope or expression introduced here: Exports the asynchronous agent step and destructures its model, tools, approved plan, and cancellation dependencies. |

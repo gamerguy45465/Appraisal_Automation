@@ -1,0 +1,470 @@
+{
+  "originalSha256": "3b12413a7fffb43386cf46b06c6abdff7cf85da7151088760a073436958ebf46",
+  "annotatedSha256": "ba4b82b43d9da2e4cb5490f52f1c9aefcf2a887411fa52b977ac7f5b0b86ca47",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Documents that the URL list was inspected and that authenticated form inspection needs an account.\n"
+    },
+    {
+      "offset": 201,
+      "text": "// [L2] Exports the public R3 homepage address.\n"
+    },
+    {
+      "offset": 298,
+      "text": "// [L3] Exports the R3 sign-in URL with a return destination of the portal root.\n"
+    },
+    {
+      "offset": 461,
+      "text": "// [L4] Exports the exact R3 page used to prepare a new order.\n"
+    },
+    {
+      "offset": 595,
+      "text": "// [L5] Exports the authenticated order-search landing-page address.\n"
+    },
+    {
+      "offset": 743,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 836,
+      "text": "// [L7] Defines the four browser lifecycle phases used by the request guard.\n"
+    },
+    {
+      "offset": 994,
+      "text": "// [L8] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1087,
+      "text": "// [L9] Starts the set of normalized portal paths allowed for guarded navigation.\n"
+    },
+    {
+      "offset": 1210,
+      "text": "  // [L10] Allows the portal root, both login paths, and the order creation and order-root paths.\n"
+    },
+    {
+      "offset": 1377,
+      "text": "  // [L11] Adds known order index/search and home/default landing paths to the navigation allowlist.\n"
+    },
+    {
+      "offset": 1547,
+      "text": "// [L12] Completes construction of the allowed-navigation-path set.\n"
+    },
+    {
+      "offset": 1619,
+      "text": "// [L13] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1713,
+      "text": "// [L14] Defines the exported predicate for identifying the approved order creation URL.\n"
+    },
+    {
+      "offset": 1856,
+      "text": "  // [L15] Starts protected URL parsing so malformed input returns false rather than throwing.\n"
+    },
+    {
+      "offset": 1959,
+      "text": "    // [L16] Parses the supplied order-page address into its URL components.\n"
+    },
+    {
+      "offset": 2069,
+      "text": "    // [L17] Requires the HTTPS R3 client-portal origin for an order-page match.\n"
+    },
+    {
+      "offset": 2204,
+      "text": "      // [L18] Removes one trailing slash and compares the case-normalized path with the order creation path.\n"
+    },
+    {
+      "offset": 2390,
+      "text": "      // [L19] Also requires the URL to contain no embedded username, password, or query string.\n"
+    },
+    {
+      "offset": 2543,
+      "text": "  // [L20] Handles errors thrown while parsing or checking the order URL.\n"
+    },
+    {
+      "offset": 2629,
+      "text": "    // [L21] Rejects malformed order URLs.\n"
+    },
+    {
+      "offset": 2690,
+      "text": "  // [L22] Ends the order-URL parsing error handler.\n"
+    },
+    {
+      "offset": 2747,
+      "text": "// [L23] Ends the order-URL predicate.\n"
+    },
+    {
+      "offset": 2788,
+      "text": "// [L24] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2882,
+      "text": "// [L25] Defines the exported predicate for known R3 sign-in endpoints.\n"
+    },
+    {
+      "offset": 3008,
+      "text": "  // [L26] Starts protected parsing of the potential login URL.\n"
+    },
+    {
+      "offset": 3080,
+      "text": "    // [L27] Parses the supplied login address into URL components.\n"
+    },
+    {
+      "offset": 3181,
+      "text": "    // [L28] Requires login URLs to belong to the HTTPS R3 client portal.\n"
+    },
+    {
+      "offset": 3309,
+      "text": "      // [L29] Accepts either known login pathname after lowercasing it.\n"
+    },
+    {
+      "offset": 3463,
+      "text": "  // [L30] Handles malformed login URL input.\n"
+    },
+    {
+      "offset": 3521,
+      "text": "    // [L31] Returns false when the login address cannot be parsed.\n"
+    },
+    {
+      "offset": 3607,
+      "text": "  // [L32] Ends the login-URL error handler.\n"
+    },
+    {
+      "offset": 3656,
+      "text": "// [L33] Ends the login-URL predicate.\n"
+    },
+    {
+      "offset": 3697,
+      "text": "// [L34] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3791,
+      "text": "// [L35] Defines the predicate for the authenticated order-search landing page.\n"
+    },
+    {
+      "offset": 3940,
+      "text": "  // [L36] Starts protected parsing of the landing-page address.\n"
+    },
+    {
+      "offset": 4013,
+      "text": "    // [L37] Parses the supplied landing-page URL.\n"
+    },
+    {
+      "offset": 4097,
+      "text": "    // [L38] Requires the client-portal origin and exact case-normalized order-search path.\n"
+    },
+    {
+      "offset": 4294,
+      "text": "      // [L39] Rejects landing URLs with embedded credentials or any query string.\n"
+    },
+    {
+      "offset": 4433,
+      "text": "  // [L40] Converts a URL parsing failure into a false result.\n"
+    },
+    {
+      "offset": 4524,
+      "text": "// [L41] Ends the authenticated landing-page predicate.\n"
+    },
+    {
+      "offset": 4582,
+      "text": "// [L42] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4676,
+      "text": "// [L43] Defines a private allowlist check for CAPTCHA requests, using their URL, method, and main-frame-navigation status.\n"
+    },
+    {
+      "offset": 4897,
+      "text": "  // [L44] Rejects main-frame navigation and requests outside the reCAPTCHA path prefix.\n"
+    },
+    {
+      "offset": 5072,
+      "text": "  // [L45] Allows only GET and HEAD for reCAPTCHA assets on Google's static-content origin.\n"
+    },
+    {
+      "offset": 5258,
+      "text": "  // [L46] Restricts other challenge traffic to the three enumerated reCAPTCHA origins.\n"
+    },
+    {
+      "offset": 5464,
+      "text": "    // [L47] Permits only the four listed HTTP methods for those challenge endpoints.\n"
+    },
+    {
+      "offset": 5610,
+      "text": "// [L48] Ends the CAPTCHA request predicate.\n"
+    },
+    {
+      "offset": 5657,
+      "text": "// [L49] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5751,
+      "text": "// [L50] Describes the request guard's intent to block unverified write endpoints.\n"
+    },
+    {
+      "offset": 5928,
+      "text": "// [L51] Starts the exported request-authorization function and its structured input type.\n"
+    },
+    {
+      "offset": 6059,
+      "text": "  // [L52] Requires the candidate request URL as a string.\n"
+    },
+    {
+      "offset": 6133,
+      "text": "  // [L53] Requires the request's HTTP method.\n"
+    },
+    {
+      "offset": 6198,
+      "text": "  // [L54] Records whether the request performs a document navigation.\n"
+    },
+    {
+      "offset": 6294,
+      "text": "  // [L55] Optionally identifies navigation of the main browser frame.\n"
+    },
+    {
+      "offset": 6400,
+      "text": "  // [L56] Optionally carries the request resource category.\n"
+    },
+    {
+      "offset": 6486,
+      "text": "  // [L57] Requires the current browser phase for phase-dependent decisions.\n"
+    },
+    {
+      "offset": 6586,
+      "text": "// [L58] Completes the input type and begins the boolean authorization implementation.\n"
+    },
+    {
+      "offset": 6687,
+      "text": "  // [L59] Rejects all requests after the session closes.\n"
+    },
+    {
+      "offset": 6791,
+      "text": "  // [L60] Allows requests during human review before applying the automated-phase URL restrictions.\n"
+    },
+    {
+      "offset": 6937,
+      "text": "  // [L61] Declares storage for the parsed request URL.\n"
+    },
+    {
+      "offset": 7009,
+      "text": "  // [L62] Starts URL parsing with a failure handler.\n"
+    },
+    {
+      "offset": 7071,
+      "text": "    // [L63] Parses the candidate request address.\n"
+    },
+    {
+      "offset": 7152,
+      "text": "  // [L64] Handles invalid URL syntax.\n"
+    },
+    {
+      "offset": 7203,
+      "text": "    // [L65] Denies requests whose URL cannot be parsed.\n"
+    },
+    {
+      "offset": 7278,
+      "text": "  // [L66] Ends the URL parsing error handler.\n"
+    },
+    {
+      "offset": 7329,
+      "text": "  // [L67] Requires HTTPS and rejects URLs containing embedded credentials outside the review phase.\n"
+    },
+    {
+      "offset": 7509,
+      "text": "  // [L68] Normalizes the HTTP method to uppercase for comparisons.\n"
+    },
+    {
+      "offset": 7622,
+      "text": "  // [L69] Begins additional rules for the human sign-in phase.\n"
+    },
+    {
+      "offset": 7728,
+      "text": "    // [L70] Explains why the observed post-login navigation step is specially allowed.\n"
+    },
+    {
+      "offset": 7901,
+      "text": "    // [L71] Identifies the R3 account post-login path after removing a trailing slash and normalizing case.\n"
+    },
+    {
+      "offset": 8138,
+      "text": "      // [L72] Allows that post-login step only as a GET/HEAD navigation without a query string.\n"
+    },
+    {
+      "offset": 8326,
+      "text": "    // [L73] Ends the special post-login endpoint check.\n"
+    },
+    {
+      "offset": 8389,
+      "text": "    // [L74] Allows recognized CAPTCHA requests, falling back to the general navigation flag when main-frame status is absent.\n"
+    },
+    {
+      "offset": 8621,
+      "text": "    // [L75] Prevents the order creation page from opening while sign-in is still being confirmed.\n"
+    },
+    {
+      "offset": 8764,
+      "text": "  // [L76] Ends authentication-specific preliminary checks.\n"
+    },
+    {
+      "offset": 8828,
+      "text": "  // [L77] Handles methods other than read-only GET and HEAD.\n"
+    },
+    {
+      "offset": 8937,
+      "text": "    // [L78] Permits such a request only when it is a login POST during authentication.\n"
+    },
+    {
+      "offset": 9115,
+      "text": "  // [L79] Ends the non-read-method branch.\n"
+    },
+    {
+      "offset": 9163,
+      "text": "  // [L80] Begins restrictions for requests that do not navigate a document.\n"
+    },
+    {
+      "offset": 9269,
+      "text": "    // [L81] Stores the resource pathname for allowlist checks.\n"
+    },
+    {
+      "offset": 9364,
+      "text": "    // [L82] Starts the client-portal subresource allowlist.\n"
+    },
+    {
+      "offset": 9479,
+      "text": "      // [L83] Allows known portal asset directories and ICO/PNG favicon paths.\n"
+    },
+    {
+      "offset": 9674,
+      "text": "      // [L84] Begins recognizing read-only client ordering-information lookup paths.\n"
+    },
+    {
+      "offset": 9826,
+      "text": "        // [L85] Also recognizes numeric client/branch/product rush-information lookup paths, including signed trailing numeric parameters.\n"
+    },
+    {
+      "offset": 10062,
+      "text": "        // [L86] Also recognizes numeric client/product requirements lookup paths.\n"
+    },
+    {
+      "offset": 10216,
+      "text": "        // [L87] Also recognizes county lookup paths keyed by a two-letter state abbreviation.\n"
+    },
+    {
+      "offset": 10375,
+      "text": "        // [L88] Also recognizes ordering-information lookups for five-digit postal codes.\n"
+    },
+    {
+      "offset": 10537,
+      "text": "      // [L89] Allows recognized lookups only when every query parameter is a numeric underscore cache-buster; an empty query is also accepted.\n"
+    },
+    {
+      "offset": 10797,
+      "text": "    // [L90] Ends the client-portal subresource branch.\n"
+    },
+    {
+      "offset": 10859,
+      "text": "    // [L91] Allows only WordPress content and include assets on the public R3 site.\n"
+    },
+    {
+      "offset": 11040,
+      "text": "    // [L92] Rejects all remaining non-navigation requests.\n"
+    },
+    {
+      "offset": 11118,
+      "text": "  // [L93] Ends subresource authorization.\n"
+    },
+    {
+      "offset": 11165,
+      "text": "  // [L94] Allows public-site navigation only to its root path without a query string.\n"
+    },
+    {
+      "offset": 11338,
+      "text": "  // [L95] Rejects navigation to any remaining origin outside the client portal.\n"
+    },
+    {
+      "offset": 11483,
+      "text": "  // [L96] Normalizes a trailing slash and path case, then rejects paths outside the known navigation set.\n"
+    },
+    {
+      "offset": 11693,
+      "text": "  // [L97] Explains that login return destinations are constrained to prevent submission redirects.\n"
+    },
+    {
+      "offset": 11883,
+      "text": "  // [L98] Starts validation of query parameters on a recognized login URL.\n"
+    },
+    {
+      "offset": 11989,
+      "text": "    // [L99] Collects all login query-parameter names.\n"
+    },
+    {
+      "offset": 12091,
+      "text": "    // [L100] Rejects any login query key other than ReturnUrl, compared without case sensitivity.\n"
+    },
+    {
+      "offset": 12267,
+      "text": "    // [L101] Requires every login query-parameter value to match an approved return destination.\n"
+    },
+    {
+      "offset": 12424,
+      "text": "      // [L102] Accepts only the portal root or the case-normalized order creation path as a return destination.\n"
+    },
+    {
+      "offset": 12603,
+      "text": "  // [L103] Ends login-specific query validation.\n"
+    },
+    {
+      "offset": 12657,
+      "text": "  // [L104] Rejects any query string on other otherwise-approved navigation URLs.\n"
+    },
+    {
+      "offset": 12761,
+      "text": "// [L105] Ends the request-authorization function.\n"
+    },
+    {
+      "offset": 12814,
+      "text": "// [L106] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12909,
+      "text": "// [L107] Defines a predicate for recognizing post-submission order pages.\n"
+    },
+    {
+      "offset": 13050,
+      "text": "  // [L108] Starts protected parsing of a possible confirmation URL.\n"
+    },
+    {
+      "offset": 13127,
+      "text": "    // [L109] Parses the candidate confirmation address.\n"
+    },
+    {
+      "offset": 13217,
+      "text": "    // [L110] Requires the R3 client-portal origin.\n"
+    },
+    {
+      "offset": 13323,
+      "text": "      // [L111] Accepts order details, view, or confirmation path families without case sensitivity.\n"
+    },
+    {
+      "offset": 13501,
+      "text": "        // [L112] Also accepts numeric order/item dashboard paths with an optional trailing slash.\n"
+    },
+    {
+      "offset": 13677,
+      "text": "  // [L113] Handles malformed confirmation URLs.\n"
+    },
+    {
+      "offset": 13738,
+      "text": "    // [L114] Returns false when the confirmation URL cannot be parsed.\n"
+    },
+    {
+      "offset": 13828,
+      "text": "  // [L115] Ends the confirmation parsing error handler.\n"
+    },
+    {
+      "offset": 13889,
+      "text": "// [L116] Ends the order-confirmation predicate.\n"
+    }
+  ]
+}

@@ -1,0 +1,1742 @@
+{
+  "originalSha256": "f45ca555e59737ad7dbd0a9556a77357b437dae3ede19289253af573d463d2d8",
+  "annotatedSha256": "33d3bceca094cd9c161ad709e127fce14a2316d550b749ebdbc7d6c85c05f74a",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { describe, expect, it } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 129,
+      "text": "// [L2] Import { aiProviders, buildFieldPlan, DEFAULT_MODEL, DEFAULT_MODELS, DEFAULT_PROVIDER, extractionSchema, inputSchema, validateLoan, validatePdf, type ExtractedOrder } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 548,
+      "text": "// [L3] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 641,
+      "text": "// [L4] Declare `contact` as an object containing firstName: \"Sample\", lastName: \"Borrower\", workPhone: null (unknown or absent), homePhone: null (unknown or absent), mobilePhone: \"7025550100\", email: \"borrower@example.test\".\n"
+    },
+    {
+      "offset": 1023,
+      "text": "// [L5] Declare `emptyContact` as an object containing firstName: null (unknown or absent), lastName: null (unknown or absent), workPhone: null (unknown or absent), homePhone: null (unknown or absent), mobilePhone: null (unknown or absent), email: null (unknown or absent).\n"
+    },
+    {
+      "offset": 1421,
+      "text": "// [L6] Declare `sourceOrder` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 1541,
+      "text": "  // [L7] Set fixture property `loanProgram` to \"Conventional\". Set fixture property `loanProgramText` to \"Conventional\". Set fixture property `loanPurpose` to \"Purchase\". Set fixture property `product` to \"1004 SFR CONV\". Set fixture property `propertyType` to \"Single Family\". Set fixture property `occupancy` to \"Owner (Primary Residence)\".\n"
+    },
+    {
+      "offset": 2071,
+      "text": "  // [L8] Set fixture property `property` to an object containing address: \"123 Example St\", unit: null (unknown or absent), postalCode: \"89135\", city: \"Las Vegas\", state: \"NV\".\n"
+    },
+    {
+      "offset": 2357,
+      "text": "  // [L9] Set fixture property `secondaryLoanNumber` to null (unknown or absent). Set fixture property `loanType` to \"Conventional\". Set fixture property `lienPosition` to \"First\". Set fixture property `loanAmount` to 300000. Set fixture property `salePrice` to 400000.\n"
+    },
+    {
+      "offset": 2744,
+      "text": "  // [L10] Set fixture property `lastValuationAmount` to null (unknown or absent). Set fixture property `lastValuationDate` to null (unknown or absent). Set fixture property `borrower` to `contact`. Set fixture property `coBorrower` to an object containing values copied from `contact`, firstName: null (unknown or absent), lastName: null (unknown or absent), mobilePhone: null (unknown or absent), email: null (unknown or absent). Set fixture property `listingAgent` to an object containing values copied from `contact`, workPhone: \"7025550101\".\n"
+    },
+    {
+      "offset": 3512,
+      "text": "  // [L11] Set fixture property `buyerAgent` to `emptyContact`.\n"
+    },
+    {
+      "offset": 3604,
+      "text": "  // [L12] Set fixture property `complexProperty` to false. Set fixture property `highProfileCustomer` to false. Set fixture property `evidence` to an array containing an object containing field: \"loanProgram\", document: \"urla\", page: 1, quote: \"Conventional\", an object containing field: \"loanPurpose\", document: \"urla\", page: 1, quote: \"Purchase\", an object containing field: \"product\", document: \"urla\", page: 1, quote: \"Appraisal required: 1004 SFR CONV\".\n"
+    },
+    {
+      "offset": 4130,
+      "text": "    // [L13] Set fixture property `field` to \"loanProgram\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Conventional\". Set fixture property `field` to \"loanPurpose\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Purchase\".\n"
+    },
+    {
+      "offset": 4635,
+      "text": "    // [L14] Set fixture property `field` to \"product\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Appraisal required: 1004 SFR CONV\".\n"
+    },
+    {
+      "offset": 4934,
+      "text": "  // [L15] Set fixture property `warnings` to an empty array.\n"
+    },
+    {
+      "offset": 5015,
+      "text": "// [L16] Close the fixture object for `sourceOrder` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5105,
+      "text": "// [L17] Declare `input` as the result of `inputSchema.parse` using an object containing apiKey: \"test-key-not-real-1234567890\", loanNumber: \"685-2012345\", paymentMethod: \"Invoice\".\n"
+    },
+    {
+      "offset": 5424,
+      "text": "// [L18] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5518,
+      "text": "// [L19] Group regression tests for \"AI provider input boundary\".\n"
+    },
+    {
+      "offset": 5631,
+      "text": "  // [L20] Register a test that \"exposes exactly the supported provider choices\".\n"
+    },
+    {
+      "offset": 5776,
+      "text": "    // [L21] Assert that `aiProviders` deeply equals an array containing \"openai\", \"anthropic\", \"google\", \"xai\".\n"
+    },
+    {
+      "offset": 5964,
+      "text": "    // [L22] Assert that `DEFAULT_MODELS.google` strictly equals \"gemini-3.8-flash\".\n"
+    },
+    {
+      "offset": 6109,
+      "text": "    // [L23] Assert that `DEFAULT_MODELS.xai` strictly equals \"grok-4.6\".\n"
+    },
+    {
+      "offset": 6232,
+      "text": "  // [L24] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6324,
+      "text": "  // [L25] Register a test that \"defaults omitted provider and model to OpenAI without accepting the obsolete key field\".\n"
+    },
+    {
+      "offset": 6549,
+      "text": "    // [L26] Assert that `input` contains the expected object fields an object containing provider: `DEFAULT_PROVIDER`, model: `DEFAULT_MODEL`, apiKey: \"test-key-not-real-1234567890\".\n"
+    },
+    {
+      "offset": 6860,
+      "text": "    // [L27] Declare `{ apiKey, ...withoutKey }` as `input`.\n"
+    },
+    {
+      "offset": 6966,
+      "text": "    // [L28] Assert that `inputSchema.safeParse(withoutKey).success` strictly equals false.\n"
+    },
+    {
+      "offset": 7125,
+      "text": "    // [L29] Assert that `inputSchema.safeParse({ ...withoutKey, openaiApiKey: apiKey }).success` strictly equals false.\n"
+    },
+    {
+      "offset": 7342,
+      "text": "  // [L30] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7434,
+      "text": "  // [L31] Register a parameterized test that \"resolves omitted, empty, or whitespace-only models for %s\".\n"
+    },
+    {
+      "offset": 7641,
+      "text": "    // [L32] Iterate const model over an array containing `undefined`, \"\", \"  \\t \".\n"
+    },
+    {
+      "offset": 7777,
+      "text": "      // [L33] Assert that `inputSchema.parse({ ...input, provider, model }).model` strictly equals `DEFAULT_MODELS[provider]`.\n"
+    },
+    {
+      "offset": 8006,
+      "text": "    // [L34] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8100,
+      "text": "  // [L35] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8192,
+      "text": "  // [L36] Register a parameterized test that \"preserves custom model IDs for %s instead of enforcing a model prefix\".\n"
+    },
+    {
+      "offset": 8423,
+      "text": "    // [L37] Iterate const model over an array containing \"claude-opus-5\", \"claude-sonnet-4-20250514\", \"gpt-5.6-sol\", \"gemini-3.8-flash\", \"gemini-3.1-pro-preview\", \"gemini-custom-model-id\", \"grok-4.6\", \"grok-custom-model-id\", \"ft:gpt-4.1:organization:custom:id\", \"vendor/model-v2\", the result of `'x'.repeat` using 200.\n"
+    },
+    {
+      "offset": 9012,
+      "text": "      // [L38] Assert that `inputSchema.parse({ ...input, provider, model: ` ${model} ` }).model` strictly equals `model`.\n"
+    },
+    {
+      "offset": 9233,
+      "text": "    // [L39] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 9327,
+      "text": "  // [L40] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 9419,
+      "text": "  // [L41] Register a test that \"rejects unsupported providers, missing or unreasonable keys, and malformed model IDs\".\n"
+    },
+    {
+      "offset": 9640,
+      "text": "    // [L42] For each unsupported provider value (unknown, empty string, incorrectly capitalized OpenAI, or null), assert that input validation fails.\n"
+    },
+    {
+      "offset": 9926,
+      "text": "    // [L43] For missing, null, empty, too-short, and 513-character API keys, assert that input validation fails.\n"
+    },
+    {
+      "offset": 10187,
+      "text": "    // [L44] Begin invalid model-ID cases covering null, nontext values, excessive length, whitespace, and control characters.\n"
+    },
+    {
+      "offset": 10469,
+      "text": "      // [L45] Assert that `inputSchema.safeParse({ ...input, model }).success` strictly equals false.\n"
+    },
+    {
+      "offset": 10650,
+      "text": "    // [L46] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10744,
+      "text": "    // [L47] Assert that `inputSchema.parse({ ...input, apiKey: ` ${input.apiKey} ` }).apiKey` strictly equals `input.apiKey`.\n"
+    },
+    {
+      "offset": 10971,
+      "text": "  // [L48] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 11063,
+      "text": "// [L49] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 11151,
+      "text": "// [L50] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 11245,
+      "text": "// [L51] Group regression tests for \"mortgage preparation rules\".\n"
+    },
+    {
+      "offset": 11358,
+      "text": "  // [L52] Register a test that \"requires the API key, exact loan number and valid payments without R3 credentials\".\n"
+    },
+    {
+      "offset": 11573,
+      "text": "    // [L53] Assert that each malformed loan-number example fails the required branch-specific loan-number validation.\n"
+    },
+    {
+      "offset": 11863,
+      "text": "    // [L54] Assert that `inputSchema.safeParse({ ...input, paymentMethod: 'Cash' }).success` strictly equals false.\n"
+    },
+    {
+      "offset": 12072,
+      "text": "    // [L55] Assert that `inputSchema.safeParse({ ...input, apiKey: '' }).success` strictly equals false.\n"
+    },
+    {
+      "offset": 12259,
+      "text": "    // [L56] Assert that `inputSchema.safeParse(input).success` strictly equals true.\n"
+    },
+    {
+      "offset": 12406,
+      "text": "  // [L57] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12498,
+      "text": "  // [L58] Register a test that \"blocks all VA classifications before browser work\".\n"
+    },
+    {
+      "offset": 12649,
+      "text": "    // [L59] Assert that a callback that returns the result of `validateLoan` using an object containing values copied from `sourceOrder`, loanProgram: \"VA\", `input` throws an error matching \"VA portal\".\n"
+    },
+    {
+      "offset": 12952,
+      "text": "    // [L60] Assert that a callback that returns the result of `validateLoan` using an object containing values copied from `sourceOrder`, loanProgramText: \"VA Interest Rate Reduction\", `input` throws an error matching \"VA portal\".\n"
+    },
+    {
+      "offset": 13311,
+      "text": "  // [L61] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 13403,
+      "text": "  // [L62] Register a parameterized test that \"requires an FHA case for %s\".\n"
+    },
+    {
+      "offset": 13575,
+      "text": "    // [L63] Assert that a callback that returns the result of `validateLoan` using an object containing values copied from `sourceOrder`, loanProgram, `input` throws an error matching \"FHA Case Number\".\n"
+    },
+    {
+      "offset": 13878,
+      "text": "    // [L64] Assert that a callback that returns the result of `validateLoan` using an object containing values copied from `sourceOrder`, loanProgram, an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\" does not satisfy: throws an error.\n"
+    },
+    {
+      "offset": 14266,
+      "text": "  // [L65] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 14358,
+      "text": "  // [L66] Register a test that \"requires URLA evidence for program and purpose, not contract guesses\".\n"
+    },
+    {
+      "offset": 14547,
+      "text": "    // [L67] Assert that a callback that returns the result of `validateLoan` using an object containing values copied from `sourceOrder`, evidence: an empty array, `input` throws an error matching \"supported by the URLA\".\n"
+    },
+    {
+      "offset": 14876,
+      "text": "    // [L68] Assert that a callback that returns the result of `validateLoan` using an object containing values copied from `sourceOrder`, loanProgram: \"Unknown\", `input` throws an error matching \"could not be established\".\n"
+    },
+    {
+      "offset": 15219,
+      "text": "  // [L69] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15311,
+      "text": "  // [L70] Register a test that \"allows sale price only with purchase AND contract, and flips access to borrower on refinance\".\n"
+    },
+    {
+      "offset": 15548,
+      "text": "    // [L71] Assert that `buildFieldPlan(sourceOrder, input, true).plan.find(p => p.key === 'salePrice')?.value` strictly equals \"400000\".\n"
+    },
+    {
+      "offset": 15801,
+      "text": "    // [L72] Assert that `buildFieldPlan(sourceOrder, input, false).plan.find(p => p.key === 'salePrice')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 16044,
+      "text": "    // [L73] Declare `refi` as `buildFieldPlan({ ...sourceOrder, loanPurpose: 'Refinance' }, input, true).plan`.\n"
+    },
+    {
+      "offset": 16254,
+      "text": "    // [L74] Assert that `refi.find(p => p.key === 'salePrice')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 16413,
+      "text": "    // [L75] Assert that `refi.find(p => p.key === 'borrowerIsAccessContact')?.value` strictly equals true.\n"
+    },
+    {
+      "offset": 16604,
+      "text": "    // [L76] Assert that `refi.find(p => p.key === 'contact.firstName')?.value` strictly equals `sourceOrder.borrower.firstName`.\n"
+    },
+    {
+      "offset": 16837,
+      "text": "    // [L77] Assert that `refi.find(p => p.key === 'contact.mobilePhone')?.value` strictly equals `sourceOrder.borrower.mobilePhone`.\n"
+    },
+    {
+      "offset": 17078,
+      "text": "  // [L78] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 17170,
+      "text": "  // [L79] Register a test that \"keeps the stated purchase price distinct from loan amount and preserves unsigned-document review\".\n"
+    },
+    {
+      "offset": 17415,
+      "text": "    // [L80] Declare `documentWarning` as \"The supplied purchase contract is an unsigned sample. Confirm the final terms during review.\".\n"
+    },
+    {
+      "offset": 17677,
+      "text": "    // [L81] Declare `{ plan, warnings, missingRequiredFields }` as the result of `buildFieldPlan` using an object whose fields are defined below, `input`, true.\n"
+    },
+    {
+      "offset": 17926,
+      "text": "      // [L82] Set fixture property `salePrice` to 485000. Set fixture property `loanAmount` to 388000. Set fixture property `warnings` to an array containing `documentWarning`.\n"
+    },
+    {
+      "offset": 18178,
+      "text": "      // [L83] Set fixture property `evidence` to an array containing `...sourceOrder.evidence`, an object containing field: \"salePrice\", document: \"salesContract\", page: 1, quote: \"Purchase Price: $485,000.00\".\n"
+    },
+    {
+      "offset": 18531,
+      "text": "    // [L84] Finish the synthetic extracted order, then pass the trusted input and a true contract-present flag to the field planner.\n"
+    },
+    {
+      "offset": 18686,
+      "text": "    // [L85] Assert that the result of `plan.filter` using a callback that returns `field.key` strictly equals \"salePrice\" deeply equals an array containing an object containing key: \"salePrice\", value: \"485000\", kind: \"text\", required: true.\n"
+    },
+    {
+      "offset": 19069,
+      "text": "    // [L86] Assert that `plan.find(field => field.key === 'loanAmount')?.value` strictly equals \"388000\".\n"
+    },
+    {
+      "offset": 19258,
+      "text": "    // [L87] Assert that `missingRequiredFields` does not satisfy: contains \"salePrice\".\n"
+    },
+    {
+      "offset": 19409,
+      "text": "    // [L88] Assert that `warnings` contains `documentWarning`.\n"
+    },
+    {
+      "offset": 19522,
+      "text": "  // [L89] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 19614,
+      "text": "  // [L90] Register a parameterized test that \"leaves an unknown purchase price unresolved: %s\".\n"
+    },
+    {
+      "offset": 19897,
+      "text": "    // [L91] Declare `data` as the result of `extractionSchema.parse` using an object containing values copied from `sourceOrder`, salePrice: null (unknown or absent), loanAmount: 388000, warnings: an array containing `warning`.\n"
+    },
+    {
+      "offset": 20245,
+      "text": "    // [L92] Assert that `data.salePrice` is null.\n"
+    },
+    {
+      "offset": 20335,
+      "text": "    // [L93] Declare `{ plan, warnings, missingRequiredFields }` as the result of `buildFieldPlan` using `data`, `input`, true.\n"
+    },
+    {
+      "offset": 20552,
+      "text": "    // [L94] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"salePrice\" is undefined.\n"
+    },
+    {
+      "offset": 20762,
+      "text": "    // [L95] Assert that `missingRequiredFields` contains \"salePrice\".\n"
+    },
+    {
+      "offset": 20891,
+      "text": "    // [L96] Assert that `warnings` contains `warning`.\n"
+    },
+    {
+      "offset": 20988,
+      "text": "    // [L97] Assert that `plan.find(field => field.key === 'loanAmount')?.value` strictly equals \"388000\".\n"
+    },
+    {
+      "offset": 21177,
+      "text": "    // [L98] Assert that `extractionSchema.safeParse({ ...data, salePrice: 0 }).success` strictly equals false.\n"
+    },
+    {
+      "offset": 21376,
+      "text": "  // [L99] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 21468,
+      "text": "  // [L100] Register a parameterized test that \"explicitly clears sale price for %s when contract supplied is %s\".\n"
+    },
+    {
+      "offset": 21595,
+      "text": "    // [L101] Provide a parameterized test row with ['Purchase', false], ['Refinance', true], ['Refinance', false],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 21843,
+      "text": "  // [L102] Apply the preceding scenario rows to the parameterized test \"explicitly clears sale price for %s when contract supplied is %s\" and begin its callback.\n"
+    },
+    {
+      "offset": 22120,
+      "text": "    // [L103] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanPurpose, salePrice: 485000, loanAmount: 388000, `input`, `hasContract`.\n"
+    },
+    {
+      "offset": 22499,
+      "text": "    // [L104] Assert that the result of `plan.filter` using a callback that returns `field.key` strictly equals \"salePrice\" deeply equals an array containing an object containing key: \"salePrice\", value: \"\", kind: \"text\", required: false.\n"
+    },
+    {
+      "offset": 22873,
+      "text": "    // [L105] Assert that `missingRequiredFields` does not satisfy: contains \"salePrice\".\n"
+    },
+    {
+      "offset": 23025,
+      "text": "    // [L106] Assert that `plan.find(field => field.key === 'loanAmount')?.value` strictly equals \"388000\".\n"
+    },
+    {
+      "offset": 23215,
+      "text": "  // [L107] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23308,
+      "text": "  // [L108] Register a test that \"preserves fixed branch/contact and user inputs with a unique immutable value plan\".\n"
+    },
+    {
+      "offset": 23524,
+      "text": "    // [L109] Declare `{ plan }` as the result of `buildFieldPlan` using `sourceOrder`, an object containing values copied from `input`, rushOrder: true, paymentMethod: \"Request Payment From The Borrower\", true.\n"
+    },
+    {
+      "offset": 23875,
+      "text": "    // [L110] Assert that `plan.find(p => p.key === 'branch')?.value` strictly equals \"GUILD 685 SUMMERLIN ONE\".\n"
+    },
+    {
+      "offset": 24075,
+      "text": "    // [L111] Assert that `plan.find(p => p.key === 'statusContact.email')?.value` strictly equals \"ambercolemanteam@guildmortgage.net\".\n"
+    },
+    {
+      "offset": 24323,
+      "text": "    // [L112] Assert that `plan.find(p => p.key === 'statusContact.lastName')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 24509,
+      "text": "    // [L113] Assert that `plan.find(p => p.key === 'rushOrder')?.value` strictly equals true.\n"
+    },
+    {
+      "offset": 24673,
+      "text": "    // [L114] Assert that `plan.find(p => p.key === 'paymentMethod')?.value` strictly equals \"Request Payment From The Borrower\".\n"
+    },
+    {
+      "offset": 24907,
+      "text": "    // [L115] Assert that `new Set(plan.map(p => p.key)).size` strictly equals `plan.length`.\n"
+    },
+    {
+      "offset": 25067,
+      "text": "  // [L116] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 25160,
+      "text": "  // [L117] Register a test that \"always plans the fixed loan officer independently of provider, purpose, contract and extracted contacts\".\n"
+    },
+    {
+      "offset": 25420,
+      "text": "    // [L118] Iterate const provider over `aiProviders`.\n"
+    },
+    {
+      "offset": 25622,
+      "text": "      // [L119] Declare `source` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 25806,
+      "text": "        // [L120] Set fixture property `loanOfficer` to an object containing firstName: \"Untrusted\", lastName: \"Document Officer\", workPhone: \"7025550999\", email: \"other@example.test\".\n"
+    },
+    {
+      "offset": 26126,
+      "text": "      // [L121] Declare `{ plan }` as the result of `buildFieldPlan` using `source`, an object containing values copied from `input`, provider, model: `DEFAULT_MODELS[provider]`, `hasContract`.\n"
+    },
+    {
+      "offset": 26437,
+      "text": "      // [L122] Assert that the result of `plan.filter` using a callback that returns the result of `field.key.startsWith` using \"loanOfficer.\" deeply equals an array containing an object containing key: \"loanOfficer.firstName\", value: \"Amber\", kind: \"text\", required: true, an object containing key: \"loanOfficer.lastName\", value: \"Coleman\", kind: \"text\", required: true, an object containing key: \"loanOfficer.workPhone\", value: \"702-604-7027\", kind: \"text\", required: true, an object containing key: \"loanOfficer.email\", value: \"acoleman@guildmortgage.net\", kind: \"text\", required: true.\n"
+    },
+    {
+      "offset": 27111,
+      "text": "        // [L123] Set fixture property `key` to \"loanOfficer.firstName\". Set fixture property `value` to \"Amber\". Set fixture property `kind` to \"text\". Set fixture property `required` to true.\n"
+    },
+    {
+      "offset": 27393,
+      "text": "        // [L124] Set fixture property `key` to \"loanOfficer.lastName\". Set fixture property `value` to \"Coleman\". Set fixture property `kind` to \"text\". Set fixture property `required` to true.\n"
+    },
+    {
+      "offset": 27677,
+      "text": "        // [L125] Set fixture property `key` to \"loanOfficer.workPhone\". Set fixture property `value` to \"702-604-7027\". Set fixture property `kind` to \"text\". Set fixture property `required` to true.\n"
+    },
+    {
+      "offset": 27973,
+      "text": "        // [L126] Set fixture property `key` to \"loanOfficer.email\". Set fixture property `value` to \"acoleman@guildmortgage.net\". Set fixture property `kind` to \"text\". Set fixture property `required` to true.\n"
+    },
+    {
+      "offset": 28289,
+      "text": "      // [L127] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 28384,
+      "text": "      // [L128] Assert that `plan.find(field => field.key === 'statusContact.firstName')?.value` strictly equals \"Amber Coleman Team\".\n"
+    },
+    {
+      "offset": 28628,
+      "text": "      // [L129] Assert that `plan.find(field => field.key === 'statusContact.email')?.value` strictly equals \"ambercolemanteam@guildmortgage.net\".\n"
+    },
+    {
+      "offset": 28896,
+      "text": "      // [L130] Parse the extracted source and assert that an untrusted loanOfficer property is absent from the validated document facts.\n"
+    },
+    {
+      "offset": 29114,
+      "text": "    // [L131] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 29209,
+      "text": "  // [L132] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 29302,
+      "text": "  // [L133] Register a test that \"keeps source warnings and identifies unavailable required information\".\n"
+    },
+    {
+      "offset": 29494,
+      "text": "    // [L134] Declare `{ warnings, plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, product: null (unknown or absent), propertyType: null (unknown or absent), warnings: an array containing \"Contract price conflicts with URLA.\", `input`, false.\n"
+    },
+    {
+      "offset": 30005,
+      "text": "    // [L135] Assert that `warnings` contains \"Contract price conflicts with URLA.\".\n"
+    },
+    {
+      "offset": 30161,
+      "text": "    // [L136] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"product\" strictly equals true.\n"
+    },
+    {
+      "offset": 30396,
+      "text": "    // [L137] Assert that the result of `plan.some` using a callback that returns `field.key` strictly equals \"product\" strictly equals false.\n"
+    },
+    {
+      "offset": 30608,
+      "text": "    // [L138] Assert that `missingRequiredFields` deeply equals the result of `expect.arrayContaining` using an array containing \"product\", \"propertyType\".\n"
+    },
+    {
+      "offset": 30860,
+      "text": "  // [L139] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 30953,
+      "text": "  // [L140] Register a test that \"normalizes inspected dropdowns and identifies baseline product inference for review\".\n"
+    },
+    {
+      "offset": 31173,
+      "text": "    // [L141] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, product: null (unknown or absent), propertyType: \"condo\", occupancy: \"primary residence\", loanProgram: \"FHA\", lienPosition: \"1st\", lastValuationDate: \"2026-01-20\", an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\", true.\n"
+    },
+    {
+      "offset": 31821,
+      "text": "    // [L142] Assert that `plan.find(p => p.key === 'product')?.value` strictly equals \"1073 CONDO FHA\".\n"
+    },
+    {
+      "offset": 32005,
+      "text": "    // [L143] Assert that `plan.find(p => p.key === 'propertyType')?.value` strictly equals \"Condominium\".\n"
+    },
+    {
+      "offset": 32193,
+      "text": "    // [L144] Assert that `plan.find(p => p.key === 'occupancy')?.value` strictly equals \"Owner (Primary Residence)\".\n"
+    },
+    {
+      "offset": 32403,
+      "text": "    // [L145] Assert that `plan.find(p => p.key === 'lastValuationDate')?.value` strictly equals \"01/20/2026\".\n"
+    },
+    {
+      "offset": 32599,
+      "text": "    // [L146] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"selected from the loan program\" strictly equals true.\n"
+    },
+    {
+      "offset": 32880,
+      "text": "  // [L147] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 32973,
+      "text": "  // [L148] Register a parameterized test that \"selects the supported appraisal product dynamically for %s without changing property or occupancy\".\n"
+    },
+    {
+      "offset": 33286,
+      "text": "    // [L149] Iterate const [propertyType, expectedProduct] over an array containing an array containing \"Single Family\", \"1004 SFR - FHA\", an array containing \"Condominium\", \"1073 CONDO FHA\", an array containing \"Manufactured Home\", \"1004C Manuf - FHA\", an array containing \"Two To Four Family\", \"1025 Multi - FHA\".\n"
+    },
+    {
+      "offset": 33655,
+      "text": "      // [L150] Provide a parameterized test row with ['Single Family', '1004 SFR - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 33853,
+      "text": "      // [L151] Provide a parameterized test row with ['Condominium', '1073 CONDO FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34047,
+      "text": "      // [L152] Provide a parameterized test row with ['Manufactured Home', '1004C Manuf - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34259,
+      "text": "      // [L153] Provide a parameterized test row with ['Two To Four Family', '1025 Multi - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34471,
+      "text": "    // [L154] Iterate const product over an array containing null (unknown or absent), \"\", \" \\t \".\n"
+    },
+    {
+      "offset": 34630,
+      "text": "      // [L155] Declare `order` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 34835,
+      "text": "        // [L156] Set fixture property `evidence` to the result of `sourceOrder.evidence.map` using a callback that returns an object containing values copied from `item`, quote: `loanProgram` when `item.field` strictly equals `'loanProgram'`, otherwise `item`.\n"
+    },
+    {
+      "offset": 35222,
+      "text": "      // [L157] Declare `{ plan, warnings, missingRequiredFields }` as the result of `buildFieldPlan` using `order`, an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\", true.\n"
+    },
+    {
+      "offset": 35553,
+      "text": "      // [L158] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" contains the expected object fields an object containing value: `expectedProduct`, kind: \"select\", required: true.\n"
+    },
+    {
+      "offset": 35923,
+      "text": "      // [L159] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"loanType\" contains the expected object fields an object containing value: \"FHA\", required: true.\n"
+    },
+    {
+      "offset": 36241,
+      "text": "      // [L160] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"propertyType\" contains the expected object fields an object containing value: `propertyType`, required: true.\n"
+    },
+    {
+      "offset": 36583,
+      "text": "      // [L161] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 36803,
+      "text": "      // [L162] Assert that `missingRequiredFields` does not satisfy: contains \"product\".\n"
+    },
+    {
+      "offset": 36955,
+      "text": "      // [L163] Assert that `warnings` contains text interpolating `expectedProduct`.\n"
+    },
+    {
+      "offset": 37220,
+      "text": "      // [L164] Run the following branch when `propertyType` strictly equals \"Condominium\". Assert that `plan.find(field => field.key === 'product')?.allowedLabels` or, if null/undefined, an empty array deeply equals an empty array.\n"
+    },
+    {
+      "offset": 37581,
+      "text": "    // [L165] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 37676,
+      "text": "  // [L166] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 37769,
+      "text": "  // [L167] Register a parameterized test that \"approves only the equivalent FHA product labels %s and %s while preserving the stated product\".\n"
+    },
+    {
+      "offset": 37925,
+      "text": "    // [L168] Provide a parameterized test row with ['1004 SFR - FHA', '1004 SFR FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38117,
+      "text": "    // [L169] Provide a parameterized test row with ['1004C Manuf - FHA', '1004C Manuf FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38321,
+      "text": "    // [L170] Provide a parameterized test row with ['1025 Multi - FHA', '1025 Multi FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38521,
+      "text": "  // [L171] Apply the preceding scenario rows to the parameterized test \"approves only the equivalent FHA product labels %s and %s while preserving the stated product\" and begin its callback.\n"
+    },
+    {
+      "offset": 38839,
+      "text": "    // [L172] Iterate const [product, equivalent] over an array containing an array containing `canonical`, `alias`, an array containing `alias`, `canonical`.\n"
+    },
+    {
+      "offset": 39091,
+      "text": "      // [L173] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object whose fields are defined below, an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\", true.\n"
+    },
+    {
+      "offset": 39422,
+      "text": "        // [L174] Set fixture property `evidence` to the result of `sourceOrder.evidence.map` using a callback that returns an object containing values copied from `item`, quote: ``Appraisal required: ${product}`` when `item.field` strictly equals `'product'`, otherwise `item`. Copy the entries of `input` into this fixture. Set fixture property `fhaCaseNumber` to \"123-4567890\".\n"
+    },
+    {
+      "offset": 39996,
+      "text": "      // [L175] Declare `entry` as the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\".\n"
+    },
+    {
+      "offset": 40191,
+      "text": "      // [L176] Assert that `entry` contains the expected object fields an object containing value: `product`, kind: \"select\", required: true.\n"
+    },
+    {
+      "offset": 40421,
+      "text": "      // [L177] Assert that `entry?.allowedLabels` contains `equivalent`.\n"
+    },
+    {
+      "offset": 40553,
+      "text": "      // [L178] Assert that the result of `entry?.allowedLabels?.every` using a callback that returns the result of `[canonical, alias].includes` using `label` strictly equals true.\n"
+    },
+    {
+      "offset": 40834,
+      "text": "      // [L179] Assert that `plan.find(field => field.key === 'propertyType')?.value` strictly equals `sourceOrder.propertyType`.\n"
+    },
+    {
+      "offset": 41066,
+      "text": "      // [L180] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 41286,
+      "text": "      // [L181] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"selected from the loan program\" strictly equals false.\n"
+    },
+    {
+      "offset": 41573,
+      "text": "    // [L182] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 41668,
+      "text": "  // [L183] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 41761,
+      "text": "  // [L184] Register a parameterized test that \"does not infer a single-family product from %s alone\".\n"
+    },
+    {
+      "offset": 41984,
+      "text": "    // [L185] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanProgram, loanProgramText: `loanProgram`, propertyType: null (unknown or absent), product: null (unknown or absent), an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\", true.\n"
+    },
+    {
+      "offset": 42548,
+      "text": "    // [L186] Assert that the result of `plan.some` using a callback that returns `field.key` strictly equals `'product'` or `field.key` strictly equals `'propertyType'` strictly equals false.\n"
+    },
+    {
+      "offset": 42842,
+      "text": "    // [L187] Assert that `missingRequiredFields` deeply equals the result of `expect.arrayContaining` using an array containing \"product\", \"propertyType\".\n"
+    },
+    {
+      "offset": 43094,
+      "text": "    // [L188] Assert that `plan.find(field => field.key === 'loanType')?.value` strictly equals \"FHA\".\n"
+    },
+    {
+      "offset": 43274,
+      "text": "    // [L189] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 43490,
+      "text": "  // [L190] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 43583,
+      "text": "  // [L191] Register a test that \"preserves unusual stated appraisal products without granting FHA aliases\".\n"
+    },
+    {
+      "offset": 43781,
+      "text": "    // [L192] Iterate const product over an array containing \"Document-specific product\", \"1004 SFR FHA with completion report\", \"1004 SFR CONV\".\n"
+    },
+    {
+      "offset": 44042,
+      "text": "      // [L193] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object whose fields are defined below, an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\", true.\n"
+    },
+    {
+      "offset": 44373,
+      "text": "        // [L194] Set fixture property `evidence` to the result of `sourceOrder.evidence.map` using a callback that returns an object containing values copied from `item`, quote: ``Appraisal required: ${product}`` when `item.field` strictly equals `'product'`, otherwise `item`. Copy the entries of `input` into this fixture. Set fixture property `fhaCaseNumber` to \"123-4567890\".\n"
+    },
+    {
+      "offset": 44947,
+      "text": "      // [L195] Declare `entry` as the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\".\n"
+    },
+    {
+      "offset": 45142,
+      "text": "      // [L196] Assert that `entry?.value` strictly equals `product`.\n"
+    },
+    {
+      "offset": 45254,
+      "text": "      // [L197] Assert that `entry?.allowedLabels` or, if null/undefined, an empty array deeply equals an empty array.\n"
+    },
+    {
+      "offset": 45427,
+      "text": "      // [L198] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"selected from the loan program\" strictly equals false.\n"
+    },
+    {
+      "offset": 45714,
+      "text": "    // [L199] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 45809,
+      "text": "  // [L200] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 45902,
+      "text": "  // [L201] Register a parameterized test that \"uses the URLA %s program instead of free-form loan type text\".\n"
+    },
+    {
+      "offset": 46157,
+      "text": "    // [L202] Declare `order` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 46311,
+      "text": "      // [L203] Set fixture property `evidence` to the result of `sourceOrder.evidence.map` using a callback that returns an object containing values copied from `item`, quote: `loanProgram` when `item.field` strictly equals `'loanProgram'`, otherwise `item`.\n"
+    },
+    {
+      "offset": 46694,
+      "text": "    // [L204] Iterate const loanType over an array containing null (unknown or absent), \"\", \"  \", \"Fixed Rate\", \"FHA\" when `loanProgram` strictly equals \"Conventional\", otherwise \"Conventional\".\n"
+    },
+    {
+      "offset": 47007,
+      "text": "      // [L205] Declare `{ plan }` as the result of `buildFieldPlan` using an object containing values copied from `order`, loanType, an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\", true.\n"
+    },
+    {
+      "offset": 47339,
+      "text": "      // [L206] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"loanType\" contains the expected object fields an object containing value: \"Conventional\" when `loanProgram` strictly equals \"Conventional\", otherwise \"FHA\", kind: \"select\", required: true.\n"
+    },
+    {
+      "offset": 47815,
+      "text": "    // [L207] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 47910,
+      "text": "  // [L208] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 48003,
+      "text": "  // [L209] Register a parameterized test that \"maps explicit property description %s before inferring a product\".\n"
+    },
+    {
+      "offset": 48130,
+      "text": "    // [L210] Provide a parameterized test row with [' Single-family detached residence ', 'Single Family', '1004 SFR CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 48398,
+      "text": "    // [L211] Provide a parameterized test row with ['DETACHED SINGLE FAMILY HOME', 'Single Family', '1004 SFR CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 48652,
+      "text": "    // [L212] Provide a parameterized test row with ['Single\\u2011family residence', 'Single Family', '1004 SFR CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 48908,
+      "text": "    // [L213] Provide a parameterized test row with ['single   family home', 'Single Family', '1004 SFR CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 49148,
+      "text": "    // [L214] Provide a parameterized test row with ['Condominium Unit', 'Condominium', '1073 CONDO CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 49380,
+      "text": "    // [L215] Provide a parameterized test row with ['Manufactured housing', 'Manufactured Home', '1004C MANU CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 49632,
+      "text": "    // [L216] Provide a parameterized test row with ['2\\u20134 units', 'Two To Four Family', '1025 Multi-Family CONV'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 49888,
+      "text": "  // [L217] Apply the preceding scenario rows to the parameterized test \"maps explicit property description %s before inferring a product\" and begin its callback.\n"
+    },
+    {
+      "offset": 50179,
+      "text": "    // [L218] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, propertyType, product: \" \\t \", `input`, true.\n"
+    },
+    {
+      "offset": 50474,
+      "text": "    // [L219] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"propertyType\" contains the expected object fields an object containing value: `expectedProperty`, required: true.\n"
+    },
+    {
+      "offset": 50820,
+      "text": "    // [L220] Assert that `plan.find(field => field.key === 'product')?.value` strictly equals `expectedProduct`.\n"
+    },
+    {
+      "offset": 51020,
+      "text": "    // [L221] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"selected from the loan program\" strictly equals true.\n"
+    },
+    {
+      "offset": 51301,
+      "text": "  // [L222] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 51394,
+      "text": "  // [L223] Register a parameterized test that \"leaves ambiguous or unsupported property description %s unresolved\".\n"
+    },
+    {
+      "offset": 51716,
+      "text": "    // [L224] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, propertyType, product: \"\", `input`, true.\n"
+    },
+    {
+      "offset": 52003,
+      "text": "    // [L225] Assert that the result of `plan.some` using a callback that returns `field.key` strictly equals `'propertyType'` or `field.key` strictly equals `'product'` strictly equals false.\n"
+    },
+    {
+      "offset": 52297,
+      "text": "    // [L226] Assert that `warnings` contains \"The document property type could not be mapped to an inspected R3 option. Select it during review.\".\n"
+    },
+    {
+      "offset": 52579,
+      "text": "  // [L227] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 52672,
+      "text": "  // [L228] Register a test that \"preserves a stated product and distinguishes townhouse from single family\".\n"
+    },
+    {
+      "offset": 52872,
+      "text": "    // [L229] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object whose fields are defined below, `input`, true.\n"
+    },
+    {
+      "offset": 53153,
+      "text": "      // [L230] Set fixture property `evidence` to the result of `sourceOrder.evidence.map` using a callback that returns an object containing values copied from `item`, quote: `'Appraisal required: Document-specific product'` when `item.field` strictly equals `'product'`, otherwise `item`.\n"
+    },
+    {
+      "offset": 53614,
+      "text": "    // [L231] Assert that `plan.find(field => field.key === 'propertyType')?.value` strictly equals \"Townhouse or Rowhouse\".\n"
+    },
+    {
+      "offset": 53838,
+      "text": "    // [L232] Assert that `plan.find(field => field.key === 'product')?.value` strictly equals \"Document-specific product\".\n"
+    },
+    {
+      "offset": 54060,
+      "text": "    // [L233] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"selected from the loan program\" strictly equals false.\n"
+    },
+    {
+      "offset": 54343,
+      "text": "    // [L234] Assert that the result of `buildFieldPlan({ ...sourceOrder, propertyType: 'townhouse', product: null }, input, true).plan.some` using a callback that returns `field.key` strictly equals \"product\" strictly equals false.\n"
+    },
+    {
+      "offset": 54735,
+      "text": "  // [L235] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 54828,
+      "text": "  // [L236] Register a test that \"leaves Other programs for review without adopting unsupported loan type text\".\n"
+    },
+    {
+      "offset": 55034,
+      "text": "    // [L237] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanProgram: \"Other\", loanProgramText: \"Other program\", loanType: \"Fixed Rate\", `input`, true.\n"
+    },
+    {
+      "offset": 55427,
+      "text": "    // [L238] Assert that the result of `plan.some` using a callback that returns `field.key` strictly equals \"loanType\" strictly equals false.\n"
+    },
+    {
+      "offset": 55641,
+      "text": "    // [L239] Assert that `warnings` contains \"Missing document information: loanType. Complete this during review.\".\n"
+    },
+    {
+      "offset": 55863,
+      "text": "  // [L240] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 55956,
+      "text": "  // [L241] Register a parameterized test that \"uses the correct %s access contact and keeps both agent sections distinct\".\n"
+    },
+    {
+      "offset": 56222,
+      "text": "    // [L242] Declare `listingAgent` as an object containing values copied from `emptyContact`, firstName: \"Lena\", lastName: \"Listing\", mobilePhone: \"7025550111\", email: \"listing@example.test\".\n"
+    },
+    {
+      "offset": 56560,
+      "text": "    // [L243] Declare `buyerAgent` as an object containing values copied from `emptyContact`, firstName: \"Bailey\", lastName: \"Buyeragent\", workPhone: \"7025550222\", email: \"buyeragent@example.test\".\n"
+    },
+    {
+      "offset": 56906,
+      "text": "    // [L244] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanPurpose, listingAgent, buyerAgent, `input`, true.\n"
+    },
+    {
+      "offset": 57243,
+      "text": "    // [L245] Declare `expectedAccess` as `listingAgent` when `loanPurpose` strictly equals \"Purchase\", otherwise `sourceOrder.borrower`.\n"
+    },
+    {
+      "offset": 57474,
+      "text": "    // [L246] Iterate const [section, expected] over the result of `Object.entries` using an object containing contact: `expectedAccess`, listingAgent, buyerAgent.\n"
+    },
+    {
+      "offset": 57749,
+      "text": "      // [L247] For every expected contact value, assert the matching section field-plan entry equals that value, replacing null or undefined with an explicit empty string.\n"
+    },
+    {
+      "offset": 58069,
+      "text": "    // [L248] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 58164,
+      "text": "    // [L249] Assert that `plan.find(field => field.key === 'borrowerIsAccessContact')?.value` strictly equals `loanPurpose` strictly equals \"Refinance\".\n"
+    },
+    {
+      "offset": 58432,
+      "text": "    // [L250] Assert that the result of `missingRequiredFields.filter` using a callback that returns the result of `key.startsWith` using \"contact.\" deeply equals an empty array.\n"
+    },
+    {
+      "offset": 58700,
+      "text": "    // [L251] Assert that `new Set(plan.map(field => field.key)).size` strictly equals `plan.length`.\n"
+    },
+    {
+      "offset": 58876,
+      "text": "  // [L252] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 58969,
+      "text": "  // [L253] Register a parameterized test that \"accepts a supported %s as the only borrower and access contact channel\".\n"
+    },
+    {
+      "offset": 59250,
+      "text": "    // [L254] Declare `supportedContact` as an object containing values copied from `emptyContact`, firstName: \"Known\", lastName: \"Person\", [channel]: \"contact@example.test\" when `channel` strictly equals \"email\", otherwise \"7025550333\".\n"
+    },
+    {
+      "offset": 59650,
+      "text": "    // [L255] Iterate const loanPurpose over an array containing \"Purchase\", \"Refinance\".\n"
+    },
+    {
+      "offset": 59808,
+      "text": "      // [L256] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanPurpose, borrower: `supportedContact`, listingAgent: `supportedContact`, `input`, true.\n"
+    },
+    {
+      "offset": 60221,
+      "text": "      // [L257] Assert that the result of `missingRequiredFields.filter` using a callback that returns the result of `key.startsWith` using `'borrower.'` or the result of `key.startsWith` using `'contact.'` deeply equals an empty array.\n"
+    },
+    {
+      "offset": 60580,
+      "text": "      // [L258] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals text interpolating `channel` contains the expected object fields an object containing value: `supportedContact[channel]`, required: true.\n"
+    },
+    {
+      "offset": 60968,
+      "text": "      // [L259] Iterate const other over the result of `['workPhone', 'homePhone', 'mobilePhone', 'email'].filter` using a callback that returns `key` does not strictly equal `channel`.\n"
+    },
+    {
+      "offset": 61265,
+      "text": "        // [L260] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals text interpolating `other` contains the expected object fields an object containing value: \"\", required: false.\n"
+    },
+    {
+      "offset": 61607,
+      "text": "      // [L261] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 61706,
+      "text": "    // [L262] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 61801,
+      "text": "  // [L263] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 61894,
+      "text": "  // [L264] Register a test that \"requires an access name and reachable channel without substituting a different person\".\n"
+    },
+    {
+      "offset": 62118,
+      "text": "    // [L265] Declare `listingAgent` as an object containing values copied from `emptyContact`, firstName: \"Only\", lastName: \" \\t \".\n"
+    },
+    {
+      "offset": 62334,
+      "text": "    // [L266] Declare `buyerAgent` as an object containing values copied from `contact`, firstName: \"Different\", lastName: \"Agent\".\n"
+    },
+    {
+      "offset": 62548,
+      "text": "    // [L267] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, listingAgent, buyerAgent, `input`, true.\n"
+    },
+    {
+      "offset": 62859,
+      "text": "    // [L268] Assert that `missingRequiredFields` deeply equals the result of `expect.arrayContaining` using an array containing \"contact.lastName\", \"contact.phoneOrEmail\".\n"
+    },
+    {
+      "offset": 63145,
+      "text": "    // [L269] Assert that `plan.find(field => field.key === 'contact.firstName')?.value` strictly equals \"Only\".\n"
+    },
+    {
+      "offset": 63345,
+      "text": "    // [L270] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"contact.lastName\" contains the expected object fields an object containing value: \"\", required: false.\n"
+    },
+    {
+      "offset": 63671,
+      "text": "    // [L271] Assert that `plan.find(field => field.key === 'contact.mobilePhone')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 63867,
+      "text": "    // [L272] Assert that `plan.find(field => field.key === 'contact.email')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 64051,
+      "text": "    // [L273] Assert that `plan.find(field => field.key === 'buyerAgent.mobilePhone')?.value` strictly equals `buyerAgent.mobilePhone`.\n"
+    },
+    {
+      "offset": 64295,
+      "text": "  // [L274] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 64388,
+      "text": "  // [L275] Register a test that \"omits empty agent sections but preserves partial supported agent facts\".\n"
+    },
+    {
+      "offset": 64582,
+      "text": "    // [L276] Declare `{ plan }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanPurpose: \"Refinance\", listingAgent: `emptyContact`, buyerAgent: an object containing values copied from `emptyContact`, email: \"supported@example.test\", `input`, false.\n"
+    },
+    {
+      "offset": 65074,
+      "text": "    // [L277] Assert that the result of `plan.some` using a callback that returns the result of `field.key.startsWith` using \"listingAgent.\" strictly equals false.\n"
+    },
+    {
+      "offset": 65321,
+      "text": "    // [L278] Assert that `plan.find(field => field.key === 'buyerAgent.email')?.value` strictly equals \"supported@example.test\".\n"
+    },
+    {
+      "offset": 65555,
+      "text": "    // [L279] Assert that `plan.find(field => field.key === 'buyerAgent.firstName')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 65753,
+      "text": "    // [L280] Assert that `plan.find(field => field.key === 'contact.email')?.value` strictly equals `sourceOrder.borrower.email`.\n"
+    },
+    {
+      "offset": 65987,
+      "text": "  // [L281] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 66080,
+      "text": "  // [L282] Register a test that \"leaves access contact unresolved when the loan purpose is not purchase or refinance\".\n"
+    },
+    {
+      "offset": 66300,
+      "text": "    // [L283] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanPurpose: \"Other\", `input`, true.\n"
+    },
+    {
+      "offset": 66603,
+      "text": "    // [L284] Assert that `plan.find(field => field.key === 'contact.firstName')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 66795,
+      "text": "    // [L285] Assert that `plan.find(field => field.key === 'contact.email')?.value` strictly equals \"\".\n"
+    },
+    {
+      "offset": 66979,
+      "text": "    // [L286] Assert that `missingRequiredFields` deeply equals the result of `expect.arrayContaining` using an array containing \"contact.firstName\", \"contact.lastName\", \"contact.phoneOrEmail\".\n"
+    },
+    {
+      "offset": 67307,
+      "text": "  // [L287] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 67400,
+      "text": "  // [L288] Register a test that \"clears missing borrower names before refinance access copying while retaining incomplete-source review\".\n"
+    },
+    {
+      "offset": 67658,
+      "text": "    // [L289] Declare `borrower` as an object containing values copied from `contact`, firstName: null (unknown or absent), lastName: \" \\t \".\n"
+    },
+    {
+      "offset": 67872,
+      "text": "    // [L290] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `sourceOrder`, loanPurpose: \"Refinance\", borrower, `input`, false.\n"
+    },
+    {
+      "offset": 68205,
+      "text": "    // [L291] Iterate const key over an array containing \"borrower.firstName\", \"borrower.lastName\", \"contact.firstName\", \"contact.lastName\".\n"
+    },
+    {
+      "offset": 68456,
+      "text": "      // [L292] Assert that the result of `plan.filter` using a callback that returns `field.key` strictly equals `key` deeply equals an array containing an object containing key, value: \"\", kind: \"text\", required: false.\n"
+    },
+    {
+      "offset": 68794,
+      "text": "      // [L293] Assert that `missingRequiredFields` contains `key`.\n"
+    },
+    {
+      "offset": 68914,
+      "text": "    // [L294] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 69009,
+      "text": "    // [L295] Assert that `plan.find(field => field.key === 'contact.mobilePhone')?.value` strictly equals `contact.mobilePhone`.\n"
+    },
+    {
+      "offset": 69241,
+      "text": "  // [L296] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 69334,
+      "text": "  // [L297] Register a test that \"validates structured extraction and rejects disguised uploads\".\n"
+    },
+    {
+      "offset": 69510,
+      "text": "    // [L298] Assert that `extractionSchema.safeParse(sourceOrder).success` strictly equals true.\n"
+    },
+    {
+      "offset": 69680,
+      "text": "    // [L299] Assert that a callback that returns the result of `validatePdf` using an object containing name: \"test.pdf\", buffer: the result of `Buffer.from` using `'<html>no PDF</html>'` throws an error matching \"valid PDF\".\n"
+    },
+    {
+      "offset": 70025,
+      "text": "  // [L300] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 70118,
+      "text": "// [L301] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 70207,
+      "text": "// [L302] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 70302,
+      "text": "// [L303] Group regression tests for \"appraisal product recommendation provenance\".\n"
+    },
+    {
+      "offset": 70450,
+      "text": "  // [L304] Declare `fhaInput` as an object containing values copied from `input`, fhaCaseNumber: \"123-4567890\".\n"
+    },
+    {
+      "offset": 70626,
+      "text": "  // [L305] Declare `recommendationEvidence` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 70787,
+      "text": "    // [L306] Set fixture property `field` to \"productRecommendation\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"FHA; Number of Units: 1; Manufactured Home: No; Construction: Site Built\".\n"
+    },
+    {
+      "offset": 71189,
+      "text": "  // [L307] Close the fixture object for `recommendationEvidence` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 71295,
+      "text": "  // [L308] Declare `recommendation` as a callback that returns an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 71490,
+      "text": "    // [L309] Copy the entries of `sourceOrder` into this fixture. Set fixture property `loanProgram` to \"FHA\". Set fixture property `loanProgramText` to \"FHA\". Set fixture property `product` to \"1004 SFR - FHA\". Set fixture property `propertyType` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 71879,
+      "text": "    // [L310] Set fixture property `evidence` to an array containing `...sourceOrder.evidence.filter(item => item.field !== 'product') .map(item => item.field === 'loanProgram' ? { ...item, quote: 'FHA' } : item)`, `recommendationEvidence`.\n"
+    },
+    {
+      "offset": 72200,
+      "text": "      // [L311] Copy the entries of `item` into this fixture. Set fixture property `quote` to \"FHA\".\n"
+    },
+    {
+      "offset": 72411,
+      "text": "    // [L312] Copy the entries of `overrides` into this fixture.\n"
+    },
+    {
+      "offset": 72494,
+      "text": "  // [L313] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 72572,
+      "text": "// [L314] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 72667,
+      "text": "  // [L315] Register a parameterized test that \"allows a supported %s recommendation while keeping unknown property type unresolved\".\n"
+    },
+    {
+      "offset": 72952,
+      "text": "    // [L316] Iterate const document over an array containing \"urla\", \"salesContract\".\n"
+    },
+    {
+      "offset": 73176,
+      "text": "      // [L317] Declare `order` as the result of `recommendation` using an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 73370,
+      "text": "        // [L318] Set fixture property `evidence` to an array containing `...sourceOrder.evidence.filter(item => item.field !== 'product') .map(item => item.field === 'loanProgram' ? { ...item, quote: loanProgram } : item)`, an object containing values copied from `recommendationEvidence`, document.\n"
+    },
+    {
+      "offset": 73755,
+      "text": "          // [L319] Copy the entries of `item` into this fixture. Set fixture property `quote` to `loanProgram`. Copy the entries of `recommendationEvidence` into this fixture. Include the current `document` value under the same property name.\n"
+    },
+    {
+      "offset": 74136,
+      "text": "        // [L320] Set fixture property `warnings` to the result of `Array.from` using an object containing length: 14, a callback that returns text interpolating `index` plus `1`.\n"
+    },
+    {
+      "offset": 74407,
+      "text": "      // [L321] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 74493,
+      "text": "      // [L322] Declare `{ plan, warnings, missingRequiredFields }` as the result of `buildFieldPlan` using `order`, `fhaInput`, `hasContract`.\n"
+    },
+    {
+      "offset": 74739,
+      "text": "      // [L323] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" contains the expected object fields an object containing value: \"1004 SFR - FHA\", kind: \"select\", required: true.\n"
+    },
+    {
+      "offset": 75109,
+      "text": "      // [L324] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"propertyType\" is undefined.\n"
+    },
+    {
+      "offset": 75330,
+      "text": "      // [L325] Assert that `missingRequiredFields` contains \"propertyType\".\n"
+    },
+    {
+      "offset": 75470,
+      "text": "      // [L326] Assert that `missingRequiredFields` does not satisfy: contains \"product\".\n"
+    },
+    {
+      "offset": 75622,
+      "text": "      // [L327] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 75842,
+      "text": "      // [L328] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using `'agent recommendation'` and the result of `warning.includes` using `'Confirm the property classification'` strictly equals true.\n"
+    },
+    {
+      "offset": 76251,
+      "text": "      // [L329] Assert that `order.propertyType` is null.\n"
+    },
+    {
+      "offset": 76354,
+      "text": "      // [L330] Assert that `order.warnings` has length 14.\n"
+    },
+    {
+      "offset": 76461,
+      "text": "    // [L331] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 76556,
+      "text": "  // [L332] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 76649,
+      "text": "// [L333] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 76744,
+      "text": "  // [L334] Register a parameterized test that \"accepts each inspected product family only when consistent with %s and the stated property\".\n"
+    },
+    {
+      "offset": 77059,
+      "text": "    // [L335] Iterate const [propertyType, conventionalProduct, fhaProduct] over an array containing an array containing \"Single Family\", \"1004 SFR CONV\", \"1004 SFR - FHA\", an array containing \"Condominium\", \"1073 CONDO CONV\", \"1073 CONDO FHA\", an array containing \"Manufactured Home\", \"1004C MANU CONV\", \"1004C Manuf - FHA\", an array containing \"Two To Four Family\", \"1025 Multi-Family CONV\", \"1025 Multi - FHA\".\n"
+    },
+    {
+      "offset": 77541,
+      "text": "      // [L336] Provide a parameterized test row with ['Single Family', '1004 SFR CONV', '1004 SFR - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 77773,
+      "text": "      // [L337] Provide a parameterized test row with ['Condominium', '1073 CONDO CONV', '1073 CONDO FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 78005,
+      "text": "      // [L338] Provide a parameterized test row with ['Manufactured Home', '1004C MANU CONV', '1004C Manuf - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 78255,
+      "text": "      // [L339] Provide a parameterized test row with ['Two To Four Family', '1025 Multi-Family CONV', '1025 Multi - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 78519,
+      "text": "    // [L340] Finish the scenario array and begin the loop body that checks each listed case.\n"
+    },
+    {
+      "offset": 78631,
+      "text": "      // [L341] Declare `product` as `conventionalProduct` when `loanProgram` strictly equals \"Conventional\", otherwise `fhaProduct`.\n"
+    },
+    {
+      "offset": 78854,
+      "text": "      // [L342] Declare `order` as the result of `recommendation` using an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 79071,
+      "text": "        // [L343] Set fixture property `evidence` to an array containing `...sourceOrder.evidence.filter(item => item.field !== 'product') .map(item => item.field === 'loanProgram' ? { ...item, quote: loanProgram } : item)`, an object containing values copied from `recommendationEvidence`, quote: text interpolating `loanProgram`, `propertyType`.\n"
+    },
+    {
+      "offset": 79503,
+      "text": "          // [L344] Copy the entries of `item` into this fixture. Set fixture property `quote` to `loanProgram`. Copy the entries of `recommendationEvidence` into this fixture. Set fixture property `quote` to text interpolating `loanProgram`, `propertyType`.\n"
+    },
+    {
+      "offset": 79946,
+      "text": "      // [L345] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 80032,
+      "text": "      // [L346] Declare `{ plan, warnings, missingRequiredFields }` as the result of `buildFieldPlan` using `order`, `fhaInput`, true.\n"
+    },
+    {
+      "offset": 80262,
+      "text": "      // [L347] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" contains the expected object fields an object containing value: `product`, required: true.\n"
+    },
+    {
+      "offset": 80584,
+      "text": "      // [L348] Assert that `plan.find(field => field.key === 'propertyType')?.value` strictly equals `propertyType`.\n"
+    },
+    {
+      "offset": 80792,
+      "text": "      // [L349] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 81012,
+      "text": "      // [L350] Assert that `missingRequiredFields` does not satisfy: contains \"product\".\n"
+    },
+    {
+      "offset": 81164,
+      "text": "      // [L351] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"agent recommendation\" strictly equals true.\n"
+    },
+    {
+      "offset": 81429,
+      "text": "    // [L352] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 81524,
+      "text": "  // [L353] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 81617,
+      "text": "// [L354] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 81712,
+      "text": "  // [L355] Register a test that \"accepts only the finite FHA punctuation aliases for recommendations\".\n"
+    },
+    {
+      "offset": 81900,
+      "text": "    // [L356] Iterate const [product, canonical] over an array containing an array containing \"1004 SFR FHA\", \"1004 SFR - FHA\", an array containing \"1004C Manuf FHA\", \"1004C Manuf - FHA\", an array containing \"1025 Multi FHA\", \"1025 Multi - FHA\".\n"
+    },
+    {
+      "offset": 82187,
+      "text": "      // [L357] Provide a parameterized test row with ['1004 SFR FHA', '1004 SFR - FHA'], ['1004C Manuf FHA', '1004C Manuf - FHA'], ['1025 Multi FHA', '1025 Multi - FHA'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 82547,
+      "text": "    // [L358] Finish the scenario array and begin the loop body that checks each listed case.\n"
+    },
+    {
+      "offset": 82659,
+      "text": "      // [L359] Declare `{ plan }` as the result of `buildFieldPlan` using the result of `recommendation` using an object containing product, `fhaInput`, true.\n"
+    },
+    {
+      "offset": 82903,
+      "text": "      // [L360] Declare `entry` as the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\".\n"
+    },
+    {
+      "offset": 83098,
+      "text": "      // [L361] Assert that `entry` contains the expected object fields an object containing kind: \"select\", required: true.\n"
+    },
+    {
+      "offset": 83294,
+      "text": "      // [L362] Assert that an array containing `entry?.value`, `...(entry?.allowedLabels ?? [])` contains `canonical`.\n"
+    },
+    {
+      "offset": 83498,
+      "text": "    // [L363] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 83593,
+      "text": "  // [L364] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 83686,
+      "text": "// [L365] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 83781,
+      "text": "  // [L366] Register a test that \"keeps malformed or mixed recommendation provenance out of the explicit-product and baseline paths\".\n"
+    },
+    {
+      "offset": 84029,
+      "text": "    // [L367] Declare `base` as the result of `recommendation` using an object containing propertyType: \"Single Family\".\n"
+    },
+    {
+      "offset": 84218,
+      "text": "    // [L368] Declare `classificationEvidence` as the result of `base.evidence.filter` using a callback that returns `item.field` does not strictly equal \"productRecommendation\".\n"
+    },
+    {
+      "offset": 84502,
+      "text": "    // [L369] Declare `explicitEvidence` as an object containing field: \"product\", document: \"urla\", page: 1, quote: \"Appraisal: 1004 SFR - FHA\".\n"
+    },
+    {
+      "offset": 84798,
+      "text": "    // [L370] Begin evidence-validation scenarios for proposed appraisal products, pairing each product/evidence combination with whether a contract was supplied.\n"
+    },
+    {
+      "offset": 85090,
+      "text": "      // [L371] Set fixture property `name` to \"empty recommendation quote\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing an object containing values copied from `recommendationEvidence`, quote: \" \\t \". Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 85543,
+      "text": "      // [L372] Set fixture property `name` to \"citation to an absent contract\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing an object containing values copied from `recommendationEvidence`, document: \"salesContract\". Set fixture property `hasContract` to false.\n"
+    },
+    {
+      "offset": 86030,
+      "text": "      // [L373] Set fixture property `name` to \"valid quote alongside an empty recommendation quote\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing `recommendationEvidence`, an object containing values copied from `recommendationEvidence`, quote: \"\". Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 86575,
+      "text": "      // [L374] Set fixture property `name` to \"URLA quote alongside citation to an absent contract\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing `recommendationEvidence`, an object containing values copied from `recommendationEvidence`, document: \"salesContract\". Set fixture property `hasContract` to false.\n"
+    },
+    {
+      "offset": 87154,
+      "text": "      // [L375] Set fixture property `name` to \"mixed explicit and recommendation citations\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing `recommendationEvidence`, `explicitEvidence`. Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 87602,
+      "text": "      // [L376] Set fixture property `name` to \"malformed recommendation beside valid explicit citation\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing an object containing values copied from `recommendationEvidence`, quote: \"\", `explicitEvidence`. Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 88143,
+      "text": "      // [L377] Set fixture property `name` to \"missing recommended value\". Set fixture property `product` to null (unknown or absent). Set fixture property `evidence` to an array containing `recommendationEvidence`. Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 88519,
+      "text": "      // [L378] Set fixture property `name` to \"blank recommended value\". Set fixture property `product` to \" \\t \". Set fixture property `evidence` to an array containing `recommendationEvidence`. Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 88875,
+      "text": "      // [L379] Set fixture property `name` to \"unmarked product\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an empty array. Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 89179,
+      "text": "      // [L380] Set fixture property `name` to \"unrecognized provenance marker\". Set fixture property `product` to `base.product`. Set fixture property `evidence` to an array containing an object containing values copied from `recommendationEvidence`, field: \"ProductRecommendation\". Set fixture property `hasContract` to true.\n"
+    },
+    {
+      "offset": 89674,
+      "text": "    // [L381] Close the array of fixture values for `cases` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 89776,
+      "text": "    // [L382] Iterate const { name, product, evidence, hasContract } over `cases`.\n"
+    },
+    {
+      "offset": 89927,
+      "text": "      // [L383] Declare `{ plan, missingRequiredFields, warnings }` as the result of `buildFieldPlan` using an object containing values copied from `base`, product, evidence: an array containing `...classificationEvidence`, `...evidence`, `fhaInput`, `hasContract`.\n"
+    },
+    {
+      "offset": 90362,
+      "text": "      // [L384] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" is undefined.\n"
+    },
+    {
+      "offset": 90579,
+      "text": "      // [L385] Assert that `missingRequiredFields` contains \"product\".\n"
+    },
+    {
+      "offset": 90715,
+      "text": "      // [L386] Assert that the result of `warnings.some` using a callback that returns the result of `/product/i.test` using `warning` strictly equals true.\n"
+    },
+    {
+      "offset": 90956,
+      "text": "      // [L387] Assert that `plan.find(field => field.key === 'propertyType')?.value` strictly equals \"Single Family\".\n"
+    },
+    {
+      "offset": 91174,
+      "text": "      // [L388] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 91400,
+      "text": "    // [L389] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 91495,
+      "text": "  // [L390] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 91588,
+      "text": "// [L391] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 91683,
+      "text": "  // [L392] Register a test that \"rejects unsupported, conflicting and wrong-program recommendations instead of guessing a substitute\".\n"
+    },
+    {
+      "offset": 91935,
+      "text": "    // [L393] Declare `cases` as an array containing an object containing product: \"FHA 30-year fixed\", an object containing product: \"1004 SFR FHA with completion report\", an object containing product: \"1004 SFR FHA / 1073 CONDO FHA\", an object containing product: \"1073 CONDO - FHA\", an object containing product: \"1004 SFR CONV\", an object containing product: \"1004 SFR USDA\", an object containing loanProgram: \"Conventional\", loanProgramText: \"Conventional\", an object containing loanProgram: \"Other\", loanProgramText: \"Other program\", an object containing propertyType: \"Condominium\", an object containing propertyType: \"Manufactured Home\", an object containing propertyType: \"Two To Four Family\", an object containing propertyType: \"Townhouse or Rowhouse\", an object containing propertyType: \"One Unit\", an object containing propertyType: \"Single Family / Condominium\", an object containing propertyType: \"PUD\".\n"
+    },
+    {
+      "offset": 92905,
+      "text": "      // [L394] Set fixture property `product` to \"FHA 30-year fixed\". Set fixture property `product` to \"1004 SFR FHA with completion report\".\n"
+    },
+    {
+      "offset": 93141,
+      "text": "      // [L395] Set fixture property `product` to \"1004 SFR FHA / 1073 CONDO FHA\". Set fixture property `product` to \"1073 CONDO - FHA\".\n"
+    },
+    {
+      "offset": 93363,
+      "text": "      // [L396] Set fixture property `product` to \"1004 SFR CONV\". Set fixture property `product` to \"1004 SFR USDA\".\n"
+    },
+    {
+      "offset": 93547,
+      "text": "      // [L397] Set fixture property `loanProgram` to \"Conventional\". Set fixture property `loanProgramText` to \"Conventional\". Set fixture property `loanProgram` to \"Other\". Set fixture property `loanProgramText` to \"Other program\".\n"
+    },
+    {
+      "offset": 93913,
+      "text": "      // [L398] Set fixture property `propertyType` to \"Condominium\". Set fixture property `propertyType` to \"Manufactured Home\". Set fixture property `propertyType` to \"Two To Four Family\".\n"
+    },
+    {
+      "offset": 94222,
+      "text": "      // [L399] Set fixture property `propertyType` to \"Townhouse or Rowhouse\". Set fixture property `propertyType` to \"One Unit\".\n"
+    },
+    {
+      "offset": 94432,
+      "text": "      // [L400] Set fixture property `propertyType` to \"Single Family / Condominium\". Set fixture property `propertyType` to \"PUD\".\n"
+    },
+    {
+      "offset": 94644,
+      "text": "    // [L401] Close the array of fixture values for `cases` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 94746,
+      "text": "    // [L402] Iterate const overrides over `cases`.\n"
+    },
+    {
+      "offset": 94835,
+      "text": "      // [L403] Declare `order` as the result of `recommendation` using `overrides`.\n"
+    },
+    {
+      "offset": 94967,
+      "text": "      // [L404] Assign the result of `order.evidence.map` using a callback that returns an object containing values copied from `item`, quote: `order.loanProgramText!` when `item.field` strictly equals `'loanProgram'`, otherwise `item` to `order.evidence`.\n"
+    },
+    {
+      "offset": 95357,
+      "text": "      // [L405] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using `order`, `fhaInput`, true.\n"
+    },
+    {
+      "offset": 95567,
+      "text": "      // [L406] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" is undefined.\n"
+    },
+    {
+      "offset": 95805,
+      "text": "      // [L407] Assert that `missingRequiredFields` contains \"product\".\n"
+    },
+    {
+      "offset": 95962,
+      "text": "      // [L408] Assert that `plan.find(field => field.key === 'occupancy')?.value` strictly equals `sourceOrder.occupancy`.\n"
+    },
+    {
+      "offset": 96182,
+      "text": "    // [L409] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 96277,
+      "text": "  // [L410] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 96370,
+      "text": "// [L411] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 96465,
+      "text": "  // [L412] Register a test that \"requires a supplied-document citation for explicit products without relabelling them as recommendations\".\n"
+    },
+    {
+      "offset": 96725,
+      "text": "    // [L413] Declare `product` as \"Document-specific appraisal with completion inspection\".\n"
+    },
+    {
+      "offset": 96896,
+      "text": "    // [L414] Declare `base` as an object containing values copied from `sourceOrder`, product.\n"
+    },
+    {
+      "offset": 97038,
+      "text": "    // [L415] Declare `classificationEvidence` as the result of `sourceOrder.evidence.filter` using a callback that returns `item.field` does not strictly equal \"product\".\n"
+    },
+    {
+      "offset": 97308,
+      "text": "    // [L416] Iterate const document over an array containing \"urla\", \"salesContract\".\n"
+    },
+    {
+      "offset": 97460,
+      "text": "      // [L417] Declare `evidence` as an array containing `...classificationEvidence`, an object containing field: \"product\", document, page: 1, quote: text interpolating `product`.\n"
+    },
+    {
+      "offset": 97776,
+      "text": "      // [L418] Declare `{ plan, warnings }` as the result of `buildFieldPlan` using an object containing values copied from `base`, evidence, `input`, true.\n"
+    },
+    {
+      "offset": 98019,
+      "text": "      // [L419] Declare `entry` as the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\".\n"
+    },
+    {
+      "offset": 98214,
+      "text": "      // [L420] Assert that `entry` contains the expected object fields an object containing value: `product`, required: true.\n"
+    },
+    {
+      "offset": 98412,
+      "text": "      // [L421] Assert that `entry?.allowedLabels` or, if null/undefined, an empty array deeply equals an empty array.\n"
+    },
+    {
+      "offset": 98585,
+      "text": "      // [L422] Assert that the result of `warnings.some` using a callback that returns the result of `warning.includes` using \"agent recommendation\" strictly equals false.\n"
+    },
+    {
+      "offset": 98852,
+      "text": "    // [L423] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 98947,
+      "text": "    // [L424] Iterate const evidence over an array containing `classificationEvidence`, an array containing `...classificationEvidence`, an object containing field: \"product\", document: `'urla'`, page: 1, quote: \" \\t \", an array containing `...classificationEvidence`, an object containing field: \"product\", document: `'salesContract'`, page: 1, quote: `product`.\n"
+    },
+    {
+      "offset": 99340,
+      "text": "      // [L425] Include the supported property-classification evidence among the recommendation evidence cases.\n"
+    },
+    {
+      "offset": 99482,
+      "text": "      // [L426] Copy the entries of `classificationEvidence` into this fixture. Set fixture property `field` to \"product\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \" \\t \".\n"
+    },
+    {
+      "offset": 99830,
+      "text": "      // [L427] Copy the entries of `classificationEvidence` into this fixture. Set fixture property `field` to \"product\". Set fixture property `document` to \"salesContract\". Set fixture property `page` to 1. Set fixture property `quote` to `product`.\n"
+    },
+    {
+      "offset": 100200,
+      "text": "    // [L428] Finish the scenario array and begin the loop body that checks each listed case.\n"
+    },
+    {
+      "offset": 100303,
+      "text": "      // [L429] Declare `{ plan, missingRequiredFields }` as the result of `buildFieldPlan` using an object containing values copied from `base`, evidence, `input`, false.\n"
+    },
+    {
+      "offset": 100574,
+      "text": "      // [L430] Assert that the result of `plan.find` using a callback that returns `field.key` strictly equals \"product\" is undefined.\n"
+    },
+    {
+      "offset": 100785,
+      "text": "      // [L431] Assert that `missingRequiredFields` contains \"product\".\n"
+    },
+    {
+      "offset": 100915,
+      "text": "    // [L432] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 101010,
+      "text": "  // [L433] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 101103,
+      "text": "// [L434] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

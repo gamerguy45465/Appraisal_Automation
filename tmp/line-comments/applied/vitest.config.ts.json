@@ -1,0 +1,14 @@
+{
+  "originalSha256": "19127df9908d6dd97f5034d6c0e32e7625ac72d3a09c9c5899ae4e345cef1cfa",
+  "annotatedSha256": "dfe12be56f3115da7b7882cd8a4ed8628b66fb52ec3c0e753e32731fee4ad21a",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import Vitest's typed configuration helper.\n"
+    },
+    {
+      "offset": 98,
+      "text": "// [L2] Export a configuration that selects tests/**/*.test.ts and permits 15 seconds per test.\n"
+    }
+  ]
+}

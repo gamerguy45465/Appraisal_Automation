@@ -1,0 +1,378 @@
+{
+  "originalSha256": "79558e359579dda7d97eb008f72e371340dd7fc939f34fa7efd09e81213c8305",
+  "annotatedSha256": "a627ea2ded678a35b180445a87619e8a1a69b69489272d8b26b90e614f62c070",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Loads Node's filesystem module for reading the logo and writing generated SVG files.\n"
+    },
+    {
+      "offset": 119,
+      "text": "// [L2] Loads Node's path module for constructing output and asset paths.\n"
+    },
+    {
+      "offset": 223,
+      "text": "// [L3] Loads Sharp from the specified local runtime dependency path to rasterize SVGs and inspect PNG metadata.\n"
+    },
+    {
+      "offset": 458,
+      "text": "// [L4] Uses the script's directory as the output directory.\n"
+    },
+    {
+      "offset": 542,
+      "text": "// [L5] Reads the local Guild logo PNG and encodes it as base64 for embedding directly in SVG markup.\n"
+    },
+    {
+      "offset": 743,
+      "text": "// [L6] Defines named hexadecimal colors used throughout both graphic layouts.\n"
+    },
+    {
+      "offset": 932,
+      "text": "// [L7] Defines escaping of ampersands and angle brackets before inserting text into SVG markup.\n"
+    },
+    {
+      "offset": 1116,
+      "text": "// [L8] Defines an SVG text-element helper with coordinates, size, weight, color, alignment, and escaped text content.\n"
+    },
+    {
+      "offset": 1438,
+      "text": "// [L9] Defines an SVG rectangle helper using the supplied position, dimensions, and fill color.\n"
+    },
+    {
+      "offset": 1637,
+      "text": "// [L10] Defines an SVG line helper with configurable endpoints, color, and stroke width.\n"
+    },
+    {
+      "offset": 1877,
+      "text": "// [L11] Defines an embedded-logo helper whose height preserves the logo's 1081-by-557 aspect ratio.\n"
+    },
+    {
+      "offset": 2106,
+      "text": "// [L12] Defines the portrait graphic's SVG content layout.\n"
+    },
+    {
+      "offset": 2188,
+      "text": "  // [L13] Begins the ordered array of SVG fragments for the portrait graphic.\n"
+    },
+    {
+      "offset": 2278,
+      "text": "    // [L14] Places the embedded Guild logo at the upper left of the portrait graphic.\n"
+    },
+    {
+      "offset": 2387,
+      "text": "    // [L15] Adds positioned SVG text in the portrait layout: 'Nevada market update'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 2577,
+      "text": "    // [L16] Adds positioned SVG text in the portrait layout: 'Sept. 9, 2026'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 2755,
+      "text": "    // [L17] Adds positioned SVG text in the portrait layout: 'Bonds, rates and'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 2930,
+      "text": "    // [L18] Adds positioned SVG text in the portrait layout: 'your Nevada home'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 3105,
+      "text": "    // [L19] Adds positioned SVG text in the portrait layout: 'Higher bond yields can keep'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 3291,
+      "text": "    // [L20] Adds positioned SVG text in the portrait layout: 'mortgage rates elevated.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 3471,
+      "text": "    // [L21] Adds positioned SVG text in the portrait layout: '4.83%'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 3625,
+      "text": "    // [L22] Adds positioned SVG text in the portrait layout: '10-year Treasury yield'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 3805,
+      "text": "    // [L23] Adds positioned SVG text in the portrait layout: 'Sept. 9, 2026'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 3963,
+      "text": "    // [L24] Draws the vertical separator between the Treasury-yield and mortgage-rate figures.\n"
+    },
+    {
+      "offset": 4086,
+      "text": "    // [L25] Adds positioned SVG text in the portrait layout: '6.71%'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 4241,
+      "text": "    // [L26] Adds positioned SVG text in the portrait layout: 'U.S. 30-year fixed average'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 4430,
+      "text": "    // [L27] Adds positioned SVG text in the portrait layout: 'Sept. 3, 2026'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 4589,
+      "text": "    // [L28] Draws the yellow divider beneath the portrait graphic's rate figures.\n"
+    },
+    {
+      "offset": 4705,
+      "text": "    // [L29] Adds positioned SVG text in the portrait layout: 'August 2026 housing snapshot'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 4904,
+      "text": "    // [L30] Adds positioned SVG text in the portrait layout: 'Single-family median sale prices'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 5100,
+      "text": "    // [L31] Draws neutral background panels for the Reno and Las Vegas housing statistics.\n"
+    },
+    {
+      "offset": 5260,
+      "text": "    // [L32] Adds positioned SVG text in the portrait layout: 'Reno area'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 5421,
+      "text": "    // [L33] Adds positioned SVG text in the portrait layout: 'Washoe County*'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 5581,
+      "text": "    // [L34] Adds positioned SVG text in the portrait layout: '$620,000'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 5740,
+      "text": "    // [L35] Adds positioned SVG text in the portrait layout: '+5.1% from a year ago'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 5915,
+      "text": "    // [L36] Adds positioned SVG text in the portrait layout: 'Las Vegas area'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 6087,
+      "text": "    // [L37] Adds positioned SVG text in the portrait layout: 'Southern Nevada'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 6250,
+      "text": "    // [L38] Adds positioned SVG text in the portrait layout: '$475,000'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 6410,
+      "text": "    // [L39] Adds positioned SVG text in the portrait layout: '−1.0% from a year ago'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 6586,
+      "text": "    // [L40] Adds positioned SVG text in the portrait layout: 'Shop the home price and the monthly payment.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 6818,
+      "text": "    // [L41] Adds positioned SVG text in the portrait layout: 'Talk with Guild Mortgage about your budget.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 7037,
+      "text": "    // [L42] Draws the horizontal separator above the portrait graphic's disclosures and sources.\n"
+    },
+    {
+      "offset": 7164,
+      "text": "    // [L43] Adds positioned SVG text in the portrait layout: 'National mortgage survey average, not a loan offer. Your rate may differ.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 7443,
+      "text": "    // [L44] Adds positioned SVG text in the portrait layout: 'Sources: U.S. Treasury; Freddie Mac; Sierra Nevada REALTORS®;'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 7698,
+      "text": "    // [L45] Adds positioned SVG text in the portrait layout: 'Las Vegas REALTORS®. *SNR coverage excludes Incline Village.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 7951,
+      "text": "    // [L46] Adds positioned SVG text in the portrait layout: 'NMLS #3274 | NV Mortgage Company #1141 | Equal Housing Opportunity'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 8215,
+      "text": "  // [L47] Concatenates the portrait SVG fragments without separators and returns the resulting markup.\n"
+    },
+    {
+      "offset": 8333,
+      "text": "// [L48] Ends the portrait layout function.\n"
+    },
+    {
+      "offset": 8379,
+      "text": "// [L49] Defines the square graphic's SVG content layout.\n"
+    },
+    {
+      "offset": 8457,
+      "text": "  // [L50] Begins the ordered array of SVG fragments for the square graphic.\n"
+    },
+    {
+      "offset": 8545,
+      "text": "    // [L51] Places the embedded Guild logo at the upper left of the square graphic.\n"
+    },
+    {
+      "offset": 8652,
+      "text": "    // [L52] Adds positioned SVG text in the square layout: 'Reno • Las Vegas'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 8832,
+      "text": "    // [L53] Adds positioned SVG text in the square layout: 'Sept. 9, 2026'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 9008,
+      "text": "    // [L54] Adds positioned SVG text in the square layout: 'Bonds and your home loan'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 9197,
+      "text": "    // [L55] Adds positioned SVG text in the square layout: 'Higher bond yields can keep mortgage rates elevated.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 9431,
+      "text": "    // [L56] Adds positioned SVG text in the square layout: '4.83%'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 9582,
+      "text": "    // [L57] Adds positioned SVG text in the square layout: '10-year Treasury yield'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 9760,
+      "text": "    // [L58] Adds positioned SVG text in the square layout: 'Sept. 9, 2026'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 9916,
+      "text": "    // [L59] Draws the vertical separator between the two rate figures in the square layout.\n"
+    },
+    {
+      "offset": 10036,
+      "text": "    // [L60] Adds positioned SVG text in the square layout: '6.71%'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 10188,
+      "text": "    // [L61] Adds positioned SVG text in the square layout: 'U.S. 30-year fixed average'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 10375,
+      "text": "    // [L62] Adds positioned SVG text in the square layout: 'Sept. 3, 2026'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 10532,
+      "text": "    // [L63] Draws the yellow divider above the square layout's housing snapshot.\n"
+    },
+    {
+      "offset": 10647,
+      "text": "    // [L64] Adds positioned SVG text in the square layout: 'August 2026 • Single-family median sale prices'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 10880,
+      "text": "    // [L65] Draws the square layout's neutral background panels for Reno and Las Vegas figures.\n"
+    },
+    {
+      "offset": 11045,
+      "text": "    // [L66] Adds positioned SVG text in the square layout: 'Reno area'; 'Washoe County*'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 11252,
+      "text": "    // [L67] Adds positioned SVG text in the square layout: '$620,000'; '+5.1% from a year ago'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 11471,
+      "text": "    // [L68] Adds positioned SVG text in the square layout: 'Las Vegas area'; 'Southern Nevada'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 11692,
+      "text": "    // [L69] Adds positioned SVG text in the square layout: '$475,000'; '−1.0% from a year ago'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 11913,
+      "text": "    // [L70] Adds positioned SVG text in the square layout: 'Shop the home price and the monthly payment.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 12142,
+      "text": "    // [L71] Adds positioned SVG text in the square layout: 'Talk with Guild Mortgage about your budget.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 12358,
+      "text": "    // [L72] Draws the horizontal separator above the square layout's disclosures and sources.\n"
+    },
+    {
+      "offset": 12480,
+      "text": "    // [L73] Adds positioned SVG text in the square layout: 'National mortgage survey average, not a loan offer. Your rate may differ.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 12756,
+      "text": "    // [L74] Adds positioned SVG text in the square layout: 'Sources: U.S. Treasury; Freddie Mac; Sierra Nevada REALTORS®;'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 13008,
+      "text": "    // [L75] Adds positioned SVG text in the square layout: 'Las Vegas REALTORS®. *SNR coverage excludes Incline Village.'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 13258,
+      "text": "    // [L76] Adds positioned SVG text in the square layout: 'NMLS #3274 | NV Mortgage Company #1141 | Equal Housing Opportunity'. These strings are hardcoded graphic content.\n"
+    },
+    {
+      "offset": 13520,
+      "text": "  // [L77] Concatenates the square SVG fragments without separators and returns the resulting markup.\n"
+    },
+    {
+      "offset": 13636,
+      "text": "// [L78] Ends the square layout function.\n"
+    },
+    {
+      "offset": 13680,
+      "text": "// [L79] Defines the complete SVG document wrapper for a supplied height and content fragment.\n"
+    },
+    {
+      "offset": 13806,
+      "text": "  // [L80] Returns a 1080-pixel-wide SVG with a white background, Arial text, the supplied layout, and accessible title/description containing the hardcoded market figures.\n"
+    },
+    {
+      "offset": 14707,
+      "text": "// [L81] Ends the SVG document-wrapper helper.\n"
+    },
+    {
+      "offset": 14756,
+      "text": "// [L82] Converts a hexadecimal RGB color to linearized sRGB components and computes weighted relative luminance.\n"
+    },
+    {
+      "offset": 15050,
+      "text": "// [L83] Computes the luminance contrast ratio of two colors using the brighter-over-darker formula with 0.05 offsets.\n"
+    },
+    {
+      "offset": 15264,
+      "text": "// [L84] Starts an immediately invoked asynchronous routine that exports both graphic sizes.\n"
+    },
+    {
+      "offset": 15369,
+      "text": "  // [L85] Iterates the portrait (1080 by 1350) and square (1080 by 1080) names, heights, and generated SVG content.\n"
+    },
+    {
+      "offset": 15605,
+      "text": "    // [L86] Wraps the current layout content in a complete SVG document of the requested height.\n"
+    },
+    {
+      "offset": 15738,
+      "text": "    // [L87] Writes the current SVG document to its named file in the script's output directory.\n"
+    },
+    {
+      "offset": 15892,
+      "text": "    // [L88] Rasterizes the in-memory SVG with Sharp and writes the corresponding PNG file.\n"
+    },
+    {
+      "offset": 16063,
+      "text": "    // [L89] Reads the generated PNG's metadata with Sharp.\n"
+    },
+    {
+      "offset": 16190,
+      "text": "    // [L90] Logs the generated PNG filename, width, and height as JSON.\n"
+    },
+    {
+      "offset": 16352,
+      "text": "  // [L91] Ends the loop exporting the portrait and square graphics.\n"
+    },
+    {
+      "offset": 16425,
+      "text": "  // [L92] Logs contrast ratios for blue and black on white and neutral backgrounds.\n"
+    },
+    {
+      "offset": 16715,
+      "text": "// [L93] Invokes the export routine, logs any rejected error, and exits the process with status 1 on failure.\n"
+    }
+  ]
+}

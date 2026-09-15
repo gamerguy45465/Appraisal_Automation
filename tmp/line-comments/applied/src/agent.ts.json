@@ -1,0 +1,134 @@
+{
+  "originalSha256": "e530ed393a00e36d54c4182a64e4a3e5b561192fb47d71566f1ccaa8c5fef08d",
+  "annotatedSha256": "0078ddc98ea0472bbc4b103b05686aca1f81a9d50eb22fdc3888082586ae75bb",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports createAgent from langchain for agent construction or model-call middleware.\n"
+    },
+    {
+      "offset": 133,
+      "text": "// [L2] Imports tool from @langchain/core/tools for schema-described tools callable by the agent.\n"
+    },
+    {
+      "offset": 277,
+      "text": "// [L3] Imports z from zod for runtime schemas and validation-error handling.\n"
+    },
+    {
+      "offset": 380,
+      "text": "// [L4] Imports compile-time types AppraisalModel from ./extraction.js for provider model construction and document extraction abstractions.\n"
+    },
+    {
+      "offset": 576,
+      "text": "// [L5] Imports providerMessageMiddleware from ./model-messages.js for provider-specific screenshot message adaptation.\n"
+    },
+    {
+      "offset": 761,
+      "text": "// [L6] Imports SYSTEM_PROMPT from ./system-prompt.js for shared appraisal workflow, contact, sale-price, and product instructions.\n"
+    },
+    {
+      "offset": 945,
+      "text": "// [L7] Imports compile-time types createEnvironmentTools from ./environment.js for isolated per-job environment storage and tools.\n"
+    },
+    {
+      "offset": 1141,
+      "text": "// [L8] Imports compile-time types BrowserSession from ./browser/session.js for the restricted R3 browser session and approved browser actions.\n"
+    },
+    {
+      "offset": 1345,
+      "text": "// [L9] Imports compile-time types AiProvider, FieldPlan from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 1560,
+      "text": "// [L10] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1654,
+      "text": "// [L11] Defines the dependencies and approved data required by the preparation agent.\n"
+    },
+    {
+      "offset": 1766,
+      "text": "  // [L12] Requires a read-only reference to the selected provider's chat model.\n"
+    },
+    {
+      "offset": 1881,
+      "text": "  // [L13] Requires the provider identifier used to adapt model messages.\n"
+    },
+    {
+      "offset": 1988,
+      "text": "  // [L14] Requires the environment helper and its private input storage tools.\n"
+    },
+    {
+      "offset": 2135,
+      "text": "  // [L15] Requires the browser session exposing approved form actions.\n"
+    },
+    {
+      "offset": 2243,
+      "text": "  // [L16] Requires the validated field entries the agent may inspect and fill.\n"
+    },
+    {
+      "offset": 2353,
+      "text": "  // [L17] Requires the cancellation signal for stopping the agent invocation.\n"
+    },
+    {
+      "offset": 2464,
+      "text": "// [L18] Closes the scope or expression introduced here: Defines the dependencies and approved data required by the preparation agent.\n"
+    },
+    {
+      "offset": 2601,
+      "text": "// [L19] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2695,
+      "text": "// [L20] Existing explanatory comment: The agent only observes and writes values already approved by deterministic loan rules.\n"
+    },
+    {
+      "offset": 2917,
+      "text": "// [L21] Exports the asynchronous agent step and destructures its model, tools, approved plan, and cancellation dependencies.\n"
+    },
+    {
+      "offset": 3175,
+      "text": "  // [L22] Starts the list of workflow-specific tools offered to the model.\n"
+    },
+    {
+      "offset": 3277,
+      "text": "    // [L23] Creates an argument-free tool that returns the already validated field plan, describing its fixed, user-entered, and extracted values.\n"
+    },
+    {
+      "offset": 3670,
+      "text": "  // [L24] Closes the scope or expression introduced here: Starts the list of workflow-specific tools offered to the model.\n"
+    },
+    {
+      "offset": 3799,
+      "text": "  // [L25] Creates a LangChain agent with the selected model, message adaptation, and approved tools.\n"
+    },
+    {
+      "offset": 3931,
+      "text": "    // [L26] Supplies the caller's selected model instance to the agent.\n"
+    },
+    {
+      "offset": 4015,
+      "text": "    // [L27] Adapts screenshot tool messages to the selected provider's supported message format.\n"
+    },
+    {
+      "offset": 4168,
+      "text": "    // [L28] Combines environment tools, the field-plan reader, and restricted browser tools into the agent's available actions.\n"
+    },
+    {
+      "offset": 4368,
+      "text": "    // [L29] Appends runtime instructions restricting the agent to approved plan values and the R3 order page, treating page text as untrusted, verifying dependent fields, and returning for manual review without submitting.\n"
+    },
+    {
+      "offset": 5923,
+      "text": "  // [L30] Closes the scope or expression introduced here: Creates a LangChain agent with the selected model, message adaptation, and approved tools.\n"
+    },
+    {
+      "offset": 6079,
+      "text": "  // [L31] Invokes the agent to verify the prefilled plan and attempt each unresolved field once, propagating cancellation and limiting the agent graph to 100 recursion steps.\n"
+    },
+    {
+      "offset": 6850,
+      "text": "// [L32] Closes the scope or expression introduced here: Exports the asynchronous agent step and destructures its model, tools, approved plan, and cancellation dependencies.\n"
+    }
+  ]
+}

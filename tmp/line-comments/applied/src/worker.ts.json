@@ -1,0 +1,78 @@
+{
+  "originalSha256": "f80d8f104c4f49b6c13c2e7395537162c9181794daa752721a283c9169b60f64",
+  "annotatedSha256": "2083ce14be8ac69bd0f0731f7256b3a8972539102f35147c20dccd2ef2d15b07",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports compile-time types JobPayload, WorkerUpdate from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 221,
+      "text": "// [L2] Imports runPreparation from ./preparation.js for the full extraction, form preparation, review, and cleanup lifecycle.\n"
+    },
+    {
+      "offset": 399,
+      "text": "// [L3] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 492,
+      "text": "// [L4] Creates the worker's cancellation controller for parent-requested automation stops.\n"
+    },
+    {
+      "offset": 626,
+      "text": "// [L5] Accepts the first parent IPC message as this worker's job payload and starts its single-job lifecycle.\n"
+    },
+    {
+      "offset": 788,
+      "text": "  // [L6] Defines handling of later control messages received from the parent process.\n"
+    },
+    {
+      "offset": 920,
+      "text": "    // [L7] Aborts preparation only for an object carrying the explicit stop_preparation message type.\n"
+    },
+    {
+      "offset": 1151,
+      "text": "  // [L8] Closes the scope or expression introduced here: Defines handling of later control messages received from the parent process.\n"
+    },
+    {
+      "offset": 1291,
+      "text": "  // [L9] Registers the stop-control listener after the initial job payload arrives.\n"
+    },
+    {
+      "offset": 1407,
+      "text": "  // [L10] Defines status forwarding over IPC only while the parent connection remains open.\n"
+    },
+    {
+      "offset": 1603,
+      "text": "  // [L11] Starts preparation with status reporting and the worker abort signal, attaching a fallback for unexpected rejected failures.\n"
+    },
+    {
+      "offset": 1825,
+      "text": "    // [L12] Sends a fixed failed status if preparation rejects outside its normal lifecycle handling.\n"
+    },
+    {
+      "offset": 2037,
+      "text": "    // [L13] Sets the worker's eventual exit code to indicate failure.\n"
+    },
+    {
+      "offset": 2134,
+      "text": "  // [L14] Starts IPC cleanup that runs after preparation settles successfully or unsuccessfully.\n"
+    },
+    {
+      "offset": 2253,
+      "text": "    // [L15] Removes the control-message listener so the completed worker no longer accepts stop requests.\n"
+    },
+    {
+      "offset": 2405,
+      "text": "    // [L16] Disconnects the parent IPC channel if it remains connected, allowing the worker to exit naturally.\n"
+    },
+    {
+      "offset": 2568,
+      "text": "  // [L17] Closes the scope or expression introduced here: Starts IPC cleanup that runs after preparation settles successfully or unsuccessfully.\n"
+    },
+    {
+      "offset": 2720,
+      "text": "// [L18] Closes the scope or expression introduced here: Accepts the first parent IPC message as this worker's job payload and starts its single-job lifecycle.\n"
+    }
+  ]
+}

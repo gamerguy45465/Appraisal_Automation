@@ -1,0 +1,12 @@
+{
+  "1": "Open the root JSON object containing this file's configuration or dependency records.",
+  "2": "Starts TypeScript compiler settings at compilerOptions: values follow.",
+  "3": "Selects the ECMAScript language level of emitted code at compilerOptions / target: \"ES2023\". Uses Node-aware module emission and interpretation at compilerOptions / module: \"NodeNext\". Uses Node-aware import resolution at compilerOptions / moduleResolution: \"NodeNext\".",
+  "4": "Selects built-in runtime/browser declaration libraries at compilerOptions / lib: values follow. Enables the group of strict TypeScript checks at compilerOptions / strict: true.",
+  "5": "Adds possible undefined to unchecked index-access types at compilerOptions / noUncheckedIndexedAccess: true. Enables compatibility helpers for CommonJS imports at compilerOptions / esModuleInterop: true. Skips checking declaration-file contents at compilerOptions / skipLibCheck: true.",
+  "6": "Requires consistent filename capitalization in imports at compilerOptions / forceConsistentCasingInFileNames: true. Allows typed JSON imports at compilerOptions / resolveJsonModule: true.",
+  "7": "Limits automatically included ambient type packages at compilerOptions / types: values follow. Sets the output directory for compiled files at compilerOptions / outDir: \"dist\".",
+  "8": "Close compilerOptions and preserve the surrounding JSON separators.",
+  "9": "Lists file patterns included by this configuration at include: values follow.",
+  "10": "Close root JSON object and preserve the surrounding JSON separators."
+}

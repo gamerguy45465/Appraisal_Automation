@@ -1,0 +1,1038 @@
+{
+  "originalSha256": "6907863039c2247688d23d45fea7296a1443cecdb53ae99417e2e004b7063bae",
+  "annotatedSha256": "3e8e29d2c54dff654a59e61540e3effa54bf8512705a6b68fc42b2a7873ef4c9",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "<!-- [L1] Declares an HTML5 document so browsers use standards mode. -->"
+    },
+    {
+      "offset": 88,
+      "text": "<!-- [L2] Defines the English-language HTML document root. Declares document language 'en'. -->"
+    },
+    {
+      "offset": 200,
+      "text": "<!-- [L3] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 298,
+      "text": "<!-- [L4] Defines document metadata and asset references. -->"
+    },
+    {
+      "offset": 366,
+      "text": "<!-- [L5] Defines document metadata. Declares the 'utf-8' character encoding. -->"
+    },
+    {
+      "offset": 474,
+      "text": "<!-- [L6] Defines document metadata. Sets the name to 'viewport' for metadata identification or submitted form data. Supplies metadata content 'width=device-width, initial-scale=1'. -->"
+    },
+    {
+      "offset": 732,
+      "text": "<!-- [L7] Defines document metadata. Sets the name to 'color-scheme' for metadata identification or submitted form data. Supplies metadata content 'light'. -->"
+    },
+    {
+      "offset": 938,
+      "text": "<!-- [L8] Defines document metadata. Sets the name to 'theme-color' for metadata identification or submitted form data. Supplies metadata content '#163b43'. -->"
+    },
+    {
+      "offset": 1146,
+      "text": "<!-- [L9] Defines document metadata. Sets the name to 'description' for metadata identification or submitted form data. --><!-- [L10] Supplies metadata content 'Prepare an R3 AMC appraisal order from your loan documents, then review and submit it yourself.'. -->"
+    },
+    {
+      "offset": 1435,
+      "text": ""
+    },
+    {
+      "offset": 1548,
+      "text": "<!-- [L11] Defines the browser-tab title. Supplies the text content 'Appraisal Desk · Prepare an order'. Closes the title element. -->"
+    },
+    {
+      "offset": 1733,
+      "text": "<!-- [L12] Defines an external document resource reference. Declares the external resource relationship as 'stylesheet'. Points the link/resource reference to '/styles.css'. -->"
+    },
+    {
+      "offset": 1957,
+      "text": "<!-- [L13] Defines the browser script reference. Loads the script from '/app.js'. Defers execution of the external script until HTML parsing finishes. Closes the script element. -->"
+    },
+    {
+      "offset": 2178,
+      "text": "<!-- [L14] Closes the head element. -->"
+    },
+    {
+      "offset": 2225,
+      "text": "<!-- [L15] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 2324,
+      "text": "<!-- [L16] Defines the visible document body. -->"
+    },
+    {
+      "offset": 2380,
+      "text": "<!-- [L17] Defines a navigation link. Applies CSS classes 'skip-link'. Points the link/resource reference to '#order-form'. Supplies the text content 'Skip to order form'. Closes the a element for 'skip-link'. -->"
+    },
+    {
+      "offset": 2658,
+      "text": "<!-- [L18] Defines the page header. Applies CSS classes 'site-header'. -->"
+    },
+    {
+      "offset": 2763,
+      "text": "<!-- [L19] Defines a layout/content container. Applies CSS classes 'header-inner'. -->"
+    },
+    {
+      "offset": 2880,
+      "text": "<!-- [L20] Defines a navigation link. Applies CSS classes 'brand'. Points the link/resource reference to '/'. Provides the accessible label 'Appraisal Desk home'. -->"
+    },
+    {
+      "offset": 3112,
+      "text": "<!-- [L21] Defines an inline text or icon container. Applies CSS classes 'brand-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. -->"
+    },
+    {
+      "offset": 3319,
+      "text": "<!-- [L22] Defines a scalable vector icon. Defines SVG coordinate bounds '0 0 32 32'. Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 3481,
+      "text": "<!-- [L23] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.8 coordinate units. Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 3855,
+      "text": "<!-- [L24] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.8 coordinate units. Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 4227,
+      "text": "<!-- [L25] Closes the svg element. -->"
+    },
+    {
+      "offset": 4282,
+      "text": "<!-- [L26] Closes the span element for 'brand-mark'. -->"
+    },
+    {
+      "offset": 4354,
+      "text": "<!-- [L27] Defines an inline text or icon container. Supplies the text content 'Appraisal'. Applies CSS classes 'brand-light'. Supplies the text content 'Desk'. Closes the span element for 'brand-light'. Closes the span element. -->"
+    },
+    {
+      "offset": 4654,
+      "text": "<!-- [L28] Closes the a element for 'brand'. -->"
+    },
+    {
+      "offset": 4713,
+      "text": "<!-- [L29] Defines a layout/content container. Applies CSS classes 'workspace-label'. Defines an inline text or icon container. Applies CSS classes 'small-dot'. Sets aria-hidden to 'true' for assistive-technology visibility. Closes the span element for 'small-dot'. Supplies the text content 'Local workspace'. Closes the div element for 'workspace-label'. -->"
+    },
+    {
+      "offset": 5181,
+      "text": "<!-- [L30] Closes the div element for 'header-inner'. -->"
+    },
+    {
+      "offset": 5249,
+      "text": "<!-- [L31] Closes the header element for 'site-header'. -->"
+    },
+    {
+      "offset": 5320,
+      "text": "<!-- [L32] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 5419,
+      "text": "<!-- [L33] Defines the main application content. Applies CSS classes 'page-shell'. -->"
+    },
+    {
+      "offset": 5533,
+      "text": "<!-- [L34] Defines a layout/content container. Applies CSS classes 'page-intro'. -->"
+    },
+    {
+      "offset": 5646,
+      "text": "<!-- [L35] Defines a layout/content container. -->"
+    },
+    {
+      "offset": 5708,
+      "text": "<!-- [L36] Defines a paragraph or status-message container. Applies CSS classes 'eyebrow'. Supplies the text content 'LOAN PROCESSING / NEW APPRAISAL'. Closes the p element for 'eyebrow'. -->"
+    },
+    {
+      "offset": 5962,
+      "text": "<!-- [L37] Defines the primary page heading. Supplies the text content 'A prepared order.'. Defines a text line break. Defines an inline text or icon container. Supplies the text content 'Your final review.'. Closes the span element. Closes the h1 element. -->"
+    },
+    {
+      "offset": 6294,
+      "text": "<!-- [L38] Defines a paragraph or status-message container. Applies CSS classes 'intro-copy'. Supplies the text content 'Bring your loan documents. We’ll prepare the details in R3 AMC, so you can review every'. -->"
+    },
+    {
+      "offset": 6626,
+      "text": "<!-- [L39] Supplies the text content 'field before you submit.'. Closes the p element for 'intro-copy'. -->"
+    },
+    {
+      "offset": 6772,
+      "text": "<!-- [L40] Closes the div element. -->"
+    },
+    {
+      "offset": 6823,
+      "text": "<!-- [L41] Defines a layout/content container. Applies CSS classes 'branch-tag'. -->"
+    },
+    {
+      "offset": 6938,
+      "text": "<!-- [L42] Defines a scalable vector icon. Sets aria-hidden to 'true' for assistive-technology visibility. Defines SVG coordinate bounds '0 0 24 24'. Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 7181,
+      "text": "<!-- [L43] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.6 coordinate units. --><!-- [L44] Uses 'round' caps on SVG stroke ends. Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 7600,
+      "text": ""
+    },
+    {
+      "offset": 7662,
+      "text": "<!-- [L45] Closes the svg element. -->"
+    },
+    {
+      "offset": 7715,
+      "text": "<!-- [L46] Defines a layout/content container. Defines an inline text or icon container. Supplies the text content 'YOUR BRANCH'. Closes the span element. Defines emphasized text. Supplies the text content 'GUILD 685 SUMMERLIN ONE'. Closes the strong element. Closes the div element. -->"
+    },
+    {
+      "offset": 8086,
+      "text": "<!-- [L47] Closes the div element for 'branch-tag'. -->"
+    },
+    {
+      "offset": 8154,
+      "text": "<!-- [L48] Closes the div element for 'page-intro'. -->"
+    },
+    {
+      "offset": 8220,
+      "text": "<!-- [L49] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 8319,
+      "text": "<!-- [L50] Defines a layout/content container. Applies CSS classes 'workspace-grid'. -->"
+    },
+    {
+      "offset": 8440,
+      "text": "<!-- [L51] Defines a layout/content container. Applies CSS classes 'form-column'. -->"
+    },
+    {
+      "offset": 8557,
+      "text": "<!-- [L52] Defines the appraisal-preparation form. Assigns ID 'order-form' for script, label, or accessibility references. Applies CSS classes 'order-card'. Targets form submission at '/api/jobs'. Uses the POST form-submission method. Encodes form submission as 'multipart/form-data', allowing file uploads. -->"
+    },
+    {
+      "offset": 8981,
+      "text": "<!-- [L53] Defines a layout/content container. Applies CSS classes 'card-heading'. -->"
+    },
+    {
+      "offset": 9104,
+      "text": "<!-- [L54] Defines a second-level heading. Supplies the text content 'Order details'. Closes the h2 element. Defines an inline text or icon container. Applies CSS classes 'required-mark'. Supplies the text content '*'. Closes the span element for 'required-mark'. Supplies the text content 'Required'. Closes the span element. -->"
+    },
+    {
+      "offset": 9527,
+      "text": "<!-- [L55] Closes the div element for 'card-heading'. -->"
+    },
+    {
+      "offset": 9601,
+      "text": "<!-- [L56] Defines fallback content shown when JavaScript is unavailable. --><!-- [L57] Defines a paragraph or status-message container. Applies CSS classes 'noscript-message'. Supplies the text content 'JavaScript is required to connect securely and follow your order’s progress.'. --><!-- [L58] Supplies the text content 'Enable it, then reload this page.'. Closes the p element for 'noscript-message'. --><!-- [L59] Closes the noscript element. -->"
+    },
+    {
+      "offset": 10073,
+      "text": ""
+    },
+    {
+      "offset": 10190,
+      "text": ""
+    },
+    {
+      "offset": 10242,
+      "text": ""
+    },
+    {
+      "offset": 10264,
+      "text": "<!-- [L60] Defines a layout/content container. Assigns ID 'form-error' for script, label, or accessibility references. Applies CSS classes 'form-error'. Exposes the 'alert' accessibility role. Sets tab index -1, allowing script focus without normal tab-order inclusion. Initially hides this element until application state calls for it. -->"
+    },
+    {
+      "offset": 10689,
+      "text": "<!-- [L61] Defines emphasized text. Assigns ID 'error-title' for script, label, or accessibility references. Supplies the text content 'Please check your order'. Closes the strong element for 'error-title'. -->"
+    },
+    {
+      "offset": 10969,
+      "text": "<!-- [L62] Defines a paragraph or status-message container. Assigns ID 'error-message' for script, label, or accessibility references. Closes the p element for 'error-message'. -->"
+    },
+    {
+      "offset": 11188,
+      "text": "<!-- [L63] Defines an unordered message list. Assigns ID 'error-details' for script, label, or accessibility references. Initially hides this element until application state calls for it. Closes the ul element for 'error-details'. -->"
+    },
+    {
+      "offset": 11470,
+      "text": "<!-- [L64] Closes the div element for 'form-error'. -->"
+    },
+    {
+      "offset": 11542,
+      "text": "<!-- [L65] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 11641,
+      "text": "<!-- [L66] Defines the group of order controls. Assigns ID 'order-fields' for script, label, or accessibility references. Applies CSS classes 'form-fields'. Starts this control or control group disabled until JavaScript enables it. -->"
+    },
+    {
+      "offset": 11944,
+      "text": "<!-- [L67] Defines the accessible name for grouped order controls. Applies CSS classes 'sr-only'. Supplies the text content 'Appraisal order information'. Closes the legend element for 'sr-only'. -->"
+    },
+    {
+      "offset": 12216,
+      "text": "<!-- [L68] Defines a labeled content section. Applies CSS classes 'form-section'. Uses element 'access-heading' as the accessible section label. -->"
+    },
+    {
+      "offset": 12440,
+      "text": "<!-- [L69] Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '01'. Closes the span element for 'section-number'. -->"
+    },
+    {
+      "offset": 12852,
+      "text": "<!-- [L70] Defines a layout/content container. -->"
+    },
+    {
+      "offset": 12924,
+      "text": "<!-- [L71] Defines a third-level heading. Assigns ID 'access-heading' for script, label, or accessibility references. Supplies the text content 'Connect your AI provider'. Closes the h3 element for 'access-heading'. -->"
+    },
+    {
+      "offset": 13215,
+      "text": "<!-- [L72] Defines a paragraph or status-message container. Supplies the text content 'Use your API key to prepare this order.'. Closes the p element. -->"
+    },
+    {
+      "offset": 13434,
+      "text": "<!-- [L73] Closes the div element. -->"
+    },
+    {
+      "offset": 13495,
+      "text": "<!-- [L74] Closes the div element for 'section-heading'. -->"
+    },
+    {
+      "offset": 13576,
+      "text": "<!-- [L75] Defines a layout/content container. Applies CSS classes 'field'. -->"
+    },
+    {
+      "offset": 13689,
+      "text": "<!-- [L76] Defines a form-control label. Associates the label with input ID 'provider'. Supplies the text content 'AI provider'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. -->"
+    },
+    {
+      "offset": 14180,
+      "text": "<!-- [L77] Defines a dropdown form control. Assigns ID 'provider' for script, label, or accessibility references. Sets the name to 'provider' for metadata identification or submitted form data. Requires a nonempty/selected value for native form validation. -->"
+    },
+    {
+      "offset": 14504,
+      "text": "<!-- [L78] Defines a selectable dropdown choice. Uses 'openai' as the submitted choice/control value. Supplies the text content 'OpenAI'. Closes the option element. -->"
+    },
+    {
+      "offset": 14729,
+      "text": "<!-- [L79] Defines a selectable dropdown choice. Uses 'anthropic' as the submitted choice/control value. Supplies the text content 'Anthropic'. Closes the option element. -->"
+    },
+    {
+      "offset": 14966,
+      "text": "<!-- [L80] Defines a selectable dropdown choice. Uses 'google' as the submitted choice/control value. Supplies the text content 'Google'. Closes the option element. -->"
+    },
+    {
+      "offset": 15191,
+      "text": "<!-- [L81] Defines a selectable dropdown choice. Uses 'xai' as the submitted choice/control value. Supplies the text content 'SpaceXAI'. Closes the option element. -->"
+    },
+    {
+      "offset": 15414,
+      "text": "<!-- [L82] Closes the select element for 'provider'. -->"
+    },
+    {
+      "offset": 15496,
+      "text": "<!-- [L83] Closes the div element for 'field'. -->"
+    },
+    {
+      "offset": 15567,
+      "text": "<!-- [L84] Defines a layout/content container. Applies CSS classes 'field'. -->"
+    },
+    {
+      "offset": 15680,
+      "text": "<!-- [L85] Defines a form-control label. Associates the label with input ID 'model'. Supplies the text content 'Model ID'. Defines an inline text or icon container. Applies CSS classes 'optional-label'. Supplies the text content 'Optional'. Closes the span element for 'optional-label'. Closes the label element. -->"
+    },
+    {
+      "offset": 16093,
+      "text": "<!-- [L86] Defines a form input control. Assigns ID 'model' for script, label, or accessibility references. Sets the name to 'model' for metadata identification or submitted form data. Uses the 'text' control type. Shows 'gpt-5.6-sol' as placeholder guidance. Sets browser autocomplete to 'off'. --><!-- [L87] Sets browser spell-checking to 'false'. Limits entered text to 200 characters. Associates help/status elements 'model-help' with this input. -->"
+    },
+    {
+      "offset": 16651,
+      "text": ""
+    },
+    {
+      "offset": 16737,
+      "text": "<!-- [L88] Defines a paragraph or status-message container. Assigns ID 'model-help' for script, label, or accessibility references. Applies CSS classes 'field-help'. Supplies the text content 'Leave blank to use gpt-5.6-sol. Choose a model available to your'. -->"
+    },
+    {
+      "offset": 17119,
+      "text": "<!-- [L89] Supplies the text content 'account with PDF, image, and tool support.'. Closes the p element for 'model-help'. -->"
+    },
+    {
+      "offset": 17309,
+      "text": "<!-- [L90] Closes the div element for 'field'. -->"
+    },
+    {
+      "offset": 17380,
+      "text": "<!-- [L91] Defines a layout/content container. Applies CSS classes 'field'. -->"
+    },
+    {
+      "offset": 17493,
+      "text": "<!-- [L92] Defines a form-control label. Associates the label with input ID 'apiKey'. Defines an inline text or icon container. Assigns ID 'api-key-label' for script, label, or accessibility references. Supplies the text content 'OpenAI API key'. Closes the span element for 'api-key-label'. Applies CSS classes 'required-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. -->"
+    },
+    {
+      "offset": 18138,
+      "text": "<!-- [L93] Defines a form input control. Assigns ID 'apiKey' for script, label, or accessibility references. Sets the name to 'apiKey' for metadata identification or submitted form data. Uses the 'password' control type. Shows 'Enter your OpenAI API key' as placeholder guidance. --><!-- [L94] Sets browser autocomplete to 'off'. Sets browser spell-checking to 'false'. Associates help/status elements 'api-key-help' with this input. -->"
+    },
+    {
+      "offset": 18689,
+      "text": ""
+    },
+    {
+      "offset": 18780,
+      "text": "<!-- [L95] Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Assigns ID 'api-key-help' for script, label, or accessibility references. Supplies the text content 'Your PDFs and order details are sent to OpenAI. API usage is billed'. -->"
+    },
+    {
+      "offset": 19172,
+      "text": "<!-- [L96] Supplies the text content 'to your OpenAI account.'. Closes the p element for 'api-key-help'. -->"
+    },
+    {
+      "offset": 19326,
+      "text": "<!-- [L97] Closes the div element for 'field'. -->"
+    },
+    {
+      "offset": 19397,
+      "text": "<!-- [L98] Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Supplies the text content 'R3 AMC opens separately. Sign in and complete any CAPTCHA there; preparation'. -->"
+    },
+    {
+      "offset": 19713,
+      "text": "<!-- [L99] Supplies the text content 'resumes automatically after you sign in.'. Closes the p element for 'field-help'. -->"
+    },
+    {
+      "offset": 19897,
+      "text": "<!-- [L100] Closes the section element for 'form-section'. -->"
+    },
+    {
+      "offset": 19982,
+      "text": "<!-- [L101] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 20082,
+      "text": "<!-- [L102] Defines a labeled content section. Applies CSS classes 'form-section'. Uses element 'loan-heading' as the accessible section label. -->"
+    },
+    {
+      "offset": 20303,
+      "text": "<!-- [L103] Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '02'. Closes the span element for 'section-number'. -->"
+    },
+    {
+      "offset": 20716,
+      "text": "<!-- [L104] Defines a layout/content container. -->"
+    },
+    {
+      "offset": 20789,
+      "text": "<!-- [L105] Defines a third-level heading. Assigns ID 'loan-heading' for script, label, or accessibility references. Supplies the text content 'Identify the loan'. Closes the h3 element for 'loan-heading'. -->"
+    },
+    {
+      "offset": 21061,
+      "text": "<!-- [L106] Defines a paragraph or status-message container. Supplies the text content 'Match the order to the correct loan file.'. Closes the p element. -->"
+    },
+    {
+      "offset": 21285,
+      "text": "<!-- [L107] Closes the div element. -->"
+    },
+    {
+      "offset": 21347,
+      "text": "<!-- [L108] Closes the div element for 'section-heading'. -->"
+    },
+    {
+      "offset": 21429,
+      "text": "<!-- [L109] Defines a layout/content container. Applies CSS classes 'field-grid'. -->"
+    },
+    {
+      "offset": 21553,
+      "text": "<!-- [L110] Defines a layout/content container. Applies CSS classes 'field'. Defines a form-control label. Associates the label with input ID 'loanNumber'. Supplies the text content 'Loan number'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. --><!-- [L111] Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. Defines a form input control. Assigns ID 'loanNumber' for script, label, or accessibility references. Sets the name to 'loanNumber' for metadata identification or submitted form data. Uses the 'text' control type. --><!-- [L112] Shows '685-20xxxxx' as placeholder guidance. Requires the input value to match the regular expression '^685-20[0-9]{5}$'. --><!-- [L113] Provides browser guidance text 'Enter 685-20 followed by exactly five digits.'. Limits entered text to 11 characters. Sets browser autocomplete to 'off'. Requires a nonempty/selected value for native form validation. --><!-- [L114] Sets browser spell-checking to 'false'. Associates help/status elements 'loan-help' with this input. -->"
+    },
+    {
+      "offset": 22811,
+      "text": ""
+    },
+    {
+      "offset": 22921,
+      "text": ""
+    },
+    {
+      "offset": 22994,
+      "text": ""
+    },
+    {
+      "offset": 23111,
+      "text": ""
+    },
+    {
+      "offset": 23182,
+      "text": "<!-- [L115] Defines a paragraph or status-message container. Assigns ID 'loan-help' for script, label, or accessibility references. Applies CSS classes 'field-help'. Supplies the text content '685-20 followed by five digits.'. Closes the p element for 'loan-help'. -->"
+    },
+    {
+      "offset": 23541,
+      "text": "<!-- [L116] Closes the div element for 'field'. -->"
+    },
+    {
+      "offset": 23615,
+      "text": "<!-- [L117] Defines a layout/content container. Applies CSS classes 'field'. Defines a form-control label. Associates the label with input ID 'fhaCaseNumber'. Supplies the text content 'FHA case number'. Defines an inline text or icon container. --><!-- [L118] Applies CSS classes 'optional-label'. Supplies the text content 'Optional'. Closes the span element for 'optional-label'. Closes the label element. Defines a form input control. Assigns ID 'fhaCaseNumber' for script, label, or accessibility references. Sets the name to 'fhaCaseNumber' for metadata identification or submitted form data. --><!-- [L119] Uses the 'text' control type. Shows 'Enter if applicable' as placeholder guidance. Limits entered text to 100 characters. Sets browser autocomplete to 'off'. --><!-- [L120] Associates help/status elements 'fha-help' with this input. -->"
+    },
+    {
+      "offset": 24549,
+      "text": ""
+    },
+    {
+      "offset": 24664,
+      "text": ""
+    },
+    {
+      "offset": 24765,
+      "text": ""
+    },
+    {
+      "offset": 24816,
+      "text": "<!-- [L121] Defines a paragraph or status-message container. Assigns ID 'fha-help' for script, label, or accessibility references. Applies CSS classes 'field-help'. Supplies the text content 'Required when your URLA identifies an FHA loan.'. Closes the p element for 'fha-help'. -->"
+    },
+    {
+      "offset": 25204,
+      "text": "<!-- [L122] Closes the div element for 'field'. -->"
+    },
+    {
+      "offset": 25278,
+      "text": "<!-- [L123] Closes the div element for 'field-grid'. -->"
+    },
+    {
+      "offset": 25355,
+      "text": "<!-- [L124] Closes the section element for 'form-section'. -->"
+    },
+    {
+      "offset": 25440,
+      "text": "<!-- [L125] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 25540,
+      "text": "<!-- [L126] Defines a labeled content section. Applies CSS classes 'form-section'. Uses element 'documents-heading' as the accessible section label. -->"
+    },
+    {
+      "offset": 25771,
+      "text": "<!-- [L127] Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '03'. Closes the span element for 'section-number'. -->"
+    },
+    {
+      "offset": 26184,
+      "text": "<!-- [L128] Defines a layout/content container. -->"
+    },
+    {
+      "offset": 26257,
+      "text": "<!-- [L129] Defines a third-level heading. Assigns ID 'documents-heading' for script, label, or accessibility references. Supplies the text content 'Add your documents'. Closes the h3 element for 'documents-heading'. -->"
+    },
+    {
+      "offset": 26546,
+      "text": "<!-- [L130] Defines a paragraph or status-message container. Supplies the text content 'PDF files, up to 15 MiB each.'. Closes the p element. -->"
+    },
+    {
+      "offset": 26746,
+      "text": "<!-- [L131] Closes the div element. -->"
+    },
+    {
+      "offset": 26808,
+      "text": "<!-- [L132] Closes the div element for 'section-heading'. -->"
+    },
+    {
+      "offset": 26890,
+      "text": "<!-- [L133] Defines a layout/content container. Applies CSS classes 'document-grid'. -->"
+    },
+    {
+      "offset": 27020,
+      "text": "<!-- [L134] Defines a layout/content container. Applies CSS classes 'document-field'. -->"
+    },
+    {
+      "offset": 27154,
+      "text": "<!-- [L135] Defines a layout/content container. Applies CSS classes 'document-top'. Defines an inline text or icon container. Applies CSS classes 'document-icon'. Sets aria-hidden to 'true' for assistive-technology visibility. Defines a scalable vector icon. Defines SVG coordinate bounds '0 0 24 24'. --><!-- [L136] Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 27615,
+      "text": ""
+    },
+    {
+      "offset": 27652,
+      "text": "<!-- [L137] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. --><!-- [L138] Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 28024,
+      "text": ""
+    },
+    {
+      "offset": 28077,
+      "text": "<!-- [L139] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. --><!-- [L140] Uses 'round' caps on SVG stroke ends. -->"
+    },
+    {
+      "offset": 28441,
+      "text": ""
+    },
+    {
+      "offset": 28493,
+      "text": "<!-- [L141] Closes the svg element. Closes the span element for 'document-icon'. Defines an inline text or icon container. Applies CSS classes 'file-type'. Supplies the text content 'PDF'. Closes the span element for 'file-type'. Closes the div element for 'document-top'. -->"
+    },
+    {
+      "offset": 28845,
+      "text": "<!-- [L142] Defines a form-control label. Associates the label with input ID 'urla'. Supplies the text content 'URLA'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. -->"
+    },
+    {
+      "offset": 29317,
+      "text": "<!-- [L143] Defines a paragraph or status-message container. Applies CSS classes 'document-description'. Assigns ID 'urla-help' for script, label, or accessibility references. Supplies the text content 'Universal Residential Loan Application'. Closes the p element for 'urla-help'. -->"
+    },
+    {
+      "offset": 29710,
+      "text": "<!-- [L144] Defines a form input control. Assigns ID 'urla' for script, label, or accessibility references. Sets the name to 'urla' for metadata identification or submitted form data. Uses the 'file' control type. Offers the file picker the accepted PDF extensions/types '.pdf,application/pdf'. --><!-- [L145] Associates help/status elements 'urla-help urla-selection' with this input. -->"
+    },
+    {
+      "offset": 30197,
+      "text": ""
+    },
+    {
+      "offset": 30264,
+      "text": "<!-- [L146] Defines a paragraph or status-message container. Assigns ID 'urla-selection' for script, label, or accessibility references. Applies CSS classes 'file-selection'. Announces changes with 'polite' live-region priority. Supplies the text content 'No document selected'. Closes the p element for 'urla-selection'. -->"
+    },
+    {
+      "offset": 30697,
+      "text": "<!-- [L147] Closes the div element for 'document-field'. -->"
+    },
+    {
+      "offset": 30780,
+      "text": "<!-- [L148] Defines a layout/content container. Applies CSS classes 'document-field'. -->"
+    },
+    {
+      "offset": 30914,
+      "text": "<!-- [L149] Defines a layout/content container. Applies CSS classes 'document-top'. Defines an inline text or icon container. Applies CSS classes 'document-icon'. Sets aria-hidden to 'true' for assistive-technology visibility. Defines a scalable vector icon. Defines SVG coordinate bounds '0 0 24 24'. --><!-- [L150] Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 31375,
+      "text": ""
+    },
+    {
+      "offset": 31412,
+      "text": "<!-- [L151] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. --><!-- [L152] Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 31784,
+      "text": ""
+    },
+    {
+      "offset": 31837,
+      "text": "<!-- [L153] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. --><!-- [L154] Uses 'round' caps on SVG stroke ends. -->"
+    },
+    {
+      "offset": 32201,
+      "text": ""
+    },
+    {
+      "offset": 32253,
+      "text": "<!-- [L155] Closes the svg element. Closes the span element for 'document-icon'. Defines an inline text or icon container. Applies CSS classes 'file-type'. Supplies the text content 'PDF'. Closes the span element for 'file-type'. Closes the div element for 'document-top'. -->"
+    },
+    {
+      "offset": 32605,
+      "text": "<!-- [L156] Defines a form-control label. Associates the label with input ID 'salesContract'. Supplies the text content 'Sales contract'. Defines an inline text or icon container. Applies CSS classes 'optional-label'. Supplies the text content 'Optional'. Closes the span element for 'optional-label'. Closes the label element. -->"
+    },
+    {
+      "offset": 33049,
+      "text": "<!-- [L157] Defines a paragraph or status-message container. Applies CSS classes 'document-description'. Assigns ID 'contract-help' for script, label, or accessibility references. Supplies the text content 'Include the contract for a purchase.'. Closes the p element for 'contract-help'. -->"
+    },
+    {
+      "offset": 33450,
+      "text": "<!-- [L158] Defines a form input control. Assigns ID 'salesContract' for script, label, or accessibility references. Sets the name to 'salesContract' for metadata identification or submitted form data. Uses the 'file' control type. Offers the file picker the accepted PDF extensions/types '.pdf,application/pdf'. --><!-- [L159] Associates help/status elements 'contract-help salesContract-selection' with this input. -->"
+    },
+    {
+      "offset": 33977,
+      "text": ""
+    },
+    {
+      "offset": 34057,
+      "text": "<!-- [L160] Defines a paragraph or status-message container. Assigns ID 'salesContract-selection' for script, label, or accessibility references. Applies CSS classes 'file-selection'. Announces changes with 'polite' live-region priority. Supplies the text content 'No document selected'. Closes the p element for 'salesContract-selection'. -->"
+    },
+    {
+      "offset": 34517,
+      "text": "<!-- [L161] Closes the div element for 'document-field'. -->"
+    },
+    {
+      "offset": 34600,
+      "text": "<!-- [L162] Closes the div element for 'document-grid'. -->"
+    },
+    {
+      "offset": 34680,
+      "text": "<!-- [L163] Closes the section element for 'form-section'. -->"
+    },
+    {
+      "offset": 34765,
+      "text": "<!-- [L164] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 34865,
+      "text": "<!-- [L165] Defines a labeled content section. Applies CSS classes 'form-section last-section'. Uses element 'preferences-heading' as the accessible section label. -->"
+    },
+    {
+      "offset": 35126,
+      "text": "<!-- [L166] Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '04'. Closes the span element for 'section-number'. -->"
+    },
+    {
+      "offset": 35539,
+      "text": "<!-- [L167] Defines a layout/content container. -->"
+    },
+    {
+      "offset": 35612,
+      "text": "<!-- [L168] Defines a third-level heading. Assigns ID 'preferences-heading' for script, label, or accessibility references. Supplies the text content 'Set order preferences'. Closes the h3 element for 'preferences-heading'. -->"
+    },
+    {
+      "offset": 35913,
+      "text": "<!-- [L169] Defines a paragraph or status-message container. Supplies the text content 'Choose how the appraisal will be handled.'. Closes the p element. -->"
+    },
+    {
+      "offset": 36137,
+      "text": "<!-- [L170] Closes the div element. -->"
+    },
+    {
+      "offset": 36199,
+      "text": "<!-- [L171] Closes the div element for 'section-heading'. -->"
+    },
+    {
+      "offset": 36281,
+      "text": "<!-- [L172] Defines a layout/content container. Applies CSS classes 'field'. Defines a form-control label. Associates the label with input ID 'paymentMethod'. Supplies the text content 'Payment method'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. --><!-- [L173] Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. Defines a dropdown form control. Assigns ID 'paymentMethod' for script, label, or accessibility references. Sets the name to 'paymentMethod' for metadata identification or submitted form data. Requires a nonempty/selected value for native form validation. -->"
+    },
+    {
+      "offset": 37106,
+      "text": ""
+    },
+    {
+      "offset": 37219,
+      "text": "<!-- [L174] Defines a selectable dropdown choice. Uses 'Invoice' as the submitted choice/control value. Supplies the text content 'Invoice'. Closes the option element. -->"
+    },
+    {
+      "offset": 37449,
+      "text": "<!-- [L175] Defines a selectable dropdown choice. Uses 'Pay by Credit Card' as the submitted choice/control value. Supplies the text content 'Pay by Credit Card'. Closes the option element. -->"
+    },
+    {
+      "offset": 37723,
+      "text": "<!-- [L176] Defines a selectable dropdown choice. Uses 'Request Payment From The Borrower' as the submitted choice/control value. Supplies the text content 'Request Payment From The Borrower'. Closes the option element. -->"
+    },
+    {
+      "offset": 38057,
+      "text": "<!-- [L177] Closes the select element for 'paymentMethod'. Closes the div element for 'field'. -->"
+    },
+    {
+      "offset": 38187,
+      "text": "<!-- [L178] Defines a form-control label. Applies CSS classes 'checkbox-field'. Associates the label with input ID 'rushOrder'. Defines a form input control. Assigns ID 'rushOrder' for script, label, or accessibility references. Sets the name to 'rushOrder' for metadata identification or submitted form data. Uses the 'checkbox' control type. --><!-- [L179] Uses 'true' as the submitted choice/control value. Defines an inline text or icon container. Defines emphasized text. Supplies the text content 'This is a rush order'. Closes the strong element. Supplies the text content 'Flag the order for expedited handling'. -->"
+    },
+    {
+      "offset": 38926,
+      "text": ""
+    },
+    {
+      "offset": 39046,
+      "text": "<!-- [L180] Supplies the text content 'in R3 AMC.'. Closes the span element. Closes the label element for 'checkbox-field'. -->"
+    },
+    {
+      "offset": 39226,
+      "text": "<!-- [L181] Closes the section element for 'form-section last-section'. -->"
+    },
+    {
+      "offset": 39324,
+      "text": "<!-- [L182] Closes the fieldset element for 'order-fields'. -->"
+    },
+    {
+      "offset": 39409,
+      "text": "<!-- [L183] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 39509,
+      "text": "<!-- [L184] Defines a layout/content container. Applies CSS classes 'form-footer'. -->"
+    },
+    {
+      "offset": 39631,
+      "text": "<!-- [L185] Defines a paragraph or status-message container. Defines a scalable vector icon. Sets aria-hidden to 'true' for assistive-technology visibility. Defines SVG coordinate bounds '0 0 20 20'. Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 39931,
+      "text": "<!-- [L186] Defines a rectangle in the current icon. Sets the SVG rectangle x to 4.5. Sets the SVG rectangle y to 8.5. Sets the SVG rectangle width to 11. Sets the SVG rectangle height to 8. Sets the SVG rectangle rx to 2. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.3 coordinate units. -->"
+    },
+    {
+      "offset": 40360,
+      "text": "<!-- [L187] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.3 coordinate units. --><!-- [L188] Uses 'round' caps on SVG stroke ends. -->"
+    },
+    {
+      "offset": 40729,
+      "text": ""
+    },
+    {
+      "offset": 40773,
+      "text": "<!-- [L189] Closes the svg element. Supplies the text content 'Your API key is cleared from this form after your order is accepted.'. Closes the p element. -->"
+    },
+    {
+      "offset": 41025,
+      "text": "<!-- [L190] Defines an interactive button. Assigns ID 'submit-button' for script, label, or accessibility references. Applies CSS classes 'primary-button'. Uses the 'submit' control type. Starts this control or control group disabled until JavaScript enables it. Defines an inline text or icon container. Assigns ID 'submit-label' for script, label, or accessibility references. Supplies the text content 'Connecting'. -->"
+    },
+    {
+      "offset": 41567,
+      "text": "<!-- [L191] Supplies the text content 'to workspace…'. Closes the span element for 'submit-label'. Defines a scalable vector icon. Sets aria-hidden to 'true' for assistive-technology visibility. Defines SVG coordinate bounds '0 0 20 20'. Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 41926,
+      "text": "<!-- [L192] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.7 coordinate units. Uses 'round' caps on SVG stroke ends. --><!-- [L193] Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 42351,
+      "text": ""
+    },
+    {
+      "offset": 42396,
+      "text": "<!-- [L194] Closes the svg element. Closes the button element for 'submit-button'. -->"
+    },
+    {
+      "offset": 42512,
+      "text": "<!-- [L195] Defines a paragraph or status-message container. Applies CSS classes 'submit-help'. Supplies the text content 'This prepares an order. You make the final submission in R3 AMC.'. Closes the p element for 'submit-help'. -->"
+    },
+    {
+      "offset": 42849,
+      "text": "<!-- [L196] Closes the div element for 'form-footer'. -->"
+    },
+    {
+      "offset": 42923,
+      "text": "<!-- [L197] Closes the form element for 'order-form'. -->"
+    },
+    {
+      "offset": 42996,
+      "text": "<!-- [L198] Closes the div element for 'form-column'. -->"
+    },
+    {
+      "offset": 43066,
+      "text": "<!-- [L199] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 43166,
+      "text": "<!-- [L200] Defines the progress and guidance sidebar. Applies CSS classes 'sidebar'. Provides the accessible label 'Order progress and guidance'. -->"
+    },
+    {
+      "offset": 43387,
+      "text": "<!-- [L201] Defines a labeled content section. Assigns ID 'status-card' for script, label, or accessibility references. Applies CSS classes 'status-card'. Uses element 'status-heading' as the accessible section label. Initializes data-status to 'ready' for script-driven state and styling. -->"
+    },
+    {
+      "offset": 43788,
+      "text": "<!-- [L202] Defines a layout/content container. Applies CSS classes 'status-card-top'. Defines an inline text or icon container. Applies CSS classes 'eyebrow'. Supplies the text content 'YOUR WORKFLOW'. Closes the span element for 'eyebrow'. Assigns ID 'status-badge' for script, label, or accessibility references. --><!-- [L203] Applies CSS classes 'status-badge'. Supplies the text content 'Ready'. Closes the span element for 'status-badge'. Closes the div element for 'status-card-top'. -->"
+    },
+    {
+      "offset": 44388,
+      "text": ""
+    },
+    {
+      "offset": 44442,
+      "text": "<!-- [L204] Defines a layout/content container. Assigns ID 'status-announcement' for script, label, or accessibility references. Exposes the 'status' accessibility role. Announces changes with 'polite' live-region priority. Requests that assistive technology announce the whole changed status region. -->"
+    },
+    {
+      "offset": 44839,
+      "text": "<!-- [L205] Defines a second-level heading. Assigns ID 'status-heading' for script, label, or accessibility references. Supplies the text content 'From documents'. Defines a text line break. Supplies the text content 'to a draft order.'. Closes the h2 element for 'status-heading'. -->"
+    },
+    {
+      "offset": 45203,
+      "text": "<!-- [L206] Defines a paragraph or status-message container. Assigns ID 'status-message' for script, label, or accessibility references. Supplies the text content 'Add your details to begin. You’ll stay in control of the final submission.'. Closes the p element for 'status-message'. -->"
+    },
+    {
+      "offset": 45604,
+      "text": "<!-- [L207] Closes the div element for 'status-announcement'. -->"
+    },
+    {
+      "offset": 45686,
+      "text": "<!-- [L208] Defines an ordered workflow list. Applies CSS classes 'workflow-list'. -->"
+    },
+    {
+      "offset": 45809,
+      "text": "<!-- [L209] Defines a list item. Assigns ID 'step-extract' for script, label, or accessibility references. Initializes data-state to 'waiting' for script-driven state and styling. Defines an inline text or icon container. Applies CSS classes 'workflow-marker'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '1'. Closes the span element for 'workflow-marker'. -->"
+    },
+    {
+      "offset": 46328,
+      "text": "<!-- [L210] Defines a layout/content container. Defines emphasized text. Supplies the text content 'Read your documents'. Closes the strong element. -->"
+    },
+    {
+      "offset": 46536,
+      "text": "<!-- [L211] Defines a paragraph or status-message container. Supplies the text content 'Extract the property and loan details.'. Closes the p element. -->"
+    },
+    {
+      "offset": 46752,
+      "text": "<!-- [L212] Closes the div element. -->"
+    },
+    {
+      "offset": 46812,
+      "text": "<!-- [L213] Closes the li element for 'step-extract'. -->"
+    },
+    {
+      "offset": 46887,
+      "text": "<!-- [L214] Defines a list item. Assigns ID 'step-prepare' for script, label, or accessibility references. Initializes data-state to 'waiting' for script-driven state and styling. Defines an inline text or icon container. Applies CSS classes 'workflow-marker'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '2'. Closes the span element for 'workflow-marker'. -->"
+    },
+    {
+      "offset": 47406,
+      "text": "<!-- [L215] Defines a layout/content container. Defines emphasized text. Supplies the text content 'Prepare in R3 AMC'. Closes the strong element. -->"
+    },
+    {
+      "offset": 47610,
+      "text": "<!-- [L216] Defines a paragraph or status-message container. Supplies the text content 'Sign in through the separate browser to continue.'. Closes the p element. -->"
+    },
+    {
+      "offset": 47848,
+      "text": "<!-- [L217] Closes the div element. -->"
+    },
+    {
+      "offset": 47908,
+      "text": "<!-- [L218] Closes the li element for 'step-prepare'. -->"
+    },
+    {
+      "offset": 47983,
+      "text": "<!-- [L219] Defines a list item. Assigns ID 'step-review' for script, label, or accessibility references. Initializes data-state to 'waiting' for script-driven state and styling. Defines an inline text or icon container. Applies CSS classes 'workflow-marker'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '3'. Closes the span element for 'workflow-marker'. -->"
+    },
+    {
+      "offset": 48500,
+      "text": "<!-- [L220] Defines a layout/content container. Defines emphasized text. Supplies the text content 'You review & submit'. Closes the strong element. -->"
+    },
+    {
+      "offset": 48712,
+      "text": "<!-- [L221] Defines a paragraph or status-message container. Supplies the text content 'Check every field, make changes, and submit.'. Closes the p element. -->"
+    },
+    {
+      "offset": 48940,
+      "text": "<!-- [L222] Closes the div element. -->"
+    },
+    {
+      "offset": 49000,
+      "text": "<!-- [L223] Closes the li element for 'step-review'. -->"
+    },
+    {
+      "offset": 49074,
+      "text": "<!-- [L224] Closes the ol element for 'workflow-list'. -->"
+    },
+    {
+      "offset": 49148,
+      "text": "<!-- [L225] Defines a layout/content container. Assigns ID 'login-notice' for script, label, or accessibility references. Applies CSS classes 'review-notice'. Initially hides this element until application state calls for it. Defines emphasized text. Supplies the text content 'Use the separate R3 AMC browser.'. Closes the strong element. -->"
+    },
+    {
+      "offset": 49603,
+      "text": "<!-- [L226] Defines a paragraph or status-message container. Supplies the text content 'Sign in and complete any CAPTCHA there. Preparation resumes automatically after you sign in.'. Closes the p element. -->"
+    },
+    {
+      "offset": 49923,
+      "text": "<!-- [L227] Closes the div element for 'login-notice'. -->"
+    },
+    {
+      "offset": 49998,
+      "text": "<!-- [L228] Defines a layout/content container. Assigns ID 'review-notice' for script, label, or accessibility references. Applies CSS classes 'review-notice'. Initially hides this element until application state calls for it. Defines emphasized text. Supplies the text content 'Continue in the R3 AMC browser.'. Closes the strong element. -->"
+    },
+    {
+      "offset": 50453,
+      "text": "<!-- [L229] Defines a paragraph or status-message container. Supplies the text content 'Review all information and warnings before submitting. The browser stays open until you close it.'. Closes the p element. -->"
+    },
+    {
+      "offset": 50783,
+      "text": "<!-- [L230] Closes the div element for 'review-notice'. -->"
+    },
+    {
+      "offset": 50859,
+      "text": "<!-- [L231] Defines a layout/content container. Assigns ID 'job-warnings' for script, label, or accessibility references. Applies CSS classes 'job-warnings'. Initially hides this element until application state calls for it. Defines emphasized text. Supplies the text content 'Review notes'. Closes the strong element. -->"
+    },
+    {
+      "offset": 51272,
+      "text": "<!-- [L232] Defines an unordered message list. Assigns ID 'warnings-list' for script, label, or accessibility references. Closes the ul element for 'warnings-list'. -->"
+    },
+    {
+      "offset": 51481,
+      "text": "<!-- [L233] Closes the div element for 'job-warnings'. -->"
+    },
+    {
+      "offset": 51556,
+      "text": "<!-- [L234] Defines a paragraph or status-message container. Assigns ID 'connection-message' for script, label, or accessibility references. Applies CSS classes 'connection-message'. Exposes the 'status' accessibility role. Initially hides this element until application state calls for it. Closes the p element for 'connection-message'. -->"
+    },
+    {
+      "offset": 51987,
+      "text": "<!-- [L235] Defines an interactive button. Assigns ID 'reconnect-button' for script, label, or accessibility references. Applies CSS classes 'secondary-button'. Uses the 'button' control type. Initially hides this element until application state calls for it. Supplies the text content 'Reconnect'. Closes the button element for 'reconnect-button'. -->"
+    },
+    {
+      "offset": 52444,
+      "text": "<!-- [L236] Closes the section element for 'status-card'. -->"
+    },
+    {
+      "offset": 52524,
+      "text": "<!-- [L237] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 52624,
+      "text": "<!-- [L238] Defines a labeled content section. Applies CSS classes 'review-card'. Uses element 'review-heading' as the accessible section label. Defines an inline text or icon container. Applies CSS classes 'review-icon'. Sets aria-hidden to 'true' for assistive-technology visibility. Defines a scalable vector icon. --><!-- [L239] Defines SVG coordinate bounds '0 0 24 24'. Sets SVG fill to 'none'. -->"
+    },
+    {
+      "offset": 53148,
+      "text": ""
+    },
+    {
+      "offset": 53195,
+      "text": "<!-- [L240] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. --><!-- [L241] Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 53578,
+      "text": ""
+    },
+    {
+      "offset": 53621,
+      "text": "<!-- [L242] Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. Uses 'round' caps on SVG stroke ends. --><!-- [L243] Uses 'round' joins between SVG stroke segments. -->"
+    },
+    {
+      "offset": 54036,
+      "text": ""
+    },
+    {
+      "offset": 54079,
+      "text": "<!-- [L244] Closes the svg element. Closes the span element for 'review-icon'. -->"
+    },
+    {
+      "offset": 54187,
+      "text": "<!-- [L245] Defines a third-level heading. Assigns ID 'review-heading' for script, label, or accessibility references. Supplies the text content 'The final say is yours.'. Closes the h3 element for 'review-heading'. -->"
+    },
+    {
+      "offset": 54469,
+      "text": "<!-- [L246] Defines a paragraph or status-message container. Supplies the text content 'Appraisal Desk fills the form and hands it back to you. Only you can submit the order.'. Closes the p element. -->"
+    },
+    {
+      "offset": 54775,
+      "text": "<!-- [L247] Defines a layout/content container. Applies CSS classes 'review-card-note'. Supplies the text content 'VA appraisals must be ordered through the VA portal. This workspace will stop if'. -->"
+    },
+    {
+      "offset": 55097,
+      "text": "<!-- [L248] Supplies the text content 'a VA loan is identified.'. Closes the div element for 'review-card-note'. -->"
+    },
+    {
+      "offset": 55256,
+      "text": "<!-- [L249] Closes the section element for 'review-card'. -->"
+    },
+    {
+      "offset": 55336,
+      "text": "<!-- [L250] Defines a paragraph or status-message container. Applies CSS classes 'sidebar-footnote'. Supplies the text content 'One order at a time. Keep this page open while your documents are being processed.'. -->"
+    },
+    {
+      "offset": 55671,
+      "text": "<!-- [L251] Closes the p element for 'sidebar-footnote'. -->"
+    },
+    {
+      "offset": 55744,
+      "text": "<!-- [L252] Closes the aside element for 'sidebar'. -->"
+    },
+    {
+      "offset": 55814,
+      "text": "<!-- [L253] Closes the div element for 'workspace-grid'. -->"
+    },
+    {
+      "offset": 55885,
+      "text": "<!-- [L254] Defines the page footer. Applies CSS classes 'page-footer'. Defines an inline text or icon container. Supplies the text content 'Appraisal Desk'. Closes the span element. Supplies the text content 'Prepared with care. Reviewed by you.'. Closes the footer element for 'page-footer'. -->"
+    },
+    {
+      "offset": 56300,
+      "text": "<!-- [L255] Closes the main element for 'page-shell'. -->"
+    },
+    {
+      "offset": 56367,
+      "text": "<!-- [L256] Closes the body element. -->"
+    },
+    {
+      "offset": 56415,
+      "text": "<!-- [L257] Blank line separating the surrounding declarations, statements, or document blocks. -->"
+    },
+    {
+      "offset": 56515,
+      "text": "<!-- [L258] Closes the html element. -->"
+    }
+  ]
+}

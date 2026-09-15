@@ -1,0 +1,77 @@
+# Line explanations: src/jobs.ts
+
+Source: [src/jobs.ts](../../../src/jobs.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+September 14 sequential-order update: the current code separates a same-owner browser host from the active preparation. Job-correlated IPC, explicit current-job lookup and worker readiness replace the original one-child-per-order lock. Confirmed browser closure releases ownership while retired-worker cleanup continues. The original table below remains a historical snapshot.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports fork, type ChildProcess, type ForkOptions from node:child_process for child-process creation and related process option types. |
+| 2 | Imports randomUUID from node:crypto for cryptographically random identifiers/tokens or timing-safe token comparison. |
+| 3 | Imports fileURLToPath from node:url for conversion of module-relative file URLs into local filesystem paths. |
+| 4 | Imports compile-time types JobPayload, JobView, WorkerUpdate from ./domain.js for shared validated application data, business rules, defaults, and domain types. |
+| 5 | Imports AppError from ./errors.js for fixed public application errors and private provider-error classification. |
+| 6 | Imports createPausableTimeout from ./pausable-timeout.js for active-time budgets that pause during manual login. |
+| 7 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 8 | Defines job-runner operations for owner-scoped creation/retrieval, optional active-job lookup, and shutdown. |
+| 9 | Defines the private job record storing ownership, mutable public status, and creation time. |
+| 10 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 11 | Exports construction of the restricted environment inherited by an isolated worker process. |
+| 12 | Lists Windows/runtime/path variables allowed into workers, including the optional Playwright browser installation location. |
+| 13 | Copies only allowlisted environment variables case-insensitively and explicitly disables LangSmith/LangChain tracing flags. |
+| 14 | Closes the scope or expression introduced here: Exports construction of the restricted environment inherited by an isolated worker process. |
+| 15 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 16 | Exports the single-active-worker job runner factory. |
+| 17 | Creates the in-memory job record map keyed by UUID. |
+| 18 | Tracks the one currently active child worker process. |
+| 19 | Returns the runner's create, lookup, active-job, and shutdown methods. |
+| 20 | Starts creation of a job tied to the caller's owner identifier. |
+| 21 | Rejects another job with HTTP 409 while an existing worker/browser remains active. |
+| 22 | Removes job records older than one day when creating a new job. |
+| 23 | Evicts oldest map entries until fewer than 100 previous job records remain. |
+| 24 | Generates the new job's unique identifier. |
+| 25 | Creates the owner-scoped queued job record with its creation timestamp and initial public message. |
+| 26 | Detects whether this module is running from TypeScript source or compiled JavaScript. |
+| 27 | Begins configuring the isolated child worker process and hidden Windows execution. |
+| 28 | Enables tsx only for source execution, supplies the restricted environment, preserves Buffer IPC serialization, hides the window, and exposes only IPC while ignoring standard streams. |
+| 29 | Closes the scope or expression introduced here: Begins configuring the isolated child worker process and hidden Windows execution. |
+| 30 | Forks the corresponding TypeScript or JavaScript worker entry point using the configured process options. |
+| 31 | Reserves the active worker slot for this child process. |
+| 32 | Stores the queued job record before receiving worker updates. |
+| 33 | Starts a pausable parent watchdog whose expiry requests automation cancellation. |
+| 34 | Changes the public status to explain that the preparation limit was reached and the browser is retained for review. |
+| 35 | Existing explanatory comment: Killing the worker also destroys its partially filled Chromium window. |
+| 36 | Existing explanatory comment: Cancel automation while retaining the browser and active slot for the user. |
+| 37 | Sends the worker a stop_preparation control message instead of terminating the browser-owning process. |
+| 38 | Handles send failure only while this child is still active and its status is still preparing. |
+| 39 | Updates the message to advise checking and closing the retained browser when the worker cannot be contacted. |
+| 40 | Closes the scope or expression introduced here: Handles send failure only while this child is still active and its status is still preparing. |
+| 41 | Closes the scope or expression introduced here: Sends the worker a stop_preparation control message instead of terminating the browser-owning process. |
+| 42 | Gives the parent watchdog a twelve-minute active-processing budget. |
+| 43 | Listens for IPC updates from the worker. |
+| 44 | Ignores IPC messages that are not status updates. |
+| 45 | Replaces the public view with the worker's status, message, and optional warnings while preserving the job ID. |
+| 46 | Pauses the watchdog while the user signs into R3 manually. |
+| 47 | Resumes the remaining watchdog budget when automated preparation resumes. |
+| 48 | Clears the watchdog after review handoff, failure, or browser closure. |
+| 49 | Closes the scope or expression introduced here: Listens for IPC updates from the worker. |
+| 50 | Converts child startup errors into a fixed failed job view. |
+| 51 | Handles worker-process closure and releases its active slot. |
+| 52 | Cancels the parent watchdog when the worker exits. |
+| 53 | Clears the active pointer only if it still refers to this child. |
+| 54 | Marks unexpected exits as failure unless the job was already failed or the browser was reported closed. |
+| 55 | Closes the scope or expression introduced here: Handles worker-process closure and releases its active slot. |
+| 56 | Sends the input/documents to the worker and performs parent-buffer cleanup after IPC completion. |
+| 57 | Overwrites the parent copy of the URLA bytes with zeros after the send callback fires. |
+| 58 | Overwrites the parent copy of any sales-contract bytes with zeros after IPC completion. |
+| 59 | Marks a failed document send as a job failure and kills the unusable worker process. |
+| 60 | Closes the scope or expression introduced here: Sends the input/documents to the worker and performs parent-buffer cleanup after IPC completion. |
+| 61 | Returns the new job's current public view. |
+| 62 | Closes the scope or expression introduced here: Starts creation of a job tied to the caller's owner identifier. |
+| 63 | Returns a job view only when the requested owner matches its private owner record. |
+| 64 | Returns the owner's first job whose status is neither failed nor browser_closed. |
+| 65 | Kills any active worker, clears the active pointer, and removes all stored jobs during shutdown. |
+| 66 | Closes the scope or expression introduced here: Returns the runner's create, lookup, active-job, and shutdown methods. |
+| 67 | Closes the scope or expression introduced here: Exports the single-active-worker job runner factory. |

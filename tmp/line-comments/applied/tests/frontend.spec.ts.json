@@ -1,0 +1,1246 @@
+{
+  "originalSha256": "c4624714c76732462961d435d88f9e3542a41401bf5e54ed0696bc418cde315d",
+  "annotatedSha256": "668d630f7cb56c5545782890f36e5287adaa15ab11aec6d33ff6e8b0ea5271b8",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { createServer, type Server } from \"node:http\" for these regression tests.\n"
+    },
+    {
+      "offset": 145,
+      "text": "// [L2] Import { readFile } from \"node:fs/promises\" for these regression tests.\n"
+    },
+    {
+      "offset": 270,
+      "text": "// [L3] Import { resolve } from \"node:path\" for these regression tests.\n"
+    },
+    {
+      "offset": 379,
+      "text": "// [L4] Import { test, expect, type Page } from \"@playwright/test\" for these regression tests.\n"
+    },
+    {
+      "offset": 534,
+      "text": "// [L5] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 627,
+      "text": "// [L6] Configure Playwright to use the browser channel named by PLAYWRIGHT_CHANNEL when one is supplied.\n"
+    },
+    {
+      "offset": 788,
+      "text": "// [L7] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 881,
+      "text": "// [L8] Declare `CSRF_TOKEN` as \"test-session-csrf-token\".\n"
+    },
+    {
+      "offset": 986,
+      "text": "// [L9] Declare `SESSION_DEFAULTS` as an object containing csrfToken: `CSRF_TOKEN`, defaultProvider: \"openai\", modelDefaults: an object containing openai: \"gpt-5.6-sol\", anthropic: \"claude-opus-5\", google: \"gemini-3.8-flash\", xai: \"grok-4.6\".\n"
+    },
+    {
+      "offset": 1423,
+      "text": "// [L10] Declare `TEST_JOB` as an object containing id: \"test-job-001\", status: \"queued\", message: \"Your order is queued.\".\n"
+    },
+    {
+      "offset": 1640,
+      "text": "// [L11] Declare `PDF_FIXTURE` as an object containing name: \"test-urla.pdf\", mimeType: \"application/pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7\\nTest fixture\\n%%EOF\".\n"
+    },
+    {
+      "offset": 1952,
+      "text": "// [L12] Declare `server` for assignment later.\n"
+    },
+    {
+      "offset": 2020,
+      "text": "// [L13] Declare `origin` for assignment later.\n"
+    },
+    {
+      "offset": 2088,
+      "text": "// [L14] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2182,
+      "text": "// [L15] Start the shared local static fixture server once before the frontend browser tests.\n"
+    },
+    {
+      "offset": 2305,
+      "text": "  // [L16] Declare `files` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 2450,
+      "text": "    // [L17] Set fixture property `'/'` to an object containing name: \"index.html\", contentType: \"text/html; charset=utf-8\".\n"
+    },
+    {
+      "offset": 2649,
+      "text": "    // [L18] Set fixture property `'/styles.css'` to an object containing name: \"styles.css\", contentType: \"text/css; charset=utf-8\".\n"
+    },
+    {
+      "offset": 2866,
+      "text": "    // [L19] Set fixture property `'/app.js'` to an object containing name: \"app.js\", contentType: \"application/javascript; charset=utf-8\".\n"
+    },
+    {
+      "offset": 3095,
+      "text": "  // [L20] Close the fixture object for `files` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 3183,
+      "text": "  // [L21] Assign the result of `createServer` using a callback whose body follows to `server`.\n"
+    },
+    {
+      "offset": 3328,
+      "text": "    // [L22] Declare `file` as `files[request.url ?? '']`.\n"
+    },
+    {
+      "offset": 3430,
+      "text": "    // [L23] Run the following branch when the negation of `file`.\n"
+    },
+    {
+      "offset": 3514,
+      "text": "      // [L24] Finish requests for unknown fixture paths with HTTP 404.\n"
+    },
+    {
+      "offset": 3623,
+      "text": "      // [L25] Return immediately without a value.\n"
+    },
+    {
+      "offset": 3688,
+      "text": "    // [L26] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 3782,
+      "text": "    // [L27] Start reading the requested public asset asynchronously and attach response/error handlers; void intentionally discards the handled promise.\n"
+    },
+    {
+      "offset": 4001,
+      "text": "      // [L28] Send the public asset bytes with HTTP 200 and the mapped content type.\n"
+    },
+    {
+      "offset": 4166,
+      "text": "    // [L29] If the asynchronous local fixture request handler fails, finish the HTTP response with status 500.\n"
+    },
+    {
+      "offset": 4329,
+      "text": "  // [L30] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4421,
+      "text": "  // [L31] Wait for a new `Promise` instance initialized with a callback whose body follows to settle before continuing.\n"
+    },
+    {
+      "offset": 4597,
+      "text": "    // [L32] Reject server startup if its one-time error event fires before listening succeeds.\n"
+    },
+    {
+      "offset": 4727,
+      "text": "    // [L33] Bind the fixture server to an available ephemeral IPv4 loopback port and resolve startup when it is listening.\n"
+    },
+    {
+      "offset": 4901,
+      "text": "  // [L34] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4993,
+      "text": "  // [L35] Declare `address` as the result of `server.address` with no arguments.\n"
+    },
+    {
+      "offset": 5111,
+      "text": "  // [L36] Run the following branch when the negation of `address` or `typeof address` strictly equals \"string\". Throw a new `Error` instance initialized with \"The UI fixture server did not bind to a port.\" to simulate or report the failure.\n"
+    },
+    {
+      "offset": 5466,
+      "text": "  // [L37] Build the fixture origin from the actual loopback port assigned by the operating system.\n"
+    },
+    {
+      "offset": 5613,
+      "text": "// [L38] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5701,
+      "text": "// [L39] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5795,
+      "text": "// [L40] Call `test.afterAll` with a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 5907,
+      "text": "  // [L41] Wait for a new `Promise` instance initialized with a callback that returns the result of `server.close` using a callback that returns `error ? reject(error) : resolveClose()` to settle before continuing.\n"
+    },
+    {
+      "offset": 6240,
+      "text": "// [L42] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6328,
+      "text": "// [L43] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6422,
+      "text": "// [L44] Call `test.beforeEach` with a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 6546,
+      "text": "  // [L45] Intercept requests matching \"**/api/session\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 6784,
+      "text": "  // [L46] Intercept requests matching \"**/api/jobs/*\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7021,
+      "text": "// [L47] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7109,
+      "text": "// [L48] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 7203,
+      "text": "// [L49] Define helper `openAndFillOrder` with parameters page for the fixture operations below.\n"
+    },
+    {
+      "offset": 7346,
+      "text": "  // [L50] Navigate `page` to `origin`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7452,
+      "text": "  // [L51] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Prepare appraisal order\" is enabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 7727,
+      "text": "  // [L52] Replace the matched form control text with \"test-secret-api-key\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 7932,
+      "text": "  // [L53] Replace the matched form control text with \"685-2012345\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 8118,
+      "text": "  // [L54] Call `page.getByLabel('URLA', { exact: false }).setInputFiles` with `PDF_FIXTURE`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 8329,
+      "text": "// [L55] Close the callback or control-flow body for `openAndFillOrder` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8438,
+      "text": "// [L56] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 8532,
+      "text": "// [L57] Register a test that \"sends CSRF-protected multipart data without R3 credentials and clears the API key after acceptance\".\n"
+    },
+    {
+      "offset": 8793,
+      "text": "  // [L58] Declare `headers` as an empty object.\n"
+    },
+    {
+      "offset": 8886,
+      "text": "  // [L59] Declare `uploadedBody` as \"\".\n"
+    },
+    {
+      "offset": 8952,
+      "text": "  // [L60] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 9148,
+      "text": "    // [L61] Assign the result of `route.request().headers` with no arguments to `headers`.\n"
+    },
+    {
+      "offset": 9281,
+      "text": "    // [L62] Assign the result of `route.request().postDataBuffer()?.toString` using \"utf8\" or, if null/undefined, \"\" to `uploadedBody`.\n"
+    },
+    {
+      "offset": 9495,
+      "text": "    // [L63] Answer the intercepted browser request with an object containing status: 202, json: an object containing job: `TEST_JOB`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 9736,
+      "text": "  // [L64] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 9828,
+      "text": "  // [L65] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 9947,
+      "text": "  // [L66] Assert that the result of `page.locator` using \"[name=\\\"username\\\"], [name=\\\"password\\\"]\" has this many matching elements: 0. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 10216,
+      "text": "  // [L67] Assert that the result of `page.getByRole` using \"combobox\", an object containing name: \"AI provider\" has form value \"openai\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 10492,
+      "text": "  // [L68] Assert that the result of `page.locator` using \"#provider option\" has text an array containing \"OpenAI\", \"Anthropic\", \"Google\", \"SpaceXAI\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 10798,
+      "text": "  // [L69] Assert that the result of `page.getByLabel` using \"Model ID\", an object containing exact: false is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 11041,
+      "text": "  // [L70] Assert that the result of `page.getByLabel` using \"Model ID\", an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 11293,
+      "text": "  // [L71] Assert that the result of `page.getByLabel` using \"Model ID\", an object containing exact: false has the specified attribute/value \"placeholder\", \"gpt-5.6-sol\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 11620,
+      "text": "  // [L72] Assert that the resolved value from `page.locator('#provider').evaluate` using a callback that returns the result of `element.closest('.field')?.nextElementSibling?.contains` using `document.getElementById('model')` strictly equals true.\n"
+    },
+    {
+      "offset": 12036,
+      "text": "  // [L73] Call `page.getByLabel('Payment method').selectOption` with \"Request Payment From The Borrower\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 12275,
+      "text": "  // [L74] Call `page.getByLabel('This is a rush order').check` without arguments. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 12454,
+      "text": "  // [L75] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 12684,
+      "text": "  // [L76] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your order is in progress.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 12967,
+      "text": "  // [L77] Assert that `headers['x-csrf-token']` strictly equals `CSRF_TOKEN`.\n"
+    },
+    {
+      "offset": 13098,
+      "text": "  // [L78] Assert that `headers['content-type']` contains \"multipart/form-data; boundary=\".\n"
+    },
+    {
+      "offset": 13269,
+      "text": "  // [L79] Assert that `uploadedBody` contains \"name=\\\"provider\\\"\\r\\n\\r\\nopenai\".\n"
+    },
+    {
+      "offset": 13418,
+      "text": "  // [L80] Assert that `uploadedBody` contains \"name=\\\"apiKey\\\"\\r\\n\\r\\ntest-secret-api-key\".\n"
+    },
+    {
+      "offset": 13589,
+      "text": "  // [L81] Assert that `uploadedBody` does not satisfy: contains \"name=\\\"openaiApiKey\\\"\".\n"
+    },
+    {
+      "offset": 13740,
+      "text": "  // [L82] Assert that `uploadedBody` matches `/name=\"model\"\\r\\n\\r\\n\\r\\n--/`.\n"
+    },
+    {
+      "offset": 13880,
+      "text": "  // [L83] Assert that `uploadedBody` contains \"name=\\\"loanNumber\\\"\\r\\n\\r\\n685-2012345\".\n"
+    },
+    {
+      "offset": 14043,
+      "text": "  // [L84] Assert that `uploadedBody` contains \"Request Payment From The Borrower\".\n"
+    },
+    {
+      "offset": 14198,
+      "text": "  // [L85] Assert that `uploadedBody` contains \"name=\\\"rushOrder\\\"\\r\\n\\r\\ntrue\".\n"
+    },
+    {
+      "offset": 14345,
+      "text": "  // [L86] Assert that `uploadedBody` contains \"filename=\\\"test-urla.pdf\\\"\".\n"
+    },
+    {
+      "offset": 14484,
+      "text": "  // [L87] Assert that `uploadedBody` does not satisfy: contains \"name=\\\"username\\\"\".\n"
+    },
+    {
+      "offset": 14627,
+      "text": "  // [L88] Assert that `uploadedBody` does not satisfy: contains \"name=\\\"password\\\"\".\n"
+    },
+    {
+      "offset": 14770,
+      "text": "  // [L89] Assert that the result of `page.getByLabel` using \"OpenAI API key\", an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 15034,
+      "text": "  // [L90] Assert that the result of `page.getByLabel` using \"URLA\", an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 15278,
+      "text": "  // [L91] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Order preparation in progress\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 15567,
+      "text": "  // [L92] Declare `stored` as the resolved value from `page.evaluate` using a callback that returns `{ local: { ...localStorage }, session: { ...sessionStorage } }`.\n"
+    },
+    {
+      "offset": 15844,
+      "text": "  // [L93] Assert that `stored` deeply equals an object containing local: an empty object, session: an object containing 'appraisal-desk-active-job': `TEST_JOB.id`.\n"
+    },
+    {
+      "offset": 16105,
+      "text": "// [L94] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 16193,
+      "text": "// [L95] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 16287,
+      "text": "// [L96] Iterate const { provider, name, defaultModel } over an array containing an object containing provider: \"anthropic\", name: \"Anthropic\", defaultModel: \"claude-opus-5\", an object containing provider: \"google\", name: \"Google Gemini\", defaultModel: \"gemini-3.8-flash\", an object containing provider: \"xai\", name: \"Grok\", defaultModel: \"grok-4.6\".\n"
+    },
+    {
+      "offset": 16687,
+      "text": "  // [L97] Set fixture property `provider` to \"anthropic\". Set fixture property `name` to \"Anthropic\". Set fixture property `defaultModel` to \"claude-opus-5\".\n"
+    },
+    {
+      "offset": 16925,
+      "text": "  // [L98] Set fixture property `provider` to \"google\". Set fixture property `name` to \"Google Gemini\". Set fixture property `defaultModel` to \"gemini-3.8-flash\".\n"
+    },
+    {
+      "offset": 17171,
+      "text": "  // [L99] Set fixture property `provider` to \"xai\". Set fixture property `name` to \"Grok\". Set fixture property `defaultModel` to \"grok-4.6\".\n"
+    },
+    {
+      "offset": 17377,
+      "text": "// [L100] Call `test` with text interpolating `name`, a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 17595,
+      "text": "  // [L101] Declare `uploadedBody` as \"\".\n"
+    },
+    {
+      "offset": 17662,
+      "text": "  // [L102] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 17853,
+      "text": "    // [L103] Assign the result of `route.request().postDataBuffer()?.toString` using \"utf8\" or, if null/undefined, \"\" to `uploadedBody`.\n"
+    },
+    {
+      "offset": 18068,
+      "text": "    // [L104] Return the result of `route.fulfill` using an object containing status: 202, json: an object containing job: `TEST_JOB` to the caller.\n"
+    },
+    {
+      "offset": 18285,
+      "text": "  // [L105] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 18378,
+      "text": "  // [L106] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 18498,
+      "text": "  // [L107] Call `page.getByRole('combobox', { name: 'AI provider' }).selectOption` with `provider`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 18722,
+      "text": "  // [L108] Assert that the result of `page.getByLabel` using text interpolating `name`, an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 18997,
+      "text": "  // [L109] Assert that the result of `page.getByLabel` using text interpolating `name`, an object containing exact: false has the specified attribute/value \"placeholder\", text interpolating `name`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 19374,
+      "text": "  // [L110] Assert that the result of `page.getByLabel` using \"Model ID\", an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 19627,
+      "text": "  // [L111] Assert that the result of `page.getByLabel` using \"Model ID\", an object containing exact: false has the specified attribute/value \"placeholder\", `defaultModel`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 19955,
+      "text": "  // [L112] Assert that the result of `page.locator` using \"#model-help\" contains text text interpolating `defaultModel`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 20221,
+      "text": "  // [L113] Assert that the result of `page.locator` using \"#api-key-help\" contains text text interpolating \"xAI\" when `provider` strictly equals \"xai\", otherwise `name`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 20548,
+      "text": "  // [L114] Assert that the result of `page.locator` using \"#api-key-help\" does not satisfy: contains text \"OpenAI\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 20787,
+      "text": "  // [L115] Run the following branch when `provider` strictly equals \"google\". Assert that the result of `page.locator` using \"#api-key-help\" contains text \"data handling depend on your Google account settings and Google's terms\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 21228,
+      "text": "  // [L116] Replace the matched form control text with text interpolating `provider`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 21449,
+      "text": "  // [L117] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 21680,
+      "text": "  // [L118] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your order is in progress.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 21964,
+      "text": "  // [L119] Assert that `uploadedBody` contains text interpolating `provider`.\n"
+    },
+    {
+      "offset": 22115,
+      "text": "  // [L120] Assert that `uploadedBody` contains text interpolating `provider`.\n"
+    },
+    {
+      "offset": 22278,
+      "text": "  // [L121] Assert that `uploadedBody` does not satisfy: contains \"test-secret-api-key\".\n"
+    },
+    {
+      "offset": 22428,
+      "text": "  // [L122] Assert that `uploadedBody` matches `/name=\"model\"\\r\\n\\r\\n\\r\\n--/`.\n"
+    },
+    {
+      "offset": 22569,
+      "text": "  // [L123] Assert that the result of `page.getByLabel` using text interpolating `name`, an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 22844,
+      "text": "  // [L124] Assert that the result of `page.getByRole` using \"combobox\", an object containing name: \"AI provider\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 23102,
+      "text": "// [L125] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23191,
+      "text": "// [L126] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 23286,
+      "text": "// [L127] Iterate const provider over an array containing \"anthropic\", \"google\", \"xai\".\n"
+    },
+    {
+      "offset": 23550,
+      "text": "  // [L128] Declare `expired` as true.\n"
+    },
+    {
+      "offset": 23611,
+      "text": "  // [L129] Declare `uploadedBody` as \"\".\n"
+    },
+    {
+      "offset": 23678,
+      "text": "  // [L130] Declare `sessionReads` as 0.\n"
+    },
+    {
+      "offset": 23743,
+      "text": "  // [L131] Intercept requests matching \"**/api/session\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 23940,
+      "text": "    // [L132] Assign 1 to `sessionReads`, using +=.\n"
+    },
+    {
+      "offset": 24015,
+      "text": "    // [L133] Return the result of `route.fulfill` using an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 24228,
+      "text": "      // [L134] Set fixture property `modelDefaults` to an object containing values copied from `SESSION_DEFAULTS.modelDefaults`, [provider]: text interpolating `provider` when `sessionReads` is greater than 1, otherwise `SESSION_DEFAULTS.modelDefaults[provider]`.\n"
+    },
+    {
+      "offset": 24662,
+      "text": "  // [L135] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24755,
+      "text": "  // [L136] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 24946,
+      "text": "    // [L137] Assign the result of `route.request().postDataBuffer()?.toString` using \"utf8\" or, if null/undefined, \"\" to `uploadedBody`.\n"
+    },
+    {
+      "offset": 25161,
+      "text": "    // [L138] Return the result of `route.fulfill` using an object containing status: 403, json: an object containing error: `{ message: 'Session expired.' }` when `expired`, otherwise an object containing status: 202, json: an object containing job: `TEST_JOB` to the caller.\n"
+    },
+    {
+      "offset": 25471,
+      "text": "      // [L139] Set fixture property `status` to 403. Set fixture property `json` to an object containing error: an object containing message: \"Session expired.\".\n"
+    },
+    {
+      "offset": 25708,
+      "text": "      // [L140] Set fixture property `status` to 202. Set fixture property `json` to an object containing job: `TEST_JOB`.\n"
+    },
+    {
+      "offset": 25882,
+      "text": "  // [L141] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 25975,
+      "text": "  // [L142] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 26095,
+      "text": "  // [L143] Declare `model` as the result of `page.getByLabel` using \"Model ID\", an object containing exact: false.\n"
+    },
+    {
+      "offset": 26274,
+      "text": "  // [L144] Replace the matched form control text with \"custom/openai-model:2026\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 26444,
+      "text": "  // [L145] Iterate const choice over an array containing \"anthropic\", \"google\", \"xai\".\n"
+    },
+    {
+      "offset": 26589,
+      "text": "    // [L146] Call `page.getByRole('combobox', { name: 'AI provider' }).selectOption` with `choice`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 26813,
+      "text": "    // [L147] Assert that `model` has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 26954,
+      "text": "    // [L148] Assert that the result of `page.locator` using \"#apiKey\" has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 27150,
+      "text": "    // [L149] Replace the matched form control text with text interpolating `choice`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 27328,
+      "text": "    // [L150] Replace the matched form control text with text interpolating `choice`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 27520,
+      "text": "  // [L151] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 27611,
+      "text": "  // [L152] Call `page.getByRole('combobox', { name: 'AI provider' }).selectOption` with \"openai\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 27833,
+      "text": "  // [L153] Assert that `model` has form value \"custom/openai-model:2026\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 28018,
+      "text": "  // [L154] Assert that the result of `page.getByLabel` using \"OpenAI API key\", an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 28283,
+      "text": "  // [L155] Call `page.getByRole('combobox', { name: 'AI provider' }).selectOption` with `provider`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 28507,
+      "text": "  // [L156] Assert that `model` has form value text interpolating `provider`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 28700,
+      "text": "  // [L157] Assert that the result of `page.locator` using \"#apiKey\" has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 28892,
+      "text": "  // [L158] Replace the matched form control text with text interpolating `provider`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 29084,
+      "text": "  // [L159] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 29315,
+      "text": "  // [L160] Assert that the result of `page.getByRole` using \"alert\" contains text \"Session expired.\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 29540,
+      "text": "  // [L161] Assign false to `expired`.\n"
+    },
+    {
+      "offset": 29598,
+      "text": "  // [L162] Click `page.getByRole('button', { name: 'Reconnect' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 29801,
+      "text": "  // [L163] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Prepare appraisal order\" is enabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 30077,
+      "text": "  // [L164] Assert that the result of `page.getByRole` using \"combobox\", an object containing name: \"AI provider\" has form value `provider`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 30356,
+      "text": "  // [L165] Assert that `model` has form value text interpolating `provider`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 30549,
+      "text": "  // [L166] Assert that `model` has the specified attribute/value \"placeholder\", text interpolating `provider`. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 30792,
+      "text": "  // [L167] Assert that the resolved value from `page.evaluate` using a callback that returns `{ local: { ...localStorage }, session: { ...sessionStorage } }` deeply equals an object containing local: an empty object, session: an empty object.\n"
+    },
+    {
+      "offset": 31175,
+      "text": "  // [L168] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 31406,
+      "text": "  // [L169] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your order is in progress.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 31690,
+      "text": "  // [L170] Assert that `uploadedBody` contains text interpolating `provider`.\n"
+    },
+    {
+      "offset": 31856,
+      "text": "  // [L171] Assert that `uploadedBody` contains text interpolating `provider`.\n"
+    },
+    {
+      "offset": 32007,
+      "text": "// [L172] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 32096,
+      "text": "// [L173] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 32191,
+      "text": "// [L174] Register a test that \"waits for human R3 sign-in across refresh and resumes preparation automatically\".\n"
+    },
+    {
+      "offset": 32415,
+      "text": "  // [L175] Declare `submissions` as 0.\n"
+    },
+    {
+      "offset": 32478,
+      "text": "  // [L176] Declare `currentJob` as an object containing values copied from `TEST_JOB`.\n"
+    },
+    {
+      "offset": 32602,
+      "text": "  // [L177] Intercept requests matching \"**/api/session\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 32821,
+      "text": "    // [L178] Set fixture property `csrfToken` to `CSRF_TOKEN`.\n"
+    },
+    {
+      "offset": 32912,
+      "text": "    // [L179] Set fixture property `model` to \"gpt-5.6-sol\".\n"
+    },
+    {
+      "offset": 32999,
+      "text": "    // [L180] Copy the entries of an object containing activeJob: `currentJob` when `submissions`, otherwise an empty object into this fixture.\n"
+    },
+    {
+      "offset": 33198,
+      "text": "  // [L181] Close the fixture object for `json` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 33290,
+      "text": "  // [L182] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 33481,
+      "text": "    // [L183] Assign 1 to `submissions`, using +=.\n"
+    },
+    {
+      "offset": 33554,
+      "text": "    // [L184] Return the result of `route.fulfill` using an object containing status: 202, json: an object containing job: `currentJob` to the caller.\n"
+    },
+    {
+      "offset": 33775,
+      "text": "  // [L185] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 33868,
+      "text": "  // [L186] Intercept requests matching \"**/api/jobs/*\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 34108,
+      "text": "  // [L187] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 34228,
+      "text": "  // [L188] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 34459,
+      "text": "  // [L189] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your order is in progress.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 34743,
+      "text": "  // [L190] Assign an object containing values copied from `currentJob`, status: \"awaiting_login\", message: \"Sign in to R3 AMC in the browser that opened.\" to `currentJob`.\n"
+    },
+    {
+      "offset": 35034,
+      "text": "  // [L191] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Sign in to R3 AMC.\" is visible an object containing timeout: 10000. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 35356,
+      "text": "  // [L192] Assert that the result of `page.locator` using \"#login-notice\" contains text \"complete any CAPTCHA\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 35601,
+      "text": "  // [L193] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Order preparation in progress\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 35891,
+      "text": "  // [L194] Assert that the result of `page.getByLabel` using \"Loan number\", an object containing exact: false is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 36143,
+      "text": "  // [L195] Assert that the result of `page.locator` using \"#review-notice\" is hidden. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 36338,
+      "text": "  // [L196] Call `page.reload` without arguments. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 36450,
+      "text": "  // [L197] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Sign in to R3 AMC.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 36718,
+      "text": "  // [L198] Assert that the result of `page.locator` using \"#login-notice\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 36913,
+      "text": "  // [L199] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Order preparation in progress\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 37203,
+      "text": "  // [L200] Assign an object containing values copied from `currentJob`, status: \"preparing\", message: \"Preparing the appraisal order after sign-in.\" to `currentJob`.\n"
+    },
+    {
+      "offset": 37482,
+      "text": "  // [L201] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Preparing your R3 order.\" is visible an object containing timeout: 10000. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 37816,
+      "text": "  // [L202] Assert that the result of `page.locator` using \"#login-notice\" is hidden. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 38009,
+      "text": "  // [L203] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Order preparation in progress\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 38299,
+      "text": "  // [L204] Assert that `submissions` strictly equals 1.\n"
+    },
+    {
+      "offset": 38387,
+      "text": "  // [L205] Declare `stored` as the resolved value from `page.evaluate` using a callback that returns `{ local: { ...localStorage }, session: { ...sessionStorage } }`.\n"
+    },
+    {
+      "offset": 38665,
+      "text": "  // [L206] Assert that `stored` deeply equals an object containing local: an empty object, session: an object containing 'appraisal-desk-active-job': `TEST_JOB.id`.\n"
+    },
+    {
+      "offset": 38927,
+      "text": "// [L207] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 39016,
+      "text": "// [L208] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 39111,
+      "text": "// [L209] Register a test that \"hands control to the user and keeps the form locked until the browser closes\".\n"
+    },
+    {
+      "offset": 39329,
+      "text": "  // [L210] Declare `currentJob` as an object containing values copied from `TEST_JOB`, status: \"awaiting_review\", message: \"Review the prepared order in the open browser.\", warnings: an array containing \"Verify the property type.\", \"<img src=x onerror=alert(1)>\".\n"
+    },
+    {
+      "offset": 39789,
+      "text": "  // [L211] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 40038,
+      "text": "  // [L212] Intercept requests matching \"**/api/jobs/*\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 40278,
+      "text": "  // [L213] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 40398,
+      "text": "  // [L214] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 40629,
+      "text": "  // [L215] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Review and finish your order.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 40919,
+      "text": "  // [L216] Assert that the result of `page.getByText` using \"Continue in the R3 AMC browser.\", an object containing exact: true is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 41205,
+      "text": "  // [L217] Assert that the result of `page.getByText` using \"Verify the property type.\", an object containing exact: true is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 41479,
+      "text": "  // [L218] Assert that the result of `page.locator` using \"#warnings-list img\" has this many matching elements: 0. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 41709,
+      "text": "  // [L219] Assert that the result of `page.locator` using \"#warnings-list\" contains text \"<img src=x onerror=alert(1)>\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 41972,
+      "text": "  // [L220] Assign an object containing values copied from `currentJob`, status: \"user_submitted\", message: \"Submission was detected. Close the R3 browser when finished.\" to `currentJob`.\n"
+    },
+    {
+      "offset": 42293,
+      "text": "  // [L221] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Submission detected.\" is visible an object containing timeout: 10000. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 42619,
+      "text": "  // [L222] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Order preparation in progress\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 42909,
+      "text": "  // [L223] Assign an object containing values copied from `currentJob`, status: \"browser_closed\", message: \"The R3 browser was closed.\" to `currentJob`.\n"
+    },
+    {
+      "offset": 43162,
+      "text": "  // [L224] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your browser session is closed.\" is visible an object containing timeout: 10000. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 43510,
+      "text": "  // [L225] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Prepare another order\" is enabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 43782,
+      "text": "  // [L226] Assert that the resolved value from `page.evaluate` using a callback that returns `sessionStorage.length` strictly equals 0.\n"
+    },
+    {
+      "offset": 43987,
+      "text": "// [L227] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 44076,
+      "text": "// [L228] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 44171,
+      "text": "// [L229] Register a test that \"rejects invalid loan numbers and non-PDF files before sending an order\".\n"
+    },
+    {
+      "offset": 44377,
+      "text": "  // [L230] Declare `submissions` as 0.\n"
+    },
+    {
+      "offset": 44440,
+      "text": "  // [L231] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 44631,
+      "text": "    // [L232] Assign 1 to `submissions`, using +=.\n"
+    },
+    {
+      "offset": 44704,
+      "text": "    // [L233] Return the result of `route.fulfill` using an object containing status: 202, json: an object containing job: `TEST_JOB` to the caller.\n"
+    },
+    {
+      "offset": 44921,
+      "text": "  // [L234] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 45014,
+      "text": "  // [L235] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 45134,
+      "text": "  // [L236] Declare `loanNumber` as the result of `page.getByLabel` using \"Loan number\", an object containing exact: false.\n"
+    },
+    {
+      "offset": 45329,
+      "text": "  // [L237] Replace the matched form control text with \"685-201234\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 45476,
+      "text": "  // [L238] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 45707,
+      "text": "  // [L239] Assert that the resolved value from `loanNumber.evaluate` using a callback that returns `element.validity.patternMismatch` strictly equals true.\n"
+    },
+    {
+      "offset": 45977,
+      "text": "  // [L240] Replace the matched form control text with \"685-2012345\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 46126,
+      "text": "  // [L241] Declare `urla` as the result of `page.getByLabel` using \"URLA\", an object containing exact: false.\n"
+    },
+    {
+      "offset": 46295,
+      "text": "  // [L242] Call `urla.setInputFiles` with an object containing name: \"test.txt\", mimeType: \"text/plain\", buffer: the result of `Buffer.from` using \"not a PDF\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 46603,
+      "text": "  // [L243] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 46834,
+      "text": "  // [L244] Assert that the resolved value from `urla.evaluate` using a callback that returns `element.validationMessage` strictly equals \"Choose a PDF document.\".\n"
+    },
+    {
+      "offset": 47118,
+      "text": "  // [L245] Assert that `submissions` strictly equals 0.\n"
+    },
+    {
+      "offset": 47206,
+      "text": "// [L246] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 47295,
+      "text": "// [L247] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 47390,
+      "text": "// [L248] Register a test that \"shows server validation details and permits correction without losing inputs\".\n"
+    },
+    {
+      "offset": 47608,
+      "text": "  // [L249] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 47813,
+      "text": "    // [L250] Set fixture property `status` to 422.\n"
+    },
+    {
+      "offset": 47882,
+      "text": "    // [L251] Set fixture property `json` to an object containing error: an object containing code: \"VALIDATION_ERROR\", message: \"The order has an invalid field.\", details: an array containing an object containing field: `'fhaCaseNumber'`, message: `'Enter the FHA case number for this loan.'`.\n"
+    },
+    {
+      "offset": 48364,
+      "text": "  // [L252] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 48443,
+      "text": "  // [L253] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 48563,
+      "text": "  // [L254] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 48794,
+      "text": "  // [L255] Assert that the result of `page.getByRole` using \"alert\" contains text \"Enter the FHA case number for this loan.\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 49067,
+      "text": "  // [L256] Assert that the result of `page.getByLabel` using \"FHA case number\", an object containing exact: false has the specified attribute/value \"aria-invalid\", \"true\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 49397,
+      "text": "  // [L257] Assert that the result of `page.getByLabel` using \"Loan number\", an object containing exact: false has form value \"685-2012345\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 49678,
+      "text": "  // [L258] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Prepare appraisal order\" is enabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 49954,
+      "text": "  // [L259] Replace the matched form control text with \"123-4567890\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 50145,
+      "text": "  // [L260] Assert that the result of `page.getByLabel` using \"FHA case number\", an object containing exact: false does not satisfy: has the specified attribute/value \"aria-invalid\", \"true\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 50497,
+      "text": "// [L261] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 50586,
+      "text": "// [L262] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 50681,
+      "text": "// [L263] Register a test that \"recovers an accepted order after a lost POST response without resubmitting\".\n"
+    },
+    {
+      "offset": 50895,
+      "text": "  // [L264] Declare `submissions` as 0.\n"
+    },
+    {
+      "offset": 50958,
+      "text": "  // [L265] Declare `accepted` as false.\n"
+    },
+    {
+      "offset": 51023,
+      "text": "  // [L266] Intercept requests matching \"**/api/session\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 51339,
+      "text": "  // [L267] Intercept requests matching \"**/api/jobs\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 51530,
+      "text": "    // [L268] Assign 1 to `submissions`, using +=.\n"
+    },
+    {
+      "offset": 51603,
+      "text": "    // [L269] Assign true to `accepted`.\n"
+    },
+    {
+      "offset": 51665,
+      "text": "    // [L270] Return the result of `route.abort` using \"failed\" to the caller.\n"
+    },
+    {
+      "offset": 51778,
+      "text": "  // [L271] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 51871,
+      "text": "  // [L272] Call `openAndFillOrder` with `page`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 51991,
+      "text": "  // [L273] Click `page.getByRole('button', { name: 'Prepare appraisal order' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 52222,
+      "text": "  // [L274] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your order is in progress.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 52506,
+      "text": "  // [L275] Assert that `submissions` strictly equals 1.\n"
+    },
+    {
+      "offset": 52594,
+      "text": "  // [L276] Assert that the result of `page.getByRole` using \"alert\" is hidden. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 52775,
+      "text": "  // [L277] Assert that the result of `page.getByLabel` using \"OpenAI API key\", an object containing exact: false has form value \"\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 53040,
+      "text": "  // [L278] Call `page.reload` without arguments. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 53152,
+      "text": "  // [L279] Assert that the result of `page.getByRole` using \"heading\", an object containing name: \"Your order is in progress.\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 53436,
+      "text": "  // [L280] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Order preparation in progress\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 53726,
+      "text": "  // [L281] Assert that `submissions` strictly equals 1.\n"
+    },
+    {
+      "offset": 53814,
+      "text": "// [L282] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 53903,
+      "text": "// [L283] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 53998,
+      "text": "// [L284] Register a test that \"offers reconnection when workspace initialization fails\".\n"
+    },
+    {
+      "offset": 54174,
+      "text": "  // [L285] Declare `unavailable` as true.\n"
+    },
+    {
+      "offset": 54243,
+      "text": "  // [L286] Intercept requests matching \"**/api/session\" and handle them with the synthetic route callback. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 54464,
+      "text": "    // [L287] Set fixture property `status` to 503. Set fixture property `json` to an object containing error: an object containing code: \"UNAVAILABLE\", message: \"The local workspace is unavailable.\".\n"
+    },
+    {
+      "offset": 54777,
+      "text": "    // [L288] Set fixture property `json` to an object containing csrfToken: `CSRF_TOKEN`, model: \"gpt-5.6-sol\".\n"
+    },
+    {
+      "offset": 54957,
+      "text": "  // [L289] Navigate `page` to `origin`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 55064,
+      "text": "  // [L290] Assert that the result of `page.getByText` using \"The local workspace is unavailable.\", an object containing exact: true is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 55358,
+      "text": "  // [L291] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Workspace connection needed\" is disabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 55644,
+      "text": "  // [L292] Assign false to `unavailable`.\n"
+    },
+    {
+      "offset": 55710,
+      "text": "  // [L293] Click `page.getByRole('button', { name: 'Reconnect' })` in the synthetic browser test. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 55913,
+      "text": "  // [L294] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Prepare appraisal order\" is enabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 56189,
+      "text": "  // [L295] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Reconnect\" is hidden. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 56435,
+      "text": "// [L296] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 56524,
+      "text": "// [L297] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 56619,
+      "text": "// [L298] Register a test that \"fits desktop and mobile viewports and exposes keyboard focus\".\n"
+    },
+    {
+      "offset": 56805,
+      "text": "  // [L299] Call `page.setViewportSize` with an object containing width: 1440, height: 1100. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 56998,
+      "text": "  // [L300] Navigate `page` to `origin`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 57105,
+      "text": "  // [L301] Assert that the result of `page.getByRole` using \"button\", an object containing name: \"Prepare appraisal order\" is enabled. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 57381,
+      "text": "  // [L302] Call `page.keyboard.press` with \"Tab\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 57507,
+      "text": "  // [L303] Await an assertion that the Skip to order form link has keyboard focus.\n"
+    },
+    {
+      "offset": 57677,
+      "text": "  // [L304] Assert that the result of `page.getByRole` using \"link\", an object containing name: \"Skip to order form\" is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 57939,
+      "text": "  // [L305] Call `page.setViewportSize` with an object containing width: 375, height: 812. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 58128,
+      "text": "  // [L306] Call `page.getByRole('combobox', { name: 'AI provider' }).selectOption` with \"google\". Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 58350,
+      "text": "  // [L307] Assert that the resolved value from `page.evaluate` using a callback that returns `document.documentElement.scrollWidth` is at most `window.innerWidth` strictly equals true.\n"
+    },
+    {
+      "offset": 58643,
+      "text": "  // [L308] Assert that the result of `page.getByRole` using \"heading\", an object containing name: `/A prepared order\\./` is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 58913,
+      "text": "  // [L309] Assert that the result of `page.getByLabel` using \"Google Gemini API key\", an object containing exact: false is visible. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 59183,
+      "text": "// [L310] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

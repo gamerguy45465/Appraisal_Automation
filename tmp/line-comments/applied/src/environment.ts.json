@@ -1,0 +1,286 @@
+{
+  "originalSha256": "3911f511d11147d60a5c4c38439cc21d89c62fb3c66dc93e019da345345292f7",
+  "annotatedSha256": "c21c08c9bd3b0a7a2784a9c9c791d1ecc0393dc1f0b782976a2605e1020f6a37",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports spawn from node:child_process for child-process creation and related process option types.\n"
+    },
+    {
+      "offset": 151,
+      "text": "// [L2] Imports fileURLToPath from node:url for conversion of module-relative file URLs into local filesystem paths.\n"
+    },
+    {
+      "offset": 310,
+      "text": "// [L3] Imports tool from @langchain/core/tools for schema-described tools callable by the agent.\n"
+    },
+    {
+      "offset": 454,
+      "text": "// [L4] Imports z from zod for runtime schemas and validation-error handling.\n"
+    },
+    {
+      "offset": 557,
+      "text": "// [L5] Imports compile-time types OrderInput from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 750,
+      "text": "// [L6] Imports AppError from ./errors.js for fixed public application errors and private provider-error classification.\n"
+    },
+    {
+      "offset": 911,
+      "text": "// [L7] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1004,
+      "text": "// [L8] Exports the mapping from approved logical setting keys to isolated-worker environment variable names.\n"
+    },
+    {
+      "offset": 1148,
+      "text": "  // [L9] Maps the private provider API key to its application-specific environment variable.\n"
+    },
+    {
+      "offset": 1277,
+      "text": "  // [L10] Maps the loan reference and FHA case number to separate application-specific environment variables.\n"
+    },
+    {
+      "offset": 1474,
+      "text": "  // [L11] Maps payment choice and the rush flag to their application-specific environment variables.\n"
+    },
+    {
+      "offset": 1658,
+      "text": "// [L12] Finishes the mapping and preserves its literal keys and values in the TypeScript type.\n"
+    },
+    {
+      "offset": 1766,
+      "text": "// [L13] Restricts environment operations to keys present in the approved mapping.\n"
+    },
+    {
+      "offset": 1902,
+      "text": "// [L14] Marks only the API-key setting as secret so model-facing getters cannot return it.\n"
+    },
+    {
+      "offset": 2048,
+      "text": "// [L15] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2142,
+      "text": "// [L16] Existing explanatory comment: Powershell treats JSON stdin as data; no form value becomes executable shell text.\n"
+    },
+    {
+      "offset": 2354,
+      "text": "// [L17] Exports an asynchronous Windows helper operation that sets or retrieves one approved environment setting.\n"
+    },
+    {
+      "offset": 2591,
+      "text": "  // [L18] Refuses environment-helper execution outside Windows with a public application error.\n"
+    },
+    {
+      "offset": 2800,
+      "text": "  // [L19] Wraps the child-process lifecycle in a promise returning the resulting setting value.\n"
+    },
+    {
+      "offset": 2941,
+      "text": "    // [L20] Starts the fixed PowerShell helper hidden, without profiles or interaction, using piped streams and a ten-second process timeout.\n"
+    },
+    {
+      "offset": 3350,
+      "text": "    // [L21] Initializes accumulation of the helper's standard-output JSON.\n"
+    },
+    {
+      "offset": 3447,
+      "text": "    // [L22] Decodes the child process's standard output as UTF-8 text.\n"
+    },
+    {
+      "offset": 3557,
+      "text": "    // [L23] Appends each output chunk to the helper-response buffer.\n"
+    },
+    {
+      "offset": 3697,
+      "text": "    // [L24] Drains standard error without exposing its content or blocking the child on a full pipe.\n"
+    },
+    {
+      "offset": 3826,
+      "text": "    // [L25] Converts child-process startup failures into a fixed environment-helper error.\n"
+    },
+    {
+      "offset": 4042,
+      "text": "    // [L26] Converts failures writing the helper's input into a fixed environment-helper error.\n"
+    },
+    {
+      "offset": 4273,
+      "text": "    // [L27] Handles process completion and interprets the helper's exit status and output.\n"
+    },
+    {
+      "offset": 4399,
+      "text": "      // [L28] Rejects nonzero helper exits with a safe message and skips response parsing.\n"
+    },
+    {
+      "offset": 4622,
+      "text": "      // [L29] Begins parsing the successful helper response with a fixed-error fallback.\n"
+    },
+    {
+      "offset": 4724,
+      "text": "        // [L30] Removes an optional UTF-8 BOM and parses JSON containing the returned value.\n"
+    },
+    {
+      "offset": 4912,
+      "text": "        // [L31] Converts a null helper value into an empty string.\n"
+    },
+    {
+      "offset": 5023,
+      "text": "        // [L32] Existing explanatory comment: A child PowerShell cannot mutate its Node parent; synchronize only this isolated worker.\n"
+    },
+    {
+      "offset": 5259,
+      "text": "        // [L33] After a set operation, copies the returned setting into this Node worker's environment because a child cannot update its parent.\n"
+    },
+    {
+      "offset": 5483,
+      "text": "        // [L34] Resolves the operation with the stored or retrieved string.\n"
+    },
+    {
+      "offset": 5585,
+      "text": "      // [L35] Converts malformed helper output into a fixed invalid-environment-response error.\n"
+    },
+    {
+      "offset": 5794,
+      "text": "    // [L36] Closes the scope or expression introduced here: Handles process completion and interprets the helper's exit status and output.\n"
+    },
+    {
+      "offset": 5942,
+      "text": "    // [L37] Sends the approved environment name and value as JSON on standard input, then closes input.\n"
+    },
+    {
+      "offset": 6124,
+      "text": "  // [L38] Closes the scope or expression introduced here: Wraps the child-process lifecycle in a promise returning the resulting setting value.\n"
+    },
+    {
+      "offset": 6275,
+      "text": "// [L39] Closes the scope or expression introduced here: Exports an asynchronous Windows helper operation that sets or retrieves one approved environment setting.\n"
+    },
+    {
+      "offset": 6440,
+      "text": "// [L40] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6534,
+      "text": "// [L41] Exports creation of per-job private setting storage and model-visible environment tools.\n"
+    },
+    {
+      "offset": 6692,
+      "text": "  // [L42] Captures submitted settings in a private string-valued map, converting the rush Boolean to text.\n"
+    },
+    {
+      "offset": 7019,
+      "text": "  // [L43] Tracks whether the environment remains usable before cleanup.\n"
+    },
+    {
+      "offset": 7113,
+      "text": "  // [L44] Defines a guard that rejects all later operations after environment cleanup.\n"
+    },
+    {
+      "offset": 7345,
+      "text": "  // [L45] Defines asynchronous storage for one approved private setting.\n"
+    },
+    {
+      "offset": 7483,
+      "text": "    // [L46] Rejects storage if the environment has already been cleared.\n"
+    },
+    {
+      "offset": 7577,
+      "text": "    // [L47] Calls the fixed helper to store the original private value for this setting.\n"
+    },
+    {
+      "offset": 7735,
+      "text": "    // [L48] Ensures a late helper completion cannot restore a setting after cleanup.\n"
+    },
+    {
+      "offset": 7835,
+      "text": "      // [L49] Existing explanatory comment: A helper already in flight can finish after clear() and synchronize its old value.\n"
+    },
+    {
+      "offset": 8055,
+      "text": "      // [L50] Deletes any setting synchronized by an in-flight helper after the environment became inactive.\n"
+    },
+    {
+      "offset": 8227,
+      "text": "    // [L51] Closes the scope or expression introduced here: Ensures a late helper completion cannot restore a setting after cleanup.\n"
+    },
+    {
+      "offset": 8367,
+      "text": "    // [L52] Rechecks activity after asynchronous storage, rejecting a completion that raced with cleanup.\n"
+    },
+    {
+      "offset": 8494,
+      "text": "  // [L53] Closes the scope or expression introduced here: Defines asynchronous storage for one approved private setting.\n"
+    },
+    {
+      "offset": 8621,
+      "text": "  // [L54] Defines retrieval of one setting while preserving the environment's active-state boundary.\n"
+    },
+    {
+      "offset": 8792,
+      "text": "    // [L55] Rejects retrieval after the environment has been cleared.\n"
+    },
+    {
+      "offset": 8883,
+      "text": "    // [L56] Reads the requested approved setting through the PowerShell helper.\n"
+    },
+    {
+      "offset": 9025,
+      "text": "    // [L57] Rechecks activity after the helper returns so cleared values are not returned to a caller.\n"
+    },
+    {
+      "offset": 9149,
+      "text": "    // [L58] Returns the retrieved value to the internal caller.\n"
+    },
+    {
+      "offset": 9232,
+      "text": "  // [L59] Closes the scope or expression introduced here: Defines retrieval of one setting while preserving the environment's active-state boundary.\n"
+    },
+    {
+      "offset": 9387,
+      "text": "  // [L60] Builds two argument-free LangChain tools for every approved logical environment key.\n"
+    },
+    {
+      "offset": 9568,
+      "text": "    // [L61] Creates a store tool using the server-captured value and returns only confirmation that storage completed.\n"
+    },
+    {
+      "offset": 9931,
+      "text": "    // [L62] Creates a getter that returns only configuration availability for secrets and the value for nonsecret settings, with matching tool descriptions.\n"
+    },
+    {
+      "offset": 10467,
+      "text": "  // [L63] Closes the scope or expression introduced here: Builds two argument-free LangChain tools for every approved logical environment key.\n"
+    },
+    {
+      "offset": 10617,
+      "text": "  // [L64] Returns the tool collection together with internal initialization, retrieval, and cleanup operations.\n"
+    },
+    {
+      "offset": 10741,
+      "text": "    // [L65] Exposes the generated model-facing tools.\n"
+    },
+    {
+      "offset": 10807,
+      "text": "    // [L66] Initializes every approved setting in sequence using the guarded store operation.\n"
+    },
+    {
+      "offset": 11037,
+      "text": "    // [L67] Exposes the guarded retrieval function for private backend consumption.\n"
+    },
+    {
+      "offset": 11136,
+      "text": "    // [L68] Marks the environment inactive, removes all mapped process variables, and replaces retained private values with empty strings.\n"
+    },
+    {
+      "offset": 11454,
+      "text": "  // [L69] Closes the scope or expression introduced here: Returns the tool collection together with internal initialization, retrieval, and cleanup operations.\n"
+    },
+    {
+      "offset": 11620,
+      "text": "// [L70] Closes the scope or expression introduced here: Exports creation of per-job private setting storage and model-visible environment tools.\n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+# Line explanations: src/google.ts
+
+Source: [src/google.ts](../../../src/google.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports ChatGoogle from @langchain/google for the Google Gemini chat model adapter. |
+| 2 | Imports AppError from ./errors.js for fixed public application errors and private provider-error classification. |
+| 3 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 4 | Defines the single approved Google Generative Language API origin. |
+| 5 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 6 | Existing explanatory comment: Use only the selected Gemini API key; never discover Cloud credentials or a gateway. |
+| 7 | Exports construction of a Google model using only the job's selected API key and model ID. |
+| 8 | Creates the LangChain Google chat model with an explicitly configured transport. |
+| 9 | Selects the Google AI API-key platform, official origin, chosen model, and v1beta API version. |
+| 10 | Limits SDK retries to one and disables streaming model invocation. |
+| 11 | Existing explanatory comment: The default SDK client also reads service-account credentials even with an API |
+| 12 | Existing explanatory comment: key. This API-key-only transport preserves this application's per-job isolation. |
+| 13 | Supplies a custom API client to avoid unrelated ambient Google credential discovery. |
+| 14 | Reports that the custom transport uses an API key. |
+| 15 | Rejects project-ID lookup with a fixed configuration error because this path requires a Google AI Studio key. |
+| 16 | Defines the custom transport's asynchronous request handler. |
+| 17 | Parses the SDK-generated request URL for validation. |
+| 18 | Recognizes the nonstreaming generateContent operation by its URL path suffix. |
+| 19 | Recognizes streamGenerateContent or marks any other operation invalid. |
+| 20 | Requires the approved Google origin, POST method, recognized operation, and no URL fragment. |
+| 21 | Allows only an empty query string or the known SSE query string. |
+| 22 | Rejects any request outside those approved endpoint constraints with a fixed configuration error. |
+| 23 | Ends the rejection block for requests outside the approved Google endpoint constraints. |
+| 24 | Existing explanatory comment: Model IDs are data, including custom IDs with punctuation, not URL routing. |
+| 25 | Reconstructs the approved v1beta model URL, percent-encoding the selected model ID as data. |
+| 26 | Sets the SSE query only when calling the streaming operation. |
+| 27 | Combines the caller's abort signal with a 120-second transport timeout. |
+| 28 | Rejects an already-cancelled or timed-out request before reading its body. |
+| 29 | Copies the SDK request body into an ArrayBuffer for forwarding. |
+| 30 | Rechecks cancellation after the asynchronous body read. |
+| 31 | Starts the fetch to the reconstructed approved Google endpoint. |
+| 32 | Sends JSON via POST with only the selected job's Google API key authentication header. |
+| 33 | Forwards the body and combined cancellation signal and rejects HTTP redirects. |
+| 34 | Closes the scope or expression introduced here: Starts the fetch to the reconstructed approved Google endpoint. |
+| 35 | Closes the scope or expression introduced here: Defines the custom transport's asynchronous request handler. |
+| 36 | Closes the scope or expression introduced here: Supplies a custom API client to avoid unrelated ambient Google credential discovery. |
+| 37 | Closes the scope or expression introduced here: Creates the LangChain Google chat model with an explicitly configured transport. |
+| 38 | Closes the scope or expression introduced here: Exports construction of a Google model using only the job's selected API key and model ID. |

@@ -1,0 +1,354 @@
+{
+  "originalSha256": "c16b89b9c0493aac283a3126908183882612eb50718bb288a0ac630bf451bf58",
+  "annotatedSha256": "bc255a6da9f13399724bf06187744ec1c1f030a8827a8fd5fc3b671f570fdd59",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { describe, expect, it } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 129,
+      "text": "// [L2] Import { toJsonSchema } from \"@langchain/core/utils/json_schema\" for these regression tests.\n"
+    },
+    {
+      "offset": 296,
+      "text": "// [L3] Import { extractionSchema, type ExtractedOrder } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 479,
+      "text": "// [L4] Import { anthropicExtractionSchema, normalizeAnthropicExtraction } from \"../src/extraction-schema.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 720,
+      "text": "// [L5] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 813,
+      "text": "// [L6] Define the TypeScript shape `Node` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 948,
+      "text": "// [L7] Define helper `schemaNodes` with parameters value, path for the fixture operations below.\n"
+    },
+    {
+      "offset": 1134,
+      "text": "  // [L8] Run the following branch when the negation of `value` or `typeof value` does not strictly equal \"object\" or the result of `Array.isArray` using `value`. Return an empty array to the caller.\n"
+    },
+    {
+      "offset": 1412,
+      "text": "  // [L9] Declare `node` as `value`.\n"
+    },
+    {
+      "offset": 1479,
+      "text": "  // [L10] Return an array containing an object containing path, node, `...Object.entries(node).flatMap(([key, child]) => Array.isArray(child) ? child.flatMap((item, index) => schemaNodes(item, `${path}.${key}[${index}]`)) : schemaNodes(child, `${pa...` to the caller.\n"
+    },
+    {
+      "offset": 1845,
+      "text": "    // [L11] When a schema child is an array, recursively collect each element's schema nodes and append its index to the diagnostic path.\n"
+    },
+    {
+      "offset": 2068,
+      "text": "    // [L12] Otherwise recursively collect the single child schema with its property path, then finish the flattened node list.\n"
+    },
+    {
+      "offset": 2242,
+      "text": "// [L13] Close the callback or control-flow body for `schemaNodes` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 2346,
+      "text": "// [L14] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2440,
+      "text": "// [L15] Declare `blankContact` as an object containing firstName: \"\", lastName: \"\", workPhone: \"\", homePhone: \"\", mobilePhone: \"\", email: \"\".\n"
+    },
+    {
+      "offset": 2695,
+      "text": "// [L16] Declare `missingContact` as an object containing firstName: null (unknown or absent), lastName: null (unknown or absent), workPhone: null (unknown or absent), homePhone: null (unknown or absent), mobilePhone: null (unknown or absent), email: null (unknown or absent).\n"
+    },
+    {
+      "offset": 3098,
+      "text": "// [L17] Declare `wire` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 3182,
+      "text": "  // [L18] Set fixture property `loanProgram` to \"Conventional\". Set fixture property `loanProgramText` to \"Conventional\". Set fixture property `loanPurpose` to \"Purchase\". Set fixture property `product` to \"\". Set fixture property `propertyType` to \"Single Family\". Set fixture property `occupancy` to \"  \".\n"
+    },
+    {
+      "offset": 3641,
+      "text": "  // [L19] Set fixture property `property` to an object containing address: \"123 Synthetic St\", unit: \"\", postalCode: \"\", city: \"\", state: \"\".\n"
+    },
+    {
+      "offset": 3876,
+      "text": "  // [L20] Set fixture property `secondaryLoanNumber` to \"\". Set fixture property `loanType` to \"\". Set fixture property `lienPosition` to \"\". Set fixture property `loanAmount` to 388000. Set fixture property `salePrice` to 485000.\n"
+    },
+    {
+      "offset": 4206,
+      "text": "  // [L21] Set fixture property `lastValuationAmount` to null (unknown or absent). Set fixture property `lastValuationDate` to \"\".\n"
+    },
+    {
+      "offset": 4389,
+      "text": "  // [L22] Set fixture property `borrower` to an object containing values copied from `blankContact`, firstName: \"Casey\", lastName: \"Borrower\", homePhone: \"7025550100\".\n"
+    },
+    {
+      "offset": 4658,
+      "text": "  // [L23] Set fixture property `coBorrower` to `blankContact`.\n"
+    },
+    {
+      "offset": 4750,
+      "text": "  // [L24] Set fixture property `listingAgent` to an object containing values copied from `blankContact`, firstName: \"Avery\", lastName: \"Ellis\", email: \"avery@example.test\".\n"
+    },
+    {
+      "offset": 5029,
+      "text": "  // [L25] Set fixture property `buyerAgent` to an object containing values copied from `blankContact`, firstName: \"Morgan\", lastName: \"Rivera\", workPhone: \"7025550120\".\n"
+    },
+    {
+      "offset": 5300,
+      "text": "  // [L26] Set fixture property `complexProperty` to false. Set fixture property `highProfileCustomer` to false.\n"
+    },
+    {
+      "offset": 5467,
+      "text": "  // [L27] Set fixture property `evidence` to an array containing an object containing field: \"salePrice\", document: \"salesContract\", page: 1, quote: \"\". Set fixture property `warnings` to an array containing \"\".\n"
+    },
+    {
+      "offset": 5781,
+      "text": "// [L28] Close the fixture object for `wire` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5864,
+      "text": "// [L29] Declare `canonical` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 5974,
+      "text": "  // [L30] Set fixture property `loanProgram` to \"Conventional\". Set fixture property `loanProgramText` to \"Conventional\". Set fixture property `loanPurpose` to \"Purchase\". Set fixture property `product` to null (unknown or absent). Set fixture property `propertyType` to \"Single Family\". Set fixture property `occupancy` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 6477,
+      "text": "  // [L31] Set fixture property `property` to an object containing address: \"123 Synthetic St\", unit: null (unknown or absent), postalCode: null (unknown or absent), city: null (unknown or absent), state: null (unknown or absent).\n"
+    },
+    {
+      "offset": 6808,
+      "text": "  // [L32] Set fixture property `secondaryLoanNumber` to null (unknown or absent). Set fixture property `loanType` to null (unknown or absent). Set fixture property `lienPosition` to null (unknown or absent). Set fixture property `loanAmount` to 388000. Set fixture property `salePrice` to 485000.\n"
+    },
+    {
+      "offset": 7210,
+      "text": "  // [L33] Set fixture property `lastValuationAmount` to null (unknown or absent). Set fixture property `lastValuationDate` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 7417,
+      "text": "  // [L34] Set fixture property `borrower` to an object containing values copied from `missingContact`, firstName: \"Casey\", lastName: \"Borrower\", homePhone: \"7025550100\".\n"
+    },
+    {
+      "offset": 7690,
+      "text": "  // [L35] Set fixture property `coBorrower` to `missingContact`.\n"
+    },
+    {
+      "offset": 7786,
+      "text": "  // [L36] Set fixture property `listingAgent` to an object containing values copied from `missingContact`, firstName: \"Avery\", lastName: \"Ellis\", email: \"avery@example.test\".\n"
+    },
+    {
+      "offset": 8069,
+      "text": "  // [L37] Set fixture property `buyerAgent` to an object containing values copied from `missingContact`, firstName: \"Morgan\", lastName: \"Rivera\", workPhone: \"7025550120\".\n"
+    },
+    {
+      "offset": 8344,
+      "text": "  // [L38] Set fixture property `complexProperty` to false. Set fixture property `highProfileCustomer` to false.\n"
+    },
+    {
+      "offset": 8511,
+      "text": "  // [L39] Set fixture property `evidence` to an array containing an object containing field: \"salePrice\", document: \"salesContract\", page: 1, quote: \"\". Set fixture property `warnings` to an array containing \"\".\n"
+    },
+    {
+      "offset": 8825,
+      "text": "// [L40] Close the fixture object for `canonical` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8913,
+      "text": "// [L41] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 9007,
+      "text": "// [L42] Group regression tests for \"Anthropic extraction schema boundary\".\n"
+    },
+    {
+      "offset": 9140,
+      "text": "  // [L43] Register a test that \"preserves all canonical fields and required lists while reducing 40 unions to the three nullable amounts\".\n"
+    },
+    {
+      "offset": 9401,
+      "text": "    // [L44] Declare `original` as the result of `schemaNodes` using the result of `toJsonSchema` using `extractionSchema`.\n"
+    },
+    {
+      "offset": 9591,
+      "text": "    // [L45] Declare `adapted` as the result of `schemaNodes` using `anthropicExtractionSchema`.\n"
+    },
+    {
+      "offset": 9748,
+      "text": "    // [L46] Declare `structure` as a callback that returns the result of `nodes.filter(({ node }) => node.properties).map` using a callback that returns `{ path, properties: Object.keys(node.properties as Node), required: node.required, additionalProperties: node.additionalProperties, }`.\n"
+    },
+    {
+      "offset": 10160,
+      "text": "      // [L47] Include the current `path` value under the same property name. Set fixture property `properties` to the result of `Object.keys` using `node.properties`. Set fixture property `required` to `node.required`. Set fixture property `additionalProperties` to `node.additionalProperties`.\n"
+    },
+    {
+      "offset": 10592,
+      "text": "    // [L48] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10674,
+      "text": "    // [L49] Assert that the result of `structure` using `adapted` deeply equals the result of `structure` using `original`.\n"
+    },
+    {
+      "offset": 10860,
+      "text": "    // [L50] Declare `union` as a callback that returns the result of `Array.isArray` using `node.type` or the result of `Array.isArray` using `node.anyOf`.\n"
+    },
+    {
+      "offset": 11129,
+      "text": "    // [L51] Assert that the result of `original.filter` using `union` has length 40.\n"
+    },
+    {
+      "offset": 11268,
+      "text": "    // [L52] Assert that the result of `adapted.filter(union).map` using a callback that returns `path` deeply equals an array containing \"$.properties.loanAmount\", \"$.properties.salePrice\", \"$.properties.lastValuationAmount\".\n"
+    },
+    {
+      "offset": 11563,
+      "text": "      // [L53] Require only the loanAmount, salePrice, and lastValuationAmount paths to retain nullable-number unions.\n"
+    },
+    {
+      "offset": 11777,
+      "text": "    // [L54] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 11867,
+      "text": "    // [L55] Declare `nullableText` as the result of `original.filter` using a callback that returns `Array.isArray(node.type)` and `node.type.includes('string')` and the result of `node.type.includes` using `'null'`.\n"
+    },
+    {
+      "offset": 12229,
+      "text": "    // [L56] Assert that `nullableText` has length 37.\n"
+    },
+    {
+      "offset": 12327,
+      "text": "    // [L57] For each canonical nullable-text path, assert that the matching adapted Anthropic schema node has the plain string type.\n"
+    },
+    {
+      "offset": 12578,
+      "text": "  // [L58] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12670,
+      "text": "// [L59] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12764,
+      "text": "  // [L60] Register a test that \"decodes missing text without merging contacts, changing evidence/warnings, or mutating provider output\".\n"
+    },
+    {
+      "offset": 13021,
+      "text": "    // [L61] Declare `original` as the result of `structuredClone` using `wire`.\n"
+    },
+    {
+      "offset": 13146,
+      "text": "    // [L62] Declare `normalized` as the result of `normalizeAnthropicExtraction` using `wire`.\n"
+    },
+    {
+      "offset": 13301,
+      "text": "    // [L63] Assert that the result of `extractionSchema.parse` using `normalized` deeply equals `canonical`.\n"
+    },
+    {
+      "offset": 13478,
+      "text": "    // [L64] Assert that `wire` deeply equals `original`.\n"
+    },
+    {
+      "offset": 13572,
+      "text": "    // [L65] Assert that the result of `normalizeAnthropicExtraction` using `canonical` deeply equals `canonical`.\n"
+    },
+    {
+      "offset": 13759,
+      "text": "  // [L66] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 13851,
+      "text": "// [L67] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 13945,
+      "text": "  // [L68] Register a test that \"keeps all three absent amounts null without filling them with zero\".\n"
+    },
+    {
+      "offset": 14130,
+      "text": "    // [L69] Declare `result` as the result of `extractionSchema.parse` using the result of `normalizeAnthropicExtraction` using an object containing values copied from `wire`, loanAmount: null (unknown or absent), salePrice: null (unknown or absent), lastValuationAmount: null (unknown or absent).\n"
+    },
+    {
+      "offset": 14577,
+      "text": "    // [L70] Assert that an array containing `result.loanAmount`, `result.salePrice`, `result.lastValuationAmount` deeply equals an array containing null (unknown or absent), null (unknown or absent), null (unknown or absent).\n"
+    },
+    {
+      "offset": 14911,
+      "text": "  // [L71] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15003,
+      "text": "// [L72] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15097,
+      "text": "  // [L73] Register a test that \"preserves invalid or missing fields so unchanged canonical validation rejects them\".\n"
+    },
+    {
+      "offset": 15314,
+      "text": "    // [L74] Declare `missingName` as the result of `structuredClone` using `wire`.\n"
+    },
+    {
+      "offset": 15472,
+      "text": "    // [L75] Delete property `(missingName.borrower as Record<string, unknown>).lastName` from the fixture object.\n"
+    },
+    {
+      "offset": 15658,
+      "text": "    // [L76] Begin malformed extraction cases covering missing required fields, zero/mistyped amounts, invalid classifications or booleans, invalid contacts, and malformed evidence/warnings.\n"
+    },
+    {
+      "offset": 15873,
+      "text": "      // [L77] Copy the entries of `wire` into this fixture. Set fixture property `salePrice` to 0. Copy the entries of `wire` into this fixture. Set fixture property `loanAmount` to \"388000\". Copy the entries of `wire` into this fixture. Set fixture property `lastValuationAmount` to \"\".\n"
+    },
+    {
+      "offset": 16281,
+      "text": "      // [L78] Copy the entries of `wire` into this fixture. Set fixture property `loanProgram` to \"\". Copy the entries of `wire` into this fixture. Set fixture property `loanPurpose` to \"purchase\". Copy the entries of `wire` into this fixture. Set fixture property `complexProperty` to \"\".\n"
+    },
+    {
+      "offset": 16680,
+      "text": "      // [L79] Copy the entries of `wire` into this fixture. Set fixture property `borrower` to an object containing values copied from `wire.borrower`, firstName: 123.\n"
+    },
+    {
+      "offset": 16916,
+      "text": "      // [L80] Copy the entries of `wire` into this fixture. Set fixture property `evidence` to an array containing an object containing values copied from `wire.evidence[0]`, document: \"\".\n"
+    },
+    {
+      "offset": 17176,
+      "text": "      // [L81] Copy the entries of `wire` into this fixture. Set fixture property `evidence` to an array containing an object containing values copied from `wire.evidence[0]`, page: 0.\n"
+    },
+    {
+      "offset": 17426,
+      "text": "      // [L82] Add malformed cases with an overlong evidence quote and a null warning entry; warnings must contain strings, so null is invalid here.\n"
+    },
+    {
+      "offset": 17686,
+      "text": "    // [L83] Close the array of fixture values for `malformed` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 17791,
+      "text": "    // [L84] Normalize each malformed response and assert that canonical schema validation still fails rather than repairing invalid data.\n"
+    },
+    {
+      "offset": 18058,
+      "text": "    // [L85] Assert normalization preserves the missing borrower.lastName property instead of inventing it.\n"
+    },
+    {
+      "offset": 18278,
+      "text": "  // [L86] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 18370,
+      "text": "// [L87] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

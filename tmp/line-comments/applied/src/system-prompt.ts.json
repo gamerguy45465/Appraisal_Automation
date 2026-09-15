@@ -1,0 +1,82 @@
+{
+  "originalSha256": "695e80e05f28a8a363181fa3ccc172197c7a9e2a94098f181724c14721064515",
+  "annotatedSha256": "3b0fe0945db19a81ab09ae87072973184c3e4b9fbf03adc249999eb6ff7592c1",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports OBSERVED_BASELINE_PRODUCTS from ./browser/r3-fields.js for the observed baseline appraisal-product labels.\n"
+    },
+    {
+      "offset": 192,
+      "text": "// [L2] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 285,
+      "text": "// [L3] Existing explanatory comment: Product recommendations do not turn an uncertain property classification into a fact.\n"
+    },
+    {
+      "offset": 502,
+      "text": "// [L4] Defines appraisal-product instructions separating requested appraisal services from financing products and allowing only fact-supported tentative recommendations while keeping property classifications independent.\n"
+    },
+    {
+      "offset": 1872,
+      "text": "  // [L5] Embeds the inspected baseline Conventional and FHA product labels grouped by property category into the product-selection prompt.\n"
+    },
+    {
+      "offset": 2197,
+      "text": "  // [L6] Completes product-selection rules with FHA Zero Down mapping, recommendation evidence/warnings, unsupported-case handling, approved-plan restrictions, and mandatory human review/submission.\n"
+    },
+    {
+      "offset": 3272,
+      "text": "// [L7] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3365,
+      "text": "// [L8] Existing explanatory comment: Shared role terminology for document extraction and the bounded preparation agent.\n"
+    },
+    {
+      "offset": 3576,
+      "text": "// [L9] Defines shared agent-role terminology and access-contact rules, distinguishing seller/listing representation from buyer/selling representation and requiring evidence instead of inferred roles.\n"
+    },
+    {
+      "offset": 4645,
+      "text": "// [L10] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4739,
+      "text": "// [L11] Existing explanatory comment: Extract document facts independently of whether the contract has been executed.\n"
+    },
+    {
+      "offset": 4945,
+      "text": "// [L12] Defines contract sale-price extraction independent of signature/sample status, requires contract evidence, separates other monetary amounts, and restricts R3 population to purchases with a supplied contract.\n"
+    },
+    {
+      "offset": 6412,
+      "text": "// [L13] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6506,
+      "text": "// [L14] Existing explanatory comment: User-supplied appraisal workflow, with the requested manual-login and contact updates.\n"
+    },
+    {
+      "offset": 6722,
+      "text": "// [L15] Defines the base loan-processing prompt, including manual R3 login, exact order-page verification, fixed branch/status contact, source-based form fields, contact sections, FHA/VA restrictions, and the user's exclusive submission responsibility.\n"
+    },
+    {
+      "offset": 14765,
+      "text": "  // [L16] Appends the fixed Amber Coleman loan-officer identity and contact values, keeping the officer section separate from the appraisal-status contact.\n"
+    },
+    {
+      "offset": 15379,
+      "text": "  // [L17] Appends the shared seller/listing and buyer/selling role-mapping instructions to the agent system prompt.\n"
+    },
+    {
+      "offset": 15535,
+      "text": "  // [L18] Appends the shared sale-price source, evidence, and purchase-only field rules to the system prompt.\n"
+    },
+    {
+      "offset": 15683,
+      "text": "  // [L19] Appends the shared bounded appraisal-product selection instructions and completes the system prompt.\n"
+    }
+  ]
+}

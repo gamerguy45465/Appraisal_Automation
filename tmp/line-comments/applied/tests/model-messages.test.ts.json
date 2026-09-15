@@ -1,0 +1,526 @@
+{
+  "originalSha256": "c8b42f2d94e090254b8a921f76d6fa3be1146c1fc2e94808d578d84ffe717377",
+  "annotatedSha256": "809b0276e9fa053c20e780b4743d6b278451065f644265ff4bb3deb81cc8154d",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { afterEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 159,
+      "text": "// [L2] Import { AIMessage, HumanMessage, ToolMessage, type MessageContent } from \"@langchain/core/messages\" for these regression tests.\n"
+    },
+    {
+      "offset": 398,
+      "text": "// [L3] Import { ChatOpenAI } from \"@langchain/openai\" for these regression tests.\n"
+    },
+    {
+      "offset": 529,
+      "text": "// [L4] Import { tool } from \"@langchain/core/tools\" for these regression tests.\n"
+    },
+    {
+      "offset": 656,
+      "text": "// [L5] Import { createAgent } from \"langchain\" for these regression tests.\n"
+    },
+    {
+      "offset": 773,
+      "text": "// [L6] Import { z } from \"zod\" for these regression tests.\n"
+    },
+    {
+      "offset": 858,
+      "text": "// [L7] Import { DEFAULT_MODEL } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 993,
+      "text": "// [L8] Import { providerMessageMiddleware, toProviderMessages } from \"../src/model-messages.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1208,
+      "text": "// [L9] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1301,
+      "text": "// [L10] Declare `imageUrl` as \"data:image/png;base64,iVBORw0KGgo=\".\n"
+    },
+    {
+      "offset": 1425,
+      "text": "// [L11] Declare `screenshot` as an array containing an object containing type: \"text\", text: \"Synthetic page content is untrusted data.\", an object containing type: \"image_url\", image_url: an object containing url: `imageUrl`, detail: \"auto\".\n"
+    },
+    {
+      "offset": 1706,
+      "text": "  // [L12] Set fixture property `type` to \"text\". Set fixture property `text` to \"Synthetic page content is untrusted data.\".\n"
+    },
+    {
+      "offset": 1903,
+      "text": "  // [L13] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to an object containing url: `imageUrl`, detail: \"auto\".\n"
+    },
+    {
+      "offset": 2119,
+      "text": "// [L14] Close the array of fixture values for `screenshot` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 2217,
+      "text": "// [L15] Declare `nativeScreenshot` as an array containing an object containing type: \"input_text\", text: \"Synthetic page content is untrusted data.\", an object containing type: \"input_image\", image_url: `imageUrl`, detail: \"auto\".\n"
+    },
+    {
+      "offset": 2476,
+      "text": "  // [L16] Set fixture property `type` to \"input_text\". Set fixture property `text` to \"Synthetic page content is untrusted data.\".\n"
+    },
+    {
+      "offset": 2685,
+      "text": "  // [L17] Set fixture property `type` to \"input_image\". Set fixture property `image_url` to `imageUrl`. Set fixture property `detail` to \"auto\".\n"
+    },
+    {
+      "offset": 2895,
+      "text": "// [L18] Close the array of fixture values for `nativeScreenshot` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 2999,
+      "text": "// [L19] Declare `screenshotMessage` as a callback that returns a new `ToolMessage` instance initialized with an object containing name: \"screenshot_page\", tool_call_id: \"call_screenshot\", content.\n"
+    },
+    {
+      "offset": 3353,
+      "text": "// [L20] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3447,
+      "text": "// [L21] Run this cleanup after every test in the group. Use a callback that performs: Restore all temporarily replaced global values. Restore all temporarily replaced environment variables..\n"
+    },
+    {
+      "offset": 3704,
+      "text": "// [L22] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3798,
+      "text": "// [L23] Group regression tests for \"provider screenshot message adapter\".\n"
+    },
+    {
+      "offset": 3929,
+      "text": "  // [L24] Register a test that \"converts OpenAI screenshot blocks without mutating content or losing tool metadata\".\n"
+    },
+    {
+      "offset": 4146,
+      "text": "    // [L25] Declare `message` as a new `ToolMessage` instance initialized with an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 4306,
+      "text": "      // [L26] Set fixture property `name` to \"screenshot_page\". Set fixture property `id` to \"screenshot_result\". Set fixture property `tool_call_id` to \"call_screenshot\". Set fixture property `content` to `screenshot`.\n"
+    },
+    {
+      "offset": 4637,
+      "text": "      // [L27] Set fixture property `status` to \"success\". Set fixture property `metadata` to an object containing source: \"synthetic\". Set fixture property `artifact` to an object containing privateNote: \"not model content\".\n"
+    },
+    {
+      "offset": 4971,
+      "text": "      // [L28] Set fixture property `additional_kwargs` to an object containing synthetic: true. Set fixture property `response_metadata` to an object containing elapsed: 1.\n"
+    },
+    {
+      "offset": 5226,
+      "text": "    // [L29] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5307,
+      "text": "    // [L30] Declare `original` as the result of `message.toDict` with no arguments.\n"
+    },
+    {
+      "offset": 5431,
+      "text": "    // [L31] Declare `human` as a new `HumanMessage` instance initialized with \"Inspect the order page.\".\n"
+    },
+    {
+      "offset": 5600,
+      "text": "    // [L32] Declare `messages` as an array containing `human`, `message`.\n"
+    },
+    {
+      "offset": 5714,
+      "text": "    // [L33] Declare `result` as the result of `toProviderMessages` using \"openai\", `messages`.\n"
+    },
+    {
+      "offset": 5869,
+      "text": "    // [L34] Assert that `result[0]` strictly equals `human`.\n"
+    },
+    {
+      "offset": 5966,
+      "text": "    // [L35] Assert that the result of `ToolMessage.isInstance` using `result[1]` strictly equals true.\n"
+    },
+    {
+      "offset": 6128,
+      "text": "    // [L36] Assert that `result[1]` does not satisfy: strictly equals `message`.\n"
+    },
+    {
+      "offset": 6251,
+      "text": "    // [L37] Assert that `result[1]?.content` deeply equals `nativeScreenshot`.\n"
+    },
+    {
+      "offset": 6389,
+      "text": "    // [L38] Assert that `result[1]` contains the expected object fields an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 6542,
+      "text": "      // [L39] Set fixture property `id` to `message.id`. Set fixture property `name` to `message.name`. Set fixture property `tool_call_id` to `message.tool_call_id`. Set fixture property `status` to `message.status`.\n"
+    },
+    {
+      "offset": 6863,
+      "text": "      // [L40] Set fixture property `metadata` to `message.metadata`. Set fixture property `artifact` to `message.artifact`.\n"
+    },
+    {
+      "offset": 7050,
+      "text": "      // [L41] Set fixture property `additional_kwargs` to `message.additional_kwargs`. Set fixture property `response_metadata` to `message.response_metadata`.\n"
+    },
+    {
+      "offset": 7309,
+      "text": "    // [L42] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7390,
+      "text": "    // [L43] Assert that the result of `message.toDict` with no arguments deeply equals `original`.\n"
+    },
+    {
+      "offset": 7538,
+      "text": "    // [L44] Assert that `message.content` strictly equals `screenshot`.\n"
+    },
+    {
+      "offset": 7657,
+      "text": "    // [L45] Assert that `messages[1]` strictly equals `message`.\n"
+    },
+    {
+      "offset": 7762,
+      "text": "    // [L46] Assert that `toProviderMessages('openai', result)[1]` strictly equals `result[1]`.\n"
+    },
+    {
+      "offset": 7927,
+      "text": "  // [L47] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 8019,
+      "text": "// [L48] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 8113,
+      "text": "  // [L49] Register a test that \"leaves Anthropic messages unchanged and accepts both standard image URL shapes for OpenAI\".\n"
+    },
+    {
+      "offset": 8344,
+      "text": "    // [L50] Declare `messages` as an array containing the result of `screenshotMessage` with no arguments.\n"
+    },
+    {
+      "offset": 8496,
+      "text": "    // [L51] Assert that the result of `toProviderMessages` using \"anthropic\", `messages` strictly equals `messages`.\n"
+    },
+    {
+      "offset": 8684,
+      "text": "    // [L52] Declare `stringImage` as the result of `screenshotMessage` using an array containing an object containing type: \"image_url\", image_url: `imageUrl`.\n"
+    },
+    {
+      "offset": 8934,
+      "text": "    // [L53] Assert that `toProviderMessages('openai', [stringImage])[0]?.content` deeply equals an array containing `nativeScreenshot[1]`.\n"
+    },
+    {
+      "offset": 9174,
+      "text": "  // [L54] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 9266,
+      "text": "// [L55] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 9360,
+      "text": "  // [L56] Register a parameterized test that \"leaves strings, other tools, non-tool messages, and unrelated content unchanged for %s\".\n"
+    },
+    {
+      "offset": 9638,
+      "text": "    // [L57] Begin screenshot tool-message cases that must remain unchanged, including nonarray content, missing/invalid images, unsupported blocks, and invalid image detail values.\n"
+    },
+    {
+      "offset": 9843,
+      "text": "      // [L58] Add a screenshot tool message whose screenshot metadata is serialized as JSON.\n"
+    },
+    {
+      "offset": 9990,
+      "text": "      // [L59] Set fixture property `type` to \"text\". Set fixture property `text` to \"No image was captured.\".\n"
+    },
+    {
+      "offset": 10178,
+      "text": "      // [L60] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to \"https://example.test/image.png\".\n"
+    },
+    {
+      "offset": 10402,
+      "text": "      // [L61] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to \"data:image/jpeg;base64,iVBORw0KGgo=\".\n"
+    },
+    {
+      "offset": 10636,
+      "text": "      // [L62] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to \"data:image/png;base64,malformed!\".\n"
+    },
+    {
+      "offset": 10864,
+      "text": "      // [L63] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to `imageUrl`. Set fixture property `type` to \"file\". Set fixture property `data` to \"unchanged\".\n"
+    },
+    {
+      "offset": 11162,
+      "text": "      // [L64] Set fixture property `name` to \"observe_page\". Set fixture property `tool_call_id` to \"call_observe\". Set fixture property `content` to `screenshot`.\n"
+    },
+    {
+      "offset": 11427,
+      "text": "      // [L65] Set fixture property `content` to `screenshot`.\n"
+    },
+    {
+      "offset": 11539,
+      "text": "      // [L66] Set fixture property `content` to `screenshot`.\n"
+    },
+    {
+      "offset": 11648,
+      "text": "    // [L67] Close the array of fixture values for `messages` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 11752,
+      "text": "    // [L68] Declare `result` as the result of `toProviderMessages` using `provider`, `messages`.\n"
+    },
+    {
+      "offset": 11909,
+      "text": "    // [L69] Call `result.forEach` with a callback that returns the result of `expect(message).toBe` using `messages[index]`.\n"
+    },
+    {
+      "offset": 12114,
+      "text": "  // [L70] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12206,
+      "text": "// [L71] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12300,
+      "text": "  // [L72] Register a test that \"places Grok screenshot images after all tool results, retaining IDs, metadata, and original history\".\n"
+    },
+    {
+      "offset": 12551,
+      "text": "    // [L73] Declare `request` as a new `AIMessage` instance initialized with an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 12734,
+      "text": "      // [L74] Set fixture property `id` to \"call_screenshot\". Set fixture property `name` to \"screenshot_page\". Set fixture property `args` to an empty object.\n"
+    },
+    {
+      "offset": 12963,
+      "text": "      // [L75] Set fixture property `id` to \"call_other\". Set fixture property `name` to \"verify_filled_fields\". Set fixture property `args` to an empty object.\n"
+    },
+    {
+      "offset": 13192,
+      "text": "    // [L76] Close the array of fixture values for `tool_calls` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 13301,
+      "text": "    // [L77] Declare `screenshotTool` as a new `ToolMessage` instance initialized with an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 13520,
+      "text": "      // [L78] Set fixture property `tool_call_id` to \"call_screenshot\". Set fixture property `content` to `screenshot`. Set fixture property `metadata` to an object containing source: \"synthetic\". Set fixture property `status` to \"success\".\n"
+    },
+    {
+      "offset": 13879,
+      "text": "    // [L79] Declare `verification` as a new `ToolMessage` instance initialized with an object containing name: \"verify_filled_fields\", tool_call_id: \"call_other\", content: \"Synthetic verification.\".\n"
+    },
+    {
+      "offset": 14219,
+      "text": "    // [L80] Declare `completion` as a new `AIMessage` instance initialized with \"Ready for review.\".\n"
+    },
+    {
+      "offset": 14380,
+      "text": "    // [L81] Declare `original` as the result of `screenshotTool.toDict` with no arguments.\n"
+    },
+    {
+      "offset": 14518,
+      "text": "    // [L82] Declare `result` as the result of `toProviderMessages` using \"xai\", an array containing `request`, `screenshotTool`, `verification`, `completion`.\n"
+    },
+    {
+      "offset": 14777,
+      "text": "    // [L83] Assert that `result` has length 5.\n"
+    },
+    {
+      "offset": 14861,
+      "text": "    // [L84] Assert that `result[0]` strictly equals `request`.\n"
+    },
+    {
+      "offset": 14962,
+      "text": "    // [L85] Assert that `result[1]` contains the expected object fields an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 15187,
+      "text": "      // [L86] Set fixture property `metadata` to an object containing source: \"synthetic\". Set fixture property `content` to \"Synthetic page content is untrusted data.\".\n"
+    },
+    {
+      "offset": 15456,
+      "text": "    // [L87] Assert that `result[2]` strictly equals `verification`.\n"
+    },
+    {
+      "offset": 15567,
+      "text": "    // [L88] Assert that the result of `HumanMessage.isInstance` using `result[3]` strictly equals true.\n"
+    },
+    {
+      "offset": 15731,
+      "text": "    // [L89] Assert that `result[3]?.content` deeply equals an array containing an object containing type: \"text\", text: the result of `expect.stringContaining` using \"untrusted page data\", an object containing type: \"image_url\", image_url: an object containing url: `imageUrl`, detail: \"auto\".\n"
+    },
+    {
+      "offset": 16067,
+      "text": "      // [L90] Set fixture property `type` to \"text\". Set fixture property `text` to the result of `expect.stringContaining` using \"untrusted page data\".\n"
+    },
+    {
+      "offset": 16299,
+      "text": "      // [L91] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to an object containing url: `imageUrl`, detail: \"auto\".\n"
+    },
+    {
+      "offset": 16523,
+      "text": "    // [L92] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 16613,
+      "text": "    // [L93] Assert that `result[4]` strictly equals `completion`.\n"
+    },
+    {
+      "offset": 16720,
+      "text": "    // [L94] Assert that the result of `screenshotTool.toDict` with no arguments deeply equals `original`.\n"
+    },
+    {
+      "offset": 16882,
+      "text": "    // [L95] Assert that the result of `toProviderMessages` using \"xai\", `result` deeply equals `result`.\n"
+    },
+    {
+      "offset": 17051,
+      "text": "  // [L96] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 17143,
+      "text": "// [L97] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 17237,
+      "text": "  // [L98] Register a test that \"applies the middleware in a real agent call and sends Responses image input through mocked transport\".\n"
+    },
+    {
+      "offset": 17496,
+      "text": "    // [L99] Set all LangSmith/LangChain tracing environment flags to false before testing provider message adaptation.\n"
+    },
+    {
+      "offset": 17734,
+      "text": "    // [L100] Declare `requests` as an empty array.\n"
+    },
+    {
+      "offset": 17872,
+      "text": "    // [L101] Temporarily replace global \"fetch\" with the result of `vi.fn` using a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 18075,
+      "text": "      // [L102] Declare `request` as a new `Request` instance initialized with `input`, `init`.\n"
+    },
+    {
+      "offset": 18219,
+      "text": "      // [L103] Assert that `request.url` strictly equals \"https://api.openai.com/v1/responses\".\n"
+    },
+    {
+      "offset": 18387,
+      "text": "      // [L104] Append the resolved value from `request.json` with no arguments to `requests` for later inspection.\n"
+    },
+    {
+      "offset": 18573,
+      "text": "      // [L105] Declare `output` as an array containing an object containing type: \"function_call\", id: \"fc_synthetic\", call_id: \"call_screenshot\", name: \"screenshot_page\", arguments: \"{}\", status: \"completed\" when `requests.length` strictly equals 1, otherwise an array containing an object containing type: \"message\", id: \"msg_synthetic\", role: \"assistant\", status: \"completed\", content: an array containing `{ type: 'output_text', text: 'Ready for review.', annotations: [] }`.\n"
+    },
+    {
+      "offset": 19097,
+      "text": "        // [L106] Set fixture property `type` to \"function_call\". Set fixture property `id` to \"fc_synthetic\". Set fixture property `call_id` to \"call_screenshot\". Set fixture property `name` to \"screenshot_page\". Set fixture property `arguments` to \"{}\". Set fixture property `status` to \"completed\".\n"
+    },
+    {
+      "offset": 19548,
+      "text": "        // [L107] Set fixture property `type` to \"message\". Set fixture property `id` to \"msg_synthetic\". Set fixture property `role` to \"assistant\". Set fixture property `status` to \"completed\". Set fixture property `content` to an array containing an object containing type: \"output_text\", text: \"Ready for review.\", annotations: an empty array.\n"
+    },
+    {
+      "offset": 20070,
+      "text": "      // [L108] Return the result of `Response.json` using an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 20214,
+      "text": "        // [L109] Set fixture property `id` to text interpolating `requests.length`. Set fixture property `object` to \"response\". Set fixture property `created_at` to 1. Set fixture property `status` to \"completed\". Set fixture property `model` to `DEFAULT_MODEL`. Include the current `output` value under the same property name.\n"
+    },
+    {
+      "offset": 20669,
+      "text": "        // [L110] Set fixture property `usage` to an object containing input_tokens: 10, output_tokens: 10, total_tokens: 20, input_tokens_details: an object containing cached_tokens: 0, output_tokens_details: an object containing reasoning_tokens: 0.\n"
+    },
+    {
+      "offset": 21087,
+      "text": "      // [L111] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 21173,
+      "text": "    // [L112] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 21271,
+      "text": "    // [L113] Declare `model` as a new `ChatOpenAI` instance initialized with an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 21426,
+      "text": "      // [L114] Set fixture property `apiKey` to \"sk-synthetic-no-live-key\". Set fixture property `model` to `DEFAULT_MODEL`. Set fixture property `useResponsesApi` to true. Set fixture property `maxRetries` to 0.\n"
+    },
+    {
+      "offset": 21742,
+      "text": "      // [L115] Set fixture property `modelKwargs` to an object containing store: false. Set fixture property `configuration` to an object containing baseURL: \"https://api.openai.com/v1\".\n"
+    },
+    {
+      "offset": 22024,
+      "text": "    // [L116] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 22106,
+      "text": "    // [L117] Declare `agent` as the result of `createAgent` using an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 22247,
+      "text": "      // [L118] Include the current `model` value under the same property name.\n"
+    },
+    {
+      "offset": 22340,
+      "text": "      // [L119] Set fixture property `tools` to an array containing the result of `tool` using a callback that returns `screenshot`, an object containing name: \"screenshot_page\", description: \"Synthetic screenshot only.\", schema: the result of `z.object` using `{}`.\n"
+    },
+    {
+      "offset": 22740,
+      "text": "      // [L120] Set fixture property `middleware` to an array containing the result of `providerMessageMiddleware` using \"openai\".\n"
+    },
+    {
+      "offset": 22928,
+      "text": "    // [L121] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23010,
+      "text": "    // [L122] Declare `result` as the resolved value from `agent.invoke` using an object containing messages: an array containing `new HumanMessage('Inspect the synthetic page.')`, an object containing recursionLimit: 5.\n"
+    },
+    {
+      "offset": 23358,
+      "text": "    // [L123] Assert that `requests` has length 2.\n"
+    },
+    {
+      "offset": 23447,
+      "text": "    // [L124] Declare `output` as `requests[1]!.input.find((item) => item.type === 'function_call_output')?.output`.\n"
+    },
+    {
+      "offset": 23664,
+      "text": "    // [L125] Assert that `output` deeply equals `nativeScreenshot`.\n"
+    },
+    {
+      "offset": 23779,
+      "text": "    // [L126] Assert that `typeof output` does not satisfy: strictly equals \"string\".\n"
+    },
+    {
+      "offset": 23911,
+      "text": "    // [L127] Declare `retainedToolMessage` as the result of `result.messages.find` using a callback that returns the result of `ToolMessage.isInstance` using `message`.\n"
+    },
+    {
+      "offset": 24181,
+      "text": "    // [L128] Assert that `retainedToolMessage?.content` deeply equals `screenshot`.\n"
+    },
+    {
+      "offset": 24328,
+      "text": "  // [L129] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24421,
+      "text": "// [L130] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "originalSha256": "b221e1e0094e010922c4db43bf1785f69c64bc38619189d255fb741e96a9be97",
+  "annotatedSha256": "939bf95434aeaf3a356427973038753463a885be31b99b89fa3b21f73b24fdec",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Existing explanatory comment: Count active processing time without charging the user's manual sign-in wait.\n"
+    },
+    {
+      "offset": 201,
+      "text": "// [L2] Exports a timer that tracks remaining active time and can be paused, resumed, or permanently cleared.\n"
+    },
+    {
+      "offset": 394,
+      "text": "  // [L3] Initializes the remaining active-time budget from the requested duration.\n"
+    },
+    {
+      "offset": 510,
+      "text": "  // [L4] Records the starting timestamp used to subtract elapsed active time on pause.\n"
+    },
+    {
+      "offset": 628,
+      "text": "  // [L5] Holds the current timeout handle, or undefined while paused or finished.\n"
+    },
+    {
+      "offset": 767,
+      "text": "  // [L6] Tracks permanent cancellation or expiry so the timer cannot restart afterward.\n"
+    },
+    {
+      "offset": 879,
+      "text": "  // [L7] Defines idempotent resumption of the remaining active-time budget.\n"
+    },
+    {
+      "offset": 987,
+      "text": "    // [L8] Does nothing when permanently stopped or when a timer is already running.\n"
+    },
+    {
+      "offset": 1107,
+      "text": "    // [L9] Records when this active timing interval begins.\n"
+    },
+    {
+      "offset": 1196,
+      "text": "    // [L10] Schedules expiration for the remaining duration, clears its handle, permanently stops the timer, and invokes the timeout callback.\n"
+    },
+    {
+      "offset": 1436,
+      "text": "    // [L11] Allows the process to exit naturally even if this timeout is still pending.\n"
+    },
+    {
+      "offset": 1544,
+      "text": "  // [L12] Closes the scope or expression introduced here: Defines idempotent resumption of the remaining active-time budget.\n"
+    },
+    {
+      "offset": 1675,
+      "text": "  // [L13] Starts timing immediately after the helper is constructed.\n"
+    },
+    {
+      "offset": 1757,
+      "text": "  // [L14] Returns the pause, resume, and clear controls.\n"
+    },
+    {
+      "offset": 1826,
+      "text": "    // [L15] Defines pausing of a currently active timer.\n"
+    },
+    {
+      "offset": 1904,
+      "text": "      // [L16] Leaves paused or permanently stopped timers unchanged.\n"
+    },
+    {
+      "offset": 2011,
+      "text": "      // [L17] Cancels the scheduled callback for the current active interval.\n"
+    },
+    {
+      "offset": 2117,
+      "text": "      // [L18] Removes the handle so the timer is considered paused.\n"
+    },
+    {
+      "offset": 2211,
+      "text": "      // [L19] Subtracts elapsed active time from the remaining budget without allowing a negative duration.\n"
+    },
+    {
+      "offset": 2393,
+      "text": "    // [L20] Closes the scope or expression introduced here: Defines pausing of a currently active timer.\n"
+    },
+    {
+      "offset": 2506,
+      "text": "    // [L21] Exposes the shared resume function.\n"
+    },
+    {
+      "offset": 2567,
+      "text": "    // [L22] Permanently stops the timer, cancels any scheduled callback, and clears the handle.\n"
+    },
+    {
+      "offset": 2743,
+      "text": "  // [L23] Closes the scope or expression introduced here: Returns the pause, resume, and clear controls.\n"
+    },
+    {
+      "offset": 2854,
+      "text": "// [L24] Closes the scope or expression introduced here: Exports a timer that tracks remaining active time and can be paused, resumed, or permanently cleared.\n"
+    }
+  ]
+}

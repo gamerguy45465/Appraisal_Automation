@@ -1,0 +1,914 @@
+{
+  "originalSha256": "46ac39734d4e6a518aebd89c4060158ef3ced10ca1b014953fe982cabbd6822e",
+  "annotatedSha256": "58ef311185cd208e8d55540f303ef4bca1e2d5cc91cbb7a53e68dc13ecd9f0fe",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 183,
+      "text": "// [L2] Import { APIError } from \"@anthropic-ai/sdk\" for these regression tests.\n"
+    },
+    {
+      "offset": 310,
+      "text": "// [L3] Import { DEFAULT_MODEL, buildFieldPlan, type JobPayload, type WorkerUpdate } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 549,
+      "text": "// [L4] Import { createEnvironmentTools } from \"../src/environment.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 712,
+      "text": "// [L5] Import { createModel, extractOrder } from \"../src/extraction.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 879,
+      "text": "// [L6] Import { prepareOrderWithAgent } from \"../src/agent.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1028,
+      "text": "// [L7] Import { createBrowserSession, type BrowserSessionOptions } from \"../src/browser/session.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1251,
+      "text": "// [L8] Import { runPreparation } from \"../src/preparation.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1398,
+      "text": "// [L9] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1491,
+      "text": "// [L10] Preserve the real domain module exports while replacing only buildFieldPlan with a controllable mock.\n"
+    },
+    {
+      "offset": 1711,
+      "text": "// [L11] Replace createEnvironmentTools with a mock so lifecycle tests control private-environment behavior without PowerShell.\n"
+    },
+    {
+      "offset": 1918,
+      "text": "// [L12] Replace createModel and extractOrder with mocks so lifecycle tests do not contact AI providers.\n"
+    },
+    {
+      "offset": 2113,
+      "text": "// [L13] Replace prepareOrderWithAgent with a mock so tests can simulate completion, rejection, or an agent that never settles.\n"
+    },
+    {
+      "offset": 2313,
+      "text": "// [L14] Replace createBrowserSession with a mock so lifecycle tests control browser status and handoff without a real browser.\n"
+    },
+    {
+      "offset": 2522,
+      "text": "// [L15] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2616,
+      "text": "// [L16] Declare `plan` as an array containing an object containing key: \"loanType\", value: \"Conventional\", kind: \"select\", required: true, an object containing key: \"propertyType\", value: \"Single Family\", kind: \"select\", required: true.\n"
+    },
+    {
+      "offset": 2869,
+      "text": "  // [L17] Set fixture property `key` to \"loanType\". Set fixture property `value` to \"Conventional\". Set fixture property `kind` to \"select\". Set fixture property `required` to true.\n"
+    },
+    {
+      "offset": 3139,
+      "text": "  // [L18] Set fixture property `key` to \"propertyType\". Set fixture property `value` to \"Single Family\". Set fixture property `kind` to \"select\". Set fixture property `required` to true.\n"
+    },
+    {
+      "offset": 3419,
+      "text": "// [L19] Close the array of fixture values for `plan` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 3511,
+      "text": "// [L20] Declare `report` as the result of `plan.map` using a callback that returns an object containing fieldKey: `field.key`, ref: `field.key`, label: `field.key`, section: `''`, expected: `field.value`, actual: `field.value`, kind: `field.kind`, verified: `true`.\n"
+    },
+    {
+      "offset": 3964,
+      "text": "// [L21] Define helper `deferred` with no parameters for the fixture operations below.\n"
+    },
+    {
+      "offset": 4073,
+      "text": "  // [L22] Declare `resolve` for assignment later.\n"
+    },
+    {
+      "offset": 4152,
+      "text": "  // [L23] Declare `promise` as a new `Promise` instance initialized with a callback that performs: Assign `done` to `resolve`..\n"
+    },
+    {
+      "offset": 4347,
+      "text": "  // [L24] Return an object containing promise, resolve to the caller.\n"
+    },
+    {
+      "offset": 4449,
+      "text": "// [L25] Close the callback or control-flow body for `deferred` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4550,
+      "text": "// [L26] Define helper `payload` with no parameters for the fixture operations below.\n"
+    },
+    {
+      "offset": 4669,
+      "text": "  // [L27] Return a synthetic OpenAI job input with a fake key, valid loan reference, invoice payment, no FHA case, no rush request, and the default model.\n"
+    },
+    {
+      "offset": 5012,
+      "text": "    // [L28] Set fixture property `urla` to an object containing name: \"urla.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic\".\n"
+    },
+    {
+      "offset": 5236,
+      "text": "// [L29] Close the callback or control-flow body for `payload` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5336,
+      "text": "// [L30] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5430,
+      "text": "// [L31] Group regression tests for \"preparation hands incomplete forms to the user without closing the browser\".\n"
+    },
+    {
+      "offset": 5639,
+      "text": "  // [L32] Declare `environment` as an object containing initialize: the result of `vi.fn` with no arguments, retrieve: the result of `vi.fn` with no arguments, clear: the result of `vi.fn` with no arguments, tools: an empty array.\n"
+    },
+    {
+      "offset": 5964,
+      "text": "  // [L33] Declare `closed` for assignment later.\n"
+    },
+    {
+      "offset": 6057,
+      "text": "  // [L34] Declare `browserOptions` for assignment later.\n"
+    },
+    {
+      "offset": 6160,
+      "text": "  // [L35] Declare `updates` for assignment later.\n"
+    },
+    {
+      "offset": 6242,
+      "text": "  // [L36] Declare `controller` for assignment later.\n"
+    },
+    {
+      "offset": 6331,
+      "text": "  // [L37] Declare `session` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 6425,
+      "text": "    // [L38] Set fixture property `waitForUserLogin` to the result of `vi.fn` with no arguments. Set fixture property `navigateToOrder` to the result of `vi.fn` with no arguments. Set fixture property `setFieldPlan` to the result of `vi.fn` with no arguments.\n"
+    },
+    {
+      "offset": 6765,
+      "text": "    // [L39] Set fixture property `fillApprovedPlan` to the result of `vi.fn` with no arguments. Set fixture property `getFieldReport` to the result of `vi.fn` with no arguments. Set fixture property `handoff` to the result of `vi.fn` with no arguments. Set fixture property `handoffIncomplete` to the result of `vi.fn` with no arguments.\n"
+    },
+    {
+      "offset": 7206,
+      "text": "    // [L40] Set fixture property `waitUntilClosed` to the result of `vi.fn` with no arguments. Set fixture property `close` to the result of `vi.fn` with no arguments. Set fixture property `tools` to an empty array.\n"
+    },
+    {
+      "offset": 7480,
+      "text": "  // [L41] Close the fixture object for `session` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7570,
+      "text": "  // [L42] Declare `last` as a callback that returns the result of `updates.at` using `-1`.\n"
+    },
+    {
+      "offset": 7699,
+      "text": "  // [L43] Declare `start` as a callback that returns the result of `runPreparation` using `documents`, an object containing onStatus: a callback that returns `updates.push(update)`, signal: `controller.signal`.\n"
+    },
+    {
+      "offset": 8054,
+      "text": "  // [L44] Declare `closeByUser` as a callback that performs: Call `browserOptions.onStatus` with \"browser_closed\", \"The appraisal browser was closed.\". Call `closed.resolve` without arguments..\n"
+    },
+    {
+      "offset": 8380,
+      "text": "// [L45] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 8474,
+      "text": "  // [L46] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 8553,
+      "text": "    // [L47] Replace real timers with controllable test timers. Reset all mock implementations and recorded calls.\n"
+    },
+    {
+      "offset": 8712,
+      "text": "    // [L48] Assign the result of `deferred` with no arguments to `closed`. Assign an empty array to `updates`. Assign a new `AbortController` instance to `controller`.\n"
+    },
+    {
+      "offset": 8956,
+      "text": "    // [L49] Configure mock `environment.initialize` to resolve to `undefined`.\n"
+    },
+    {
+      "offset": 9093,
+      "text": "    // [L50] Configure mock `environment.retrieve` to resolve to \"sk-synthetic-not-real\".\n"
+    },
+    {
+      "offset": 9252,
+      "text": "    // [L51] Configure mock `vi.mocked(createEnvironmentTools)` to return `environment`.\n"
+    },
+    {
+      "offset": 9465,
+      "text": "    // [L52] Configure mock `vi.mocked(createModel)` to return an empty object.\n"
+    },
+    {
+      "offset": 9627,
+      "text": "    // [L53] Configure mock `vi.mocked(extractOrder)` to resolve to an empty object.\n"
+    },
+    {
+      "offset": 9807,
+      "text": "    // [L54] Configure mock `vi.mocked(buildFieldPlan)` to return an object containing plan, warnings: an array containing \"Review every field.\", missingRequiredFields: an empty array.\n"
+    },
+    {
+      "offset": 10111,
+      "text": "    // [L55] Configure mock `vi.mocked(createBrowserSession)` to run a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 10303,
+      "text": "      // [L56] Assign `options` to `browserOptions`.\n"
+    },
+    {
+      "offset": 10388,
+      "text": "      // [L57] Return `session` to the caller.\n"
+    },
+    {
+      "offset": 10520,
+      "text": "    // [L58] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10616,
+      "text": "    // [L59] Configure mock `session.waitForUserLogin` to resolve to `undefined`.\n"
+    },
+    {
+      "offset": 10757,
+      "text": "    // [L60] Configure mock `session.navigateToOrder` to resolve to `undefined`.\n"
+    },
+    {
+      "offset": 10896,
+      "text": "    // [L61] Configure mock `session.fillApprovedPlan` to resolve to an object containing report, errors: an empty array.\n"
+    },
+    {
+      "offset": 11090,
+      "text": "    // [L62] Configure mock `session.getFieldReport` to resolve to `report`.\n"
+    },
+    {
+      "offset": 11221,
+      "text": "    // [L63] Configure mock `session.handoff` to resolve to `undefined`.\n"
+    },
+    {
+      "offset": 11344,
+      "text": "    // [L64] Configure mock `session.handoffIncomplete` to resolve to true.\n"
+    },
+    {
+      "offset": 11475,
+      "text": "    // [L65] Configure mock `session.waitUntilClosed` to run a callback that returns `closed.promise`.\n"
+    },
+    {
+      "offset": 11648,
+      "text": "    // [L66] Configure mock `vi.mocked(prepareOrderWithAgent)` to resolve to `undefined`.\n"
+    },
+    {
+      "offset": 11805,
+      "text": "  // [L67] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 11897,
+      "text": "  // [L68] Run this cleanup after every test in the group. Use a callback that performs: Discard pending fake timers. Restore real timer behavior..\n"
+    },
+    {
+      "offset": 12110,
+      "text": "// [L69] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12204,
+      "text": "  // [L70] Register a test that \"fills deterministically, skips unnecessary model calls, and retains review even after submission and long delays\".\n"
+    },
+    {
+      "offset": 12487,
+      "text": "    // [L71] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 12599,
+      "text": "    // [L72] Declare `done` as the result of `vi.fn` with no arguments. Declare `running` as the result of `start(documents).then` using `done`.\n"
+    },
+    {
+      "offset": 12815,
+      "text": "    // [L73] Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 12991,
+      "text": "    // [L74] Assert that `session.fillApprovedPlan` was called exactly once.\n"
+    },
+    {
+      "offset": 13129,
+      "text": "    // [L75] Assert that `prepareOrderWithAgent` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 13266,
+      "text": "    // [L76] Assert that `session.handoff` was called exactly once.\n"
+    },
+    {
+      "offset": 13386,
+      "text": "    // [L77] Assert that the result of `last` with no arguments contains the expected object fields an object containing status: \"awaiting_review\", message: the result of `expect.stringContaining` using \"Preparation is complete\".\n"
+    },
+    {
+      "offset": 13742,
+      "text": "    // [L78] Assert that `environment.clear` was called.\n"
+    },
+    {
+      "offset": 13849,
+      "text": "    // [L79] Call `browserOptions.onStatus` with \"user_submitted\", \"Check the portal confirmation.\".\n"
+    },
+    {
+      "offset": 14031,
+      "text": "    // [L80] Abort `controller`.\n"
+    },
+    {
+      "offset": 14088,
+      "text": "    // [L81] Advance fake time by 6 times 60 times 60 times 1000 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 14310,
+      "text": "    // [L82] Assert that `last()?.status` strictly equals \"user_submitted\".\n"
+    },
+    {
+      "offset": 14437,
+      "text": "    // [L83] Assert that `done` does not satisfy: was called. Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 14644,
+      "text": "    // [L84] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 14777,
+      "text": "    // [L85] Assert that `last()?.status` strictly equals \"browser_closed\".\n"
+    },
+    {
+      "offset": 14904,
+      "text": "    // [L86] Assert every byte of the uploaded URLA buffer was overwritten with zero before preparation finished.\n"
+    },
+    {
+      "offset": 15090,
+      "text": "  // [L87] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15182,
+      "text": "// [L88] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15276,
+      "text": "  // [L89] Register a test that \"retains partial values when a required dropdown remains unverified\".\n"
+    },
+    {
+      "offset": 15467,
+      "text": "    // [L90] Declare `partial` as an array containing `report[0]`.\n"
+    },
+    {
+      "offset": 15568,
+      "text": "    // [L91] Configure mock `session.fillApprovedPlan` to resolve to an object containing report: `partial`, errors: an array containing \"Missing property type\".\n"
+    },
+    {
+      "offset": 15834,
+      "text": "    // [L92] Configure mock `session.getFieldReport` to resolve to `partial`.\n"
+    },
+    {
+      "offset": 15967,
+      "text": "    // [L93] Declare `running` as the result of `start` with no arguments. Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 16230,
+      "text": "    // [L94] Assert that `prepareOrderWithAgent` was called exactly once.\n"
+    },
+    {
+      "offset": 16362,
+      "text": "    // [L95] Assert that `session.handoffIncomplete` was called exactly once.\n"
+    },
+    {
+      "offset": 16502,
+      "text": "    // [L96] Assert that `session.handoff` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 16627,
+      "text": "    // [L97] Assert that the result of `last` with no arguments contains the expected object fields an object containing status: \"awaiting_review\", message: the result of `expect.stringContaining` using \"stopped before completion\".\n"
+    },
+    {
+      "offset": 16987,
+      "text": "    // [L98] Assert that `last()?.warnings` contains \"Review incomplete field: propertyType.\".\n"
+    },
+    {
+      "offset": 17164,
+      "text": "    // [L99] Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 17285,
+      "text": "    // [L100] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 17419,
+      "text": "  // [L101] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 17512,
+      "text": "// [L102] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 17607,
+      "text": "  // [L103] Register a parameterized test that \"keeps %s and its custom model through extraction, reconciliation, and manual review\".\n"
+    },
+    {
+      "offset": 17886,
+      "text": "    // [L104] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 17999,
+      "text": "    // [L105] Assign `provider` to `documents.input.provider`.\n"
+    },
+    {
+      "offset": 18103,
+      "text": "    // [L106] Assign text interpolating `provider` to `documents.input.model`.\n"
+    },
+    {
+      "offset": 18238,
+      "text": "    // [L107] Declare `selectedModel` as an empty object.\n"
+    },
+    {
+      "offset": 18360,
+      "text": "    // [L108] Configure mock `vi.mocked(createModel)` to return `selectedModel`.\n"
+    },
+    {
+      "offset": 18500,
+      "text": "    // [L109] Configure mock `session.fillApprovedPlan` to resolve to an object containing report: an array containing `report[0]`, errors: an empty array.\n"
+    },
+    {
+      "offset": 18741,
+      "text": "    // [L110] Declare `running` as the result of `start` using `documents`.\n"
+    },
+    {
+      "offset": 18855,
+      "text": "    // [L111] Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 19032,
+      "text": "    // [L112] Assert that `createModel` was called exactly once with \"sk-synthetic-not-real\", text interpolating `provider`, `provider`.\n"
+    },
+    {
+      "offset": 19289,
+      "text": "    // [L113] Assert that `extractOrder` was called with `documents`, `selectedModel`, the result of `expect.any` using `AbortSignal`.\n"
+    },
+    {
+      "offset": 19522,
+      "text": "    // [L114] Assert that `prepareOrderWithAgent` was called exactly once with the result of `expect.objectContaining` using an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 19781,
+      "text": "      // [L115] Include the current `provider` value under the same property name. Set fixture property `model` to `selectedModel`. Include the current `plan` value under the same property name. Include the current `session` value under the same property name.\n"
+    },
+    {
+      "offset": 20095,
+      "text": "    // [L116] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 20178,
+      "text": "    // [L117] Assert that `session.handoff` was called exactly once.\n"
+    },
+    {
+      "offset": 20299,
+      "text": "    // [L118] Assert that `last()?.status` strictly equals \"awaiting_review\".\n"
+    },
+    {
+      "offset": 20429,
+      "text": "    // [L119] Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 20551,
+      "text": "    // [L120] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 20685,
+      "text": "    // [L121] Assert the selected-provider lifecycle still wipes every uploaded URLA byte after completion.\n"
+    },
+    {
+      "offset": 20865,
+      "text": "  // [L122] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 20958,
+      "text": "// [L123] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 21053,
+      "text": "  // [L124] Register a test that \"does not claim completion when the source omits required facts outside the approved plan\".\n"
+    },
+    {
+      "offset": 21289,
+      "text": "    // [L125] Configure mock `vi.mocked(buildFieldPlan)` to return an object containing plan, warnings: an array containing \"Missing document information: product. Complete this during review.\", missingRequiredFields: an array containing \"product\".\n"
+    },
+    {
+      "offset": 21714,
+      "text": "    // [L126] Declare `running` as the result of `start` with no arguments. Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 21978,
+      "text": "    // [L127] Assert that `session.handoff` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 22104,
+      "text": "    // [L128] Assert that `session.handoffIncomplete` was called exactly once.\n"
+    },
+    {
+      "offset": 22245,
+      "text": "    // [L129] Assert that the result of `last` with no arguments contains the expected object fields an object containing status: \"awaiting_review\", message: the result of `expect.stringContaining` using \"stopped before completion\".\n"
+    },
+    {
+      "offset": 22606,
+      "text": "    // [L130] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 22740,
+      "text": "  // [L131] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 22833,
+      "text": "// [L132] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 22928,
+      "text": "  // [L133] Register a test that \"retains the browser if the final handoff detects a value changed after the earlier report\".\n"
+    },
+    {
+      "offset": 23166,
+      "text": "    // [L134] Configure mock `session.handoff` to reject with a new `Error` instance initialized with \"Synthetic final verification mismatch\".\n"
+    },
+    {
+      "offset": 23400,
+      "text": "    // [L135] Declare `running` as the result of `start` with no arguments. Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 23664,
+      "text": "    // [L136] Assert that `session.handoffIncomplete` was called exactly once.\n"
+    },
+    {
+      "offset": 23805,
+      "text": "    // [L137] Assert that `last()?.message` contains \"stopped before completion\".\n"
+    },
+    {
+      "offset": 23955,
+      "text": "    // [L138] Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 24077,
+      "text": "    // [L139] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 24211,
+      "text": "  // [L140] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24304,
+      "text": "// [L141] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 24399,
+      "text": "  // [L142] Register a test that \"does not replace browser_closed with review if the user closes during successful handoff\".\n"
+    },
+    {
+      "offset": 24635,
+      "text": "    // [L143] Configure mock `session.handoff` to run a promise-returning callback that returns the result of `closeByUser` with no arguments.\n"
+    },
+    {
+      "offset": 24845,
+      "text": "    // [L144] Call `start` without arguments. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 24949,
+      "text": "    // [L145] Assert that `last()?.status` strictly equals \"browser_closed\".\n"
+    },
+    {
+      "offset": 25077,
+      "text": "    // [L146] Assert no awaiting_review status was emitted after browser closure during successful handoff.\n"
+    },
+    {
+      "offset": 25270,
+      "text": "  // [L147] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 25363,
+      "text": "// [L148] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 25458,
+      "text": "  // [L149] Register a test that \"does not claim the form is released when sign-in could not be confirmed\".\n"
+    },
+    {
+      "offset": 25660,
+      "text": "    // [L150] Configure mock `session.waitForUserLogin` to reject with a new `Error` instance initialized with \"Synthetic sign-in problem\".\n"
+    },
+    {
+      "offset": 25888,
+      "text": "    // [L151] Configure mock `session.handoffIncomplete` to resolve to false.\n"
+    },
+    {
+      "offset": 26022,
+      "text": "    // [L152] Declare `running` as the result of `start` with no arguments. Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 26286,
+      "text": "    // [L153] Assert that `last()?.message` contains \"has not been prepared or verified\".\n"
+    },
+    {
+      "offset": 26452,
+      "text": "    // [L154] Assert that `last()?.message` does not satisfy: contains \"then submit\".\n"
+    },
+    {
+      "offset": 26596,
+      "text": "    // [L155] Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 26718,
+      "text": "    // [L156] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 26852,
+      "text": "  // [L157] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 26945,
+      "text": "// [L158] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 27040,
+      "text": "  // [L159] Register a parameterized test that \"keeps the partial form open after %s, including a model that ignores cancellation\".\n"
+    },
+    {
+      "offset": 27355,
+      "text": "    // [L160] Configure mock `session.fillApprovedPlan` to resolve to an object containing report: an empty array, errors: an empty array.\n"
+    },
+    {
+      "offset": 27570,
+      "text": "    // [L161] Configure the agent to reject with a private synthetic error for model failure; otherwise return a permanently pending promise that ignores cancellation.\n"
+    },
+    {
+      "offset": 27909,
+      "text": "    // [L162] Declare `running` as the result of `start` with no arguments. Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 28173,
+      "text": "    // [L163] Run the following branch when `reason` strictly equals \"worker deadline\". Advance fake time by 10 times 60 times 1000 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 28492,
+      "text": "    // [L164] For the parent-cancellation case, abort the external controller and advance fake time by zero to settle cancellation-driven asynchronous work.\n"
+    },
+    {
+      "offset": 28753,
+      "text": "    // [L165] Assert that `session.handoffIncomplete` was called exactly once.\n"
+    },
+    {
+      "offset": 28894,
+      "text": "    // [L166] Assert that `last()?.status` strictly equals \"awaiting_review\".\n"
+    },
+    {
+      "offset": 29024,
+      "text": "    // [L167] Assert that the result of `JSON.stringify` using `updates` does not satisfy: contains \"Synthetic private detail\".\n"
+    },
+    {
+      "offset": 29231,
+      "text": "    // [L168] Assert that `environment.clear` was called.\n"
+    },
+    {
+      "offset": 29339,
+      "text": "    // [L169] Advance fake time by 6 times 60 times 60 times 1000 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 29562,
+      "text": "    // [L170] Assert that `session.close` does not satisfy: was called. Assert that `last()?.status` strictly equals \"awaiting_review\".\n"
+    },
+    {
+      "offset": 29796,
+      "text": "    // [L171] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 29930,
+      "text": "  // [L172] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 30023,
+      "text": "// [L173] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 30118,
+      "text": "  // [L174] Register a test that \"pauses the worker deadline throughout manual login and resumes it for preparation\".\n"
+    },
+    {
+      "offset": 30340,
+      "text": "    // [L175] Declare `login` as the result of `deferred` with no arguments.\n"
+    },
+    {
+      "offset": 30447,
+      "text": "    // [L176] Configure mock `session.waitForUserLogin` to run a callback that performs: Call `browserOptions.onStatus` with \"awaiting_login\", \"Sign in.\". Return `login.promise` to the caller..\n"
+    },
+    {
+      "offset": 30778,
+      "text": "    // [L177] Make deterministic filling return a permanently pending promise so the resumed active-processing deadline can cancel it.\n"
+    },
+    {
+      "offset": 30991,
+      "text": "    // [L178] Declare `running` as the result of `start` with no arguments. Advance fake time by 6 times 60 times 60 times 1000 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 31301,
+      "text": "    // [L179] Assert that `last()?.status` strictly equals \"awaiting_login\". Assert that `session.handoffIncomplete` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 31557,
+      "text": "    // [L180] Call `login.resolve` without arguments. Advance fake time by 0 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 31791,
+      "text": "    // [L181] Advance fake time by 10 times 60 times 1000 minus 1 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 32014,
+      "text": "    // [L182] Assert that `session.handoffIncomplete` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 32160,
+      "text": "    // [L183] Advance fake time by 1 milliseconds and settle timer-triggered asynchronous work. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 32337,
+      "text": "    // [L184] Assert that `last()?.status` strictly equals \"awaiting_review\". Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 32571,
+      "text": "    // [L185] Call `closeByUser` without arguments. Wait for `running` to settle before continuing.\n"
+    },
+    {
+      "offset": 32705,
+      "text": "  // [L186] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 32798,
+      "text": "// [L187] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 32893,
+      "text": "  // [L188] Register a test that \"does not announce review when the user closes during preparation or incomplete handoff\".\n"
+    },
+    {
+      "offset": 33125,
+      "text": "    // [L189] Configure mock `session.fillApprovedPlan` to resolve to an object containing report: an empty array, errors: an empty array.\n"
+    },
+    {
+      "offset": 33340,
+      "text": "    // [L190] Configure mock `vi.mocked(prepareOrderWithAgent)` to reject with a new `Error` instance initialized with \"Synthetic failure\".\n"
+    },
+    {
+      "offset": 33568,
+      "text": "    // [L191] Configure mock `session.handoffIncomplete` to run a promise-returning callback that performs: Call `closeByUser` without arguments..\n"
+    },
+    {
+      "offset": 33797,
+      "text": "    // [L192] Call `start` without arguments. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 33901,
+      "text": "    // [L193] Assert that `last()?.status` strictly equals \"browser_closed\".\n"
+    },
+    {
+      "offset": 34029,
+      "text": "    // [L194] Assert browser closure during incomplete handoff never produces an awaiting_review update.\n"
+    },
+    {
+      "offset": 34219,
+      "text": "    // [L195] Assert that `session.close` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 34341,
+      "text": "  // [L196] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 34434,
+      "text": "// [L197] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 34529,
+      "text": "  // [L198] Register a test that \"reports extraction failure and wipes documents before any browser is launched\".\n"
+    },
+    {
+      "offset": 34743,
+      "text": "    // [L199] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 34856,
+      "text": "    // [L200] Configure mock `vi.mocked(extractOrder)` to reject with a new `Error` instance initialized with \"Synthetic private extraction detail\".\n"
+    },
+    {
+      "offset": 35102,
+      "text": "    // [L201] Call `start` with `documents`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 35214,
+      "text": "    // [L202] Assert that `last()?.status` strictly equals \"failed\".\n"
+    },
+    {
+      "offset": 35326,
+      "text": "    // [L203] Assert that `createBrowserSession` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 35462,
+      "text": "    // [L204] Assert the URLA buffer is fully zeroed after extraction failure, before any browser was launched.\n"
+    },
+    {
+      "offset": 35646,
+      "text": "    // [L205] Assert that `environment.clear` was called.\n"
+    },
+    {
+      "offset": 35754,
+      "text": "  // [L206] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 35847,
+      "text": "// [L207] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 35942,
+      "text": "  // [L208] Register a parameterized test that \"reports a useful Anthropic rejection and cleans up before browser creation: %s\".\n"
+    },
+    {
+      "offset": 36083,
+      "text": "    // [L209] Provide a parameterized test row with ['Schema is too complex for compilation.', 'structured extraction schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 36355,
+      "text": "    // [L210] Provide a parameterized test row with ['Your credit balance is too low to access the Anthropic API.', 'API credits are insufficient'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 36669,
+      "text": "  // [L211] Apply the preceding scenario rows to the parameterized test \"reports a useful Anthropic rejection and cleans up before browser creation: %s\" and begin its callback.\n"
+    },
+    {
+      "offset": 36964,
+      "text": "    // [L212] Declare `documents` as an object containing values copied from the result of `payload` with no arguments, salesContract: an object containing name: \"contract.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic\".\n"
+    },
+    {
+      "offset": 37330,
+      "text": "    // [L213] Assign \"anthropic\" to `documents.input.provider`.\n"
+    },
+    {
+      "offset": 37438,
+      "text": "    // [L214] Assign \"claude-opus-5\" to `documents.input.model`.\n"
+    },
+    {
+      "offset": 37548,
+      "text": "    // [L215] Configure mock `vi.mocked(extractOrder)` to reject with the result of `APIError.generate` using 400, an object containing type: \"error\", error: an object containing type: \"invalid_request_error\", message: text interpolating `message`, `undefined`, a new `Headers` instance.\n"
+    },
+    {
+      "offset": 37905,
+      "text": "      // [L216] Set fixture property `type` to \"error\". Set fixture property `error` to an object containing type: \"invalid_request_error\", message: text interpolating `message`.\n"
+    },
+    {
+      "offset": 38226,
+      "text": "    // [L217] Call `start` with `documents`. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 38338,
+      "text": "    // [L218] Assert that the result of `last` with no arguments contains the expected object fields an object containing status: \"failed\", message: the result of `expect.stringContaining` using `expected`.\n"
+    },
+    {
+      "offset": 38645,
+      "text": "    // [L219] Assert that `last()?.message` contains \"No automatic order submission was performed.\".\n"
+    },
+    {
+      "offset": 38833,
+      "text": "    // [L220] Assert that the result of `JSON.stringify` using `updates` does not satisfy: contains \"PRIVATE_PROVIDER_DETAIL\".\n"
+    },
+    {
+      "offset": 39038,
+      "text": "    // [L221] Assert that `createBrowserSession` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 39174,
+      "text": "    // [L222] Assert that `buildFieldPlan` does not satisfy: was called.\n"
+    },
+    {
+      "offset": 39298,
+      "text": "    // [L223] Assert that `environment.clear` was called.\n"
+    },
+    {
+      "offset": 39406,
+      "text": "    // [L224] Assert that the result of `documents.urla.buffer.every` using a callback that returns `byte` strictly equals 0 strictly equals true.\n"
+    },
+    {
+      "offset": 39625,
+      "text": "    // [L225] Assert that the result of `documents.salesContract.buffer.every` using a callback that returns `byte` strictly equals 0 strictly equals true.\n"
+    },
+    {
+      "offset": 39862,
+      "text": "  // [L226] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 39955,
+      "text": "// [L227] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

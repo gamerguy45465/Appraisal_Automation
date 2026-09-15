@@ -1,0 +1,910 @@
+{
+  "originalSha256": "c803c0614c0b8cb14ecb3a33f406d090f422d98a15cb3ce2fcfd72419c809cae",
+  "annotatedSha256": "1759d26df76aab5d8d90ff3b79dc3709f45c02e33aa17bfe8eb8afe22a4bd696",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { describe, expect, it } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 129,
+      "text": "// [L2] Import { APIError } from \"@anthropic-ai/sdk\" for these regression tests.\n"
+    },
+    {
+      "offset": 256,
+      "text": "// [L3] Import { APIError as OpenAIAPIError } from \"openai\" for these regression tests.\n"
+    },
+    {
+      "offset": 397,
+      "text": "// [L4] Import { AppError, publicError } from \"../src/errors.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 548,
+      "text": "// [L5] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 641,
+      "text": "// [L6] Existing comment: These SDK classes are not public exports; resolve beside the installed public entry point.\n"
+    },
+    {
+      "offset": 852,
+      "text": "// [L7] Declare `googleErrors` as the resolved value from `import` using `new URL('./utils/errors.js', import.meta.resolve('@langchain/google')).href`.\n"
+    },
+    {
+      "offset": 1116,
+      "text": "// [L8] Declare `googleKey` as \"synthetic-google-key-not-real\".\n"
+    },
+    {
+      "offset": 1231,
+      "text": "// [L9] Declare `googlePrivateUrl` as text interpolating `googleKey`.\n"
+    },
+    {
+      "offset": 1428,
+      "text": "// [L10] Define helper `googleSdkError` with parameters message, statusCode, reason for the fixture operations below.\n"
+    },
+    {
+      "offset": 1624,
+      "text": "  // [L11] Return a new `googleErrors.RequestError` instance initialized with an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 1799,
+      "text": "    // [L12] Set fixture property `message` to text interpolating `message`, `privateDetail`. Include the current `statusCode` value under the same property name. Set fixture property `statusText` to \"Synthetic rejection\". Set fixture property `url` to `googlePrivateUrl`.\n"
+    },
+    {
+      "offset": 2186,
+      "text": "    // [L13] Set fixture property `headers` to an object containing 'x-goog-api-key': `googleKey`.\n"
+    },
+    {
+      "offset": 2331,
+      "text": "    // [L14] Set fixture property `data` to an object containing error: an object containing code: `statusCode`, message: text interpolating `message`, `privateDetail`, status: \"INVALID_ARGUMENT\", details: an array containing `{ reason }` when `reason`, otherwise an empty array.\n"
+    },
+    {
+      "offset": 2759,
+      "text": "  // [L15] Close the fixture object and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 2836,
+      "text": "// [L16] Close the callback or control-flow body for `googleSdkError` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 2943,
+      "text": "// [L17] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3037,
+      "text": "// [L18] Define helper `expectSanitizedGoogle` with parameters error, code, action for the fixture operations below.\n"
+    },
+    {
+      "offset": 3239,
+      "text": "  // [L19] Declare `result` as the result of `publicError` using `error`, \"google\".\n"
+    },
+    {
+      "offset": 3370,
+      "text": "  // [L20] Assert that `result` contains the expected object fields an object containing code, statusCode: 504 when `code` strictly equals \"TIMEOUT\", otherwise 502.\n"
+    },
+    {
+      "offset": 3621,
+      "text": "  // [L21] Assert that `result.message` contains `action`.\n"
+    },
+    {
+      "offset": 3724,
+      "text": "  // [L22] Assert that `result.message` contains \"Google Gemini\".\n"
+    },
+    {
+      "offset": 3843,
+      "text": "  // [L23] Iterate const output over an array containing `result.message`, `result.stack`, the result of `JSON.stringify` using `result`.\n"
+    },
+    {
+      "offset": 4062,
+      "text": "    // [L24] Assert that `output` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 4189,
+      "text": "    // [L25] Assert that `output` does not satisfy: contains `googleKey`.\n"
+    },
+    {
+      "offset": 4308,
+      "text": "    // [L26] Assert that `output` does not satisfy: contains `googlePrivateUrl`.\n"
+    },
+    {
+      "offset": 4441,
+      "text": "    // [L27] Assert that `output` does not satisfy: contains \"generativelanguage.googleapis.com\".\n"
+    },
+    {
+      "offset": 4610,
+      "text": "  // [L28] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4700,
+      "text": "// [L29] Close the callback or control-flow body for `expectSanitizedGoogle` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4814,
+      "text": "// [L30] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 4908,
+      "text": "// [L31] Declare `privateDetail` as \"PRIVATE_PDF_TEXT_sk-synthetic-secret\".\n"
+    },
+    {
+      "offset": 5046,
+      "text": "// [L32] Define helper `sdkError` with parameters message, status for the fixture operations below.\n"
+    },
+    {
+      "offset": 5197,
+      "text": "  // [L33] Return the result of `APIError.generate` using `status`, an object containing type: \"error\", error: an object containing type: \"invalid_request_error\", message: text interpolating `message`, `privateDetail`, `undefined`, a new `Headers` instance to the caller.\n"
+    },
+    {
+      "offset": 5632,
+      "text": "// [L34] Close the callback or control-flow body for `sdkError` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 5733,
+      "text": "// [L35] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 5827,
+      "text": "// [L36] Group regression tests for \"actionable Anthropic rejection messages\".\n"
+    },
+    {
+      "offset": 5966,
+      "text": "  // [L37] Register a parameterized test that \"classifies %s from an actual SDK error without exposing its body\".\n"
+    },
+    {
+      "offset": 6092,
+      "text": "    // [L38] Provide a parameterized test row with ['Your credit balance is too low to access the Anthropic API.', 'API_QUOTA', 'billing'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 6389,
+      "text": "    // [L39] Provide a parameterized test row with ['Insufficient credits.', 'API_QUOTA', 'credit balance'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 6624,
+      "text": "    // [L40] Provide a parameterized test row with ['Schema is too complex for compilation.', 'MODEL_SCHEMA', 'schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 6883,
+      "text": "    // [L41] Provide a parameterized test row with ['Too many parameters with union types; maximum is 16.', 'MODEL_SCHEMA', 'schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 7170,
+      "text": "    // [L42] Provide a parameterized test row with ['Maximum optional parameters exceeded.', 'MODEL_SCHEMA', 'schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 7427,
+      "text": "    // [L43] Provide a parameterized test row with ['prompt is too long: 250000 tokens > 200000 maximum', 'API_REQUEST_TOO_LARGE', 'shorter PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 7740,
+      "text": "    // [L44] Provide a parameterized test row with ['PDF has too many pages.', 'API_REQUEST_TOO_LARGE', 'shorter PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 7999,
+      "text": "    // [L45] Provide a parameterized test row with ['Request exceeds size limit.', 'API_REQUEST_TOO_LARGE', 'smaller'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 8256,
+      "text": "    // [L46] Provide a parameterized test row with ['PDF is password protected.', 'DOCUMENT_PDF_INVALID', 'password'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 8511,
+      "text": "    // [L47] Provide a parameterized test row with ['Invalid PDF document.', 'DOCUMENT_PDF_INVALID', 'valid PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 8760,
+      "text": "    // [L48] Provide a parameterized test row with ['output_config.format is not supported with this model.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 9079,
+      "text": "    // [L49] Provide a parameterized test row with ['This model does not support PDF input.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 9366,
+      "text": "  // [L50] Apply the preceding scenario rows to the parameterized test \"classifies %s from an actual SDK error without exposing its body\" and begin its callback.\n"
+    },
+    {
+      "offset": 9630,
+      "text": "    // [L51] Declare `result` as the result of `publicError` using the result of `sdkError` using `message`, \"anthropic\".\n"
+    },
+    {
+      "offset": 9817,
+      "text": "    // [L52] Assert that `result` contains the expected object fields an object containing code, statusCode: 502.\n"
+    },
+    {
+      "offset": 9992,
+      "text": "    // [L53] Assert that `result.message` contains `action`.\n"
+    },
+    {
+      "offset": 10099,
+      "text": "    // [L54] Assert that `result.message` contains \"Anthropic\".\n"
+    },
+    {
+      "offset": 10214,
+      "text": "    // [L55] Assert that `result.message` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 10357,
+      "text": "    // [L56] Assert that the result of `JSON.stringify` using `result` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 10537,
+      "text": "    // [L57] Assert that `result.stack` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 10676,
+      "text": "  // [L58] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10768,
+      "text": "// [L59] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 10862,
+      "text": "  // [L60] Register a parameterized test that \"recognizes plain, direct and nested SDK shapes\".\n"
+    },
+    {
+      "offset": 10970,
+      "text": "    // [L61] Set fixture property `status` to 400. Set fixture property `message` to \"Schema is too complex for compilation.\".\n"
+    },
+    {
+      "offset": 11169,
+      "text": "    // [L62] Set fixture property `status` to 422. Set fixture property `error` to an object containing message: \"Schema is too complex for compilation.\".\n"
+    },
+    {
+      "offset": 11407,
+      "text": "    // [L63] Set fixture property `status` to 400. Set fixture property `error` to an object containing error: an object containing message: \"Schema is too complex for compilation.\".\n"
+    },
+    {
+      "offset": 11684,
+      "text": "  // [L64] Apply the preceding scenario rows to the parameterized test \"recognizes plain, direct and nested SDK shapes\" and begin its callback.\n"
+    },
+    {
+      "offset": 11894,
+      "text": "    // [L65] Assert that `publicError(error, 'anthropic').code` strictly equals \"MODEL_SCHEMA\".\n"
+    },
+    {
+      "offset": 12061,
+      "text": "  // [L66] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12153,
+      "text": "// [L67] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12247,
+      "text": "  // [L68] Register a test that \"retains authentication/access/rate-limit precedence and OpenAI behavior\".\n"
+    },
+    {
+      "offset": 12442,
+      "text": "    // [L69] Iterate const [status, code] over an array containing an array containing 401, \"API_AUTH\", an array containing 403, \"MODEL_ACCESS\", an array containing 404, \"MODEL_ACCESS\", an array containing 429, \"API_RATE_LIMIT\".\n"
+    },
+    {
+      "offset": 12807,
+      "text": "      // [L70] Assert that `publicError(sdkError('Schema is too complex for compilation.', status), 'anthropic').code` strictly equals `code`.\n"
+    },
+    {
+      "offset": 13066,
+      "text": "    // [L71] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 13160,
+      "text": "    // [L72] Assert that `publicError(sdkError('Schema is too complex for compilation.'), 'openai').code` strictly equals \"MODEL_REQUEST\".\n"
+    },
+    {
+      "offset": 13413,
+      "text": "    // [L73] Assert that `publicError(new Error('Schema is too complex for compilation.'), 'anthropic').code` strictly equals \"PREPARATION_FAILED\".\n"
+    },
+    {
+      "offset": 13684,
+      "text": "  // [L74] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 13776,
+      "text": "// [L75] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 13870,
+      "text": "  // [L76] Register a test that \"preserves safe application errors and sanitizes unrecognized or malformed responses\".\n"
+    },
+    {
+      "offset": 14089,
+      "text": "    // [L77] Declare `safe` as a new `AppError` instance initialized with \"SYNTHETIC\", \"A known safe message.\".\n"
+    },
+    {
+      "offset": 14270,
+      "text": "    // [L78] Assert that the result of `publicError` using `safe`, \"anthropic\" strictly equals `safe`.\n"
+    },
+    {
+      "offset": 14428,
+      "text": "    // [L79] Iterate const error over an array containing the result of `sdkError` using `privateDetail`, an object containing status: 400, error: an object containing message: an object containing privateDetail.\n"
+    },
+    {
+      "offset": 14750,
+      "text": "      // [L80] Declare `result` as the result of `publicError` using `error`, \"anthropic\".\n"
+    },
+    {
+      "offset": 14895,
+      "text": "      // [L81] Assert that `result.code` strictly equals \"MODEL_REQUEST\".\n"
+    },
+    {
+      "offset": 15018,
+      "text": "      // [L82] Assert that `result.message` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 15165,
+      "text": "    // [L83] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15259,
+      "text": "  // [L84] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15351,
+      "text": "// [L85] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 15439,
+      "text": "// [L86] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 15533,
+      "text": "// [L87] Group regression tests for \"sanitized Google Gemini errors\".\n"
+    },
+    {
+      "offset": 15654,
+      "text": "  // [L88] Register a parameterized test that \"classifies SDK HTTP %s: %s without forwarding private details\".\n"
+    },
+    {
+      "offset": 15777,
+      "text": "    // [L89] Provide a parameterized test row with [400, 'API key not valid. Please pass a valid API key.', 'API_AUTH', 'Google AI Studio'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 16076,
+      "text": "    // [L90] Provide a parameterized test row with [400, 'API key expired. Please renew the API key.', 'API_AUTH', 'Google AI Studio'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 16365,
+      "text": "    // [L91] Provide a parameterized test row with [403, 'Your API key was reported as leaked. Please use another API key.', 'API_AUTH', 'restrictions'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 16690,
+      "text": "    // [L92] Provide a parameterized test row with [400, 'Please enable billing on your Google Cloud project.', 'API_QUOTA', 'billing'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 16981,
+      "text": "    // [L93] Provide a parameterized test row with [403, 'Billing is not enabled.', 'API_QUOTA', 'billing'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 17216,
+      "text": "    // [L94] Provide a parameterized test row with [429, 'You exceeded your current quota.', 'API_QUOTA', 'usage limits'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 17479,
+      "text": "    // [L95] Provide a parameterized test row with [400, 'PDF is password protected.', 'DOCUMENT_PDF_INVALID', 'password'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 17744,
+      "text": "    // [L96] Provide a parameterized test row with [400, 'Invalid PDF document.', 'DOCUMENT_PDF_INVALID', 'valid PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 18003,
+      "text": "    // [L97] Provide a parameterized test row with [400, 'Request payload size exceeds the limit.', 'API_REQUEST_TOO_LARGE', 'smaller'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 18294,
+      "text": "    // [L98] Provide a parameterized test row with [400, 'The input token count exceeds the maximum allowed number.', 'API_REQUEST_TOO_LARGE', 'shorter PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 18631,
+      "text": "    // [L99] Provide a parameterized test row with [400, 'The document has too many pages.', 'API_REQUEST_TOO_LARGE', 'shorter PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 18918,
+      "text": "    // [L100] Provide a parameterized test row with [400, 'responseSchema is too complex for compilation.', 'MODEL_SCHEMA', 'schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 19204,
+      "text": "    // [L101] Provide a parameterized test row with [400, 'responseJsonSchema has invalid nesting depth.', 'MODEL_SCHEMA', 'schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 19488,
+      "text": "    // [L102] Provide a parameterized test row with [400, 'responseMimeType application/json is not supported for this model.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 19842,
+      "text": "    // [L103] Provide a parameterized test row with [422, 'This model does not support response_json_schema.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 20162,
+      "text": "    // [L104] Provide a parameterized test row with [400, 'PDF input is not supported with this model.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 20470,
+      "text": "    // [L105] Provide a parameterized test row with [400, 'This model does not support function calling.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 20782,
+      "text": "    // [L106] Provide a parameterized test row with [401, 'Synthetic rejection.', 'API_AUTH', 'API key'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 21010,
+      "text": "    // [L107] Provide a parameterized test row with [403, 'Permission denied for this resource.', 'MODEL_ACCESS', 'account access'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 21292,
+      "text": "    // [L108] Provide a parameterized test row with [404, 'Model was not found.', 'MODEL_ACCESS', 'model ID'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 21530,
+      "text": "    // [L109] Provide a parameterized test row with [429, 'Too many requests.', 'API_RATE_LIMIT', 'usage limits'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 21776,
+      "text": "    // [L110] Provide a parameterized test row with [413, 'Synthetic rejection.', 'API_REQUEST_TOO_LARGE', 'smaller PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 22040,
+      "text": "    // [L111] Provide a parameterized test row with [503, 'Synthetic backend outage.', 'API_UNAVAILABLE', 'Try again'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 22296,
+      "text": "    // [L112] Provide a parameterized test row with [500, 'Synthetic internal error.', 'API_UNAVAILABLE', 'Try again'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 22552,
+      "text": "    // [L113] Provide a parameterized test row with [504, 'Synthetic deadline exceeded.', 'TIMEOUT', 'connection'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 22800,
+      "text": "  // [L114] Apply the preceding scenario rows to the parameterized test \"classifies SDK HTTP %s: %s without forwarding private details\" and begin its callback.\n"
+    },
+    {
+      "offset": 23076,
+      "text": "    // [L115] Call `expectSanitizedGoogle` with the result of `googleSdkError` using `message`, `status`, `code`, `action`.\n"
+    },
+    {
+      "offset": 23274,
+      "text": "  // [L116] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 23367,
+      "text": "// [L117] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 23462,
+      "text": "  // [L118] Register a test that \"uses recognized structured reasons without depending on private message text\".\n"
+    },
+    {
+      "offset": 23668,
+      "text": "    // [L119] Call `expectSanitizedGoogle` with the result of `googleSdkError` using `privateDetail`, 400, \"API_KEY_INVALID\", \"API_AUTH\", \"Google AI Studio\".\n"
+    },
+    {
+      "offset": 23940,
+      "text": "    // [L120] Call `expectSanitizedGoogle` with the result of `googleSdkError` using `privateDetail`, 403, \"API_KEY_HTTP_REFERRER_BLOCKED\", \"API_AUTH\", \"restrictions\".\n"
+    },
+    {
+      "offset": 24232,
+      "text": "    // [L121] Call `expectSanitizedGoogle` with the result of `googleSdkError` using `privateDetail`, 403, \"BILLING_DISABLED\", \"API_QUOTA\", \"billing\".\n"
+    },
+    {
+      "offset": 24490,
+      "text": "    // [L122] Call `expectSanitizedGoogle` with a new `googleErrors.AuthError` instance initialized with an object containing message: `privateDetail`, statusCode: 403, data: an object containing secret: `googleKey`, \"API_AUTH\", \"API key\".\n"
+    },
+    {
+      "offset": 24882,
+      "text": "  // [L123] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24975,
+      "text": "// [L124] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 25070,
+      "text": "  // [L125] Register a test that \"keeps unknown rejections neutral and retains access/rate-limit precedence\".\n"
+    },
+    {
+      "offset": 25270,
+      "text": "    // [L126] Iterate const status over an array containing 400, 422.\n"
+    },
+    {
+      "offset": 25379,
+      "text": "      // [L127] Declare `error` as the result of `googleSdkError` using `privateDetail`, `status`.\n"
+    },
+    {
+      "offset": 25537,
+      "text": "      // [L128] Call `expectSanitizedGoogle` with `error`, \"MODEL_REQUEST\", \"rejected the request\".\n"
+    },
+    {
+      "offset": 25714,
+      "text": "      // [L129] Assert that `publicError(error, 'google').message` does not satisfy: contains \"does not support\".\n"
+    },
+    {
+      "offset": 25914,
+      "text": "    // [L130] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 26009,
+      "text": "    // [L131] Call `expectSanitizedGoogle` with the result of `googleSdkError` using \"responseSchema is not supported.\", 403, \"MODEL_ACCESS\", \"account access\".\n"
+    },
+    {
+      "offset": 26287,
+      "text": "    // [L132] Call `expectSanitizedGoogle` with the result of `googleSdkError` using \"responseSchema is not supported.\", 429, \"API_RATE_LIMIT\", \"usage limits\".\n"
+    },
+    {
+      "offset": 26565,
+      "text": "    // [L133] Assert that `publicError(googleSdkError('API key not valid.'), 'openai').code` strictly equals \"PREPARATION_FAILED\".\n"
+    },
+    {
+      "offset": 26801,
+      "text": "    // [L134] Assert that `publicError({ status: 400, message: 'API key not valid.' }, 'anthropic').code` strictly equals \"MODEL_REQUEST\".\n"
+    },
+    {
+      "offset": 27053,
+      "text": "    // [L135] Assert that `publicError({ statusCode: 400, data: { error: { message: { secret: googleKey }, details: 'not an array' } } }, 'google').code` strictly equals \"MODEL_REQUEST\".\n"
+    },
+    {
+      "offset": 27401,
+      "text": "  // [L136] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 27494,
+      "text": "// [L137] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 27589,
+      "text": "  // [L138] Register a test that \"sanitizes SDK blocked, empty, malformed and configuration outcomes\".\n"
+    },
+    {
+      "offset": 27775,
+      "text": "    // [L139] Call `expectSanitizedGoogle` with a new `googleErrors.PromptBlockedError` instance initialized with an object containing blockReason: \"SAFETY\", message: `privateDetail`, \"MODEL_OUTPUT_BLOCKED\", \"blocked\".\n"
+    },
+    {
+      "offset": 28144,
+      "text": "    // [L140] Call `expectSanitizedGoogle` with a new `googleErrors.NoCandidatesError` instance, \"MODEL_OUTPUT_INVALID\", \"usable extraction\".\n"
+    },
+    {
+      "offset": 28396,
+      "text": "    // [L141] Call `expectSanitizedGoogle` with a new `googleErrors.MalformedOutputError` instance initialized with an object containing message: `privateDetail`, cause: an object containing key: `googleKey`, \"MODEL_OUTPUT_INVALID\", \"usable extraction\".\n"
+    },
+    {
+      "offset": 28816,
+      "text": "    // [L142] Call `expectSanitizedGoogle` with a new `googleErrors.InvalidInputError` instance initialized with `privateDetail`, \"MODEL_REQUEST\", \"Restart\".\n"
+    },
+    {
+      "offset": 29080,
+      "text": "    // [L143] Call `expectSanitizedGoogle` with a new `googleErrors.ConfigurationError` instance initialized with `privateDetail`, \"MODEL_REQUEST\", \"Restart\".\n"
+    },
+    {
+      "offset": 29346,
+      "text": "    // [L144] Declare `safe` as a new `AppError` instance initialized with \"SYNTHETIC\", \"Known safe application message.\".\n"
+    },
+    {
+      "offset": 29548,
+      "text": "    // [L145] Assert that the result of `publicError` using `safe`, \"google\" strictly equals `safe`.\n"
+    },
+    {
+      "offset": 29701,
+      "text": "  // [L146] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 29794,
+      "text": "// [L147] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 29883,
+      "text": "// [L148] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 29978,
+      "text": "// [L149] Group regression tests for \"sanitized SpaceXAI Grok errors\".\n"
+    },
+    {
+      "offset": 30100,
+      "text": "  // [L150] Declare `xaiKey` as \"xai-synthetic-key-not-real\".\n"
+    },
+    {
+      "offset": 30209,
+      "text": "  // [L151] Declare `privateUrl` as text interpolating `xaiKey`.\n"
+    },
+    {
+      "offset": 30353,
+      "text": "  // [L152] Define helper `xaiSdkError` with parameters message, status, code for the fixture operations below.\n"
+    },
+    {
+      "offset": 30538,
+      "text": "    // [L153] Return the result of `OpenAIAPIError.generate` using `status`, an object whose fields are defined below, `undefined`, a new `Headers` instance initialized with an object containing 'authorization': text interpolating `xaiKey` to the caller.\n"
+    },
+    {
+      "offset": 30847,
+      "text": "      // [L154] Set fixture property `message` to text interpolating `message`, `privateDetail`, `privateUrl`. Include the current `code` value under the same property name. Set fixture property `type` to \"invalid_request_error\".\n"
+    },
+    {
+      "offset": 31174,
+      "text": "    // [L155] Set fixture property `'authorization'` to text interpolating `xaiKey`.\n"
+    },
+    {
+      "offset": 31334,
+      "text": "  // [L156] Close the callback or control-flow body for `xaiSdkError` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 31443,
+      "text": "  // [L157] Define helper `expectSanitized` with parameters error, code, action for the fixture operations below.\n"
+    },
+    {
+      "offset": 31638,
+      "text": "    // [L158] Declare `result` as the result of `publicError` using `error`, \"xai\".\n"
+    },
+    {
+      "offset": 31768,
+      "text": "    // [L159] Assert that `result` contains the expected object fields an object containing code, statusCode: 504 when `code` strictly equals \"TIMEOUT\", otherwise 502.\n"
+    },
+    {
+      "offset": 32024,
+      "text": "    // [L160] Assert that `result.message` contains \"SpaceXAI (Grok)\".\n"
+    },
+    {
+      "offset": 32152,
+      "text": "    // [L161] Assert that `result.message` contains `action`.\n"
+    },
+    {
+      "offset": 32260,
+      "text": "    // [L162] Iterate const output over an array containing `result.message`, `result.stack`, the result of `JSON.stringify` using `result`.\n"
+    },
+    {
+      "offset": 32484,
+      "text": "      // [L163] Assert that `output` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 32616,
+      "text": "      // [L164] Assert that `output` does not satisfy: contains `xaiKey`.\n"
+    },
+    {
+      "offset": 32734,
+      "text": "      // [L165] Assert that `output` does not satisfy: contains `privateUrl`.\n"
+    },
+    {
+      "offset": 32860,
+      "text": "      // [L166] Assert that `output` does not satisfy: contains \"api.x.ai\".\n"
+    },
+    {
+      "offset": 32984,
+      "text": "    // [L167] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 33079,
+      "text": "  // [L168] Close the callback or control-flow body for `expectSanitized` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 33192,
+      "text": "// [L169] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 33287,
+      "text": "  // [L170] Register a parameterized test that \"classifies OpenAI-compatible SDK HTTP %s: %s without exposing its details\".\n"
+    },
+    {
+      "offset": 33423,
+      "text": "    // [L171] Provide a parameterized test row with [400, 'Incorrect API key provided.', 'API_AUTH', 'Grok API key'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 33675,
+      "text": "    // [L172] Provide a parameterized test row with [400, 'API key is invalid.', 'API_AUTH', 'Grok API key'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 33911,
+      "text": "    // [L173] Provide a parameterized test row with [401, 'Synthetic rejection.', 'API_AUTH', 'selected provider'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34159,
+      "text": "    // [L174] Provide a parameterized test row with [402, 'Synthetic payment rejection.', 'API_QUOTA', 'billing'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34405,
+      "text": "    // [L175] Provide a parameterized test row with [403, \"Your team doesn't have any credits yet.\", 'API_QUOTA', 'credit balance'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34687,
+      "text": "    // [L176] Provide a parameterized test row with [429, 'Monthly spending limit reached.', 'API_QUOTA', 'spending limits'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 34955,
+      "text": "    // [L177] Provide a parameterized test row with [403, 'Your team is blocked.', 'MODEL_ACCESS', 'account access'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 35207,
+      "text": "    // [L178] Provide a parameterized test row with [404, 'Model was not found.', 'MODEL_ACCESS', 'model ID'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 35445,
+      "text": "    // [L179] Provide a parameterized test row with [429, 'Too many requests.', 'API_RATE_LIMIT', 'usage limits'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 35691,
+      "text": "    // [L180] Provide a parameterized test row with [400, 'Invalid argument.', 'MODEL_REQUEST', 'rejected the request'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 35949,
+      "text": "    // [L181] Provide a parameterized test row with [422, 'Invalid field format.', 'MODEL_REQUEST', 'rejected the request'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 36215,
+      "text": "    // [L182] Provide a parameterized test row with [400, 'json_schema is invalid.', 'MODEL_SCHEMA', 'schema'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 36455,
+      "text": "    // [L183] Provide a parameterized test row with [400, 'response_format json_schema is not supported.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 36767,
+      "text": "    // [L184] Provide a parameterized test row with [400, 'This model does not support image input.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 37069,
+      "text": "    // [L185] Provide a parameterized test row with [422, 'Function calling is not supported by this model.', 'MODEL_CAPABILITY', 'compatible model'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 37387,
+      "text": "    // [L186] Provide a parameterized test row with [400, 'The maximum context length was exceeded.', 'API_REQUEST_TOO_LARGE', 'shorter PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 37691,
+      "text": "    // [L187] Provide a parameterized test row with [400, 'The request payload is too large.', 'API_REQUEST_TOO_LARGE', 'smaller'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 37971,
+      "text": "    // [L188] Provide a parameterized test row with [413, 'Synthetic size rejection.', 'API_REQUEST_TOO_LARGE', 'smaller PDFs'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38245,
+      "text": "    // [L189] Provide a parameterized test row with [408, 'Synthetic request timeout.', 'TIMEOUT', 'connection'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38489,
+      "text": "    // [L190] Provide a parameterized test row with [504, 'Synthetic gateway timeout.', 'TIMEOUT', 'connection'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38733,
+      "text": "    // [L191] Provide a parameterized test row with [500, 'Synthetic internal failure.', 'API_UNAVAILABLE', 'Try again'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 38993,
+      "text": "    // [L192] Provide a parameterized test row with [502, 'Synthetic upstream failure.', 'API_UNAVAILABLE', 'Try again'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 39253,
+      "text": "    // [L193] Provide a parameterized test row with [503, 'Synthetic unavailable.', 'API_UNAVAILABLE', 'Try again'],; the test receives these values as its inputs and expectations.\n"
+    },
+    {
+      "offset": 39503,
+      "text": "  // [L194] Apply the preceding scenario rows to the parameterized test \"classifies OpenAI-compatible SDK HTTP %s: %s without exposing its details\" and begin its callback.\n"
+    },
+    {
+      "offset": 39803,
+      "text": "    // [L195] Call `expectSanitized` with the result of `xaiSdkError` using `message`, `status`, `code`, `action`.\n"
+    },
+    {
+      "offset": 39983,
+      "text": "  // [L196] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 40076,
+      "text": "// [L197] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 40171,
+      "text": "  // [L198] Register a test that \"recognizes direct and nested structured error codes and string messages privately\".\n"
+    },
+    {
+      "offset": 40387,
+      "text": "    // [L199] Call `expectSanitized` with the result of `xaiSdkError` using `privateDetail`, 429, \"insufficient_quota\", \"API_QUOTA\", \"billing\".\n"
+    },
+    {
+      "offset": 40631,
+      "text": "    // [L200] Call `expectSanitized` with an object containing status: 400, error: an object containing code: \"invalid_api_key\", message: `privateDetail`, \"API_AUTH\", \"Grok API key\".\n"
+    },
+    {
+      "offset": 40940,
+      "text": "    // [L201] Call `expectSanitized` with an object containing status: 400, error: an object containing error: an object containing code: \"model_not_found\", message: `privateDetail`, \"MODEL_ACCESS\", \"model ID\".\n"
+    },
+    {
+      "offset": 41288,
+      "text": "    // [L202] Call `expectSanitized` with an object containing status: 403, error: an object containing error: an object containing code: \"billing_hard_limit_reached\", message: `privateDetail`, \"API_QUOTA\", \"billing\".\n"
+    },
+    {
+      "offset": 41650,
+      "text": "    // [L203] Call `expectSanitized` with an object containing status: 400, error: text interpolating `privateDetail`, \"API_AUTH\", \"Grok API key\".\n"
+    },
+    {
+      "offset": 41918,
+      "text": "    // [L204] Call `expectSanitized` with an object containing status: 400, error: an object containing error: text interpolating `privateDetail`, \"API_AUTH\", \"Grok API key\".\n"
+    },
+    {
+      "offset": 42225,
+      "text": "  // [L205] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 42318,
+      "text": "// [L206] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 42413,
+      "text": "  // [L207] Register a test that \"keeps unknown errors neutral, preserves HTTP precedence and does not change other providers\".\n"
+    },
+    {
+      "offset": 42649,
+      "text": "    // [L208] Call `expectSanitized` with the result of `xaiSdkError` using \"json_schema is not supported.\", 401, \"API_AUTH\", \"selected provider\".\n"
+    },
+    {
+      "offset": 42901,
+      "text": "    // [L209] Call `expectSanitized` with the result of `xaiSdkError` using \"json_schema is not supported.\", 403, \"MODEL_ACCESS\", \"account access\".\n"
+    },
+    {
+      "offset": 43155,
+      "text": "    // [L210] Call `expectSanitized` with the result of `xaiSdkError` using \"json_schema is not supported.\", 429, \"API_RATE_LIMIT\", \"usage limits\".\n"
+    },
+    {
+      "offset": 43409,
+      "text": "    // [L211] Iterate const status over an array containing 400, 422.\n"
+    },
+    {
+      "offset": 43518,
+      "text": "      // [L212] Call `expectSanitized` with an object containing status, error: an object containing error: an object containing message: an object containing secret: `xaiKey`, \"MODEL_REQUEST\", \"rejected the request\".\n"
+    },
+    {
+      "offset": 43863,
+      "text": "      // [L213] Assert that `publicError(xaiSdkError(privateDetail, status), 'xai').message` does not satisfy: contains \"does not support\".\n"
+    },
+    {
+      "offset": 44115,
+      "text": "    // [L214] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 44210,
+      "text": "    // [L215] Iterate const provider over an array containing \"openai\", \"anthropic\", \"google\".\n"
+    },
+    {
+      "offset": 44378,
+      "text": "      // [L216] Assert that `publicError(xaiSdkError('Incorrect API key provided.', 400), provider).code` strictly equals \"MODEL_REQUEST\".\n"
+    },
+    {
+      "offset": 44630,
+      "text": "      // [L217] Assert that `publicError(xaiSdkError('Your team has no credits.', 403), provider).code` strictly equals \"MODEL_ACCESS\".\n"
+    },
+    {
+      "offset": 44876,
+      "text": "    // [L218] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 44971,
+      "text": "    // [L219] Declare `safe` as a new `AppError` instance initialized with \"SYNTHETIC\", \"Known safe application message.\".\n"
+    },
+    {
+      "offset": 45173,
+      "text": "    // [L220] Assert that the result of `publicError` using `safe`, \"xai\" strictly equals `safe`.\n"
+    },
+    {
+      "offset": 45320,
+      "text": "    // [L221] Declare `unknown` as the result of `publicError` using a new `Error` instance initialized with text interpolating `privateDetail`, `privateUrl`, \"xai\".\n"
+    },
+    {
+      "offset": 45571,
+      "text": "    // [L222] Assert that `unknown.code` strictly equals \"PREPARATION_FAILED\".\n"
+    },
+    {
+      "offset": 45703,
+      "text": "    // [L223] Assert that `unknown.message` does not satisfy: contains `privateDetail`.\n"
+    },
+    {
+      "offset": 45849,
+      "text": "    // [L224] Assert that `unknown.stack` does not satisfy: contains `xaiKey`.\n"
+    },
+    {
+      "offset": 45977,
+      "text": "  // [L225] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 46070,
+      "text": "// [L226] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

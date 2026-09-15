@@ -1,0 +1,504 @@
+{
+  "files": 64,
+  "explainedOriginalLines": 13335,
+  "filesWithSourceComments": 47,
+  "filesWithCompanionOnly": 13,
+  "binaryFiles": 4,
+  "entries": [
+    {
+      "file": ".gitignore",
+      "originalSha256": "92512e5e7596ed5dc04a408f8f6046f7c1eac12aa1bbb6bad5452dfcf9fb5253",
+      "originalLines": 14,
+      "mode": "source comments and companion",
+      "notes": 14,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "CHAT_HANDOFF.md",
+      "originalSha256": "f3c692536dc1f5e89a40712eb4122f7323476d920f96f3a9782d2f3936458b5a",
+      "originalLines": 314,
+      "mode": "companion; original unchanged",
+      "notes": 314
+    },
+    {
+      "file": "docs/security-review.md",
+      "originalSha256": "e880717f50af456eed3cf57168bc9aaf241b27dbe6b9b1dc32d49f790ab0765e",
+      "originalLines": 92,
+      "mode": "companion; original unchanged",
+      "notes": 92
+    },
+    {
+      "file": "Example_Pdfs/Sample_Form_1003_URLA.pdf",
+      "originalSha256": "9285d9eed759ded726d00cc974717c1ffa2133888913e3dfe0133c821a570cf5",
+      "originalLines": null,
+      "mode": "binary reference; original unchanged",
+      "notes": 0
+    },
+    {
+      "file": "Example_Pdfs/Sample_Nevada_Purchase_Contract.pdf",
+      "originalSha256": "f5536f0334a092ebaabf4e135a9ac4ef3408bd34a22af6d4ce45b2c3d805cd5c",
+      "originalLines": null,
+      "mode": "binary reference; original unchanged",
+      "notes": 0
+    },
+    {
+      "file": "Example_Pdfs/SAMPLE_Nevada_Residential_Purchase_Agreement.pdf",
+      "originalSha256": "6e76def6657ae4447230ba69f7790be9063d08bf53b2c5c27d7eece546799ed1",
+      "originalLines": null,
+      "mode": "binary reference; original unchanged",
+      "notes": 0
+    },
+    {
+      "file": "Example_Pdfs/SAMPLE_URLA_1003_FHA_Whitmore.pdf",
+      "originalSha256": "13c9430730a84cd2127d1cdfb19b2762ab10fe43c6ef7f5b04a5ecb58fb91828",
+      "originalLines": null,
+      "mode": "binary reference; original unchanged",
+      "notes": 0
+    },
+    {
+      "file": "output/playwright/diagnose-login.mjs",
+      "originalSha256": "88b0f8d6e03a129d4c9cd67adf484f7a6a12e9cfc07ed2c329416ee923348a7d",
+      "originalLines": 57,
+      "mode": "source comments and companion",
+      "notes": 57,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "outputs/nevada-bond-market-2026-09-09/build-graphics.cjs",
+      "originalSha256": "79558e359579dda7d97eb008f72e371340dd7fc939f34fa7efd09e81213c8305",
+      "originalLines": 93,
+      "mode": "source comments and companion",
+      "notes": 93,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "outputs/nevada-bond-market-2026-09-09/delivery-notes.md",
+      "originalSha256": "d4b99ff7fabf19a441818b899577134c56e89c86fef2aa303e560c093400f31b",
+      "originalLines": 22,
+      "mode": "companion; original unchanged",
+      "notes": 22
+    },
+    {
+      "file": "outputs/nevada-bond-market-2026-09-09/nevada-market-portrait.svg",
+      "originalSha256": "5bf442b5ac8b856ad5404fd6d26dc934526db7065b25514601f22026af7fe9a8",
+      "originalLines": 1,
+      "mode": "companion; original unchanged",
+      "notes": 1
+    },
+    {
+      "file": "outputs/nevada-bond-market-2026-09-09/nevada-market-square.svg",
+      "originalSha256": "04e7af36fd20ab868f5cafe8970b20bf0637f2945ebbe06bffde154e5b02db0a",
+      "originalLines": 1,
+      "mode": "companion; original unchanged",
+      "notes": 1
+    },
+    {
+      "file": "outputs/nevada-bond-market-2026-09-09/research-brief.md",
+      "originalSha256": "e10c647ef9b34e0562b2c8b4d7d68aadea94494f659f1e77350b978d10377ba8",
+      "originalLines": 62,
+      "mode": "companion; original unchanged",
+      "notes": 62
+    },
+    {
+      "file": "outputs/nevada-bond-market-2026-09-09/social-caption.md",
+      "originalSha256": "7ae445b4f7f814fd39eb19de3dc22f89b845d0aafc6b7d9dd6ea500e5cae2637",
+      "originalLines": 26,
+      "mode": "companion; original unchanged",
+      "notes": 26
+    },
+    {
+      "file": "package-lock.json",
+      "originalSha256": "9b27b90e85f1aac7b3c63728cbb1be52852e64ffa5f628e65cfb57227be33ff8",
+      "originalLines": 4620,
+      "mode": "companion; original unchanged",
+      "notes": 4620
+    },
+    {
+      "file": "package.json",
+      "originalSha256": "af7c6b5e10ef459454aec1de488b9988b4076dc43ef5814b5122efad5c334879",
+      "originalLines": 49,
+      "mode": "companion; original unchanged",
+      "notes": 49
+    },
+    {
+      "file": "playwright.config.ts",
+      "originalSha256": "39f0063ef810f01b45dbb3fc46db522d9fb19665dc310f4ff4e26caae0205413",
+      "originalLines": 5,
+      "mode": "source comments and companion",
+      "notes": 5,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "public/app.js",
+      "originalSha256": "97994cf5ea3a7923d69e5e77e2b2d06f3acdb62ce5d712f122027de3a8a3e315",
+      "originalLines": 432,
+      "mode": "source comments and companion",
+      "notes": 432,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "public/index.html",
+      "originalSha256": "6907863039c2247688d23d45fea7296a1443cecdb53ae99417e2e004b7063bae",
+      "originalLines": 258,
+      "mode": "source comments and companion",
+      "notes": 258,
+      "movedLiteralNotes": 30
+    },
+    {
+      "file": "public/styles.css",
+      "originalSha256": "59e1e5968b27aa5f8729149d2691abdeea01938e2d210704fd2efae810a49f06",
+      "originalLines": 222,
+      "mode": "source comments and companion",
+      "notes": 222,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "README.md",
+      "originalSha256": "901dcf3f8c8426cf0b3be8b14c32cce7f59b59988d6ae66f713d37e4ecda5e90",
+      "originalLines": 153,
+      "mode": "companion; original unchanged",
+      "notes": 153
+    },
+    {
+      "file": "scripts/environment.ps1",
+      "originalSha256": "4004be3f6a0efc4bc30800ffdcb687301169e9d08fc688bb003ef469b8c2b9eb",
+      "originalLines": 19,
+      "mode": "source comments and companion",
+      "notes": 19,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "skills/appraisal-automation/SKILL.md",
+      "originalSha256": "6e5f36b9a6ebf654b01d12520487b6b8dfb980b211ed6729f855711b7e7316f6",
+      "originalLines": 64,
+      "mode": "companion; original unchanged",
+      "notes": 64
+    },
+    {
+      "file": "src/agent.ts",
+      "originalSha256": "e530ed393a00e36d54c4182a64e4a3e5b561192fb47d71566f1ccaa8c5fef08d",
+      "originalLines": 32,
+      "mode": "source comments and companion",
+      "notes": 32,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/app.ts",
+      "originalSha256": "9ca36e5439144bc5be28c53e4c5726bfc9b31dccee6d4d4aa5254abdfaa31cec",
+      "originalLines": 93,
+      "mode": "source comments and companion",
+      "notes": 93,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/browser/guard.ts",
+      "originalSha256": "3b12413a7fffb43386cf46b06c6abdff7cf85da7151088760a073436958ebf46",
+      "originalLines": 116,
+      "mode": "source comments and companion",
+      "notes": 116,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/browser/index.ts",
+      "originalSha256": "7bb99d1e114db7fa8c121c3e0e0773210ddab90f032469b94320897790bd7589",
+      "originalLines": 2,
+      "mode": "source comments and companion",
+      "notes": 2,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/browser/r3-fields.ts",
+      "originalSha256": "1118fc103d211b249ffe384955ea1b2264d2941ff14816d34bdd259c9a7a4bcb",
+      "originalLines": 110,
+      "mode": "source comments and companion",
+      "notes": 110,
+      "movedLiteralNotes": 6
+    },
+    {
+      "file": "src/browser/session.ts",
+      "originalSha256": "4b9bd10208aa57b26754ec98d68d5fb195e9231018ad419cc023d68b17502788",
+      "originalLines": 775,
+      "mode": "source comments and companion",
+      "notes": 775,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/domain.ts",
+      "originalSha256": "cf6e0e824612e53b7d2de4784977779bb76379198475bac04ae42a60d491b056",
+      "originalLines": 219,
+      "mode": "source comments and companion",
+      "notes": 219,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/environment.ts",
+      "originalSha256": "3911f511d11147d60a5c4c38439cc21d89c62fb3c66dc93e019da345345292f7",
+      "originalLines": 70,
+      "mode": "source comments and companion",
+      "notes": 70,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/errors.ts",
+      "originalSha256": "0c5dab5b956d31302e076cf0fd4e596e1a8c3fae791f1cfb645efa23423bcdcc",
+      "originalLines": 143,
+      "mode": "source comments and companion",
+      "notes": 143,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/extraction-schema.ts",
+      "originalSha256": "ed9d3b50e376bb9d101e34fb206c546d3f588b7a535d462dd4e85734d0377875",
+      "originalLines": 49,
+      "mode": "source comments and companion",
+      "notes": 49,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/extraction.ts",
+      "originalSha256": "899467ce7acb91bb50242938b0af56394cbda1d835c6a301eb7194a713a9e173",
+      "originalLines": 86,
+      "mode": "source comments and companion",
+      "notes": 86,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/google.ts",
+      "originalSha256": "500b5f09d4cac06b655afa67e165d83edf0f5cf69fec851353608d222e4981ba",
+      "originalLines": 38,
+      "mode": "source comments and companion",
+      "notes": 38,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/jobs.ts",
+      "originalSha256": "fe601b3f90d311d7acecce0b60b1c412381ec20387b74ef617f8026c27b8a270",
+      "originalLines": 67,
+      "mode": "source comments and companion",
+      "notes": 67,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/model-messages.ts",
+      "originalSha256": "07fa9def299399a802578e7b74c2d89a6dac1ee325f50c5e0e520470a7853689",
+      "originalLines": 83,
+      "mode": "source comments and companion",
+      "notes": 83,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/pausable-timeout.ts",
+      "originalSha256": "b221e1e0094e010922c4db43bf1785f69c64bc38619189d255fb741e96a9be97",
+      "originalLines": 24,
+      "mode": "source comments and companion",
+      "notes": 24,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/pdf-pages.ts",
+      "originalSha256": "4621a8e715ec09d8b9255b5a7c47da7b5ac1bd406bc363b8201e792e4733799d",
+      "originalLines": 149,
+      "mode": "source comments and companion",
+      "notes": 149,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/preparation.ts",
+      "originalSha256": "9b83ac9cd1ead22f0c297aaad89c7af3123fa418cdc19dea561d8afb0aef336f",
+      "originalLines": 108,
+      "mode": "source comments and companion",
+      "notes": 108,
+      "movedLiteralNotes": 2
+    },
+    {
+      "file": "src/server.ts",
+      "originalSha256": "027831a8807d7fc809a1b894abc507823e9d61c5038d57e10838db5b79382156",
+      "originalLines": 10,
+      "mode": "source comments and companion",
+      "notes": 10,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/system-prompt.ts",
+      "originalSha256": "695e80e05f28a8a363181fa3ccc172197c7a9e2a94098f181724c14721064515",
+      "originalLines": 19,
+      "mode": "source comments and companion",
+      "notes": 19,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/worker.ts",
+      "originalSha256": "f80d8f104c4f49b6c13c2e7395537162c9181794daa752721a283c9169b60f64",
+      "originalLines": 18,
+      "mode": "source comments and companion",
+      "notes": 18,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "src/xai.ts",
+      "originalSha256": "e6b007166c5412344e72a4575585e0fe0549af0275e1b422661fc1e89965522e",
+      "originalLines": 34,
+      "mode": "source comments and companion",
+      "notes": 34,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/app.test.ts",
+      "originalSha256": "24cb91663acb9dcd97c8f05337a254015f5b849a92d804b37397664860571a7b",
+      "originalLines": 137,
+      "mode": "source comments and companion",
+      "notes": 137,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/browser.spec.ts",
+      "originalSha256": "f643dfd24d8614c77c654e575c5c5a3f6bf8805dd92dedaef1d5053a81c40145",
+      "originalLines": 1346,
+      "mode": "source comments and companion",
+      "notes": 1346,
+      "movedLiteralNotes": 23
+    },
+    {
+      "file": "tests/domain.test.ts",
+      "originalSha256": "f45ca555e59737ad7dbd0a9556a77357b437dae3ede19289253af573d463d2d8",
+      "originalLines": 434,
+      "mode": "source comments and companion",
+      "notes": 434,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/environment.test.ts",
+      "originalSha256": "d04f72999e4de71cbd7c6cf1d96d615c51976f91f2d7c2fb0ab835d3b892aff4",
+      "originalLines": 110,
+      "mode": "source comments and companion",
+      "notes": 110,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/errors.test.ts",
+      "originalSha256": "c803c0614c0b8cb14ecb3a33f406d090f422d98a15cb3ce2fcfd72419c809cae",
+      "originalLines": 226,
+      "mode": "source comments and companion",
+      "notes": 226,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/extraction-schema.test.ts",
+      "originalSha256": "c16b89b9c0493aac283a3126908183882612eb50718bb288a0ac630bf451bf58",
+      "originalLines": 87,
+      "mode": "source comments and companion",
+      "notes": 87,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/extraction.test.ts",
+      "originalSha256": "f505d1b88d3eb997ef846648115020ba2d2d7ffad2ab09398b6a5840d579ae0d",
+      "originalLines": 192,
+      "mode": "source comments and companion",
+      "notes": 192,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/frontend.spec.ts",
+      "originalSha256": "c4624714c76732462961d435d88f9e3542a41401bf5e54ed0696bc418cde315d",
+      "originalLines": 310,
+      "mode": "source comments and companion",
+      "notes": 310,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/google.test.ts",
+      "originalSha256": "549f2c27f22913285bc619ced742bc4681dd6db54e938fcbab67b56d3ca0e64b",
+      "originalLines": 257,
+      "mode": "source comments and companion",
+      "notes": 257,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/jobs.test.ts",
+      "originalSha256": "f3211b537117eeb522f03d6bde971ec12365c1725a26d4391ed9a56d71542487",
+      "originalLines": 195,
+      "mode": "source comments and companion",
+      "notes": 195,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/model-messages.test.ts",
+      "originalSha256": "c8b42f2d94e090254b8a921f76d6fa3be1146c1fc2e94808d578d84ffe717377",
+      "originalLines": 130,
+      "mode": "source comments and companion",
+      "notes": 130,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/pdf-pages.test.ts",
+      "originalSha256": "9328207f9632ab72adb0f2c866dfbffddf775f206afc4ed4fdd79e576784d943",
+      "originalLines": 215,
+      "mode": "source comments and companion",
+      "notes": 215,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/preparation.test.ts",
+      "originalSha256": "46ac39734d4e6a518aebd89c4060158ef3ced10ca1b014953fe982cabbd6822e",
+      "originalLines": 227,
+      "mode": "source comments and companion",
+      "notes": 227,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/providers.test.ts",
+      "originalSha256": "2a39f97bf74fc4456fd6f754985b171ecfb819dc52c835e782576f3c9f8080a6",
+      "originalLines": 269,
+      "mode": "source comments and companion",
+      "notes": 269,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/r3-fields.test.ts",
+      "originalSha256": "3bed7c166619c1ebab0bd99925e0568547775016fc0aba514966a79a4f7cf2f9",
+      "originalLines": 70,
+      "mode": "source comments and companion",
+      "notes": 70,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tests/xai.test.ts",
+      "originalSha256": "95d0c3fb591b336f887fd8a62152b49fe2bbe53d156795b9836e941c6310f5cb",
+      "originalLines": 182,
+      "mode": "source comments and companion",
+      "notes": 182,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tmp/pdfs/add_sample_agents.py",
+      "originalSha256": "03b85aee2e64c421803f3f5645fab85c4e60f722252091d842e31fb0938b2dd4",
+      "originalLines": 181,
+      "mode": "source comments and companion",
+      "notes": 181,
+      "movedLiteralNotes": 0
+    },
+    {
+      "file": "tsconfig.build.json",
+      "originalSha256": "cd0d56a8275468e28b1ddae4b40eafa88c47637e9392412c104a29d4c8f1726a",
+      "originalLines": 6,
+      "mode": "companion; original unchanged",
+      "notes": 6
+    },
+    {
+      "file": "tsconfig.json",
+      "originalSha256": "00e3dd1f7905f59f8751cbd88885fd3df04f15d52ad98fe94c07c0af7c55bec1",
+      "originalLines": 10,
+      "mode": "companion; original unchanged",
+      "notes": 10
+    },
+    {
+      "file": "vitest.config.ts",
+      "originalSha256": "19127df9908d6dd97f5034d6c0e32e7625ac72d3a09c9c5899ae4e345cef1cfa",
+      "originalLines": 2,
+      "mode": "source comments and companion",
+      "notes": 2,
+      "movedLiteralNotes": 0
+    }
+  ]
+}

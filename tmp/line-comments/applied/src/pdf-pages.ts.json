@@ -1,0 +1,602 @@
+{
+  "originalSha256": "4621a8e715ec09d8b9255b5a7c47da7b5ac1bd406bc363b8201e792e4733799d",
+  "annotatedSha256": "b6a837cf55ad27247f0c44639bd2e211047baf3daeb4ebf6d058dab5783bc246",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports readFile from node:fs/promises for asynchronous local-file reading.\n"
+    },
+    {
+      "offset": 129,
+      "text": "// [L2] Imports dirname, join, resolve from node:path for filesystem path construction, resolution, and parent-directory checks.\n"
+    },
+    {
+      "offset": 310,
+      "text": "// [L3] Imports fileURLToPath from node:url for conversion of module-relative file URLs into local filesystem paths.\n"
+    },
+    {
+      "offset": 469,
+      "text": "// [L4] Imports compile-time types PDFDocumentLoadingTask, PDFDocumentProxy, RenderTask from pdfjs-dist/types/src/display/api.js for PDF loading/document/render task compile-time interfaces.\n"
+    },
+    {
+      "offset": 773,
+      "text": "// [L5] Imports AppError from ./errors.js for fixed public application errors and private provider-error classification.\n"
+    },
+    {
+      "offset": 934,
+      "text": "// [L6] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1027,
+      "text": "// [L7] Defines renderer output as source-label text blocks or high-detail PNG image-URL blocks.\n"
+    },
+    {
+      "offset": 1243,
+      "text": "// [L8] Limits the combined uploaded PDFs to 50 rendered pages per order.\n"
+    },
+    {
+      "offset": 1339,
+      "text": "// [L9] Limits each encoded PNG page image to 20 MiB.\n"
+    },
+    {
+      "offset": 1438,
+      "text": "// [L10] Limits all encoded page images in one order to 40 MiB total.\n"
+    },
+    {
+      "offset": 1548,
+      "text": "// [L11] Caps each rendered page's longest image edge at 2,400 pixels.\n"
+    },
+    {
+      "offset": 1647,
+      "text": "// [L12] Sets a 60-second local PDF-rendering budget.\n"
+    },
+    {
+      "offset": 1734,
+      "text": "// [L13] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1828,
+      "text": "// [L14] Existing explanatory comment: Grok receives local page images; no PDF or resource is uploaded or fetched by this renderer.\n"
+    },
+    {
+      "offset": 2060,
+      "text": "// [L15] Exports local conversion of named PDF buffers into labeled page-image content, with cancellation support.\n"
+    },
+    {
+      "offset": 2311,
+      "text": "  // [L16] Rejects work immediately if the caller already cancelled it.\n"
+    },
+    {
+      "offset": 2410,
+      "text": "  // [L17] Creates a separate abort controller for the renderer's own time budget.\n"
+    },
+    {
+      "offset": 2533,
+      "text": "  // [L18] Computes the absolute rendering deadline for checks during asynchronous and drawing work.\n"
+    },
+    {
+      "offset": 2684,
+      "text": "  // [L19] Defines budget expiry to abort with a fixed PDF-render-timeout application error.\n"
+    },
+    {
+      "offset": 2931,
+      "text": "  // [L20] Schedules the renderer's deadline callback after 60 seconds.\n"
+    },
+    {
+      "offset": 3057,
+      "text": "  // [L21] Prevents the deadline timer alone from keeping the process alive.\n"
+    },
+    {
+      "offset": 3151,
+      "text": "  // [L22] Combines caller cancellation and local rendering timeout into one active signal.\n"
+    },
+    {
+      "offset": 3308,
+      "text": "  // [L23] Tracks every PDF loading task so cancellation and final cleanup can destroy them.\n"
+    },
+    {
+      "offset": 3454,
+      "text": "  // [L24] Memoizes each task's destruction promise so multiple cleanup paths share one destroy operation.\n"
+    },
+    {
+      "offset": 3633,
+      "text": "  // [L25] Tracks the currently drawing page task for cancellation.\n"
+    },
+    {
+      "offset": 3745,
+      "text": "  // [L26] Defines idempotent destruction of a PDF loading task.\n"
+    },
+    {
+      "offset": 3879,
+      "text": "    // [L27] Looks up any destruction already initiated for this task.\n"
+    },
+    {
+      "offset": 3991,
+      "text": "    // [L28] Starts task destruction only if no earlier cleanup operation exists.\n"
+    },
+    {
+      "offset": 4093,
+      "text": "      // [L29] Requests PDF.js cleanup and stores the resulting promise locally.\n"
+    },
+    {
+      "offset": 4206,
+      "text": "      // [L30] Records the destruction promise for later cancellation/finally callers.\n"
+    },
+    {
+      "offset": 4331,
+      "text": "      // [L31] Existing explanatory comment: Cancellation can request cleanup before the enclosing finally awaits it.\n"
+    },
+    {
+      "offset": 4531,
+      "text": "      // [L32] Attaches a rejection handler immediately so early asynchronous cleanup cannot produce an unhandled rejection.\n"
+    },
+    {
+      "offset": 4699,
+      "text": "    // [L33] Closes the scope or expression introduced here: Starts task destruction only if no earlier cleanup operation exists.\n"
+    },
+    {
+      "offset": 4835,
+      "text": "    // [L34] Returns the shared destruction promise to any caller needing to await cleanup.\n"
+    },
+    {
+      "offset": 4947,
+      "text": "  // [L35] Closes the scope or expression introduced here: Defines idempotent destruction of a PDF loading task.\n"
+    },
+    {
+      "offset": 5065,
+      "text": "  // [L36] Defines cancellation of drawing and all PDF loading tasks.\n"
+    },
+    {
+      "offset": 5166,
+      "text": "    // [L37] Cancels the current render task if one exists.\n"
+    },
+    {
+      "offset": 5254,
+      "text": "    // [L38] Starts destruction of every known loading task without blocking the abort callback.\n"
+    },
+    {
+      "offset": 5408,
+      "text": "  // [L39] Closes the scope or expression introduced here: Defines cancellation of drawing and all PDF loading tasks.\n"
+    },
+    {
+      "offset": 5531,
+      "text": "  // [L40] Registers cancellation cleanup once when the combined signal aborts.\n"
+    },
+    {
+      "offset": 5677,
+      "text": "  // [L41] Defines a cooperative deadline and cancellation checkpoint.\n"
+    },
+    {
+      "offset": 5778,
+      "text": "    // [L42] Expires the rendering budget if wall-clock time has passed its deadline before the timer callback ran.\n"
+    },
+    {
+      "offset": 5962,
+      "text": "    // [L43] Throws the active abort reason when either caller cancellation or the local budget has expired.\n"
+    },
+    {
+      "offset": 6106,
+      "text": "  // [L44] Closes the scope or expression introduced here: Defines a cooperative deadline and cancellation checkpoint.\n"
+    },
+    {
+      "offset": 6230,
+      "text": "  // [L45] Starts PDF loading and rendering under error classification and guaranteed cleanup.\n"
+    },
+    {
+      "offset": 6333,
+      "text": "    // [L46] Existing explanatory comment: Keep PDF.js, its worker code, and native canvas out of other providers' startup.\n"
+    },
+    {
+      "offset": 6545,
+      "text": "    // [L47] Lazily imports PDF.js and the native canvas library concurrently, avoiding their startup cost for other provider paths.\n"
+    },
+    {
+      "offset": 6807,
+      "text": "    // [L48] Rechecks cancellation and deadline after loading the rendering libraries.\n"
+    },
+    {
+      "offset": 6907,
+      "text": "    // [L49] Resolves PDF.js's installed package directory for local rendering assets.\n"
+    },
+    {
+      "offset": 7090,
+      "text": "    // [L50] Starts the allowlist mapping PDF resource kinds to installed local asset directories.\n"
+    },
+    {
+      "offset": 7234,
+      "text": "      // [L51] Maps character maps, standard fonts, and WebAssembly assets to directories inside the PDF.js package.\n"
+    },
+    {
+      "offset": 7488,
+      "text": "    // [L52] Closes the scope or expression introduced here: Starts the allowlist mapping PDF resource kinds to installed local asset directories.\n"
+    },
+    {
+      "offset": 7642,
+      "text": "    // [L53] Defines the custom PDF asset loader that reads only approved local files.\n"
+    },
+    {
+      "offset": 7756,
+      "text": "      // [L54] Defines asynchronous retrieval of an asset identified by resource kind and filename.\n"
+    },
+    {
+      "offset": 7953,
+      "text": "        // [L55] Checks cancellation and rendering deadline before resolving an asset.\n"
+    },
+    {
+      "offset": 8057,
+      "text": "        // [L56] Reads a resource directory only for an own property in the approved asset-kind mapping.\n"
+    },
+    {
+      "offset": 8239,
+      "text": "        // [L57] Rejects unknown asset types, disallowed filename characters, and parent-directory sequences.\n"
+    },
+    {
+      "offset": 8480,
+      "text": "        // [L58] Resolves the requested filename against its approved local asset directory.\n"
+    },
+    {
+      "offset": 8620,
+      "text": "        // [L59] Rejects any resolved file whose parent directory differs from the approved asset directory.\n"
+    },
+    {
+      "offset": 8812,
+      "text": "        // [L60] Reads the approved local asset bytes from disk.\n"
+    },
+    {
+      "offset": 8922,
+      "text": "        // [L61] Rechecks cancellation and deadline after the file read.\n"
+    },
+    {
+      "offset": 9012,
+      "text": "        // [L62] Returns the asset bytes as a Uint8Array for PDF.js.\n"
+    },
+    {
+      "offset": 9119,
+      "text": "      // [L63] Closes the scope or expression introduced here: Defines asynchronous retrieval of an asset identified by resource kind and filename.\n"
+    },
+    {
+      "offset": 9275,
+      "text": "    // [L64] Closes the scope or expression introduced here: Defines the custom PDF asset loader that reads only approved local files.\n"
+    },
+    {
+      "offset": 9416,
+      "text": "    // [L65] Allocates loaded-document records pairing source names with PDF proxies and cleanup tasks.\n"
+    },
+    {
+      "offset": 9621,
+      "text": "    // [L66] Initializes the combined document page count.\n"
+    },
+    {
+      "offset": 9704,
+      "text": "    // [L67] Loads each provided PDF before beginning page rendering.\n"
+    },
+    {
+      "offset": 9814,
+      "text": "      // [L68] Checks cancellation and deadline before opening another PDF.\n"
+    },
+    {
+      "offset": 9905,
+      "text": "      // [L69] Existing explanatory comment: PDF.js may transfer its input; never detach the original uploaded buffer.\n"
+    },
+    {
+      "offset": 10107,
+      "text": "      // [L70] Begins constructing restrictive local PDF.js loading options.\n"
+    },
+    {
+      "offset": 10208,
+      "text": "        // [L71] Copies the uploaded bytes into a fresh Uint8Array, suppresses verbosity, and asks PDF.js to stop on errors.\n"
+    },
+    {
+      "offset": 10414,
+      "text": "        // [L72] Disables automatic fetching, streaming, and range loading for the in-memory PDF source.\n"
+    },
+    {
+      "offset": 10592,
+      "text": "        // [L73] Disables worker asset fetches, system fonts, and browser font-face usage.\n"
+    },
+    {
+      "offset": 10760,
+      "text": "        // [L74] Disables evaluated code and XFA handling and supplies the custom local binary-asset loader.\n"
+    },
+    {
+      "offset": 10954,
+      "text": "      // [L75] Closes the scope or expression introduced here: Begins constructing restrictive local PDF.js loading options.\n"
+    },
+    {
+      "offset": 11088,
+      "text": "      // [L76] Starts PDF.js loading using the prepared local options.\n"
+    },
+    {
+      "offset": 11206,
+      "text": "      // [L77] Tracks the loading task immediately so abort/finally cleanup can destroy it.\n"
+    },
+    {
+      "offset": 11329,
+      "text": "      // [L78] Waits for the parsed PDF document proxy.\n"
+    },
+    {
+      "offset": 11423,
+      "text": "      // [L79] Checks cancellation and deadline after PDF parsing completes.\n"
+    },
+    {
+      "offset": 11515,
+      "text": "      // [L80] Adds this PDF's page count to the combined order total.\n"
+    },
+    {
+      "offset": 11620,
+      "text": "      // [L81] Rejects noninteger or empty page counts with a fixed invalid-PDF error.\n"
+    },
+    {
+      "offset": 11878,
+      "text": "      // [L82] Rejects orders exceeding the configured 50-page total before rendering page images.\n"
+    },
+    {
+      "offset": 12154,
+      "text": "      // [L83] Reads PDF metadata to detect unsupported form technology.\n"
+    },
+    {
+      "offset": 12275,
+      "text": "      // [L84] Rechecks cancellation and deadline after metadata retrieval.\n"
+    },
+    {
+      "offset": 12366,
+      "text": "      // [L85] Tests the metadata's explicit XFA-present flag.\n"
+    },
+    {
+      "offset": 12501,
+      "text": "        // [L86] Rejects dynamic XFA forms and requests a flattened PDF with visible values.\n"
+    },
+    {
+      "offset": 12759,
+      "text": "      // [L87] Closes the scope or expression introduced here: Tests the metadata's explicit XFA-present flag.\n"
+    },
+    {
+      "offset": 12878,
+      "text": "      // [L88] Retains the parsed PDF, source filename, and loading task for the rendering phase.\n"
+    },
+    {
+      "offset": 13031,
+      "text": "    // [L89] Closes the scope or expression introduced here: Loads each provided PDF before beginning page rendering.\n"
+    },
+    {
+      "offset": 13155,
+      "text": "    // [L90] Allocates the ordered source-label and image content result.\n"
+    },
+    {
+      "offset": 13267,
+      "text": "    // [L91] Initializes the total encoded PNG byte counter.\n"
+    },
+    {
+      "offset": 13350,
+      "text": "    // [L92] Iterates through successfully loaded PDFs in source order.\n"
+    },
+    {
+      "offset": 13470,
+      "text": "      // [L93] Visits every page using PDF.js's one-based page numbering.\n"
+    },
+    {
+      "offset": 13619,
+      "text": "        // [L94] Checks cancellation and deadline before requesting a page.\n"
+    },
+    {
+      "offset": 13712,
+      "text": "        // [L95] Loads the current page proxy from the parsed PDF.\n"
+    },
+    {
+      "offset": 13831,
+      "text": "        // [L96] Rechecks cancellation and deadline after loading the page.\n"
+    },
+    {
+      "offset": 13924,
+      "text": "        // [L97] Reads the page's unscaled viewport dimensions.\n"
+    },
+    {
+      "offset": 14041,
+      "text": "        // [L98] Detects nonfinite, zero, or negative page dimensions before allocating a canvas.\n"
+    },
+    {
+      "offset": 14255,
+      "text": "          // [L99] Rejects invalid page dimensions with a fixed invalid-PDF error.\n"
+    },
+    {
+      "offset": 14462,
+      "text": "        // [L100] Closes the scope or expression introduced here: Detects nonfinite, zero, or negative page dimensions before allocating a canvas.\n"
+    },
+    {
+      "offset": 14619,
+      "text": "        // [L101] Chooses a scale no greater than two and small enough to keep the longest edge within 2,400 pixels.\n"
+    },
+    {
+      "offset": 14854,
+      "text": "        // [L102] Creates a native canvas with rounded-up viewport dimensions capped at the maximum edge length.\n"
+    },
+    {
+      "offset": 15109,
+      "text": "        // [L103] Starts page rendering under guaranteed page/canvas cleanup.\n"
+    },
+    {
+      "offset": 15201,
+      "text": "          // [L104] Begins drawing the PDF page into the native 2D canvas context, using a type assertion for the PDF.js canvas interface.\n"
+    },
+    {
+      "offset": 15472,
+      "text": "            // [L105] Supplies the scaled viewport, enables annotations, and renders against a white background.\n"
+    },
+    {
+      "offset": 15678,
+      "text": "          // [L106] Existing explanatory comment: Yield between PDF.js drawing batches so cancellation and the local budget can run.\n"
+    },
+    {
+      "offset": 15907,
+      "text": "          // [L107] Schedules each PDF.js continuation with setImmediate so the event loop can process cancellation and deadline callbacks.\n"
+    },
+    {
+      "offset": 16134,
+      "text": "            // [L108] Checks abort state or deadline expiry before continuing a drawing batch.\n"
+    },
+    {
+      "offset": 16295,
+      "text": "              // [L109] Triggers the local timeout reason if the deadline passed without an earlier abort.\n"
+    },
+    {
+      "offset": 16453,
+      "text": "              // [L110] Cancels the active page render when drawing may no longer continue.\n"
+    },
+    {
+      "offset": 16583,
+      "text": "            // [L111] Continues the queued PDF drawing batch only while the signal and deadline permit it.\n"
+    },
+    {
+      "offset": 16725,
+      "text": "          // [L112] Closes the scope or expression introduced here: Schedules each PDF.js continuation with setImmediate so the event loop can process cancellation and deadline callbacks.\n"
+    },
+    {
+      "offset": 16927,
+      "text": "          // [L113] Waits for the PDF page's drawing task to finish.\n"
+    },
+    {
+      "offset": 17034,
+      "text": "          // [L114] Clears the current render handle after successful drawing.\n"
+    },
+    {
+      "offset": 17149,
+      "text": "          // [L115] Checks cancellation and deadline before starting image encoding.\n"
+    },
+    {
+      "offset": 17253,
+      "text": "          // [L116] Existing explanatory comment: Native PNG encoding cannot be interrupted; await it before releasing the canvas.\n"
+    },
+    {
+      "offset": 17478,
+      "text": "          // [L117] Asynchronously encodes the completed native canvas as a PNG buffer.\n"
+    },
+    {
+      "offset": 17616,
+      "text": "          // [L118] Checks cancellation and deadline after the noninterruptible encoding step finishes.\n"
+    },
+    {
+      "offset": 17739,
+      "text": "          // [L119] Rejects a single encoded page above the configured 20 MiB limit.\n"
+    },
+    {
+      "offset": 18047,
+      "text": "          // [L120] Adds the encoded page size to the running image-byte total.\n"
+    },
+    {
+      "offset": 18165,
+      "text": "          // [L121] Rejects the order once combined encoded page images exceed 40 MiB.\n"
+    },
+    {
+      "offset": 18456,
+      "text": "          // [L122] Appends a source label naming the PDF and one-based page position before its corresponding image.\n"
+    },
+    {
+      "offset": 18726,
+      "text": "            // [L123] Appends the encoded page as a high-detail PNG base64 data URL.\n"
+    },
+    {
+      "offset": 18934,
+      "text": "        // [L124] Starts cleanup that runs for the page regardless of rendering/encoding success.\n"
+    },
+    {
+      "offset": 19052,
+      "text": "          // [L125] Cancels any render task still associated with this page.\n"
+    },
+    {
+      "offset": 19163,
+      "text": "          // [L126] Clears the active render reference during cleanup.\n"
+    },
+    {
+      "offset": 19270,
+      "text": "          // [L127] Releases PDF.js page resources.\n"
+    },
+    {
+      "offset": 19348,
+      "text": "          // [L128] Shrinks the canvas width to one pixel to release the large image allocation.\n"
+    },
+    {
+      "offset": 19473,
+      "text": "          // [L129] Shrinks the canvas height to one pixel to complete canvas memory reduction.\n"
+    },
+    {
+      "offset": 19598,
+      "text": "        // [L130] Closes the scope or expression introduced here: Starts cleanup that runs for the page regardless of rendering/encoding success.\n"
+    },
+    {
+      "offset": 19754,
+      "text": "      // [L131] Closes the scope or expression introduced here: Visits every page using PDF.js's one-based page numbering.\n"
+    },
+    {
+      "offset": 19885,
+      "text": "      // [L132] Waits for this document's PDF loading task to release its resources after all its pages are processed.\n"
+    },
+    {
+      "offset": 20031,
+      "text": "      // [L133] Rechecks cancellation and deadline after document cleanup.\n"
+    },
+    {
+      "offset": 20121,
+      "text": "    // [L134] Closes the scope or expression introduced here: Iterates through successfully loaded PDFs in source order.\n"
+    },
+    {
+      "offset": 20248,
+      "text": "    // [L135] Returns all labeled PNG page blocks only after every supplied PDF rendered successfully.\n"
+    },
+    {
+      "offset": 20370,
+      "text": "  // [L136] Classifies failures from loading, validation, asset access, drawing, or encoding.\n"
+    },
+    {
+      "offset": 20484,
+      "text": "    // [L137] Preserves the combined signal's abort reason when cancellation or the rendering budget caused the failure.\n"
+    },
+    {
+      "offset": 20662,
+      "text": "    // [L138] Preserves explicitly classified application errors without replacing their messages.\n"
+    },
+    {
+      "offset": 20809,
+      "text": "    // [L139] Detects PDF.js's named password-protection exception without exposing raw error text.\n"
+    },
+    {
+      "offset": 21012,
+      "text": "      // [L140] Returns a fixed error requesting an unlocked PDF for password-protected or encrypted input.\n"
+    },
+    {
+      "offset": 21254,
+      "text": "    // [L141] Closes the scope or expression introduced here: Detects PDF.js's named password-protection exception without exposing raw error text.\n"
+    },
+    {
+      "offset": 21408,
+      "text": "    // [L142] Converts other failures into a fixed complete-rendering failure message.\n"
+    },
+    {
+      "offset": 21664,
+      "text": "  // [L143] Starts final cleanup for the entire rendering operation.\n"
+    },
+    {
+      "offset": 21747,
+      "text": "    // [L144] Clears the rendering deadline timer after success or failure.\n"
+    },
+    {
+      "offset": 21848,
+      "text": "    // [L145] Removes the abort listener to avoid retaining the completed operation's cleanup closure.\n"
+    },
+    {
+      "offset": 22006,
+      "text": "    // [L146] Cancels any page drawing still active during final cleanup.\n"
+    },
+    {
+      "offset": 22108,
+      "text": "    // [L147] Awaits destruction of all loading tasks while allowing individual cleanup failures to settle without masking the main result.\n"
+    },
+    {
+      "offset": 22305,
+      "text": "  // [L148] Closes the scope or expression introduced here: Starts final cleanup for the entire rendering operation.\n"
+    },
+    {
+      "offset": 22426,
+      "text": "// [L149] Closes the scope or expression introduced here: Exports local conversion of named PDF buffers into labeled page-image content, with cancellation support.\n"
+    }
+  ]
+}

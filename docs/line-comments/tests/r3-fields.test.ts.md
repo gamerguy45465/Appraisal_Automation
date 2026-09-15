@@ -1,0 +1,78 @@
+# Line explanations: tests/r3-fields.test.ts
+
+Source: [tests/r3-fields.test.ts](../../../tests/r3-fields.test.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Import { describe, expect, it } from "vitest" for these regression tests. |
+| 2 | Import { expectedR3FieldId, matchesR3Field, phoneInputDigits, textValuesMatch } from "../src/browser/r3-fields.js" for these regression tests. |
+| 3 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 4 | Declare `listing` as an object containing id: "OrderItemEdit_FixtureSellerRepresentativeFirstName", section: "Is there a listing agent?", label: "First Name", tag: "input", type: "text". |
+| 5 | Declare `buyer` as an object containing values copied from `listing`, id: "OrderItemEdit_FixturePurchaserRepresentativeFirstName", section: "Is there a buyer's agent?". |
+| 6 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 7 | Group regression tests for "separate R3 agent contact field resolution". |
+| 8 | Register a test that "resolves each role from its exact observed section and field label without guessing new IDs". |
+| 9 | Assert that the result of `expectedR3FieldId` using "listingAgent.firstName" is undefined. |
+| 10 | Assert that the result of `expectedR3FieldId` using "buyerAgent.firstName" is undefined. |
+| 11 | Assert that the result of `matchesR3Field` using "listingAgent.firstName", `listing` strictly equals true. |
+| 12 | Assert that the result of `matchesR3Field` using "buyerAgent.firstName", `buyer` strictly equals true. |
+| 13 | Assert that the result of `matchesR3Field` using "listingAgent.firstName", `buyer` strictly equals false. |
+| 14 | Assert that the result of `matchesR3Field` using "buyerAgent.firstName", `listing` strictly equals false. |
+| 15 | Assert that the result of `matchesR3Field` using "buyerAgent.firstName", an object containing values copied from `buyer`, section: " Order &gt; Is there a buyer’s agent? ", label: " FIRST   NAME " strictly equals true. |
+| 16 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 17 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 18 | Register a parameterized test that "rejects a different section, known other contact, or unsafe control: %j". |
+| 19 | Set fixture property `section` to "Who should be contacted to obtain access to the property?". |
+| 20 | Set fixture property `section` to "Is there a listing agent? &gt; Listing Agent Contact Address". |
+| 21 | Set fixture property `section` to "Is there a listing agent? &gt; Is there a buyer's agent?". |
+| 22 | Set fixture property `label` to "Last Name". Set fixture property `label` to "First Name or Company". |
+| 23 | Set fixture property `id` to "OtherForm_FirstName". Set fixture property `id` to "OrderItemEdit_". Set fixture property `id` to "OrderItemEdit_BorrowerFirstName". Set fixture property `visible` to false. |
+| 24 | Set fixture property `id` to "OrderItemEdit_AccessFirstName". Set fixture property `id` to "OrderItemEdit_CustomerFirstName". |
+| 25 | Set fixture property `type` to "password". Set fixture property `type` to "submit". Set fixture property `type` to "file". Set fixture property `tag` to "button". |
+| 26 | Apply the preceding scenario rows to the parameterized test "rejects a different section, known other contact, or unsafe control: %j" and begin its callback. |
+| 27 | Assert that the result of `matchesR3Field` using "listingAgent.firstName", an object containing values copied from `listing`, values copied from `change` strictly equals false. |
+| 28 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 29 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 30 | Register a test that "does not broaden exact-ID matching for the existing borrower and access fields". |
+| 31 | Assert that the result of `matchesR3Field` using "borrower.firstName", an object containing values copied from `listing`, section: "Borrower Information" strictly equals false. |
+| 32 | Assert that the result of `matchesR3Field` using "contact.firstName", an object containing values copied from `listing`, section: "Who should be contacted to obtain access to the property?" strictly equals false. |
+| 33 | Assert that the result of `matchesR3Field` using "contact.firstName", an object containing values copied from `listing`, id: "OrderItemEdit_AccessFirstName" strictly equals true. |
+| 34 | Iterate const key over an array containing "listingAgent.submit", "listingAgent.firstName.extra", "unknown.firstName", "constructor.firstName", "listingAgent.constructor". |
+| 35 | Assert that the result of `matchesR3Field` using `key`, `listing` strictly equals false. |
+| 36 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 37 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 38 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 39 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 40 | Group regression tests for "approved phone input recovery". |
+| 41 | Register a test that "recovers each of the 19 mapped phone keys using its own number". |
+| 42 | Declare `keys` as the result of `['borrower', 'coBorrower', 'contact', 'listingAgent', 'buyerAgent', 'statusContact'] .flatMap` using a callback that returns the result of `['workPhone', 'homePhone', 'mobilePhone'].map` using a callback that returns ``${section}.${field}``. |
+| 43 | Build all work/home/mobile phone field keys for each approved contact section. |
+| 44 | Append "loanOfficer.workPhone" to `keys` for later inspection. |
+| 45 | Iterate const [index, key] over the result of `keys.entries` with no arguments. |
+| 46 | Declare `number` as text interpolating the result of `String(index).padStart` using 2, "0". |
+| 47 | Declare `approved` as text interpolating the result of `number.slice` using 0, 3, the result of `number.slice` using 3, 6, the result of `number.slice` using 6. |
+| 48 | Assert that the result of `phoneInputDigits` using `key`, `approved` strictly equals `number`. |
+| 49 | Assert that the result of `textValuesMatch` using `key`, `number`, `approved` strictly equals true. |
+| 50 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 51 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 52 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 53 | Register a test that "accepts ordinary US phone punctuation and optional country code without changing the number". |
+| 54 | Iterate const value over an array containing "7025550100", "702-555-0100", "(702)555-0100", "(702) 555-0100", "702.555.0100", "1-702-555-0100", "+1 (702) 555-0100". |
+| 55 | Assert that the result of `phoneInputDigits` using "borrower.mobilePhone", `value` strictly equals "7025550100". |
+| 56 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 57 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 58 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 59 | Register a test that "never enables phone keystrokes for unrelated or unmapped plan keys". |
+| 60 | Iterate const key over an array containing "loanNumber", "loanAmount", "borrower.firstName", "borrower.email", "borrower.workPhone.extra", "unknown.workPhone", "loanOfficer.homePhone", "loanOfficer.mobilePhone", "__proto__.workPhone", "constructor.workPhone". |
+| 61 | Assert that the result of `phoneInputDigits` using `key`, "7025550100" is undefined. |
+| 62 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 63 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 64 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 65 | Register a test that "does not guess missing digits or discard extensions, international prefixes, or unrelated text". |
+| 66 | Iterate const value over an array containing "", "  ", "(___) ___-____", "702555010", "70255501000", "7025550100 x12", "(702) 555-0100 ext. 12", "7025550100#12", "+44 20 7946 0018", "0044 20 7946 0018", "+33 1234567890", "Office 7025550100", "7025550100\nEnter". |
+| 67 | Assert that the result of `phoneInputDigits` using "buyerAgent.workPhone", `value` is undefined. |
+| 68 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 69 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 70 | Close the callback or control-flow body and finish the surrounding syntax. |

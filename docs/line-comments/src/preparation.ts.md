@@ -1,0 +1,118 @@
+# Line explanations: src/preparation.ts
+
+Source: [src/preparation.ts](../../../src/preparation.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+September 14 sequential-order update: production can return a retained browser after handoff and full cleanup instead of waiting for closure. New documents are extracted and validated before transferring an existing browser. Each order uses its own controller, model, environment and plan; all exits wipe document buffers, clear the submitted API key and drain environment operations.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Imports compile-time types JobPayload, WorkerUpdate, JobStatus from ./domain.js for shared validated application data, business rules, defaults, and domain types. |
+| 2 | Imports buildFieldPlan from ./domain.js for shared validated application data, business rules, defaults, and domain types. |
+| 3 | Imports createEnvironmentTools from ./environment.js for isolated per-job environment storage and tools. |
+| 4 | Imports createModel, extractOrder from ./extraction.js for provider model construction and document extraction abstractions. |
+| 5 | Imports prepareOrderWithAgent from ./agent.js for the bounded approved-plan verification and repair agent. |
+| 6 | Imports createBrowserSession from ./browser/session.js for the restricted R3 browser session and approved browser actions. |
+| 7 | Imports AppError, publicError from ./errors.js for fixed public application errors and private provider-error classification. |
+| 8 | Imports createPausableTimeout from ./pausable-timeout.js for active-time budgets that pause during manual login. |
+| 9 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 10 | Existing explanatory comment: Stop waiting for a model transport that does not promptly honor cancellation. |
+| 11 | Existing explanatory comment: The session revokes and drains browser actions before allowing human writes. |
+| 12 | Ends the existing documentation comment describing the cancellation-aware wait helper. |
+| 13 | Defines a generic helper that stops waiting for asynchronous work when the supplied signal aborts. |
+| 14 | Declares the abort callback reference for later removal from the signal. |
+| 15 | Creates a promise that can only reject when cancellation occurs. |
+| 16 | Defines cancellation rejection as a standard AbortError DOMException. |
+| 17 | Registers the rejection callback once on signal abort. |
+| 18 | Immediately rejects if the signal was already aborted before listener registration completed. |
+| 19 | Closes the scope or expression introduced here: Creates a promise that can only reject when cancellation occurs. |
+| 20 | Returns whichever settles first: the original work promise or the cancellation rejection. |
+| 21 | Always removes the abort listener once the race settles. |
+| 22 | Closes the scope or expression introduced here: Defines a generic helper that stops waiting for asynchronous work when the supplied signal aborts. |
+| 23 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 24 | Existing explanatory comment: Retain this job's browser and active slot through incomplete human review. |
+| 25 | Exports the complete preparation lifecycle and begins declaring its required options object. |
+| 26 | Requires a callback for sending typed worker status updates to the parent process. |
+| 27 | Requires an external abort signal for stopping automation. |
+| 28 | Completes the options type and starts the asynchronous preparation implementation. |
+| 29 | Defines a compact typed status sender including optional warning strings. |
+| 30 | Captures the job's private inputs in its isolated environment tool helper. |
+| 31 | Reserves an optional browser session reference for successful setup and failure handoff. |
+| 32 | Tracks whether automation has handed browser control to the user. |
+| 33 | Tracks whether the user has closed the browser. |
+| 34 | Initializes warnings collected from extraction, field planning, and verification. |
+| 35 | Creates an internal controller for local timeout and browser-closure cancellation. |
+| 36 | Combines internal cancellation with the caller's external signal. |
+| 37 | Starts a ten-minute active-processing timeout that aborts the internal controller. |
+| 38 | Begins preparation under failure handoff and guaranteed secret/document cleanup. |
+| 39 | Reports that document extraction and loan-rule checks are starting. |
+| 40 | Stores all submitted private settings through the environment helper. |
+| 41 | Rejects work if cancellation occurred during environment initialization. |
+| 42 | Privately retrieves the API key and creates exactly the requested provider/model instance. |
+| 43 | Extracts structured document facts while allowing the wait to end promptly on cancellation. |
+| 44 | Applies deterministic loan/business rules to the extracted facts, user choices, and contract-presence flag. |
+| 45 | Retrieves the approved field plan from the deterministic planning result. |
+| 46 | Preserves planning warnings for later status and review messages. |
+| 47 | Overwrites the uploaded URLA and optional contract buffers with zeros after extraction/planning. |
+| 48 | Checks cancellation before opening the appraisal browser. |
+| 49 | Reports that R3 order preparation is starting. |
+| 50 | Creates the browser session with a callback that integrates browser status into timeout and lifecycle handling. |
+| 51 | Pauses the local preparation timeout while the user handles R3 sign-in. |
+| 52 | Starts handling explicit browser-closed status from the session. |
+| 53 | Records that the browser was closed by the user. |
+| 54 | Cancels automation on closure when manual handoff has not yet completed. |
+| 55 | Closes the scope or expression introduced here: Starts handling explicit browser-closed status from the session. |
+| 56 | Forwards browser statuses except awaiting_review, which the preparation lifecycle reports after its own handoff decisions. |
+| 57 | Closes the scope or expression introduced here: Creates the browser session with a callback that integrates browser status into timeout and lifecycle handling. |
+| 58 | Waits for the user's completed R3 login, honoring automation cancellation. |
+| 59 | Resumes the remaining local preparation time after sign-in. |
+| 60 | Rechecks cancellation before preparing the authenticated order page. |
+| 61 | Reports successful sign-in and the start of automated form preparation. |
+| 62 | Navigates the authenticated browser to the new-order page. |
+| 63 | Rechecks cancellation after navigation. |
+| 64 | Installs the immutable approved field plan into the session's restricted browser tools. |
+| 65 | Applies the approved plan deterministically, using a cancellation-aware wait. |
+| 66 | Rechecks cancellation after the initial deterministic filling pass. |
+| 67 | Tests whether any approved field lacks a verified entry in the initial fill report. |
+| 68 | Invokes the bounded verification/repair agent only when initial approved-field verification remains incomplete. |
+| 69 | Closes the scope or expression introduced here: Tests whether any approved field lacks a verified entry in the initial fill report. |
+| 70 | Rechecks cancellation before final verification. |
+| 71 | Retrieves the browser session's final per-field verification report. |
+| 72 | Selects every planned field that still lacks a matching verified report entry. |
+| 73 | Appends a human-review warning for each incomplete field key. |
+| 74 | Treats either unverified planned fields or missing required source fields as incomplete preparation. |
+| 75 | Throws a fixed incomplete-fields error so the preserved form enters the incomplete handoff path. |
+| 76 | Closes the scope or expression introduced here: Treats either unverified planned fields or missing required source fields as incomplete preparation. |
+| 77 | Revokes automation and releases the successfully prepared form for human review/submission. |
+| 78 | Stops the success path if the user closed the browser during handoff. |
+| 79 | Records that manual handoff completed. |
+| 80 | Clears the active-processing timeout before the user reviews the form. |
+| 81 | Removes job environment values before waiting for human review. |
+| 82 | Reports completed preparation with warnings and directs the user to review and submit in the retained browser. |
+| 83 | Keeps the worker and active job occupied until the user closes the browser. |
+| 84 | Begins failure handling while preserving any opened browser for review. |
+| 85 | Clears the timer, cancels remaining automation, and clears private environment settings before error handoff. |
+| 86 | Converts the failure to a fixed public message for the selected provider. |
+| 87 | Uses a browser-closed outcome when the user has already closed the session. |
+| 88 | Reports manual browser closure and confirms automation did not submit the order. |
+| 89 | Uses incomplete manual handoff when a browser session exists and remains available. |
+| 90 | Existing explanatory comment: A missing field, model failure, or time limit must not discard the user's form. |
+| 91 | Tracks whether the session successfully releases the incomplete form for human submission. |
+| 92 | Attempts incomplete handoff and suppresses its failure so the browser remains available even if the portal cannot be released normally. |
+| 93 | Continues review handoff only if the user has not closed the browser during cleanup. |
+| 94 | Records whether automation controls were successfully released to the user. |
+| 95 | Chooses the review message based on whether incomplete form handoff succeeded. |
+| 96 | Uses guidance to finish, review, and manually submit the retained form after successful incomplete release. |
+| 97 | Uses guidance explaining that the retained browser's form could not be released or verified when incomplete handoff failed. |
+| 98 | Reports awaiting_review with accumulated warnings, the safe failure message, and an explicit reminder to verify missing/unverified fields. |
+| 99 | Retains the worker/browser slot until the user closes the session. |
+| 100 | Closes the scope or expression introduced here: Continues review handoff only if the user has not closed the browser during cleanup. |
+| 101 | Uses a terminal failure outcome when no browser session was created. |
+| 102 | Reports the public failure message and confirms no automatic order submission occurred. |
+| 103 | Closes the scope or expression introduced here: Uses a terminal failure outcome when no browser session was created. |
+| 104 | Starts unconditional final lifecycle cleanup after success, failure, or browser closure. |
+| 105 | Clears the timer, aborts outstanding work, and clears private environment values again for idempotent cleanup. |
+| 106 | Overwrites uploaded PDF buffers with zeros on every exit path. |
+| 107 | Closes the scope or expression introduced here: Starts unconditional final lifecycle cleanup after success, failure, or browser closure. |
+| 108 | Ends the full preparation lifecycle function after its guaranteed cleanup. |

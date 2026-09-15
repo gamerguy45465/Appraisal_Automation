@@ -1,0 +1,274 @@
+{
+  "originalSha256": "fe601b3f90d311d7acecce0b60b1c412381ec20387b74ef617f8026c27b8a270",
+  "annotatedSha256": "c28ddb09be866e1570f12e8108198064de0191a94bf188122a47ec32a22b8f7d",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports fork, type ChildProcess, type ForkOptions from node:child_process for child-process creation and related process option types.\n"
+    },
+    {
+      "offset": 223,
+      "text": "// [L2] Imports randomUUID from node:crypto for cryptographically random identifiers/tokens or timing-safe token comparison.\n"
+    },
+    {
+      "offset": 390,
+      "text": "// [L3] Imports fileURLToPath from node:url for conversion of module-relative file URLs into local filesystem paths.\n"
+    },
+    {
+      "offset": 549,
+      "text": "// [L4] Imports compile-time types JobPayload, JobView, WorkerUpdate from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 788,
+      "text": "// [L5] Imports AppError from ./errors.js for fixed public application errors and private provider-error classification.\n"
+    },
+    {
+      "offset": 949,
+      "text": "// [L6] Imports createPausableTimeout from ./pausable-timeout.js for active-time budgets that pause during manual login.\n"
+    },
+    {
+      "offset": 1133,
+      "text": "// [L7] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1226,
+      "text": "// [L8] Defines job-runner operations for owner-scoped creation/retrieval, optional active-job lookup, and shutdown.\n"
+    },
+    {
+      "offset": 1545,
+      "text": "// [L9] Defines the private job record storing ownership, mutable public status, and creation time.\n"
+    },
+    {
+      "offset": 1735,
+      "text": "// [L10] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1829,
+      "text": "// [L11] Exports construction of the restricted environment inherited by an isolated worker process.\n"
+    },
+    {
+      "offset": 1987,
+      "text": "  // [L12] Lists Windows/runtime/path variables allowed into workers, including the optional Playwright browser installation location.\n"
+    },
+    {
+      "offset": 2342,
+      "text": "  // [L13] Copies only allowlisted environment variables case-insensitively and explicitly disables LangSmith/LangChain tracing flags.\n"
+    },
+    {
+      "offset": 2679,
+      "text": "// [L14] Closes the scope or expression introduced here: Exports construction of the restricted environment inherited by an isolated worker process.\n"
+    },
+    {
+      "offset": 2830,
+      "text": "// [L15] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 2924,
+      "text": "// [L16] Exports the single-active-worker job runner factory.\n"
+    },
+    {
+      "offset": 3033,
+      "text": "  // [L17] Creates the in-memory job record map keyed by UUID.\n"
+    },
+    {
+      "offset": 3141,
+      "text": "  // [L18] Tracks the one currently active child worker process.\n"
+    },
+    {
+      "offset": 3246,
+      "text": "  // [L19] Returns the runner's create, lookup, active-job, and shutdown methods.\n"
+    },
+    {
+      "offset": 3339,
+      "text": "    // [L20] Starts creation of a job tied to the caller's owner identifier.\n"
+    },
+    {
+      "offset": 3445,
+      "text": "      // [L21] Rejects another job with HTTP 409 while an existing worker/browser remains active.\n"
+    },
+    {
+      "offset": 3676,
+      "text": "      // [L22] Removes job records older than one day when creating a new job.\n"
+    },
+    {
+      "offset": 3857,
+      "text": "      // [L23] Evicts oldest map entries until fewer than 100 previous job records remain.\n"
+    },
+    {
+      "offset": 4048,
+      "text": "      // [L24] Generates the new job's unique identifier.\n"
+    },
+    {
+      "offset": 4137,
+      "text": "      // [L25] Creates the owner-scoped queued job record with its creation timestamp and initial public message.\n"
+    },
+    {
+      "offset": 4404,
+      "text": "      // [L26] Detects whether this module is running from TypeScript source or compiled JavaScript.\n"
+    },
+    {
+      "offset": 4565,
+      "text": "      // [L27] Begins configuring the isolated child worker process and hidden Windows execution.\n"
+    },
+    {
+      "offset": 4733,
+      "text": "        // [L28] Enables tsx only for source execution, supplies the restricted environment, preserves Buffer IPC serialization, hides the window, and exposes only IPC while ignoring standard streams.\n"
+    },
+    {
+      "offset": 5111,
+      "text": "      // [L29] Closes the scope or expression introduced here: Begins configuring the isolated child worker process and hidden Windows execution.\n"
+    },
+    {
+      "offset": 5266,
+      "text": "      // [L30] Forks the corresponding TypeScript or JavaScript worker entry point using the configured process options.\n"
+    },
+    {
+      "offset": 5519,
+      "text": "      // [L31] Reserves the active worker slot for this child process.\n"
+    },
+    {
+      "offset": 5612,
+      "text": "      // [L32] Stores the queued job record before receiving worker updates.\n"
+    },
+    {
+      "offset": 5717,
+      "text": "      // [L33] Starts a pausable parent watchdog whose expiry requests automation cancellation.\n"
+    },
+    {
+      "offset": 5865,
+      "text": "        // [L34] Changes the public status to explain that the preparation limit was reached and the browser is retained for review.\n"
+    },
+    {
+      "offset": 6170,
+      "text": "        // [L35] Existing explanatory comment: Killing the worker also destroys its partially filled Chromium window.\n"
+    },
+    {
+      "offset": 6370,
+      "text": "        // [L36] Existing explanatory comment: Cancel automation while retaining the browser and active slot for the user.\n"
+    },
+    {
+      "offset": 6580,
+      "text": "        // [L37] Sends the worker a stop_preparation control message instead of terminating the browser-owning process.\n"
+    },
+    {
+      "offset": 6762,
+      "text": "          // [L38] Handles send failure only while this child is still active and its status is still preparing.\n"
+    },
+    {
+      "offset": 6956,
+      "text": "            // [L39] Updates the message to advise checking and closing the retained browser when the worker cannot be contacted.\n"
+    },
+    {
+      "offset": 7249,
+      "text": "          // [L40] Closes the scope or expression introduced here: Handles send failure only while this child is still active and its status is still preparing.\n"
+    },
+    {
+      "offset": 7422,
+      "text": "        // [L41] Closes the scope or expression introduced here: Sends the worker a stop_preparation control message instead of terminating the browser-owning process.\n"
+    },
+    {
+      "offset": 7602,
+      "text": "      // [L42] Gives the parent watchdog a twelve-minute active-processing budget.\n"
+    },
+    {
+      "offset": 7711,
+      "text": "      // [L43] Listens for IPC updates from the worker.\n"
+    },
+    {
+      "offset": 7822,
+      "text": "        // [L44] Ignores IPC messages that are not status updates.\n"
+    },
+    {
+      "offset": 7937,
+      "text": "        // [L45] Replaces the public view with the worker's status, message, and optional warnings while preserving the job ID.\n"
+    },
+    {
+      "offset": 8173,
+      "text": "        // [L46] Pauses the watchdog while the user signs into R3 manually.\n"
+    },
+    {
+      "offset": 8315,
+      "text": "        // [L47] Resumes the remaining watchdog budget when automated preparation resumes.\n"
+    },
+    {
+      "offset": 8473,
+      "text": "        // [L48] Clears the watchdog after review handoff, failure, or browser closure.\n"
+    },
+    {
+      "offset": 8669,
+      "text": "      // [L49] Closes the scope or expression introduced here: Listens for IPC updates from the worker.\n"
+    },
+    {
+      "offset": 8783,
+      "text": "      // [L50] Converts child startup errors into a fixed failed job view.\n"
+    },
+    {
+      "offset": 8994,
+      "text": "      // [L51] Handles worker-process closure and releases its active slot.\n"
+    },
+    {
+      "offset": 9102,
+      "text": "        // [L52] Cancels the parent watchdog when the worker exits.\n"
+    },
+    {
+      "offset": 9195,
+      "text": "        // [L53] Clears the active pointer only if it still refers to this child.\n"
+    },
+    {
+      "offset": 9327,
+      "text": "        // [L54] Marks unexpected exits as failure unless the job was already failed or the browser was reported closed.\n"
+    },
+    {
+      "offset": 9656,
+      "text": "      // [L55] Closes the scope or expression introduced here: Handles worker-process closure and releases its active slot.\n"
+    },
+    {
+      "offset": 9790,
+      "text": "      // [L56] Sends the input/documents to the worker and performs parent-buffer cleanup after IPC completion.\n"
+    },
+    {
+      "offset": 9941,
+      "text": "        // [L57] Overwrites the parent copy of the URLA bytes with zeros after the send callback fires.\n"
+    },
+    {
+      "offset": 10082,
+      "text": "        // [L58] Overwrites the parent copy of any sales-contract bytes with zeros after IPC completion.\n"
+    },
+    {
+      "offset": 10234,
+      "text": "        // [L59] Marks a failed document send as a job failure and kills the unusable worker process.\n"
+    },
+    {
+      "offset": 10481,
+      "text": "      // [L60] Closes the scope or expression introduced here: Sends the input/documents to the worker and performs parent-buffer cleanup after IPC completion.\n"
+    },
+    {
+      "offset": 10651,
+      "text": "      // [L61] Returns the new job's current public view.\n"
+    },
+    {
+      "offset": 10735,
+      "text": "    // [L62] Closes the scope or expression introduced here: Starts creation of a job tied to the caller's owner identifier.\n"
+    },
+    {
+      "offset": 10867,
+      "text": "    // [L63] Returns a job view only when the requested owner matches its private owner record.\n"
+    },
+    {
+      "offset": 11074,
+      "text": "    // [L64] Returns the owner's first job whose status is neither failed nor browser_closed.\n"
+    },
+    {
+      "offset": 11328,
+      "text": "    // [L65] Kills any active worker, clears the active pointer, and removes all stored jobs during shutdown.\n"
+    },
+    {
+      "offset": 11508,
+      "text": "  // [L66] Closes the scope or expression introduced here: Returns the runner's create, lookup, active-job, and shutdown methods.\n"
+    },
+    {
+      "offset": 11643,
+      "text": "// [L67] Closes the scope or expression introduced here: Exports the single-active-worker job runner factory.\n"
+    }
+  ]
+}

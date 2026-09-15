@@ -1,0 +1,734 @@
+{
+  "originalSha256": "95d0c3fb591b336f887fd8a62152b49fe2bbe53d156795b9836e941c6310f5cb",
+  "annotatedSha256": "05b748990eddc338f48bd99acec2aec58541265c74d0a25fc36017e12f36878d",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Import { afterEach, beforeEach, describe, expect, it, vi } from \"vitest\" for these regression tests.\n"
+    },
+    {
+      "offset": 183,
+      "text": "// [L2] Import { tool } from \"@langchain/core/tools\" for these regression tests.\n"
+    },
+    {
+      "offset": 310,
+      "text": "// [L3] Import { toJsonSchema } from \"@langchain/core/utils/json_schema\" for these regression tests.\n"
+    },
+    {
+      "offset": 477,
+      "text": "// [L4] Import { z } from \"zod\" for these regression tests.\n"
+    },
+    {
+      "offset": 562,
+      "text": "// [L5] Import { createModel, extractOrder } from \"../src/extraction.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 729,
+      "text": "// [L6] Import { renderPdfPages } from \"../src/pdf-pages.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 872,
+      "text": "// [L7] Import { prepareOrderWithAgent } from \"../src/agent.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1021,
+      "text": "// [L8] Import { DEFAULT_MODELS, extractionSchema, type ExtractedOrder, type JobPayload } from \"../src/domain.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1270,
+      "text": "// [L9] Import type { createEnvironmentTools } from \"../src/environment.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1443,
+      "text": "// [L10] Import type { BrowserSession } from \"../src/browser/session.js\" for these regression tests.\n"
+    },
+    {
+      "offset": 1609,
+      "text": "// [L11] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1703,
+      "text": "// [L12] Replace local PDF rendering with a controllable mock so the Grok transport tests can supply fixed page blocks and rendering failures.\n"
+    },
+    {
+      "offset": 1915,
+      "text": "// [L13] Declare `contact` as an object containing firstName: null (unknown or absent), lastName: null (unknown or absent), workPhone: null (unknown or absent), homePhone: null (unknown or absent), mobilePhone: null (unknown or absent), email: null (unknown or absent).\n"
+    },
+    {
+      "offset": 2304,
+      "text": "// [L14] Declare `extracted` as an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 2414,
+      "text": "  // [L15] Set fixture property `loanProgram` to \"FHA\". Set fixture property `loanProgramText` to \"FHA\". Set fixture property `loanPurpose` to \"Purchase\". Set fixture property `product` to null (unknown or absent). Set fixture property `propertyType` to null (unknown or absent). Set fixture property `occupancy` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 2879,
+      "text": "  // [L16] Set fixture property `property` to an object containing address: null (unknown or absent), unit: null (unknown or absent), postalCode: null (unknown or absent), city: null (unknown or absent), state: null (unknown or absent). Set fixture property `secondaryLoanNumber` to null (unknown or absent). Set fixture property `loanType` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 3378,
+      "text": "  // [L17] Set fixture property `lienPosition` to null (unknown or absent). Set fixture property `loanAmount` to 388000. Set fixture property `salePrice` to 485000. Set fixture property `lastValuationAmount` to null (unknown or absent). Set fixture property `lastValuationDate` to null (unknown or absent).\n"
+    },
+    {
+      "offset": 3798,
+      "text": "  // [L18] Set fixture property `borrower` to `contact`. Set fixture property `coBorrower` to `contact`. Set fixture property `listingAgent` to `contact`. Set fixture property `buyerAgent` to `contact`. Set fixture property `complexProperty` to false. Set fixture property `highProfileCustomer` to false.\n"
+    },
+    {
+      "offset": 4241,
+      "text": "  // [L19] Set fixture property `evidence` to an array containing an object containing field: \"loanProgram\", document: \"urla\", page: 1, quote: \"FHA\", an object containing field: \"loanPurpose\", document: \"urla\", page: 1, quote: \"Purchase\".\n"
+    },
+    {
+      "offset": 4560,
+      "text": "    // [L20] Set fixture property `field` to \"loanPurpose\". Set fixture property `document` to \"urla\". Set fixture property `page` to 1. Set fixture property `quote` to \"Purchase\". Set fixture property `warnings` to an empty array.\n"
+    },
+    {
+      "offset": 4883,
+      "text": "// [L21] Close the fixture object for `extracted` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 4971,
+      "text": "// [L22] Declare `imageUrl` as \"data:image/png;base64,iVBORw0KGgo=\".\n"
+    },
+    {
+      "offset": 5095,
+      "text": "// [L23] Declare `rendered` as the result of `['urla.pdf', 'sales-contract.pdf'].flatMap` using a callback that returns an array containing an object containing type: `'text' as const`, text: ``Source document: ${name}. Page 1 of 1. The following image is this PDF page.``, an object containing type: `'image_url' as const`, image_url: `{ url: imageUrl, detail: 'high' as const }`.\n"
+    },
+    {
+      "offset": 5547,
+      "text": "  // [L24] Set fixture property `type` to \"text\". Set fixture property `text` to text interpolating `name`.\n"
+    },
+    {
+      "offset": 5770,
+      "text": "  // [L25] Set fixture property `type` to \"image_url\". Set fixture property `image_url` to an object containing url: `imageUrl`, detail: \"high\".\n"
+    },
+    {
+      "offset": 6004,
+      "text": "// [L26] Close the array of fixture values and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 6086,
+      "text": "// [L27] Define helper `payload` with parameters model for the fixture operations below.\n"
+    },
+    {
+      "offset": 6242,
+      "text": "  // [L28] Return an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 6430,
+      "text": "    // [L29] Set fixture property `fhaCaseNumber` to \"123-4567890\". Set fixture property `paymentMethod` to \"Invoice\". Set fixture property `rushOrder` to false.\n"
+    },
+    {
+      "offset": 6672,
+      "text": "    // [L30] Set fixture property `urla` to an object containing name: \"uploaded-urla.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic URLA\".\n"
+    },
+    {
+      "offset": 6922,
+      "text": "    // [L31] Set fixture property `salesContract` to an object containing name: \"uploaded-contract.pdf\", buffer: the result of `Buffer.from` using \"%PDF-1.7 synthetic contract\".\n"
+    },
+    {
+      "offset": 7208,
+      "text": "// [L32] Close the callback or control-flow body for `payload` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 7308,
+      "text": "// [L33] Define the TypeScript shape `Call` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 7500,
+      "text": "// [L34] Define the TypeScript shape `WireBody` used by the test fixtures; this adds no runtime value.\n"
+    },
+    {
+      "offset": 7624,
+      "text": "  // [L35] Declare fixture property `model` with type `string`.\n"
+    },
+    {
+      "offset": 7705,
+      "text": "  // [L36] Declare fixture property `messages` with type `Array<{ role: string; content: string | Array<Record<string, unknown>> | null; tool_call_id?: string }>`.\n"
+    },
+    {
+      "offset": 7986,
+      "text": "  // [L37] Declare optional fixture property `response_format` with type `{ type: string; json_schema?: { schema: { properties?: unknown; required?: string[] } } }`.\n"
+    },
+    {
+      "offset": 8263,
+      "text": "  // [L38] Declare optional fixture property `tools` with type `Array<{ type: string; function: { name: string; parameters?: { properties?: unknown } } }>`.\n"
+    },
+    {
+      "offset": 8522,
+      "text": "  // [L39] Declare optional fixture property `tool_choice` with type `unknown`. Declare optional fixture property `stream` with type `boolean`. Declare optional fixture property `store` with type `unknown`. Declare optional fixture property `temperature` with type `number`.\n"
+    },
+    {
+      "offset": 8879,
+      "text": "// [L40] Finish the surrounding expression and delimiters.\n"
+    },
+    {
+      "offset": 8940,
+      "text": "// [L41] Define helper `completion` with parameters content, toolCalls for the fixture operations below.\n"
+    },
+    {
+      "offset": 9149,
+      "text": "  // [L42] Return the result of `Response.json` using an object whose fields are defined below to the caller.\n"
+    },
+    {
+      "offset": 9376,
+      "text": "    // [L43] Set fixture property `choices` to an array containing an object whose fields are defined below.\n"
+    },
+    {
+      "offset": 9601,
+      "text": "      // [L44] Set fixture property `finish_reason` to \"tool_calls\" when `toolCalls`, otherwise \"stop\". Set fixture property `usage` to an object containing prompt_tokens: 10, completion_tokens: 10, total_tokens: 20.\n"
+    },
+    {
+      "offset": 9951,
+      "text": "// [L45] Close the callback or control-flow body for `completion` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 10054,
+      "text": "// [L46] Declare `call` as a callback that returns an object containing id, type: \"function\", function: an object containing name, arguments: `JSON.stringify(args)`.\n"
+    },
+    {
+      "offset": 10369,
+      "text": "// [L47] Existing comment: SDK native output uses local refs/anyOf; compare their meaning to the canonical schema.\n"
+    },
+    {
+      "offset": 10575,
+      "text": "// [L48] Define helper `schemaMeaning` with parameters value, root for the fixture operations below.\n"
+    },
+    {
+      "offset": 10749,
+      "text": "  // [L49] Run the following branch when the result of `Array.isArray` using `value`. Return the result of `value.map` using a callback that returns the result of `schemaMeaning` using `item`, `root` to the caller.\n"
+    },
+    {
+      "offset": 11045,
+      "text": "  // [L50] Run the following branch when the negation of `value` or `typeof value` does not strictly equal \"object\". Return `value` to the caller.\n"
+    },
+    {
+      "offset": 11249,
+      "text": "  // [L51] Declare `node` as `value`.\n"
+    },
+    {
+      "offset": 11336,
+      "text": "  // [L52] Run the following branch when `typeof node.$ref` strictly equals \"string\".\n"
+    },
+    {
+      "offset": 11461,
+      "text": "    // [L53] Declare `target` as the result of `node.$ref.slice(2).split('/').reduce` using a callback that returns `(current as Record<string, unknown>)[key]`, `root`.\n"
+    },
+    {
+      "offset": 11763,
+      "text": "    // [L54] Run the following branch when the negation of `target`. Throw a new `Error` instance initialized with \"Unresolved local schema reference\" to simulate or report the failure.\n"
+    },
+    {
+      "offset": 12020,
+      "text": "    // [L55] Return the result of `schemaMeaning` using `target`, `root` to the caller.\n"
+    },
+    {
+      "offset": 12148,
+      "text": "  // [L56] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 12238,
+      "text": "  // [L57] Declare `result` as the result of `Object.fromEntries` using the result of `Object.entries(node).filter(([key]) => !['title', '$schema', '$defs'].includes(key)) .map` using a callback that returns an array containing `key`, `schemaMeaning(child, root)`.\n"
+    },
+    {
+      "offset": 12624,
+      "text": "    // [L58] Recursively normalize each remaining schema property while keeping its key, then rebuild the normalized object.\n"
+    },
+    {
+      "offset": 12813,
+      "text": "  // [L59] When schema.type is an array, convert its alternatives into anyOf objects and delete type so semantically equivalent schemas compare consistently.\n"
+    },
+    {
+      "offset": 13081,
+      "text": "  // [L60] Return `result` to the caller.\n"
+    },
+    {
+      "offset": 13140,
+      "text": "// [L61] Close the callback or control-flow body for `schemaMeaning` and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 13246,
+      "text": "// [L62] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 13340,
+      "text": "// [L63] Group regression tests for \"Grok actual adapter transport\".\n"
+    },
+    {
+      "offset": 13459,
+      "text": "  // [L64] Declare `requests` for assignment later.\n"
+    },
+    {
+      "offset": 13656,
+      "text": "  // [L65] Declare `respond` for assignment later.\n"
+    },
+    {
+      "offset": 13805,
+      "text": "  // [L66] Run this setup before every test in the group.\n"
+    },
+    {
+      "offset": 13884,
+      "text": "    // [L67] Assign an empty array to `requests`. Assign a callback that returns the result of `completion` with no arguments to `respond`.\n"
+    },
+    {
+      "offset": 14073,
+      "text": "    // [L68] Configure mock `vi.mocked(renderPdfPages).mockReset()` to resolve to the result of `structuredClone` using `rendered`.\n"
+    },
+    {
+      "offset": 14293,
+      "text": "    // [L69] Disable all LangSmith/LangChain tracing flags before running the Grok adapter tests.\n"
+    },
+    {
+      "offset": 14507,
+      "text": "    // [L70] Populate ambient xAI, OpenAI, Anthropic, and Google keys with synthetic unselected values to verify the transport uses only the explicit job key.\n"
+    },
+    {
+      "offset": 14807,
+      "text": "    // [L71] Temporarily set environment variable \"OPENAI_BASE_URL\" to \"https://untrusted.invalid\" for this test.\n"
+    },
+    {
+      "offset": 14985,
+      "text": "    // [L72] Temporarily set environment variable \"XAI_BASE_URL\" to \"https://untrusted.invalid\" for this test.\n"
+    },
+    {
+      "offset": 15157,
+      "text": "    // [L73] Temporarily set environment variable \"OPENAI_ORG_ID\" to \"synthetic-ambient-org\" for this test.\n"
+    },
+    {
+      "offset": 15323,
+      "text": "    // [L74] Temporarily set environment variable \"OPENAI_PROJECT_ID\" to \"synthetic-ambient-project\" for this test.\n"
+    },
+    {
+      "offset": 15505,
+      "text": "    // [L75] Temporarily replace global \"fetch\" with the result of `vi.fn` using a promise-returning callback whose body follows.\n"
+    },
+    {
+      "offset": 15707,
+      "text": "      // [L76] Declare `request` as a new `Request` instance initialized with `input`, `init`.\n"
+    },
+    {
+      "offset": 15850,
+      "text": "      // [L77] Declare `body` as the resolved value from `request.json` with no arguments.\n"
+    },
+    {
+      "offset": 15994,
+      "text": "      // [L78] Append an object whose fields are defined below to `requests` for later inspection.\n"
+    },
+    {
+      "offset": 16229,
+      "text": "        // [L79] Set fixture property `headers` to an array containing `...request.headers.keys()`. Set fixture property `redirect` to `request.redirect`. Set fixture property `signal` to `request.signal`.\n"
+    },
+    {
+      "offset": 16536,
+      "text": "      // [L80] Return the result of `respond` using `body`, `requests.length`, `request` to the caller.\n"
+    },
+    {
+      "offset": 16694,
+      "text": "    // [L81] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 16791,
+      "text": "  // [L82] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 16883,
+      "text": "  // [L83] Run this cleanup after every test in the group. Use a callback that performs: Restore all temporarily replaced global values. Restore all temporarily replaced environment variables..\n"
+    },
+    {
+      "offset": 17144,
+      "text": "// [L84] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 17238,
+      "text": "  // [L85] Register a parameterized test that \"sends rendered source pages and canonical native JSON schema using only selected model/key: %s\".\n"
+    },
+    {
+      "offset": 17562,
+      "text": "    // [L86] Declare `documents` as the result of `payload` using `model`. Declare `signal` as `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 17766,
+      "text": "    // [L87] Assert that the resolved value from `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `model`, \"xai\", `signal` deeply equals `extracted`.\n"
+    },
+    {
+      "offset": 18082,
+      "text": "    // [L88] Assert that `renderPdfPages` was called exactly once with an array containing an object containing name: \"urla.pdf\", buffer: `documents.urla.buffer`, an object containing name: \"sales-contract.pdf\", buffer: `documents.salesContract!.buffer`, `signal`.\n"
+    },
+    {
+      "offset": 18408,
+      "text": "      // [L89] Set fixture property `name` to \"urla.pdf\". Set fixture property `buffer` to `documents.urla.buffer`. Set fixture property `name` to \"sales-contract.pdf\". Set fixture property `buffer` to `documents.salesContract!.buffer`.\n"
+    },
+    {
+      "offset": 18777,
+      "text": "    // [L90] Finish the model input messages and pass the cancellation signal into the request.\n"
+    },
+    {
+      "offset": 18889,
+      "text": "    // [L91] Assert that `requests` has length 1.\n"
+    },
+    {
+      "offset": 18977,
+      "text": "    // [L92] Declare `request` as `requests[0]`.\n"
+    },
+    {
+      "offset": 19060,
+      "text": "    // [L93] Assert that `request` contains the expected object fields an object containing url: \"https://api.x.ai/v1/chat/completions\", selectedKey: true, redirect: \"error\".\n"
+    },
+    {
+      "offset": 19357,
+      "text": "    // [L94] Assert that the result of `request.headers.sort` with no arguments deeply equals an array containing \"authorization\", \"content-type\".\n"
+    },
+    {
+      "offset": 19583,
+      "text": "    // [L95] Assert that `request.body.model` strictly equals `model`.\n"
+    },
+    {
+      "offset": 19698,
+      "text": "    // [L96] Assert that `request.body.response_format?.type` strictly equals \"json_schema\".\n"
+    },
+    {
+      "offset": 19859,
+      "text": "    // [L97] Assert that the result of `schemaMeaning` using `request.body.response_format?.json_schema?.schema` deeply equals the result of `schemaMeaning` using the result of `toJsonSchema` using `extractionSchema`.\n"
+    },
+    {
+      "offset": 20210,
+      "text": "    // [L98] Assert that the result of `request.body.response_format?.json_schema?.schema.required?.slice().sort` with no arguments deeply equals the result of `Object.keys(extracted).sort` with no arguments.\n"
+    },
+    {
+      "offset": 20546,
+      "text": "    // [L99] Assert that `request.body.tools` is undefined. Assert that `request.body.store` is undefined. Assert that `request.body.temperature` is undefined.\n"
+    },
+    {
+      "offset": 20848,
+      "text": "    // [L100] Assert that `request.body.stream` does not satisfy: strictly equals true.\n"
+    },
+    {
+      "offset": 20984,
+      "text": "    // [L101] Declare `content` as the result of `request.body.messages.flatMap` using a callback that returns `message.content` when the result of `Array.isArray` using `message.content`, otherwise an empty array.\n"
+    },
+    {
+      "offset": 21316,
+      "text": "    // [L102] Assert that the result of `content.slice` using `-4` deeply equals `rendered`.\n"
+    },
+    {
+      "offset": 21458,
+      "text": "    // [L103] Assert that the result of `content.some` using a callback that returns the result of `['input_file', 'file', 'document'].includes` using the result of `String` using `block.type` strictly equals false.\n"
+    },
+    {
+      "offset": 21786,
+      "text": "    // [L104] Assert that the result of `JSON.stringify` using `request.body` does not satisfy: contains `documents.input.apiKey`.\n"
+    },
+    {
+      "offset": 21997,
+      "text": "    // [L105] Assert that the result of `JSON.stringify` using `request.body` does not satisfy: contains \"synthetic-unselected-key\".\n"
+    },
+    {
+      "offset": 22214,
+      "text": "  // [L106] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 22307,
+      "text": "// [L107] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 22402,
+      "text": "  // [L108] Register a parameterized test that \"rejects invalid canonical output locally\".\n"
+    },
+    {
+      "offset": 22642,
+      "text": "    // [L109] Assign a callback that returns the result of `completion` using the result of `JSON.stringify` using `data` to `respond`.\n"
+    },
+    {
+      "offset": 22832,
+      "text": "    // [L110] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 22945,
+      "text": "    // [L111] Assert that the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"xai\", `new AbortController().signal` rejects with an error. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 23370,
+      "text": "    // [L112] Existing comment: The native SDK parser rejects the response inside the configured one-retry call.\n"
+    },
+    {
+      "offset": 23571,
+      "text": "    // [L113] Assert that `requests` has length 2.\n"
+    },
+    {
+      "offset": 23660,
+      "text": "    // [L114] Assert that the result of `requests.every` using a callback that returns `request.body.response_format?.type` strictly equals `'json_schema'` and the negation of `request.body.tools` strictly equals true.\n"
+    },
+    {
+      "offset": 24006,
+      "text": "  // [L115] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 24099,
+      "text": "// [L116] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 24194,
+      "text": "  // [L117] Register a test that \"never contacts a model when PDF rendering fails\".\n"
+    },
+    {
+      "offset": 24348,
+      "text": "    // [L118] Configure mock `vi.mocked(renderPdfPages)` to reject with a new `Error` instance initialized with \"Synthetic render failure\".\n"
+    },
+    {
+      "offset": 24576,
+      "text": "    // [L119] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 24689,
+      "text": "    // [L120] Assert that the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"xai\", `new AbortController().signal` rejects with an error matching \"Synthetic render failure\". Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 25176,
+      "text": "    // [L121] Assert that `requests` has length 0.\n"
+    },
+    {
+      "offset": 25265,
+      "text": "  // [L122] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 25358,
+      "text": "// [L123] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 25453,
+      "text": "  // [L124] Register a test that \"retries only an explicitly unsupported native format with the same model/key and rendered images\".\n"
+    },
+    {
+      "offset": 25705,
+      "text": "    // [L125] Configure the response sequence to reject the first native output-format request and return an extraction tool call on the retry.\n"
+    },
+    {
+      "offset": 25893,
+      "text": "      // [L126] Set fixture property `error` to an object containing message: \"response_format json_schema is not supported with this model\", type: \"invalid_request_error\". Set fixture property `status` to 400.\n"
+    },
+    {
+      "offset": 26262,
+      "text": "      // [L127] For the tool-format branch, return a synthetic completion with an appraisal_document_data extraction tool call.\n"
+    },
+    {
+      "offset": 26473,
+      "text": "    // [L128] Declare `documents` as the result of `payload` using \"custom-supported-model\".\n"
+    },
+    {
+      "offset": 26623,
+      "text": "    // [L129] Assert that the resolved value from `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"xai\", `new AbortController().signal` deeply equals `extracted`.\n"
+    },
+    {
+      "offset": 27016,
+      "text": "    // [L130] Assert that `requests` has length 2. Assert that `renderPdfPages` was called this many times: 1.\n"
+    },
+    {
+      "offset": 27214,
+      "text": "    // [L131] Assert that the result of `requests.every` using a callback that returns `request.selectedKey` and `request.url === 'https://api.x.ai/v1/chat/completions'` and `request.body.model` strictly equals `documents.input.model` strictly equals true.\n"
+    },
+    {
+      "offset": 27648,
+      "text": "    // [L132] Assert that `requests[1]!.body.response_format` is undefined.\n"
+    },
+    {
+      "offset": 27787,
+      "text": "    // [L133] Assert that the result of `requests[1]!.body.tools?.map` using a callback that returns `tool.function.name` deeply equals an array containing \"appraisal_document_data\".\n"
+    },
+    {
+      "offset": 28077,
+      "text": "    // [L134] Assert that the result of `schemaMeaning` using `requests[1]!.body.tools?.[0]?.function.parameters` deeply equals the result of `schemaMeaning` using the result of `toJsonSchema` using `extractionSchema`.\n"
+    },
+    {
+      "offset": 28429,
+      "text": "    // [L135] Assert that `requests[1]!.body.messages` deeply equals `requests[0]!.body.messages`.\n"
+    },
+    {
+      "offset": 28604,
+      "text": "  // [L136] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 28697,
+      "text": "// [L137] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 28792,
+      "text": "  // [L138] Register a parameterized test that \"does not switch output formats or providers after an auth/quota/schema error (%s)\".\n"
+    },
+    {
+      "offset": 29059,
+      "text": "    // [L139] Assign a callback that returns the result of `Response.json` using an object containing error: an object containing message: `status === 400 ? 'Invalid schema: too many properties' : 'API key or quota unavailable'`, type: `'invalid_request_error'`, an object containing status to `respond`.\n"
+    },
+    {
+      "offset": 29555,
+      "text": "    // [L140] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 29668,
+      "text": "    // [L141] Assert that the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"xai\", `new AbortController().signal` rejects with an error. Wait for the asynchronous assertion to settle.\n"
+    },
+    {
+      "offset": 30093,
+      "text": "    // [L142] Assert that `requests.length` is greater than 0.\n"
+    },
+    {
+      "offset": 30204,
+      "text": "    // [L143] Assert that the result of `requests.every` using a callback that returns `request.selectedKey && request.url === 'https://api.x.ai/v1/chat/completions' && request.body.model === documents.input.model` and `request.body.response_format?.type === 'json_schema'` and the negation of `request.body.tools` strictly equals true.\n"
+    },
+    {
+      "offset": 30656,
+      "text": "      // [L144] Also require every captured request to keep the selected model and native json_schema output format, with no tools sent in these rejection cases.\n"
+    },
+    {
+      "offset": 30965,
+      "text": "  // [L145] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 31058,
+      "text": "// [L146] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 31153,
+      "text": "  // [L147] Register a test that \"sends screenshot images after all contiguous tool results while retaining tool IDs and bounded tools\".\n"
+    },
+    {
+      "offset": 31413,
+      "text": "    // [L148] Declare `screenshot` as an array containing an object containing type: \"text\", text: \"Synthetic R3 page: untrusted data.\", an object containing type: \"image_url\", image_url: an object containing url: `imageUrl`, detail: \"auto\".\n"
+    },
+    {
+      "offset": 31811,
+      "text": "    // [L149] Declare `original` as the result of `structuredClone` using `screenshot`.\n"
+    },
+    {
+      "offset": 31949,
+      "text": "    // [L150] Declare `screenshotTool` as the result of `tool` using a callback that returns `screenshot`, an object containing name: \"screenshot_page\", description: \"Synthetic image only.\", schema: the result of `z.object` using an empty object.\n"
+    },
+    {
+      "offset": 32336,
+      "text": "    // [L151] Return a tool-only assistant completion with screenshot and field-plan calls on the first request, then a text completion handing review to the user; null means no assistant text alongside the tool calls.\n"
+    },
+    {
+      "offset": 32732,
+      "text": "    // [L152] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 32845,
+      "text": "    // [L153] Call `prepareOrderWithAgent` with an object whose fields are defined below. Wait for completion before continuing.\n"
+    },
+    {
+      "offset": 33099,
+      "text": "      // [L154] Set fixture property `environment` to an object containing tools: an empty array.\n"
+    },
+    {
+      "offset": 33287,
+      "text": "      // [L155] Set fixture property `session` to an object containing tools: an array containing `screenshotTool`. Set fixture property `plan` to an empty array. Set fixture property `signal` to `new AbortController().signal`.\n"
+    },
+    {
+      "offset": 33639,
+      "text": "    // [L156] Assert that `requests` has length 2. Assert that `screenshot` deeply equals `original`.\n"
+    },
+    {
+      "offset": 33817,
+      "text": "    // [L157] Declare `messages` as `requests[1]!.body.messages`.\n"
+    },
+    {
+      "offset": 33932,
+      "text": "    // [L158] Declare `toolIndexes` as the result of `messages.flatMap` using a callback that returns an array containing `index` when `message.role` strictly equals `'tool'`, otherwise an empty array.\n"
+    },
+    {
+      "offset": 34236,
+      "text": "    // [L159] Assert that `toolIndexes` has length 2.\n"
+    },
+    {
+      "offset": 34331,
+      "text": "    // [L160] Assert that `toolIndexes[1]` strictly equals `toolIndexes[0]` plus 1.\n"
+    },
+    {
+      "offset": 34469,
+      "text": "    // [L161] Assert that the result of `messages.filter(message => message.role === 'tool').map(message => message.tool_call_id).sort` with no arguments deeply equals an array containing \"plan\", \"shot\".\n"
+    },
+    {
+      "offset": 34808,
+      "text": "    // [L162] Assert that the result of `JSON.stringify` using the result of `messages.filter` using a callback that returns `message.role` strictly equals `'tool'` does not satisfy: contains \"iVBORw0KGgo=\".\n"
+    },
+    {
+      "offset": 35127,
+      "text": "    // [L163] Declare `imageMessage` as `messages[toolIndexes[1]! + 1]`.\n"
+    },
+    {
+      "offset": 35257,
+      "text": "    // [L164] Assert that `imageMessage.role` strictly equals \"user\".\n"
+    },
+    {
+      "offset": 35371,
+      "text": "    // [L165] Assert that the result of `Array.isArray` using `imageMessage.content` and the result of `imageMessage.content.some` using a callback that returns `block.type === 'image_url'` and `(block.image_url as { url: string }).url === imageUrl` strictly equals true.\n"
+    },
+    {
+      "offset": 35826,
+      "text": "    // [L166] Assert that the result of `requests[1]!.body.tools?.map(tool => tool.function.name).sort` with no arguments deeply equals an array containing \"get_order_field_plan\", \"screenshot_page\".\n"
+    },
+    {
+      "offset": 36155,
+      "text": "    // [L167] Assert that the result of `JSON.stringify` using `messages` contains \"Do not submit\".\n"
+    },
+    {
+      "offset": 36320,
+      "text": "  // [L168] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 36413,
+      "text": "// [L169] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 36508,
+      "text": "  // [L170] Register a test that \"aborts an in-flight model request without rerouting or starting another call\".\n"
+    },
+    {
+      "offset": 36720,
+      "text": "    // [L171] Declare `controller` as a new `AbortController` instance. Declare `started` for assignment later.\n"
+    },
+    {
+      "offset": 36904,
+      "text": "    // [L172] Declare `startedRequest` as a new `Promise` instance initialized with a callback that performs: Assign `resolve` to `started`..\n"
+    },
+    {
+      "offset": 37127,
+      "text": "    // [L173] Assign a callback that returns a new `Promise` instance initialized with a callback whose body follows to `respond`.\n"
+    },
+    {
+      "offset": 37336,
+      "text": "      // [L174] Call `request.signal.addEventListener` with \"abort\", a callback that returns the result of `reject` using `request.signal.reason`, an object containing once: true. Call `started` without arguments.\n"
+    },
+    {
+      "offset": 37662,
+      "text": "    // [L175] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 37759,
+      "text": "    // [L176] Declare `documents` as the result of `payload` with no arguments.\n"
+    },
+    {
+      "offset": 37872,
+      "text": "    // [L177] Declare `pending` as the result of `extractOrder` using `documents`, the result of `createModel` using `documents.input.apiKey`, `documents.input.model`, \"xai\", `controller.signal`.\n"
+    },
+    {
+      "offset": 38199,
+      "text": "    // [L178] Declare `rejected` as the result of `expect(pending).rejects.toThrow` with no arguments.\n"
+    },
+    {
+      "offset": 38358,
+      "text": "    // [L179] Wait for `startedRequest` to settle before continuing. Abort `controller`. Wait for `rejected` to settle before continuing.\n"
+    },
+    {
+      "offset": 38558,
+      "text": "    // [L180] Assert that `requests` has length 1. Assert that `requests[0]!.signal.aborted` strictly equals true.\n"
+    },
+    {
+      "offset": 38759,
+      "text": "  // [L181] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    },
+    {
+      "offset": 38852,
+      "text": "// [L182] Close the callback or control-flow body and finish the surrounding syntax.\n"
+    }
+  ]
+}

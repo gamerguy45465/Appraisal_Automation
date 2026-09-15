@@ -1,0 +1,338 @@
+{
+  "originalSha256": "07fa9def299399a802578e7b74c2d89a6dac1ee325f50c5e0e520470a7853689",
+  "annotatedSha256": "235a4e0c886859db1f0abfba5273734b510ccfe88979543c78af69c3b910c2aa",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports HumanMessage, ToolMessage, type BaseMessage, type MessageContent from @langchain/core/messages for typed human/tool messages and provider-compatible content.\n"
+    },
+    {
+      "offset": 283,
+      "text": "// [L2] Imports createMiddleware from langchain for agent construction or model-call middleware.\n"
+    },
+    {
+      "offset": 426,
+      "text": "// [L3] Imports compile-time types AiProvider from ./domain.js for shared validated application data, business rules, defaults, and domain types.\n"
+    },
+    {
+      "offset": 619,
+      "text": "// [L4] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 712,
+      "text": "// [L5] Defines copying a tool message with replacement content while preserving its identifying and diagnostic metadata.\n"
+    },
+    {
+      "offset": 921,
+      "text": "  // [L6] Constructs the replacement LangChain ToolMessage instance.\n"
+    },
+    {
+      "offset": 1017,
+      "text": "    // [L7] Replaces content while preserving message ID, tool name, and associated tool-call ID.\n"
+    },
+    {
+      "offset": 1200,
+      "text": "    // [L8] Preserves execution status, metadata, and artifact fields from the original tool result.\n"
+    },
+    {
+      "offset": 1385,
+      "text": "    // [L9] Preserves additional SDK arguments and response metadata from the original tool result.\n"
+    },
+    {
+      "offset": 1581,
+      "text": "  // [L10] Closes the scope or expression introduced here: Constructs the replacement LangChain ToolMessage instance.\n"
+    },
+    {
+      "offset": 1705,
+      "text": "// [L11] Closes the scope or expression introduced here: Defines copying a tool message with replacement content while preserving its identifying and diagnostic metadata.\n"
+    },
+    {
+      "offset": 1878,
+      "text": "// [L12] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1972,
+      "text": "// [L13] Existing explanatory comment: Chat Completions tool results are text; images belong in a subsequent user message.\n"
+    },
+    {
+      "offset": 2186,
+      "text": "// [L14] Defines xAI message conversion that moves valid screenshot images out of tool result content.\n"
+    },
+    {
+      "offset": 2354,
+      "text": "  // [L15] Allocates the converted conversation message sequence.\n"
+    },
+    {
+      "offset": 2456,
+      "text": "  // [L16] Accumulates screenshot content blocks for a subsequent human message.\n"
+    },
+    {
+      "offset": 2589,
+      "text": "  // [L17] Defines emission of accumulated screenshot blocks after contiguous tool responses.\n"
+    },
+    {
+      "offset": 2713,
+      "text": "    // [L18] Appends a human message only if screenshot blocks have been accumulated.\n"
+    },
+    {
+      "offset": 2874,
+      "text": "    // [L19] Resets the pending screenshot collection after a flush.\n"
+    },
+    {
+      "offset": 2960,
+      "text": "  // [L20] Closes the scope or expression introduced here: Defines emission of accumulated screenshot blocks after contiguous tool responses.\n"
+    },
+    {
+      "offset": 3107,
+      "text": "  // [L21] Walks the original messages in order.\n"
+    },
+    {
+      "offset": 3192,
+      "text": "    // [L22] Existing explanatory comment: Keep all tool responses together before adding screenshot images.\n"
+    },
+    {
+      "offset": 3374,
+      "text": "    // [L23] Flushes pending screenshots before a non-tool message so all preceding tool replies stay contiguous.\n"
+    },
+    {
+      "offset": 3545,
+      "text": "    // [L24] Identifies messages outside the array-valued screenshot_page tool-result shape.\n"
+    },
+    {
+      "offset": 3755,
+      "text": "      // [L25] Preserves an ineligible message unchanged and advances to the next message.\n"
+    },
+    {
+      "offset": 3884,
+      "text": "    // [L26] Closes the scope or expression introduced here: Identifies messages outside the array-valued screenshot_page tool-result shape.\n"
+    },
+    {
+      "offset": 4031,
+      "text": "    // [L27] Allocates recognized text blocks for the current screenshot tool result.\n"
+    },
+    {
+      "offset": 4172,
+      "text": "    // [L28] Allocates validated screenshot image blocks for the current tool result.\n"
+    },
+    {
+      "offset": 4324,
+      "text": "    // [L29] Starts with the current screenshot content considered valid.\n"
+    },
+    {
+      "offset": 4420,
+      "text": "    // [L30] Examines every content block before converting this screenshot result.\n"
+    },
+    {
+      "offset": 4547,
+      "text": "      // [L31] Collects text blocks only when their text property is a string.\n"
+    },
+    {
+      "offset": 4712,
+      "text": "      // [L32] Starts validation for an image_url screenshot block.\n"
+    },
+    {
+      "offset": 4825,
+      "text": "        // [L33] Reads the image_url payload, which may be a URL string or object.\n"
+    },
+    {
+      "offset": 4947,
+      "text": "        // [L34] Treats non-null image payload objects as records for safe property lookup.\n"
+    },
+    {
+      "offset": 5152,
+      "text": "        // [L35] Extracts the URL from either accepted image payload representation.\n"
+    },
+    {
+      "offset": 5304,
+      "text": "        // [L36] Uses the explicit image-detail value or defaults to auto.\n"
+    },
+    {
+      "offset": 5426,
+      "text": "        // [L37] Requires a string URL containing a PNG base64 data URL with the expected encoding characters.\n"
+    },
+    {
+      "offset": 5635,
+      "text": "          // [L38] Requires an auto, low, or high string detail value; otherwise invalidates the result and stops examining blocks.\n"
+    },
+    {
+      "offset": 5879,
+      "text": "        // [L39] Appends the normalized validated image_url block to the current screenshot collection.\n"
+    },
+    {
+      "offset": 6065,
+      "text": "      // [L40] Invalidates unsupported content block types and stops conversion of this result.\n"
+    },
+    {
+      "offset": 6200,
+      "text": "    // [L41] Closes the scope or expression introduced here: Examines every content block before converting this screenshot result.\n"
+    },
+    {
+      "offset": 6338,
+      "text": "    // [L42] Preserves the original tool message when validation failed or no screenshot image was found.\n"
+    },
+    {
+      "offset": 6524,
+      "text": "    // [L43] Emits a metadata-preserving text-only tool result using joined text blocks or a default screenshot confirmation.\n"
+    },
+    {
+      "offset": 6762,
+      "text": "    // [L44] Queues an untrusted-browser-content label and the validated screenshot images for a later human message.\n"
+    },
+    {
+      "offset": 7055,
+      "text": "  // [L45] Closes the scope or expression introduced here: Walks the original messages in order.\n"
+    },
+    {
+      "offset": 7156,
+      "text": "  // [L46] Flushes any screenshot blocks remaining after the final tool-message group.\n"
+    },
+    {
+      "offset": 7260,
+      "text": "  // [L47] Returns the converted xAI message sequence.\n"
+    },
+    {
+      "offset": 7332,
+      "text": "// [L48] Closes the scope or expression introduced here: Defines xAI message conversion that moves valid screenshot images out of tool result content.\n"
+    },
+    {
+      "offset": 7485,
+      "text": "// [L49] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 7579,
+      "text": "// [L50] Existing explanatory comment: Keep browser content portable; the installed Responses adapter requires native tool image blocks.\n"
+    },
+    {
+      "offset": 7821,
+      "text": "// [L51] Exports provider-specific screenshot-message conversion without changing other message types.\n"
+    },
+    {
+      "offset": 8023,
+      "text": "  // [L52] Uses the dedicated tool-text-plus-human-images conversion for xAI.\n"
+    },
+    {
+      "offset": 8159,
+      "text": "  // [L53] Returns messages unchanged for providers other than OpenAI and xAI.\n"
+    },
+    {
+      "offset": 8284,
+      "text": "  // [L54] Maps OpenAI messages into the Responses-compatible screenshot content representation.\n"
+    },
+    {
+      "offset": 8418,
+      "text": "    // [L55] Preserves every message that is not an array-valued screenshot_page tool result.\n"
+    },
+    {
+      "offset": 8643,
+      "text": "    // [L56] Allocates replacement OpenAI Responses content blocks for this tool result.\n"
+    },
+    {
+      "offset": 8789,
+      "text": "    // [L57] Tracks whether this result contains at least one validated image.\n"
+    },
+    {
+      "offset": 8894,
+      "text": "    // [L58] Inspects the screenshot tool result's blocks in order.\n"
+    },
+    {
+      "offset": 9005,
+      "text": "      // [L59] Recognizes textual screenshot content with a string text value.\n"
+    },
+    {
+      "offset": 9153,
+      "text": "        // [L60] Converts the text block to the Responses API input_text shape.\n"
+    },
+    {
+      "offset": 9297,
+      "text": "      // [L61] Begins converting an image_url screenshot block.\n"
+    },
+    {
+      "offset": 9408,
+      "text": "        // [L62] Reads the image payload for URL and detail extraction.\n"
+    },
+    {
+      "offset": 9519,
+      "text": "        // [L63] Treats a non-null object payload as a property-accessible record.\n"
+    },
+    {
+      "offset": 9722,
+      "text": "        // [L64] Gets the URL from a direct string or image object's url property.\n"
+    },
+    {
+      "offset": 9879,
+      "text": "        // [L65] Uses the supplied detail value or defaults to auto.\n"
+    },
+    {
+      "offset": 10002,
+      "text": "        // [L66] Requires a PNG base64 data URL with the expected encoding characters.\n"
+    },
+    {
+      "offset": 10187,
+      "text": "          // [L67] Preserves the entire original message if image detail is invalid or the URL check fails.\n"
+    },
+    {
+      "offset": 10397,
+      "text": "        // [L68] Appends the screenshot as a native Responses input_image block.\n"
+    },
+    {
+      "offset": 10549,
+      "text": "        // [L69] Records that a valid screenshot image was converted.\n"
+    },
+    {
+      "offset": 10644,
+      "text": "      // [L70] Preserves the original message when any unsupported content block is encountered.\n"
+    },
+    {
+      "offset": 10770,
+      "text": "    // [L71] Closes the scope or expression introduced here: Inspects the screenshot tool result's blocks in order.\n"
+    },
+    {
+      "offset": 10892,
+      "text": "    // [L72] Preserves image-free messages instead of converting only their text.\n"
+    },
+    {
+      "offset": 11009,
+      "text": "    // [L73] Returns a copy containing Responses-native blocks while retaining the original tool metadata.\n"
+    },
+    {
+      "offset": 11162,
+      "text": "  // [L74] Closes the scope or expression introduced here: Maps OpenAI messages into the Responses-compatible screenshot content representation.\n"
+    },
+    {
+      "offset": 11313,
+      "text": "// [L75] Closes the scope or expression introduced here: Exports provider-specific screenshot-message conversion without changing other message types.\n"
+    },
+    {
+      "offset": 11466,
+      "text": "// [L76] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 11560,
+      "text": "// [L77] Existing explanatory comment: Adapt only the invocation input; preserve the agent's original shared message history.\n"
+    },
+    {
+      "offset": 11780,
+      "text": "// [L78] Exports LangChain middleware bound to the selected provider.\n"
+    },
+    {
+      "offset": 11916,
+      "text": "  // [L79] Creates the middleware definition for adapting model invocation messages.\n"
+    },
+    {
+      "offset": 12029,
+      "text": "    // [L80] Assigns a stable name to the screenshot-content middleware.\n"
+    },
+    {
+      "offset": 12143,
+      "text": "    // [L81] Calls the next model handler with provider-adapted messages in a copied request, leaving shared history untouched.\n"
+    },
+    {
+      "offset": 12395,
+      "text": "  // [L82] Closes the scope or expression introduced here: Creates the middleware definition for adapting model invocation messages.\n"
+    },
+    {
+      "offset": 12534,
+      "text": "// [L83] Closes the scope or expression introduced here: Exports LangChain middleware bound to the selected provider.\n"
+    }
+  ]
+}

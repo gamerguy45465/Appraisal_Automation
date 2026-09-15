@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+output/
+test-results/
+playwright-report/
+.playwright-mcp/
+*.log
+*.pdf
+*.png
+*.har
+auth.json

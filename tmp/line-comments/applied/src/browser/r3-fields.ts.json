@@ -1,0 +1,446 @@
+{
+  "originalSha256": "1118fc103d211b249ffe384955ea1b2264d2941ff14816d34bdd259c9a7a4bcb",
+  "annotatedSha256": "5c2918f00593df2599882d1fa06c9bb11c565d3a0b2e3cbd6deb2d078decbd24",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Begins documentation identifying the authenticated R3 page and observation date for known field IDs.\n// [L2] Explains that previously inspected fields use exact IDs while agent/officer fields use a different resolver.\n// [L3] Points to the constrained section-and-label matching logic for screenshot-supported contact roles.\n// [L4] Ends the field-observation documentation block.\n"
+    },
+    {
+      "offset": 483,
+      "text": ""
+    },
+    {
+      "offset": 573,
+      "text": ""
+    },
+    {
+      "offset": 639,
+      "text": ""
+    },
+    {
+      "offset": 643,
+      "text": "// [L5] Starts the mapping from application plan keys to observed R3 field-ID suffixes.\n"
+    },
+    {
+      "offset": 778,
+      "text": "  // [L6] Maps branch, product, property type, and occupancy plan entries to their dropdown ID suffixes.\n"
+    },
+    {
+      "offset": 996,
+      "text": "  // [L7] Maps the street address and unit plan entries to the two subject-property address fields.\n"
+    },
+    {
+      "offset": 1189,
+      "text": "  // [L8] Maps postal code, city, and state entries to the corresponding subject-property fields.\n"
+    },
+    {
+      "offset": 1416,
+      "text": "  // [L9] Maps parcel number, county, primary loan number, and secondary loan number to their inspected fields.\n"
+    },
+    {
+      "offset": 1658,
+      "text": "  // [L10] Maps loan purpose/type, FHA case number, and lien position to the corresponding R3 suffixes.\n"
+    },
+    {
+      "offset": 1882,
+      "text": "  // [L11] Maps monetary and agency case-file identifiers to their inspected R3 fields.\n"
+    },
+    {
+      "offset": 2102,
+      "text": "  // [L12] Maps prior valuation amount/date and the borrower-as-access-contact checkbox.\n"
+    },
+    {
+      "offset": 2326,
+      "text": "  // [L13] Maps lockbox code, vendor access notes, and the preferred inspection start field.\n"
+    },
+    {
+      "offset": 2532,
+      "text": "  // [L14] Maps preferred inspection end and alternate inspection start/end fields.\n"
+    },
+    {
+      "offset": 2762,
+      "text": "  // [L15] Maps rush, complex-property, prominent-customer, and side-by-side order flags to checkboxes.\n"
+    },
+    {
+      "offset": 3003,
+      "text": "  // [L16] Maps management notes and the billing-method dropdown.\n"
+    },
+    {
+      "offset": 3141,
+      "text": "// [L17] Ends the simple-field suffix mapping.\n"
+    },
+    {
+      "offset": 3191,
+      "text": "// [L18] Maps borrower, co-borrower, access-contact, and status-contact roles to their observed ID prefixes.\n"
+    },
+    {
+      "offset": 3446,
+      "text": "// [L19] Starts the shared mapping of contact attributes to field suffixes.\n"
+    },
+    {
+      "offset": 3572,
+      "text": "  // [L20] Maps contact names, three phone categories, and email to their corresponding R3 suffixes.\n"
+    },
+    {
+      "offset": 3813,
+      "text": "// [L21] Ends the contact-attribute suffix mapping.\n"
+    },
+    {
+      "offset": 3868,
+      "text": "// [L22] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 3962,
+      "text": "// [L23] Documents that the contact section captions and labels were obtained from the user's screenshots.\n"
+    },
+    {
+      "offset": 4155,
+      "text": "// [L24] Explains why these roles require fresh, unique observations instead of unobserved DOM IDs.\n"
+    },
+    {
+      "offset": 4338,
+      "text": "// [L25] Starts the permitted section-title mapping for screenshot-supported roles.\n"
+    },
+    {
+      "offset": 4472,
+      "text": "  // [L26] Stores the exact listing-agent and buyer-agent section captions.\n"
+    },
+    {
+      "offset": 4634,
+      "text": "  // [L27] Stores the exact loan-officer section caption.\n"
+    },
+    {
+      "offset": 4735,
+      "text": "// [L28] Ends the contact-section mapping.\n"
+    },
+    {
+      "offset": 4781,
+      "text": "// [L29] Limits writable loan-officer attributes to first name, last name, work phone, and email.\n"
+    },
+    {
+      "offset": 4963,
+      "text": "// [L30] Starts the mapping from contact attribute names to observed field captions.\n"
+    },
+    {
+      "offset": 5096,
+      "text": "  // [L31] Provides exact first-name, last-name, and work-phone captions.\n"
+    },
+    {
+      "offset": 5245,
+      "text": "  // [L32] Provides exact home-phone, mobile-phone, and email captions.\n"
+    },
+    {
+      "offset": 5389,
+      "text": "// [L33] Ends the contact-caption mapping.\n"
+    },
+    {
+      "offset": 5435,
+      "text": "// [L34] Normalizes caption whitespace, curly apostrophes, and case for exact normalized comparisons.\n"
+    },
+    {
+      "offset": 5670,
+      "text": "// [L35] Begins building the set of field IDs already assigned by the exact-ID mappings.\n"
+    },
+    {
+      "offset": 5791,
+      "text": "  // [L36] Adds every simple field with the common OrderItemEdit ID prefix.\n"
+    },
+    {
+      "offset": 5942,
+      "text": "  // [L37] Adds every combination of known contact role prefix and contact attribute suffix.\n"
+    },
+    {
+      "offset": 6172,
+      "text": "// [L38] Completes the known-field-ID set.\n"
+    },
+    {
+      "offset": 6219,
+      "text": "// [L39] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 6313,
+      "text": "// [L40] Documents that callers must reject ambiguous matches rather than write repeated sections.\n// [L41] Explains that inspected fields retain ID-based matching and only designated contact sections use captions.\n// [L42] Documents that caption-based resolution must not reuse known borrower or access-contact fields.\n// [L43] Ends the resolver contract documentation.\n"
+    },
+    {
+      "offset": 6771,
+      "text": ""
+    },
+    {
+      "offset": 6861,
+      "text": ""
+    },
+    {
+      "offset": 6950,
+      "text": ""
+    },
+    {
+      "offset": 6954,
+      "text": "// [L44] Defines the exported field-match predicate and the observed field metadata it accepts.\n"
+    },
+    {
+      "offset": 7211,
+      "text": "  // [L45] Looks up any known exact DOM ID for the requested application key.\n"
+    },
+    {
+      "offset": 7339,
+      "text": "  // [L46] Immediately resolves known keys by equality with their inspected ID.\n"
+    },
+    {
+      "offset": 7469,
+      "text": "  // [L47] Splits an unrecognized key into role, attribute, and any invalid extra path segments.\n"
+    },
+    {
+      "offset": 7632,
+      "text": "  // [L48] Begins rejecting extra segments and roles or attributes outside the screenshot-supported mappings.\n"
+    },
+    {
+      "offset": 7843,
+      "text": "    // [L49] Also rejects unsupported loan-officer attributes, returning false for any invalid key shape.\n"
+    },
+    {
+      "offset": 8031,
+      "text": "  // [L50] Begins excluding malformed IDs, IDs already reserved by exact mappings, and explicitly hidden fields.\n"
+    },
+    {
+      "offset": 8264,
+      "text": "    // [L51] Also requires a supported input tag/type, rejecting any candidate that violates these conditions.\n"
+    },
+    {
+      "offset": 8478,
+      "text": "  // [L52] Extracts the nearest section title from the observed section hierarchy.\n"
+    },
+    {
+      "offset": 8627,
+      "text": "  // [L53] Requires the normalized nearest section to equal the approved caption for this contact role.\n"
+    },
+    {
+      "offset": 8821,
+      "text": "    // [L54] Also requires the normalized field label to equal the approved caption for this contact attribute.\n"
+    },
+    {
+      "offset": 9014,
+      "text": "// [L55] Ends the field-matching predicate.\n"
+    },
+    {
+      "offset": 9060,
+      "text": "// [L56] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 9154,
+      "text": "// [L57] Documents that baseline product labels were observed and still require document-specific suitability checks.\n"
+    },
+    {
+      "offset": 9371,
+      "text": "// [L58] Starts the exported immutable baseline appraisal-product table.\n"
+    },
+    {
+      "offset": 9488,
+      "text": "  // [L59] Defines the observed conventional, FHA, and USDA single-family product labels.\n"
+    },
+    {
+      "offset": 9675,
+      "text": "  // [L60] Defines the observed conventional, FHA, and USDA condominium product labels.\n"
+    },
+    {
+      "offset": 9863,
+      "text": "  // [L61] Defines the observed conventional, FHA, and USDA manufactured-home product labels.\n"
+    },
+    {
+      "offset": 10065,
+      "text": "  // [L62] Defines the observed conventional, FHA, and USDA two-to-four-family product labels.\n"
+    },
+    {
+      "offset": 10280,
+      "text": "// [L63] Ends the product table and preserves its literal types with a const assertion.\n"
+    },
+    {
+      "offset": 10380,
+      "text": "// [L64] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 10474,
+      "text": "// [L65] Documents the intentionally narrow FHA product-label alias rule.\n"
+    },
+    {
+      "offset": 10633,
+      "text": "// [L66] Defines the helper that returns approved alternate labels for a requested product.\n"
+    },
+    {
+      "offset": 10788,
+      "text": "  // [L67] Reads each property category's baseline products.\n"
+    },
+    {
+      "offset": 10908,
+      "text": "    // [L68] Builds each FHA label's unique original and optional-hyphen-free variants.\n"
+    },
+    {
+      "offset": 11065,
+      "text": "  // [L69] Normalizes the requested label for comparison.\n"
+    },
+    {
+      "offset": 11168,
+      "text": "  // [L70] Finds the FHA variant group containing the normalized request.\n"
+    },
+    {
+      "offset": 11332,
+      "text": "    // [L71] Returns only different variants in that group, or an empty list when none matches.\n"
+    },
+    {
+      "offset": 11496,
+      "text": "// [L72] Ends the product-label alias helper.\n"
+    },
+    {
+      "offset": 11544,
+      "text": "// [L73] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 11638,
+      "text": "// [L74] Defines the resolver from application field keys to inspected R3 DOM IDs.\n"
+    },
+    {
+      "offset": 11795,
+      "text": "  // [L75] Returns a prefixed exact ID for keys present in the simple-field mapping.\n"
+    },
+    {
+      "offset": 11975,
+      "text": "  // [L76] Splits other keys into contact role, attribute, and extra segments.\n"
+    },
+    {
+      "offset": 12121,
+      "text": "  // [L77] Requires exactly two segments and a known contact role/attribute combination.\n"
+    },
+    {
+      "offset": 12316,
+      "text": "    // [L78] Constructs the contact DOM ID from the shared prefix, role prefix, and attribute suffix.\n"
+    },
+    {
+      "offset": 12499,
+      "text": "  // [L79] Ends known-contact ID construction.\n"
+    },
+    {
+      "offset": 12550,
+      "text": "  // [L80] Returns undefined for keys without an inspected exact-ID mapping.\n"
+    },
+    {
+      "offset": 12647,
+      "text": "// [L81] Ends the exact field-ID resolver.\n"
+    },
+    {
+      "offset": 12692,
+      "text": "// [L82] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 12786,
+      "text": "// [L83] Documents that masked-phone recovery is limited to established phone keys.\n"
+    },
+    {
+      "offset": 12946,
+      "text": "// [L84] Defines the helper that extracts recoverable US phone digits from an approved field value.\n"
+    },
+    {
+      "offset": 13134,
+      "text": "  // [L85] Rejects keys outside the specified contact phone attributes and loan-officer work phone.\n"
+    },
+    {
+      "offset": 13413,
+      "text": "  // [L86] Documents that ordinary formatting and an optional US country code may be removed.\n"
+    },
+    {
+      "offset": 13591,
+      "text": "  // [L87] Explains that unsupported extensions or international forms remain on the original fill/review path.\n"
+    },
+    {
+      "offset": 13792,
+      "text": "  // [L88] Removes allowed punctuation/whitespace and returns ten digits only when the whole value matches an optional US country code plus ten digits.\n"
+    },
+    {
+      "offset": 14018,
+      "text": "// [L89] Ends the phone-digit recovery helper.\n"
+    },
+    {
+      "offset": 14067,
+      "text": "// [L90] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 14161,
+      "text": "// [L91] Defines the comparison between a page's text value and its approved plan value.\n"
+    },
+    {
+      "offset": 14345,
+      "text": "  // [L92] Accepts exactly identical strings immediately.\n"
+    },
+    {
+      "offset": 14443,
+      "text": "  // [L93] Rejects a mismatch when either value is empty.\n"
+    },
+    {
+      "offset": 14555,
+      "text": "  // [L94] Begins special comparison for the three supported monetary fields.\n"
+    },
+    {
+      "offset": 14712,
+      "text": "    // [L95] Defines a parser accepting digits/commas and an optional one- or two-digit decimal part, removing commas before numeric conversion and rejecting other formats with NaN.\n"
+    },
+    {
+      "offset": 15026,
+      "text": "    // [L96] Accepts monetary values only if the page value is finite and both parsed numbers are equal.\n"
+    },
+    {
+      "offset": 15211,
+      "text": "  // [L97] Ends monetary-value comparison.\n"
+    },
+    {
+      "offset": 15258,
+      "text": "  // [L98] Begins tolerant formatting comparison for phone-suffixed keys.\n"
+    },
+    {
+      "offset": 15395,
+      "text": "    // [L99] Defines digit-only normalization and removes a leading US country code only from an eleven-digit value.\n"
+    },
+    {
+      "offset": 15613,
+      "text": "    // [L100] Requires at least ten normalized actual digits and exact equality with the expected normalized digits.\n"
+    },
+    {
+      "offset": 15809,
+      "text": "  // [L101] Ends phone-value comparison.\n"
+    },
+    {
+      "offset": 15854,
+      "text": "  // [L102] Rejects all remaining non-identical text values.\n"
+    },
+    {
+      "offset": 15931,
+      "text": "// [L103] Ends approved-text comparison.\n"
+    },
+    {
+      "offset": 15974,
+      "text": "// [L104] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 16069,
+      "text": "// [L105] Defines the environment-variable filter used when launching Chromium.\n"
+    },
+    {
+      "offset": 16237,
+      "text": "  // [L106] Starts the case-insensitive allowlist of executable paths, Windows roots, shell, temporary directories, and user profile variables.\n"
+    },
+    {
+      "offset": 16492,
+      "text": "    // [L107] Adds home paths, application-data locations, program installation directories, and shared program data.\n"
+    },
+    {
+      "offset": 16718,
+      "text": "    // [L108] Completes the allowlist with processor architecture and processor-count variables.\n"
+    },
+    {
+      "offset": 16871,
+      "text": "  // [L109] Keeps only defined environment entries whose uppercased keys are allowed and returns them as a string-valued object.\n"
+    },
+    {
+      "offset": 17160,
+      "text": "// [L110] Ends the browser environment filter.\n"
+    }
+  ]
+}

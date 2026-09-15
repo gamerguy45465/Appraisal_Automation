@@ -1,0 +1,4 @@
+{
+  "1": "Import Vitest's typed configuration helper.",
+  "2": "Export a configuration that selects tests/**/*.test.ts and permits 15 seconds per test."
+}

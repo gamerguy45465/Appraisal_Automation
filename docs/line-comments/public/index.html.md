@@ -1,0 +1,268 @@
+# Line explanations: public/index.html
+
+Source: [public/index.html](../../../public/index.html). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+September 14 sequential-order update: the workflow card adds a hidden next-order notice and explicit Prepare another order button. The frontend shows them only when the current order can be left safely, with a reminder that a new preparation replaces the previous R3 form. Historical line numbers below are unchanged.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Declares an HTML5 document so browsers use standards mode. |
+| 2 | Defines the English-language HTML document root. Declares document language 'en'. |
+| 3 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 4 | Defines document metadata and asset references. |
+| 5 | Defines document metadata. Declares the 'utf-8' character encoding. |
+| 6 | Defines document metadata. Sets the name to 'viewport' for metadata identification or submitted form data. Supplies metadata content 'width=device-width, initial-scale=1'. |
+| 7 | Defines document metadata. Sets the name to 'color-scheme' for metadata identification or submitted form data. Supplies metadata content 'light'. |
+| 8 | Defines document metadata. Sets the name to 'theme-color' for metadata identification or submitted form data. Supplies metadata content '#163b43'. |
+| 9 | Defines document metadata. Sets the name to 'description' for metadata identification or submitted form data. |
+| 10 | Supplies metadata content 'Prepare an R3 AMC appraisal order from your loan documents, then review and submit it yourself.'. |
+| 11 | Defines the browser-tab title. Supplies the text content 'Appraisal Desk · Prepare an order'. Closes the title element. |
+| 12 | Defines an external document resource reference. Declares the external resource relationship as 'stylesheet'. Points the link/resource reference to '/styles.css'. |
+| 13 | Defines the browser script reference. Loads the script from '/app.js'. Defers execution of the external script until HTML parsing finishes. Closes the script element. |
+| 14 | Closes the head element. |
+| 15 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 16 | Defines the visible document body. |
+| 17 | Defines a navigation link. Applies CSS classes 'skip-link'. Points the link/resource reference to '#order-form'. Supplies the text content 'Skip to order form'. Closes the a element for 'skip-link'. |
+| 18 | Defines the page header. Applies CSS classes 'site-header'. |
+| 19 | Defines a layout/content container. Applies CSS classes 'header-inner'. |
+| 20 | Defines a navigation link. Applies CSS classes 'brand'. Points the link/resource reference to '/'. Provides the accessible label 'Appraisal Desk home'. |
+| 21 | Defines an inline text or icon container. Applies CSS classes 'brand-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. |
+| 22 | Defines a scalable vector icon. Defines SVG coordinate bounds '0 0 32 32'. Sets SVG fill to 'none'. |
+| 23 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.8 coordinate units. Uses 'round' joins between SVG stroke segments. |
+| 24 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.8 coordinate units. Uses 'round' joins between SVG stroke segments. |
+| 25 | Closes the svg element. |
+| 26 | Closes the span element for 'brand-mark'. |
+| 27 | Defines an inline text or icon container. Supplies the text content 'Appraisal'. Applies CSS classes 'brand-light'. Supplies the text content 'Desk'. Closes the span element for 'brand-light'. Closes the span element. |
+| 28 | Closes the a element for 'brand'. |
+| 29 | Defines a layout/content container. Applies CSS classes 'workspace-label'. Defines an inline text or icon container. Applies CSS classes 'small-dot'. Sets aria-hidden to 'true' for assistive-technology visibility. Closes the span element for 'small-dot'. Supplies the text content 'Local workspace'. Closes the div element for 'workspace-label'. |
+| 30 | Closes the div element for 'header-inner'. |
+| 31 | Closes the header element for 'site-header'. |
+| 32 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 33 | Defines the main application content. Applies CSS classes 'page-shell'. |
+| 34 | Defines a layout/content container. Applies CSS classes 'page-intro'. |
+| 35 | Defines a layout/content container. |
+| 36 | Defines a paragraph or status-message container. Applies CSS classes 'eyebrow'. Supplies the text content 'LOAN PROCESSING / NEW APPRAISAL'. Closes the p element for 'eyebrow'. |
+| 37 | Defines the primary page heading. Supplies the text content 'A prepared order.'. Defines a text line break. Defines an inline text or icon container. Supplies the text content 'Your final review.'. Closes the span element. Closes the h1 element. |
+| 38 | Defines a paragraph or status-message container. Applies CSS classes 'intro-copy'. Supplies the text content 'Bring your loan documents. We’ll prepare the details in R3 AMC, so you can review every'. |
+| 39 | Supplies the text content 'field before you submit.'. Closes the p element for 'intro-copy'. |
+| 40 | Closes the div element. |
+| 41 | Defines a layout/content container. Applies CSS classes 'branch-tag'. |
+| 42 | Defines a scalable vector icon. Sets aria-hidden to 'true' for assistive-technology visibility. Defines SVG coordinate bounds '0 0 24 24'. Sets SVG fill to 'none'. |
+| 43 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.6 coordinate units. |
+| 44 | Uses 'round' caps on SVG stroke ends. Uses 'round' joins between SVG stroke segments. |
+| 45 | Closes the svg element. |
+| 46 | Defines a layout/content container. Defines an inline text or icon container. Supplies the text content 'YOUR BRANCH'. Closes the span element. Defines emphasized text. Supplies the text content 'GUILD 685 SUMMERLIN ONE'. Closes the strong element. Closes the div element. |
+| 47 | Closes the div element for 'branch-tag'. |
+| 48 | Closes the div element for 'page-intro'. |
+| 49 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 50 | Defines a layout/content container. Applies CSS classes 'workspace-grid'. |
+| 51 | Defines a layout/content container. Applies CSS classes 'form-column'. |
+| 52 | Defines the appraisal-preparation form. Assigns ID 'order-form' for script, label, or accessibility references. Applies CSS classes 'order-card'. Targets form submission at '/api/jobs'. Uses the POST form-submission method. Encodes form submission as 'multipart/form-data', allowing file uploads. |
+| 53 | Defines a layout/content container. Applies CSS classes 'card-heading'. |
+| 54 | Defines a second-level heading. Supplies the text content 'Order details'. Closes the h2 element. Defines an inline text or icon container. Applies CSS classes 'required-mark'. Supplies the text content '*'. Closes the span element for 'required-mark'. Supplies the text content 'Required'. Closes the span element. |
+| 55 | Closes the div element for 'card-heading'. |
+| 56 | Defines fallback content shown when JavaScript is unavailable. |
+| 57 | Defines a paragraph or status-message container. Applies CSS classes 'noscript-message'. Supplies the text content 'JavaScript is required to connect securely and follow your order’s progress.'. |
+| 58 | Supplies the text content 'Enable it, then reload this page.'. Closes the p element for 'noscript-message'. |
+| 59 | Closes the noscript element. |
+| 60 | Defines a layout/content container. Assigns ID 'form-error' for script, label, or accessibility references. Applies CSS classes 'form-error'. Exposes the 'alert' accessibility role. Sets tab index -1, allowing script focus without normal tab-order inclusion. Initially hides this element until application state calls for it. |
+| 61 | Defines emphasized text. Assigns ID 'error-title' for script, label, or accessibility references. Supplies the text content 'Please check your order'. Closes the strong element for 'error-title'. |
+| 62 | Defines a paragraph or status-message container. Assigns ID 'error-message' for script, label, or accessibility references. Closes the p element for 'error-message'. |
+| 63 | Defines an unordered message list. Assigns ID 'error-details' for script, label, or accessibility references. Initially hides this element until application state calls for it. Closes the ul element for 'error-details'. |
+| 64 | Closes the div element for 'form-error'. |
+| 65 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 66 | Defines the group of order controls. Assigns ID 'order-fields' for script, label, or accessibility references. Applies CSS classes 'form-fields'. Starts this control or control group disabled until JavaScript enables it. |
+| 67 | Defines the accessible name for grouped order controls. Applies CSS classes 'sr-only'. Supplies the text content 'Appraisal order information'. Closes the legend element for 'sr-only'. |
+| 68 | Defines a labeled content section. Applies CSS classes 'form-section'. Uses element 'access-heading' as the accessible section label. |
+| 69 | Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '01'. Closes the span element for 'section-number'. |
+| 70 | Defines a layout/content container. |
+| 71 | Defines a third-level heading. Assigns ID 'access-heading' for script, label, or accessibility references. Supplies the text content 'Connect your AI provider'. Closes the h3 element for 'access-heading'. |
+| 72 | Defines a paragraph or status-message container. Supplies the text content 'Use your API key to prepare this order.'. Closes the p element. |
+| 73 | Closes the div element. |
+| 74 | Closes the div element for 'section-heading'. |
+| 75 | Defines a layout/content container. Applies CSS classes 'field'. |
+| 76 | Defines a form-control label. Associates the label with input ID 'provider'. Supplies the text content 'AI provider'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. |
+| 77 | Defines a dropdown form control. Assigns ID 'provider' for script, label, or accessibility references. Sets the name to 'provider' for metadata identification or submitted form data. Requires a nonempty/selected value for native form validation. |
+| 78 | Defines a selectable dropdown choice. Uses 'openai' as the submitted choice/control value. Supplies the text content 'OpenAI'. Closes the option element. |
+| 79 | Defines a selectable dropdown choice. Uses 'anthropic' as the submitted choice/control value. Supplies the text content 'Anthropic'. Closes the option element. |
+| 80 | Defines a selectable dropdown choice. Uses 'google' as the submitted choice/control value. Supplies the text content 'Google'. Closes the option element. |
+| 81 | Defines a selectable dropdown choice. Uses 'xai' as the submitted choice/control value. Supplies the text content 'SpaceXAI'. Closes the option element. |
+| 82 | Closes the select element for 'provider'. |
+| 83 | Closes the div element for 'field'. |
+| 84 | Defines a layout/content container. Applies CSS classes 'field'. |
+| 85 | Defines a form-control label. Associates the label with input ID 'model'. Supplies the text content 'Model ID'. Defines an inline text or icon container. Applies CSS classes 'optional-label'. Supplies the text content 'Optional'. Closes the span element for 'optional-label'. Closes the label element. |
+| 86 | Defines a form input control. Assigns ID 'model' for script, label, or accessibility references. Sets the name to 'model' for metadata identification or submitted form data. Uses the 'text' control type. Shows 'gpt-5.6-sol' as placeholder guidance. Sets browser autocomplete to 'off'. |
+| 87 | Sets browser spell-checking to 'false'. Limits entered text to 200 characters. Associates help/status elements 'model-help' with this input. |
+| 88 | Defines a paragraph or status-message container. Assigns ID 'model-help' for script, label, or accessibility references. Applies CSS classes 'field-help'. Supplies the text content 'Leave blank to use gpt-5.6-sol. Choose a model available to your'. |
+| 89 | Supplies the text content 'account with PDF, image, and tool support.'. Closes the p element for 'model-help'. |
+| 90 | Closes the div element for 'field'. |
+| 91 | Defines a layout/content container. Applies CSS classes 'field'. |
+| 92 | Defines a form-control label. Associates the label with input ID 'apiKey'. Defines an inline text or icon container. Assigns ID 'api-key-label' for script, label, or accessibility references. Supplies the text content 'OpenAI API key'. Closes the span element for 'api-key-label'. Applies CSS classes 'required-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. |
+| 93 | Defines a form input control. Assigns ID 'apiKey' for script, label, or accessibility references. Sets the name to 'apiKey' for metadata identification or submitted form data. Uses the 'password' control type. Shows 'Enter your OpenAI API key' as placeholder guidance. |
+| 94 | Sets browser autocomplete to 'off'. Sets browser spell-checking to 'false'. Associates help/status elements 'api-key-help' with this input. |
+| 95 | Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Assigns ID 'api-key-help' for script, label, or accessibility references. Supplies the text content 'Your PDFs and order details are sent to OpenAI. API usage is billed'. |
+| 96 | Supplies the text content 'to your OpenAI account.'. Closes the p element for 'api-key-help'. |
+| 97 | Closes the div element for 'field'. |
+| 98 | Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Supplies the text content 'R3 AMC opens separately. Sign in and complete any CAPTCHA there; preparation'. |
+| 99 | Supplies the text content 'resumes automatically after you sign in.'. Closes the p element for 'field-help'. |
+| 100 | Closes the section element for 'form-section'. |
+| 101 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 102 | Defines a labeled content section. Applies CSS classes 'form-section'. Uses element 'loan-heading' as the accessible section label. |
+| 103 | Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '02'. Closes the span element for 'section-number'. |
+| 104 | Defines a layout/content container. |
+| 105 | Defines a third-level heading. Assigns ID 'loan-heading' for script, label, or accessibility references. Supplies the text content 'Identify the loan'. Closes the h3 element for 'loan-heading'. |
+| 106 | Defines a paragraph or status-message container. Supplies the text content 'Match the order to the correct loan file.'. Closes the p element. |
+| 107 | Closes the div element. |
+| 108 | Closes the div element for 'section-heading'. |
+| 109 | Defines a layout/content container. Applies CSS classes 'field-grid'. |
+| 110 | Defines a layout/content container. Applies CSS classes 'field'. Defines a form-control label. Associates the label with input ID 'loanNumber'. Supplies the text content 'Loan number'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. |
+| 111 | Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. Defines a form input control. Assigns ID 'loanNumber' for script, label, or accessibility references. Sets the name to 'loanNumber' for metadata identification or submitted form data. Uses the 'text' control type. |
+| 112 | Shows '685-20xxxxx' as placeholder guidance. Requires the input value to match the regular expression '^685-20[0-9]{5}$'. |
+| 113 | Provides browser guidance text 'Enter 685-20 followed by exactly five digits.'. Limits entered text to 11 characters. Sets browser autocomplete to 'off'. Requires a nonempty/selected value for native form validation. |
+| 114 | Sets browser spell-checking to 'false'. Associates help/status elements 'loan-help' with this input. |
+| 115 | Defines a paragraph or status-message container. Assigns ID 'loan-help' for script, label, or accessibility references. Applies CSS classes 'field-help'. Supplies the text content '685-20 followed by five digits.'. Closes the p element for 'loan-help'. |
+| 116 | Closes the div element for 'field'. |
+| 117 | Defines a layout/content container. Applies CSS classes 'field'. Defines a form-control label. Associates the label with input ID 'fhaCaseNumber'. Supplies the text content 'FHA case number'. Defines an inline text or icon container. |
+| 118 | Applies CSS classes 'optional-label'. Supplies the text content 'Optional'. Closes the span element for 'optional-label'. Closes the label element. Defines a form input control. Assigns ID 'fhaCaseNumber' for script, label, or accessibility references. Sets the name to 'fhaCaseNumber' for metadata identification or submitted form data. |
+| 119 | Uses the 'text' control type. Shows 'Enter if applicable' as placeholder guidance. Limits entered text to 100 characters. Sets browser autocomplete to 'off'. |
+| 120 | Associates help/status elements 'fha-help' with this input. |
+| 121 | Defines a paragraph or status-message container. Assigns ID 'fha-help' for script, label, or accessibility references. Applies CSS classes 'field-help'. Supplies the text content 'Required when your URLA identifies an FHA loan.'. Closes the p element for 'fha-help'. |
+| 122 | Closes the div element for 'field'. |
+| 123 | Closes the div element for 'field-grid'. |
+| 124 | Closes the section element for 'form-section'. |
+| 125 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 126 | Defines a labeled content section. Applies CSS classes 'form-section'. Uses element 'documents-heading' as the accessible section label. |
+| 127 | Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '03'. Closes the span element for 'section-number'. |
+| 128 | Defines a layout/content container. |
+| 129 | Defines a third-level heading. Assigns ID 'documents-heading' for script, label, or accessibility references. Supplies the text content 'Add your documents'. Closes the h3 element for 'documents-heading'. |
+| 130 | Defines a paragraph or status-message container. Supplies the text content 'PDF files, up to 15 MiB each.'. Closes the p element. |
+| 131 | Closes the div element. |
+| 132 | Closes the div element for 'section-heading'. |
+| 133 | Defines a layout/content container. Applies CSS classes 'document-grid'. |
+| 134 | Defines a layout/content container. Applies CSS classes 'document-field'. |
+| 135 | Defines a layout/content container. Applies CSS classes 'document-top'. Defines an inline text or icon container. Applies CSS classes 'document-icon'. Sets aria-hidden to 'true' for assistive-technology visibility. Defines a scalable vector icon. Defines SVG coordinate bounds '0 0 24 24'. |
+| 136 | Sets SVG fill to 'none'. |
+| 137 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. |
+| 138 | Uses 'round' joins between SVG stroke segments. |
+| 139 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. |
+| 140 | Uses 'round' caps on SVG stroke ends. |
+| 141 | Closes the svg element. Closes the span element for 'document-icon'. Defines an inline text or icon container. Applies CSS classes 'file-type'. Supplies the text content 'PDF'. Closes the span element for 'file-type'. Closes the div element for 'document-top'. |
+| 142 | Defines a form-control label. Associates the label with input ID 'urla'. Supplies the text content 'URLA'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. |
+| 143 | Defines a paragraph or status-message container. Applies CSS classes 'document-description'. Assigns ID 'urla-help' for script, label, or accessibility references. Supplies the text content 'Universal Residential Loan Application'. Closes the p element for 'urla-help'. |
+| 144 | Defines a form input control. Assigns ID 'urla' for script, label, or accessibility references. Sets the name to 'urla' for metadata identification or submitted form data. Uses the 'file' control type. Offers the file picker the accepted PDF extensions/types '.pdf,application/pdf'. |
+| 145 | Associates help/status elements 'urla-help urla-selection' with this input. |
+| 146 | Defines a paragraph or status-message container. Assigns ID 'urla-selection' for script, label, or accessibility references. Applies CSS classes 'file-selection'. Announces changes with 'polite' live-region priority. Supplies the text content 'No document selected'. Closes the p element for 'urla-selection'. |
+| 147 | Closes the div element for 'document-field'. |
+| 148 | Defines a layout/content container. Applies CSS classes 'document-field'. |
+| 149 | Defines a layout/content container. Applies CSS classes 'document-top'. Defines an inline text or icon container. Applies CSS classes 'document-icon'. Sets aria-hidden to 'true' for assistive-technology visibility. Defines a scalable vector icon. Defines SVG coordinate bounds '0 0 24 24'. |
+| 150 | Sets SVG fill to 'none'. |
+| 151 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. |
+| 152 | Uses 'round' joins between SVG stroke segments. |
+| 153 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. |
+| 154 | Uses 'round' caps on SVG stroke ends. |
+| 155 | Closes the svg element. Closes the span element for 'document-icon'. Defines an inline text or icon container. Applies CSS classes 'file-type'. Supplies the text content 'PDF'. Closes the span element for 'file-type'. Closes the div element for 'document-top'. |
+| 156 | Defines a form-control label. Associates the label with input ID 'salesContract'. Supplies the text content 'Sales contract'. Defines an inline text or icon container. Applies CSS classes 'optional-label'. Supplies the text content 'Optional'. Closes the span element for 'optional-label'. Closes the label element. |
+| 157 | Defines a paragraph or status-message container. Applies CSS classes 'document-description'. Assigns ID 'contract-help' for script, label, or accessibility references. Supplies the text content 'Include the contract for a purchase.'. Closes the p element for 'contract-help'. |
+| 158 | Defines a form input control. Assigns ID 'salesContract' for script, label, or accessibility references. Sets the name to 'salesContract' for metadata identification or submitted form data. Uses the 'file' control type. Offers the file picker the accepted PDF extensions/types '.pdf,application/pdf'. |
+| 159 | Associates help/status elements 'contract-help salesContract-selection' with this input. |
+| 160 | Defines a paragraph or status-message container. Assigns ID 'salesContract-selection' for script, label, or accessibility references. Applies CSS classes 'file-selection'. Announces changes with 'polite' live-region priority. Supplies the text content 'No document selected'. Closes the p element for 'salesContract-selection'. |
+| 161 | Closes the div element for 'document-field'. |
+| 162 | Closes the div element for 'document-grid'. |
+| 163 | Closes the section element for 'form-section'. |
+| 164 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 165 | Defines a labeled content section. Applies CSS classes 'form-section last-section'. Uses element 'preferences-heading' as the accessible section label. |
+| 166 | Defines a layout/content container. Applies CSS classes 'section-heading'. Defines an inline text or icon container. Applies CSS classes 'section-number'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '04'. Closes the span element for 'section-number'. |
+| 167 | Defines a layout/content container. |
+| 168 | Defines a third-level heading. Assigns ID 'preferences-heading' for script, label, or accessibility references. Supplies the text content 'Set order preferences'. Closes the h3 element for 'preferences-heading'. |
+| 169 | Defines a paragraph or status-message container. Supplies the text content 'Choose how the appraisal will be handled.'. Closes the p element. |
+| 170 | Closes the div element. |
+| 171 | Closes the div element for 'section-heading'. |
+| 172 | Defines a layout/content container. Applies CSS classes 'field'. Defines a form-control label. Associates the label with input ID 'paymentMethod'. Supplies the text content 'Payment method'. Defines an inline text or icon container. Applies CSS classes 'required-mark'. |
+| 173 | Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '*'. Closes the span element for 'required-mark'. Closes the label element. Defines a dropdown form control. Assigns ID 'paymentMethod' for script, label, or accessibility references. Sets the name to 'paymentMethod' for metadata identification or submitted form data. Requires a nonempty/selected value for native form validation. |
+| 174 | Defines a selectable dropdown choice. Uses 'Invoice' as the submitted choice/control value. Supplies the text content 'Invoice'. Closes the option element. |
+| 175 | Defines a selectable dropdown choice. Uses 'Pay by Credit Card' as the submitted choice/control value. Supplies the text content 'Pay by Credit Card'. Closes the option element. |
+| 176 | Defines a selectable dropdown choice. Uses 'Request Payment From The Borrower' as the submitted choice/control value. Supplies the text content 'Request Payment From The Borrower'. Closes the option element. |
+| 177 | Closes the select element for 'paymentMethod'. Closes the div element for 'field'. |
+| 178 | Defines a form-control label. Applies CSS classes 'checkbox-field'. Associates the label with input ID 'rushOrder'. Defines a form input control. Assigns ID 'rushOrder' for script, label, or accessibility references. Sets the name to 'rushOrder' for metadata identification or submitted form data. Uses the 'checkbox' control type. |
+| 179 | Uses 'true' as the submitted choice/control value. Defines an inline text or icon container. Defines emphasized text. Supplies the text content 'This is a rush order'. Closes the strong element. Supplies the text content 'Flag the order for expedited handling'. |
+| 180 | Supplies the text content 'in R3 AMC.'. Closes the span element. Closes the label element for 'checkbox-field'. |
+| 181 | Closes the section element for 'form-section last-section'. |
+| 182 | Closes the fieldset element for 'order-fields'. |
+| 183 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 184 | Defines a layout/content container. Applies CSS classes 'form-footer'. |
+| 185 | Defines a paragraph or status-message container. Defines a scalable vector icon. Sets aria-hidden to 'true' for assistive-technology visibility. Defines SVG coordinate bounds '0 0 20 20'. Sets SVG fill to 'none'. |
+| 186 | Defines a rectangle in the current icon. Sets the SVG rectangle x to 4.5. Sets the SVG rectangle y to 8.5. Sets the SVG rectangle width to 11. Sets the SVG rectangle height to 8. Sets the SVG rectangle rx to 2. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.3 coordinate units. |
+| 187 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.3 coordinate units. |
+| 188 | Uses 'round' caps on SVG stroke ends. |
+| 189 | Closes the svg element. Supplies the text content 'Your API key is cleared from this form after your order is accepted.'. Closes the p element. |
+| 190 | Defines an interactive button. Assigns ID 'submit-button' for script, label, or accessibility references. Applies CSS classes 'primary-button'. Uses the 'submit' control type. Starts this control or control group disabled until JavaScript enables it. Defines an inline text or icon container. Assigns ID 'submit-label' for script, label, or accessibility references. Supplies the text content 'Connecting'. |
+| 191 | Supplies the text content 'to workspace…'. Closes the span element for 'submit-label'. Defines a scalable vector icon. Sets aria-hidden to 'true' for assistive-technology visibility. Defines SVG coordinate bounds '0 0 20 20'. Sets SVG fill to 'none'. |
+| 192 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.7 coordinate units. Uses 'round' caps on SVG stroke ends. |
+| 193 | Uses 'round' joins between SVG stroke segments. |
+| 194 | Closes the svg element. Closes the button element for 'submit-button'. |
+| 195 | Defines a paragraph or status-message container. Applies CSS classes 'submit-help'. Supplies the text content 'This prepares an order. You make the final submission in R3 AMC.'. Closes the p element for 'submit-help'. |
+| 196 | Closes the div element for 'form-footer'. |
+| 197 | Closes the form element for 'order-form'. |
+| 198 | Closes the div element for 'form-column'. |
+| 199 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 200 | Defines the progress and guidance sidebar. Applies CSS classes 'sidebar'. Provides the accessible label 'Order progress and guidance'. |
+| 201 | Defines a labeled content section. Assigns ID 'status-card' for script, label, or accessibility references. Applies CSS classes 'status-card'. Uses element 'status-heading' as the accessible section label. Initializes data-status to 'ready' for script-driven state and styling. |
+| 202 | Defines a layout/content container. Applies CSS classes 'status-card-top'. Defines an inline text or icon container. Applies CSS classes 'eyebrow'. Supplies the text content 'YOUR WORKFLOW'. Closes the span element for 'eyebrow'. Assigns ID 'status-badge' for script, label, or accessibility references. |
+| 203 | Applies CSS classes 'status-badge'. Supplies the text content 'Ready'. Closes the span element for 'status-badge'. Closes the div element for 'status-card-top'. |
+| 204 | Defines a layout/content container. Assigns ID 'status-announcement' for script, label, or accessibility references. Exposes the 'status' accessibility role. Announces changes with 'polite' live-region priority. Requests that assistive technology announce the whole changed status region. |
+| 205 | Defines a second-level heading. Assigns ID 'status-heading' for script, label, or accessibility references. Supplies the text content 'From documents'. Defines a text line break. Supplies the text content 'to a draft order.'. Closes the h2 element for 'status-heading'. |
+| 206 | Defines a paragraph or status-message container. Assigns ID 'status-message' for script, label, or accessibility references. Supplies the text content 'Add your details to begin. You’ll stay in control of the final submission.'. Closes the p element for 'status-message'. |
+| 207 | Closes the div element for 'status-announcement'. |
+| 208 | Defines an ordered workflow list. Applies CSS classes 'workflow-list'. |
+| 209 | Defines a list item. Assigns ID 'step-extract' for script, label, or accessibility references. Initializes data-state to 'waiting' for script-driven state and styling. Defines an inline text or icon container. Applies CSS classes 'workflow-marker'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '1'. Closes the span element for 'workflow-marker'. |
+| 210 | Defines a layout/content container. Defines emphasized text. Supplies the text content 'Read your documents'. Closes the strong element. |
+| 211 | Defines a paragraph or status-message container. Supplies the text content 'Extract the property and loan details.'. Closes the p element. |
+| 212 | Closes the div element. |
+| 213 | Closes the li element for 'step-extract'. |
+| 214 | Defines a list item. Assigns ID 'step-prepare' for script, label, or accessibility references. Initializes data-state to 'waiting' for script-driven state and styling. Defines an inline text or icon container. Applies CSS classes 'workflow-marker'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '2'. Closes the span element for 'workflow-marker'. |
+| 215 | Defines a layout/content container. Defines emphasized text. Supplies the text content 'Prepare in R3 AMC'. Closes the strong element. |
+| 216 | Defines a paragraph or status-message container. Supplies the text content 'Sign in through the separate browser to continue.'. Closes the p element. |
+| 217 | Closes the div element. |
+| 218 | Closes the li element for 'step-prepare'. |
+| 219 | Defines a list item. Assigns ID 'step-review' for script, label, or accessibility references. Initializes data-state to 'waiting' for script-driven state and styling. Defines an inline text or icon container. Applies CSS classes 'workflow-marker'. Sets aria-hidden to 'true' for assistive-technology visibility. Supplies the text content '3'. Closes the span element for 'workflow-marker'. |
+| 220 | Defines a layout/content container. Defines emphasized text. Supplies the text content 'You review & submit'. Closes the strong element. |
+| 221 | Defines a paragraph or status-message container. Supplies the text content 'Check every field, make changes, and submit.'. Closes the p element. |
+| 222 | Closes the div element. |
+| 223 | Closes the li element for 'step-review'. |
+| 224 | Closes the ol element for 'workflow-list'. |
+| 225 | Defines a layout/content container. Assigns ID 'login-notice' for script, label, or accessibility references. Applies CSS classes 'review-notice'. Initially hides this element until application state calls for it. Defines emphasized text. Supplies the text content 'Use the separate R3 AMC browser.'. Closes the strong element. |
+| 226 | Defines a paragraph or status-message container. Supplies the text content 'Sign in and complete any CAPTCHA there. Preparation resumes automatically after you sign in.'. Closes the p element. |
+| 227 | Closes the div element for 'login-notice'. |
+| 228 | Defines a layout/content container. Assigns ID 'review-notice' for script, label, or accessibility references. Applies CSS classes 'review-notice'. Initially hides this element until application state calls for it. Defines emphasized text. Supplies the text content 'Continue in the R3 AMC browser.'. Closes the strong element. |
+| 229 | Defines a paragraph or status-message container. Supplies the text content 'Review all information and warnings before submitting. The browser stays open until you close it.'. Closes the p element. |
+| 230 | Closes the div element for 'review-notice'. |
+| 231 | Defines a layout/content container. Assigns ID 'job-warnings' for script, label, or accessibility references. Applies CSS classes 'job-warnings'. Initially hides this element until application state calls for it. Defines emphasized text. Supplies the text content 'Review notes'. Closes the strong element. |
+| 232 | Defines an unordered message list. Assigns ID 'warnings-list' for script, label, or accessibility references. Closes the ul element for 'warnings-list'. |
+| 233 | Closes the div element for 'job-warnings'. |
+| 234 | Defines a paragraph or status-message container. Assigns ID 'connection-message' for script, label, or accessibility references. Applies CSS classes 'connection-message'. Exposes the 'status' accessibility role. Initially hides this element until application state calls for it. Closes the p element for 'connection-message'. |
+| 235 | Defines an interactive button. Assigns ID 'reconnect-button' for script, label, or accessibility references. Applies CSS classes 'secondary-button'. Uses the 'button' control type. Initially hides this element until application state calls for it. Supplies the text content 'Reconnect'. Closes the button element for 'reconnect-button'. |
+| 236 | Closes the section element for 'status-card'. |
+| 237 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 238 | Defines a labeled content section. Applies CSS classes 'review-card'. Uses element 'review-heading' as the accessible section label. Defines an inline text or icon container. Applies CSS classes 'review-icon'. Sets aria-hidden to 'true' for assistive-technology visibility. Defines a scalable vector icon. |
+| 239 | Defines SVG coordinate bounds '0 0 24 24'. Sets SVG fill to 'none'. |
+| 240 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. |
+| 241 | Uses 'round' joins between SVG stroke segments. |
+| 242 | Defines a vector path in the current icon. Supplies the SVG path commands that draw this icon component. Sets the SVG stroke color to 'currentColor'. Sets SVG stroke width to 1.5 coordinate units. Uses 'round' caps on SVG stroke ends. |
+| 243 | Uses 'round' joins between SVG stroke segments. |
+| 244 | Closes the svg element. Closes the span element for 'review-icon'. |
+| 245 | Defines a third-level heading. Assigns ID 'review-heading' for script, label, or accessibility references. Supplies the text content 'The final say is yours.'. Closes the h3 element for 'review-heading'. |
+| 246 | Defines a paragraph or status-message container. Supplies the text content 'Appraisal Desk fills the form and hands it back to you. Only you can submit the order.'. Closes the p element. |
+| 247 | Defines a layout/content container. Applies CSS classes 'review-card-note'. Supplies the text content 'VA appraisals must be ordered through the VA portal. This workspace will stop if'. |
+| 248 | Supplies the text content 'a VA loan is identified.'. Closes the div element for 'review-card-note'. |
+| 249 | Closes the section element for 'review-card'. |
+| 250 | Defines a paragraph or status-message container. Applies CSS classes 'sidebar-footnote'. Supplies the text content 'One order at a time. Keep this page open while your documents are being processed.'. |
+| 251 | Closes the p element for 'sidebar-footnote'. |
+| 252 | Closes the aside element for 'sidebar'. |
+| 253 | Closes the div element for 'workspace-grid'. |
+| 254 | Defines the page footer. Applies CSS classes 'page-footer'. Defines an inline text or icon container. Supplies the text content 'Appraisal Desk'. Closes the span element. Supplies the text content 'Prepared with care. Reviewed by you.'. Closes the footer element for 'page-footer'. |
+| 255 | Closes the main element for 'page-shell'. |
+| 256 | Closes the body element. |
+| 257 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 258 | Closes the html element. |

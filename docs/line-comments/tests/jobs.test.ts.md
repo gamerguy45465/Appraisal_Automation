@@ -1,0 +1,203 @@
+# Line explanations: tests/jobs.test.ts
+
+Source: [tests/jobs.test.ts](../../../tests/jobs.test.ts). Numbers refer to the original file before comments were added.
+
+The source also contains these explanations as comments. Comments for lines inside literal strings or other protected syntax appear at the nearest safe boundary.
+
+| Original line | Explanation |
+| ---: | --- |
+| 1 | Import { EventEmitter } from "node:events" for these regression tests. |
+| 2 | Import { fork, type ChildProcess } from "node:child_process" for these regression tests. |
+| 3 | Import { afterEach, beforeEach, describe, expect, it, vi } from "vitest" for these regression tests. |
+| 4 | Import { createJobRunner, type JobRunner } from "../src/jobs.js" for these regression tests. |
+| 5 | Import { DEFAULT_MODEL, type JobPayload, type WorkerUpdate } from "../src/domain.js" for these regression tests. |
+| 6 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 7 | Mock node:child_process so fork is a spy-controlled function and the lifecycle tests create no real worker process. |
+| 8 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 9 | Define synthetic class `FakeWorker` with extends EventEmitter for the test fixture. |
+| 10 | Declare class field `kill` initialized to the result of `vi.fn` using a callback that returns true. |
+| 11 | Declare class field `transferredUrla` for assignment later. |
+| 12 | Declare class field `transferredContract` for assignment later. |
+| 13 | Declare class field `controls` initialized to an empty array. |
+| 14 | Declare class field `transferCallback` for assignment later. |
+| 15 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 16 | Define fixture method `send` with parameters payload, callback. |
+| 17 | For stop-control payloads, record the control type, call the IPC callback with null to signal success, and return true without copying document buffers. |
+| 18 | Existing comment: IPC serialization makes the child's own copy before the send callback runs. |
+| 19 | Assign the result of `Buffer.from` using `payload.urla.buffer` to `this.transferredUrla`. |
+| 20 | Assign `payload.salesContract` and the result of `Buffer.from` using `payload.salesContract.buffer` to `this.transferredContract`. |
+| 21 | Assign `callback` to `this.transferCallback`. |
+| 22 | Return true to the caller. |
+| 23 | Close the callback or control-flow body for `send` and finish the surrounding syntax. |
+| 24 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 25 | Define finishTransfer to invoke the saved IPC callback when present, using null by default for successful transfer or the supplied error for failure. |
+| 26 | Define update to emit a typed synthetic status IPC message with the chosen status and a matching public message. |
+| 27 | Define close to emit a successful child-close event with exit code zero and no terminating signal. |
+| 28 | Finish the surrounding expression and delimiters. |
+| 29 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 30 | Define helper `syntheticPayload` with no parameters for the fixture operations below. |
+| 31 | Return an object whose fields are defined below to the caller. |
+| 32 | Set fixture property `input` to an object whose fields are defined below. |
+| 33 | Set fixture property `loanNumber` to "685-2012345". Set fixture property `fhaCaseNumber` to "". Set fixture property `paymentMethod` to "Invoice". Set fixture property `rushOrder` to false. Set fixture property `model` to `DEFAULT_MODEL`. |
+| 34 | Set fixture property `urla` to an object containing name: "urla.pdf", buffer: the result of `Buffer.from` using "%PDF-1.7 synthetic URLA". |
+| 35 | Set fixture property `salesContract` to an object containing name: "sales-contract.pdf", buffer: the result of `Buffer.from` using "%PDF-1.7 synthetic contract". |
+| 36 | Close the fixture object and finish the surrounding syntax. |
+| 37 | Close the callback or control-flow body for `syntheticPayload` and finish the surrounding syntax. |
+| 38 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 39 | Group regression tests for "isolated job process lifecycle". |
+| 40 | Declare `runner` for assignment later. |
+| 41 | Declare `children` for assignment later. |
+| 42 | Run this setup before every test in the group. |
+| 43 | Replace real timers with controllable test timers. |
+| 44 | Assign an empty array to `children`. |
+| 45 | Configure mock `vi.mocked(fork).mockReset()` to run a callback whose body follows. |
+| 46 | Declare `child` as a new `FakeWorker` instance. |
+| 47 | Append `child` to `children` for later inspection. |
+| 48 | Return `child` to the caller. |
+| 49 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 50 | Assign the result of `createJobRunner` with no arguments to `runner`. |
+| 51 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 52 | Run this cleanup after every test in the group. |
+| 53 | Call `runner.shutdown` without arguments. |
+| 54 | Discard pending fake timers. |
+| 55 | Restore real timer behavior. |
+| 56 | Restore all temporarily replaced environment variables. |
+| 57 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 58 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 59 | Register a test that "scopes job access to its session and keeps the active slot until the review browser closes". |
+| 60 | Declare `job` as the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments. |
+| 61 | Declare `child` as `children[0]`. |
+| 62 | Call `child.finishTransfer` without arguments. |
+| 63 | Assert that `runner.get('owner-a', job.id)?.status` strictly equals "queued". |
+| 64 | Assert that the result of `runner.get` using "owner-b", `job.id` is undefined. |
+| 65 | Assert that `runner.getActive?.('owner-a')?.id` strictly equals `job.id`. |
+| 66 | Assert that the result of `runner.getActive` using "owner-b" is undefined. |
+| 67 | Assert that a callback that returns the result of `runner.create` using "owner-b", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: "JOB_ACTIVE". |
+| 68 | Call `child.update` with "awaiting_review". |
+| 69 | Call `vi.advanceTimersByTime` with 60 times 60 times 1000. |
+| 70 | Assert that `child.kill` does not satisfy: was called. |
+| 71 | Call `child.update` with "user_submitted". |
+| 72 | Assert that `runner.getActive?.('owner-a')?.status` strictly equals "user_submitted". |
+| 73 | Assert that a callback that returns the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: "JOB_ACTIVE". |
+| 74 | Call `child.update` with "browser_closed". |
+| 75 | Close `child` and release its test resources. |
+| 76 | Assert that the result of `runner.getActive` using "owner-a" is undefined. |
+| 77 | Assert that `runner.create('owner-b', syntheticPayload()).status` strictly equals "queued". |
+| 78 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 79 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 80 | Register a test that "recovers from a failed spawn when close occurs without an exit event". |
+| 81 | Declare `job` as the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments. |
+| 82 | Declare `child` as `children[0]`. |
+| 83 | Call `child.finishTransfer` with a new `Error` instance initialized with "Synthetic transport failure". |
+| 84 | Call `child.emit` with "error", a new `Error` instance initialized with "Synthetic spawn failure with internal details". |
+| 85 | Close `child` and release its test resources. |
+| 86 | Assert that the result of `runner.get` using "owner-a", `job.id` contains the expected object fields an object containing status: "failed", message: "The Windows preparation worker could not start.". |
+| 87 | Assert that the result of `runner.getActive` using "owner-a" is undefined. |
+| 88 | Assert that a callback that returns the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments does not satisfy: throws an error. |
+| 89 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 90 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 91 | Register a parameterized test that "wipes parent PDF buffers after IPC callback (transfer failed: %s)". |
+| 92 | Declare `payload` as the result of `syntheticPayload` with no arguments. |
+| 93 | Declare `expectedUrla` as the result of `Buffer.from` using `payload.urla.buffer`. |
+| 94 | Declare `expectedContract` as the result of `Buffer.from` using `payload.salesContract!.buffer`. |
+| 95 | Declare `job` as the result of `runner.create` using "owner-a", `payload`. |
+| 96 | Declare `child` as `children[0]`. |
+| 97 | Assert that `payload.urla.buffer` deeply equals `expectedUrla`. |
+| 98 | Complete the synthetic IPC transfer with an Error in the failure case or null to indicate success, triggering the parent-buffer cleanup callback. |
+| 99 | Assert every byte in the parent URLA buffer is zero after IPC transfer completion. |
+| 100 | Assert every byte in the parent sales-contract buffer is zero after IPC transfer completion. |
+| 101 | Assert that `child.transferredUrla` deeply equals `expectedUrla`. |
+| 102 | Assert that `child.transferredContract` deeply equals `expectedContract`. |
+| 103 | Run the following branch when `failed`. |
+| 104 | Assert that `child.kill` was called exactly once. |
+| 105 | Assert that `runner.get('owner-a', job.id)?.status` strictly equals "failed". |
+| 106 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 107 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 108 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 109 | Register a test that "asks stalled preparation to stop without killing its review browser or releasing its slot". |
+| 110 | Declare `job` as the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments. |
+| 111 | Declare `child` as `children[0]`. |
+| 112 | Call `child.finishTransfer` without arguments. |
+| 113 | Call `vi.advanceTimersByTime` with 12 times 60 times 1000. |
+| 114 | Assert that `child.kill` does not satisfy: was called. |
+| 115 | Assert that `child.controls` deeply equals an array containing "stop_preparation". |
+| 116 | Assert that `runner.get('owner-a', job.id)?.message` contains "keeping the R3 browser open". |
+| 117 | Assert that a callback that returns the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: "JOB_ACTIVE". |
+| 118 | Call `child.update` with "awaiting_review". |
+| 119 | Call `vi.advanceTimersByTime` with 6 times 60 times 60 times 1000. |
+| 120 | Assert that `child.kill` does not satisfy: was called. |
+| 121 | Assert that `runner.getActive?.('owner-a')?.status` strictly equals "awaiting_review". |
+| 122 | Assert that the result of `runner.getActive` using "owner-b" is undefined. |
+| 123 | Call `child.update` with "browser_closed". |
+| 124 | Close `child` and release its test resources. |
+| 125 | Assert that a callback that returns the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments does not satisfy: throws an error. |
+| 126 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 127 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 128 | Register a test that "keeps a long manual sign-in wait active and recoverable only by its owning session". |
+| 129 | Declare `job` as the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments. |
+| 130 | Declare `child` as `children[0]`. |
+| 131 | Call `child.finishTransfer` without arguments. |
+| 132 | Call `child.update` with "awaiting_login". |
+| 133 | Call `vi.advanceTimersByTime` with 6 times 60 times 60 times 1000. |
+| 134 | Assert that `child.kill` does not satisfy: was called. |
+| 135 | Assert that `runner.get('owner-a', job.id)?.status` strictly equals "awaiting_login". |
+| 136 | Assert that the result of `runner.getActive` using "owner-a" contains the expected object fields an object containing id: `job.id`, status: "awaiting_login". |
+| 137 | Assert that the result of `runner.get` using "owner-b", `job.id` is undefined. |
+| 138 | Assert that the result of `runner.getActive` using "owner-b" is undefined. |
+| 139 | Assert that a callback that returns the result of `runner.create` using "owner-b", the result of `syntheticPayload` with no arguments throws an error matching the result of `expect.objectContaining` using an object containing code: "JOB_ACTIVE". |
+| 140 | Call `child.update` with "browser_closed". |
+| 141 | Close `child` and release its test resources. |
+| 142 | Assert that the result of `runner.getActive` using "owner-a" is undefined. |
+| 143 | Assert that a callback that returns the result of `runner.create` using "owner-b", the result of `syntheticPayload` with no arguments does not satisfy: throws an error. |
+| 144 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 145 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 146 | Register a test that "resumes the remaining preparation budget after manual sign-in completes". |
+| 147 | Declare `job` as the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments. |
+| 148 | Declare `child` as `children[0]`. |
+| 149 | Call `child.finishTransfer` without arguments. |
+| 150 | Call `vi.advanceTimersByTime` with 2 times 60 times 1000. |
+| 151 | Call `child.update` with "awaiting_login". |
+| 152 | Call `vi.advanceTimersByTime` with 60 times 60 times 1000. |
+| 153 | Call `child.update` with "preparing". |
+| 154 | Call `vi.advanceTimersByTime` with 10 times 60 times 1000 minus 1. |
+| 155 | Assert that `child.kill` does not satisfy: was called. |
+| 156 | Assert that `runner.get('owner-a', job.id)?.status` strictly equals "preparing". |
+| 157 | Call `vi.advanceTimersByTime` with 1. |
+| 158 | Assert that `child.kill` does not satisfy: was called. |
+| 159 | Assert that `child.controls` deeply equals an array containing "stop_preparation". |
+| 160 | Assert that `runner.get('owner-a', job.id)?.status` strictly equals "preparing". |
+| 161 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 162 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 163 | Register a parameterized test that "disarms the resumed watchdog on %s". |
+| 164 | Declare `job` as the result of `runner.create` using "owner-a", the result of `syntheticPayload` with no arguments. |
+| 165 | Declare `child` as `children[0]`. |
+| 166 | Call `child.finishTransfer` without arguments. |
+| 167 | Call `child.update` with "awaiting_login". |
+| 168 | Call `vi.advanceTimersByTime` with 60 times 60 times 1000. |
+| 169 | Call `child.update` with "preparing". |
+| 170 | Call `vi.advanceTimersByTime` with 60 times 1000. |
+| 171 | Call `child.update` with `status`. |
+| 172 | Call `vi.advanceTimersByTime` with 60 times 60 times 1000. |
+| 173 | Assert that `child.kill` does not satisfy: was called. |
+| 174 | Assert that `runner.get('owner-a', job.id)?.status` strictly equals `status`. |
+| 175 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 176 | Blank line separating the surrounding declarations, statements, or document blocks. |
+| 177 | Register a test that "starts workers without inherited API credentials, tracing, proxies, or Node preload hooks". |
+| 178 | Declare `excludedNames` as the result of `[ 'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'APPRAISAL_AI_API_KEY', 'R3_PASSWORD', 'LANGSMITH_API_KEY', 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGL...` using a callback that returns an array containing `name`, the result of `name.toLowerCase` with no arguments. |
+| 179 | Include 'OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'APPRAISAL_AI_API_KEY', 'R3_PASSWORD', 'LANGSMITH_API_KEY' in the names that the isolated process must not inherit. |
+| 180 | Include 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_CLOUD_CREDENTIALS', 'GOOGLE_GENAI_USE_VERTEXAI' in the names that the isolated process must not inherit. |
+| 181 | Include 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'GOOGLE_CLOUD_LOCATION', 'GOOGLE_BASE_URL', 'GEMINI_BASE_URL' in the names that the isolated process must not inherit. |
+| 182 | Include 'GOOGLE_API_BASE_URL', 'GOOGLE_GENAI_BASE_URL', 'GOOGLE_GENAI_API_ENDPOINT', 'GOOGLE_VERTEX_AI_ENDPOINT' in the names that the isolated process must not inherit. |
+| 183 | Include 'XAI_API_KEY', 'GROK_API_KEY', 'XAI_BASE_URL', 'XAI_API_BASE', 'XAI_API_BASE_URL', 'GROK_BASE_URL' in the names that the isolated process must not inherit. |
+| 184 | Include 'XAI_API_HOST', 'XAI_API_ENDPOINT', 'XAI_TRACING', 'XAI_TRACE_API_KEY', 'GROK_API_ENDPOINT' in the names that the isolated process must not inherit. |
+| 185 | Include 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'NODE_OPTIONS' in the names that the isolated process must not inherit. |
+| 186 | Expand each disallowed environment-variable name into its original and lowercase spellings to test case-insensitive isolation. |
+| 187 | Set every excluded environment name, including each tested case variant, to a synthetic marker that must not reach the isolated worker. |
+| 188 | Call `runner.create` with "owner-a", the result of `syntheticPayload` with no arguments. |
+| 189 | Declare `options` as `vi.mocked(fork).mock.calls[0]?.[2]`. |
+| 190 | Assert that `options` contains the expected object fields an object containing windowsHide: true, serialization: "advanced", stdio: an array containing "ignore", "ignore", "ignore", "ipc". |
+| 191 | Assert that the fork options omit every excluded environment variable and case variant. |
+| 192 | Assert that `options?.env?.LANGSMITH_TRACING` strictly equals "false". |
+| 193 | Assert that `options?.env?.LANGCHAIN_TRACING_V2` strictly equals "false". |
+| 194 | Close the callback or control-flow body and finish the surrounding syntax. |
+| 195 | Close the callback or control-flow body and finish the surrounding syntax. |
