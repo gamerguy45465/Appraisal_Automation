@@ -1,0 +1,234 @@
+{
+  "originalSha256": "88b0f8d6e03a129d4c9cd67adf484f7a6a12e9cfc07ed2c329416ee923348a7d",
+  "annotatedSha256": "eb9acec0bbc551edd35e34cc19aae1e1c4c907ed453af3725120265101cdd607",
+  "additions": [
+    {
+      "offset": 0,
+      "text": "// [L1] Imports Playwright's Chromium browser launcher.\n"
+    },
+    {
+      "offset": 95,
+      "text": "// [L2] Imports the compiled guarded-browser-session factory used by the application.\n"
+    },
+    {
+      "offset": 251,
+      "text": "// [L3] Imports the compiled environment-filtering helper used when launching Chromium.\n"
+    },
+    {
+      "offset": 409,
+      "text": "// [L4] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 502,
+      "text": "// [L5] Documents that login diagnostics must omit form values, headers, bodies, and query values.\n"
+    },
+    {
+      "offset": 690,
+      "text": "// [L6] Defines a URL summarizer that retains origin, pathname, and query parameter names without query values.\n"
+    },
+    {
+      "offset": 832,
+      "text": "  // [L7] Attempts to parse the supplied URL while permitting invalid input to be summarized safely.\n"
+    },
+    {
+      "offset": 941,
+      "text": "    // [L8] Parses the supplied string with the URL constructor.\n"
+    },
+    {
+      "offset": 1038,
+      "text": "    // [L9] Returns the URL origin, path, and unique query parameter names, omitting parameter values.\n"
+    },
+    {
+      "offset": 1246,
+      "text": "  // [L10] Returns an invalidUrl marker when URL parsing fails.\n"
+    },
+    {
+      "offset": 1353,
+      "text": "// [L11] Ends the URL-summary helper.\n"
+    },
+    {
+      "offset": 1393,
+      "text": "// [L12] Defines a reporter that emits one JSON object containing the event name and supplied details.\n"
+    },
+    {
+      "offset": 1585,
+      "text": "// [L13] Blank line separating the surrounding declarations, statements, or document blocks.\n"
+    },
+    {
+      "offset": 1679,
+      "text": "// [L14] Launches a visible Chromium browser with the application-filtered process environment.\n"
+    },
+    {
+      "offset": 1873,
+      "text": "// [L15] Creates a 1440-by-1000 context that blocks service workers and does not accept downloads.\n"
+    },
+    {
+      "offset": 2108,
+      "text": "// [L16] Creates the browser page used for manual sign-in diagnostics.\n"
+    },
+    {
+      "offset": 2217,
+      "text": "// [L17] Preserves the bound original CDP-session factory before wrapping it for instrumentation.\n"
+    },
+    {
+      "offset": 2376,
+      "text": "// [L18] Replaces the CDP-session factory with an instrumented asynchronous wrapper.\n"
+    },
+    {
+      "offset": 2505,
+      "text": "  // [L19] Creates the real Chrome DevTools Protocol session for the requested target.\n"
+    },
+    {
+      "offset": 2637,
+      "text": "  // [L20] Creates a per-CDP-session map linking paused redirect request IDs to sanitized diagnostic details.\n"
+    },
+    {
+      "offset": 2778,
+      "text": "  // [L21] Observes Fetch.requestPaused events without deciding whether the guarded request should proceed.\n"
+    },
+    {
+      "offset": 2931,
+      "text": "    // [L22] Reads the paused response's status code, defaulting to zero when absent.\n"
+    },
+    {
+      "offset": 3067,
+      "text": "    // [L23] Ignores events outside the HTTP 300-399 redirect-status range.\n"
+    },
+    {
+      "offset": 3190,
+      "text": "    // [L24] Finds the Location header case-insensitively and reads its value when present.\n"
+    },
+    {
+      "offset": 3391,
+      "text": "    // [L25] Ignores redirect-status responses without a Location header.\n"
+    },
+    {
+      "offset": 3492,
+      "text": "    // [L26] Starts a diagnostic object describing the redirect without exposing query parameter values.\n"
+    },
+    {
+      "offset": 3619,
+      "text": "      // [L27] Records the redirect's HTTP status, request method, and resource type.\n"
+    },
+    {
+      "offset": 3783,
+      "text": "      // [L28] Summarizes source and destination URLs, resolving a relative Location against the source URL.\n"
+    },
+    {
+      "offset": 3996,
+      "text": "    // [L29] Completes the redirect-details object.\n"
+    },
+    {
+      "offset": 4055,
+      "text": "    // [L30] Associates the sanitized redirect details with the paused request ID.\n"
+    },
+    {
+      "offset": 4183,
+      "text": "    // [L31] Emits the redirect diagnostic event.\n"
+    },
+    {
+      "offset": 4266,
+      "text": "  // [L32] Ends and registers the paused-request listener.\n"
+    },
+    {
+      "offset": 4331,
+      "text": "  // [L33] Preserves the CDP session's bound send method before adding diagnostic reporting.\n"
+    },
+    {
+      "offset": 4467,
+      "text": "  // [L34] Wraps CDP send so guard-triggered request failures can be reported.\n"
+    },
+    {
+      "offset": 4587,
+      "text": "    // [L35] Reports Fetch.failRequest calls with saved redirect details or the protocol's failure reason.\n"
+    },
+    {
+      "offset": 4835,
+      "text": "    // [L36] Forwards the CDP command and parameters to the original send method unchanged.\n"
+    },
+    {
+      "offset": 4968,
+      "text": "  // [L37] Ends the wrapped CDP send implementation.\n"
+    },
+    {
+      "offset": 5026,
+      "text": "  // [L38] Returns the instrumented CDP session to its caller.\n"
+    },
+    {
+      "offset": 5103,
+      "text": "// [L39] Ends the instrumented CDP-session factory assignment.\n"
+    },
+    {
+      "offset": 5169,
+      "text": "// [L40] Observes page requests that fail.\n"
+    },
+    {
+      "offset": 5250,
+      "text": "  // [L41] Reports only navigation-request failures with method, sanitized URL, and Playwright's failure text.\n"
+    },
+    {
+      "offset": 5527,
+      "text": "// [L42] Ends and registers the failed-request listener.\n"
+    },
+    {
+      "offset": 5588,
+      "text": "// [L43] Creates the application's guarded session around the diagnostic browser, context, and page.\n"
+    },
+    {
+      "offset": 5758,
+      "text": "  // [L44] Reports session status updates as structured diagnostic events.\n"
+    },
+    {
+      "offset": 5887,
+      "text": "// [L45] Completes guarded-session creation with the status callback.\n"
+    },
+    {
+      "offset": 5961,
+      "text": "// [L46] Closes the guarded session asynchronously when the process receives Ctrl+C/SIGINT.\n"
+    },
+    {
+      "offset": 6108,
+      "text": "// [L47] Starts a 15-minute timer that reports expiration and requests session closure.\n"
+    },
+    {
+      "offset": 6308,
+      "text": "// [L48] Begins waiting for manual login under diagnostic error handling.\n"
+    },
+    {
+      "offset": 6388,
+      "text": "  // [L49] Waits for the user to complete sign-in through the guarded browser session.\n"
+    },
+    {
+      "offset": 6511,
+      "text": "  // [L50] Reports successful login with the sanitized destination and explicitly records that order preparation has not started.\n"
+    },
+    {
+      "offset": 6738,
+      "text": "  // [L51] Keeps diagnostics alive until the guarded browser session closes.\n"
+    },
+    {
+      "offset": 6850,
+      "text": "// [L52] Handles a login-wait or browser-session termination error.\n"
+    },
+    {
+      "offset": 6936,
+      "text": "  // [L53] Reports the error's string code when available, otherwise BROWSER_CLOSED.\n"
+    },
+    {
+      "offset": 7129,
+      "text": "// [L54] Begins cleanup that executes after success or failure.\n"
+    },
+    {
+      "offset": 7205,
+      "text": "  // [L55] Cancels the diagnostic deadline timer.\n"
+    },
+    {
+      "offset": 7281,
+      "text": "  // [L56] Awaits guarded-session closure to release browser resources.\n"
+    },
+    {
+      "offset": 7378,
+      "text": "// [L57] Ends diagnostic cleanup.\n"
+    }
+  ]
+}

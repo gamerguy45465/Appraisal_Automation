@@ -1,0 +1,53 @@
+- generic [ref=f7e2]:
+  - generic [ref=f7e6]:
+    - link [ref=f7e8] [cursor=pointer]:
+      - /url: /
+      - img "R3 Appraisal Management, LLC" [ref=f7e9]
+    - heading "Acuity Client Portal" [level=4] [ref=f7e11]
+  - generic [ref=f7e16]:
+    - generic [ref=f7e17]:
+      - generic [ref=f7e18]: "User Name:"
+      - generic [ref=f7e20]:
+        - generic [ref=f7e21]: 
+        - textbox "User Name:" [active] [ref=f7e23]:
+          - /placeholder: UserName
+    - generic [ref=f7e24]:
+      - generic [ref=f7e25]: "Password:"
+      - generic [ref=f7e27]:
+        - generic [ref=f7e28]: 
+        - textbox "Password:" [ref=f7e30]:
+          - /placeholder: Password
+    - button "Login" [ref=f7e33] [cursor=pointer]
+    - link "Forgot password?" [ref=f7e36] [cursor=pointer]:
+      - /url: /Account/ForgotPassword
+  - contentinfo [ref=f7e37]:
+    - generic [ref=f7e39]:
+      - generic [ref=f7e40]:
+        - generic [ref=f7e41]: About R3 Appraisal Management, LLC
+        - paragraph [ref=f7e43]: Setting the industry bar for Compliant Agent communications!
+      - generic [ref=f7e44]:
+        - generic [ref=f7e45]: Contact Info
+        - list [ref=f7e48]:
+          - listitem [ref=f7e49]:
+            - table [ref=f7e50]:
+              - rowgroup [ref=f7e51]:
+                - row [ref=f7e52]:
+                  - cell " Address:" [ref=f7e53]:
+                    - generic [ref=f7e54]: 
+                    - strong [ref=f7e55]: "Address:"
+                  - 'cell "9053 S Pecos #2910, Henderson, NV, 89074" [ref=f7e56]': "9053 S Pecos #2910,Henderson, NV, 89074"
+          - listitem [ref=f7e57]:
+            - generic [ref=f7e58]: 
+            - strong [ref=f7e59]: "Telephone:"
+            - text: 702 658-1191
+          - listitem [ref=f7e60]:
+            - generic [ref=f7e61]: ✉
+            - strong [ref=f7e62]: "E-mail:"
+            - link "orders@r3amc.com" [ref=f7e63] [cursor=pointer]:
+              - /url: mailto:orders@r3amc.com
+          - listitem [ref=f7e64]:
+            - generic [ref=f7e65]: 
+            - strong [ref=f7e66]: "Website:"
+            - link "www.R3amc.com" [ref=f7e67] [cursor=pointer]:
+              - /url: http://www.R3amc.com
+    - generic [ref=f7e68]: Copyright © 2008-2026 ClearValue Consulting Inc./ All Rights Reserved / 6.5

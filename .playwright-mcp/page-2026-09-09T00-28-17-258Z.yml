@@ -1,0 +1,370 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link "orders@r3amc.com" [ref=e10] [cursor=pointer]:
+            - /url: mailto:orders@r3amc.com
+        - listitem [ref=e15]:
+          - link "702 658-1191" [ref=e16] [cursor=pointer]:
+            - /url: tel:702%20658-1191
+      - link "Linkedin" [ref=e25] [cursor=pointer]:
+        - /url: https://www.linkedin.com/in/brent-jones-90918595/
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - link [ref=e33] [cursor=pointer]:
+          - /url: https://r3amc.com
+        - navigation [ref=e36]:
+          - list [ref=e38]:
+            - listitem [ref=e39]:
+              - link "Home" [ref=e40] [cursor=pointer]:
+                - /url: https://r3amc.com/
+            - listitem [ref=e41]:
+              - link "About Us" [ref=e42] [cursor=pointer]:
+                - /url: https://r3amc.com/about-us/
+            - listitem [ref=e43]:
+              - link "Services" [ref=e44] [cursor=pointer]:
+                - /url: https://r3amc.com/our-services/
+            - listitem [ref=e45]:
+              - link "Appraisers" [ref=e46] [cursor=pointer]:
+                - /url: https://r3amc.com/appraisers/
+            - listitem [ref=e47]:
+              - link "AI Appraisal Assistant" [ref=e48] [cursor=pointer]:
+                - /url: https://www.valuetest.ai/ai-appraisal-assistant
+            - listitem [ref=e49]:
+              - link "Press" [ref=e50] [cursor=pointer]:
+                - /url: "#"
+                - text: Press
+                - generic [aria-hidden] [ref=e51]: 
+            - listitem [ref=e52]:
+              - link "Blogs" [ref=e53] [cursor=pointer]:
+                - /url: https://r3amc.com/blog/
+            - listitem [ref=e54]:
+              - link "Contact" [ref=e55] [cursor=pointer]:
+                - /url: https://r3amc.com/contact-us/
+      - navigation "Menu" [ref=e58]:
+        - list [ref=e59]:
+          - listitem [ref=e60]:
+            - link "Log In" [ref=e61] [cursor=pointer]:
+              - /url: https://clients.r3amc.com/Login.aspx?ReturnUrl=%2F
+  - generic [ref=e63]:
+    - generic [ref=e65]:
+      - region "Carousel" [ref=e66]:
+        - generic [ref=e67]:
+          - group [aria-hidden] [ref=e68]:
+            - generic [ref=e72]:
+              - paragraph [ref=e74]: R3 AMC integrates ValueTest.ai research reports to support quality control and Reconsiderations of Value, improving accuracy and productivity while supporting appraisal independence.
+              - link [ref=e78] [cursor=pointer]:
+                - /url: https://r3amc.com/appraisers/
+                - generic [ref=e79]:
+                  - generic [aria-hidden] [ref=e81]: 
+                  - generic [ref=e82]: Our Technology
+          - group "1 / 4" [ref=e84]:
+            - generic [ref=e88]:
+              - heading "R3 AMC - Appraisal Management Company" [level=1] [ref=e90]
+              - paragraph [ref=e92]: R3 AMC is a full-service Appraisal Management Company headquartered in Henderson, Nevada. Founded in 2015 by Brent Jones, former Fannie Mae senior analyst, we provide residential appraisal management, private appraisals for homeowners, and Listing Agent Engage™ marketing tools to mortgage lenders and consumers nationwide.
+              - generic [ref=e93]: "We were founded by practicing appraisers to be an AMC we would actually want to work for. Our commitment: respect, fair fees, and open communication."
+              - generic [ref=e95]:
+                - link "Lender Inquiries" [ref=e97] [cursor=pointer]:
+                  - /url: https://r3amc.com/contact-us/
+                  - generic [ref=e98]:
+                    - generic [aria-hidden] [ref=e100]: 
+                    - generic [ref=e101]: Lender Inquiries
+                - link "AMC for Lenders" [ref=e103] [cursor=pointer]:
+                  - /url: /amc-for-lenders
+          - group [aria-hidden] [ref=e107]:
+            - generic [ref=e111]:
+              - paragraph [ref=e113]: 50-state appraisal management services focused on mortgage collateral assignments, built to never miss delivery, contingency, or closing dates.
+              - generic [ref=e115]:
+                - link [ref=e117] [cursor=pointer]:
+                  - /url: https://r3amc.com/contact-us/
+                  - generic [ref=e118]:
+                    - generic [aria-hidden] [ref=e120]: 
+                    - generic [ref=e121]: Lender Inquiries
+                - link [ref=e123] [cursor=pointer]:
+                  - /url: /amc-for-lenders
+                  - generic [ref=e124]: AMC for Lenders
+          - group [aria-hidden] [ref=e127]:
+            - generic [ref=e131]:
+              - paragraph [ref=e133]: Residential consumer appraisals across the Las Vegas Valley for legal, accounting, estate, tax, and private valuation needs, delivered on time and backed by decades of experience.
+              - link [ref=e137] [cursor=pointer]:
+                - /url: https://r3amc.com/contact-us/
+                - generic [ref=e138]:
+                  - generic [aria-hidden] [ref=e140]: 
+                  - generic [ref=e141]: Order an Appraisal
+          - group [aria-hidden] [ref=e143]:
+            - generic [ref=e147]:
+              - paragraph [ref=e149]: R3 AMC integrates ValueTest.ai research reports to support quality control and Reconsiderations of Value, improving accuracy and productivity while supporting appraisal independence.
+              - link [ref=e153] [cursor=pointer]:
+                - /url: https://r3amc.com/appraisers/
+                - generic [ref=e154]:
+                  - generic [aria-hidden] [ref=e156]: 
+                  - generic [ref=e157]: Our Technology
+          - group [aria-hidden] [ref=e159]:
+            - generic [ref=e163]:
+              - paragraph [ref=e165]: R3 AMC is a full-service Appraisal Management Company headquartered in Henderson, Nevada. Founded in 2015 by Brent Jones, former Fannie Mae senior analyst, we provide residential appraisal management, private appraisals for homeowners, and Listing Agent Engage™ marketing tools to mortgage lenders and consumers nationwide.
+              - generic [ref=e166]: "We were founded by practicing appraisers to be an AMC we would actually want to work for. Our commitment: respect, fair fees, and open communication."
+              - generic [ref=e168]:
+                - link [ref=e170] [cursor=pointer]:
+                  - /url: https://r3amc.com/contact-us/
+                  - generic [ref=e171]:
+                    - generic [aria-hidden] [ref=e173]: 
+                    - generic [ref=e174]: Lender Inquiries
+                - link [ref=e176] [cursor=pointer]:
+                  - /url: /amc-for-lenders
+                  - generic [ref=e177]: AMC for Lenders
+      - button "Previous slide" [ref=e180] [cursor=pointer]
+      - button "Next slide" [ref=e183] [cursor=pointer]
+    - generic [ref=e186]: R3 AMC (R3 Appraisal Management Company) is a full-service Appraisal Management Company headquartered in Henderson, Nevada, providing residential appraisal management, private appraisals, compliance solutions, and loan officer marketing tools to mortgage lenders and consumers nationwide. Founded in 2015 by Brent Jones, former Fannie Mae senior analyst with over 30 years of appraisal experience, R3 AMC serves lenders with Listing Agent Engage marketing services and AIR/Dodd-Frank compliant appraisal coordination. R3 AMC also accepts private appraisal inquiries directly from homeowners and consumers. The company differentiates itself as an AMC founded by practicing appraisers, committed to fair fees, open communication, and helping loan officers strengthen referral relationships.
+    - paragraph [ref=e213]: Whether a local assignment in Las Vegas or throughout the country, we can assist.
+    - generic [ref=e226]:
+      - generic [ref=e227]:
+        - paragraph [ref=e228]: Clients come to R3 AMC frustrated by late appraisals, shifting contacts within AMCs, revision delays, and a lack of urgency. We were built to solve those problems.
+        - paragraph [ref=e229]: Our principals bring more than 60 years of combined appraisal experience, including leadership from Brent Jones, a noted appraisal educator and former Senior Analyst covering the western United States for Fannie Mae.
+        - paragraph [ref=e230]: We balance appraisal independence requirements with proactive communication and technology-supported workflows that keep transactions moving.
+      - generic [ref=e231]: Nevada’s Largest Appraisal Company
+      - paragraph [ref=e233]: 50-State AMC Licensing Footprint
+      - generic [ref=e234]: 500 Active Appraisers, 20,000+ in Database
+      - generic [ref=e235]: 13,000+ Appraisals Completed This Year
+      - generic [ref=e236]: Average 5 Business Day Turnaround
+    - generic [ref=e245]:
+      - group "2 / 3" [ref=e246]:
+        - generic [ref=e248]:
+          - list [ref=e250]:
+            - listitem [ref=e251]
+            - listitem [ref=e252]
+            - listitem [ref=e253]
+            - listitem [ref=e254]
+            - listitem [ref=e255]
+          - paragraph [ref=e257]: Consistent communication and fewer revisions than other AMCs.
+          - generic [ref=e261]:
+            - strong
+            - text: Loan Officer
+      - group "3 / 3" [ref=e262]:
+        - generic [ref=e264]:
+          - list [ref=e266]:
+            - listitem [ref=e267]
+            - listitem [ref=e268]
+            - listitem [ref=e269]
+            - listitem [ref=e270]
+            - listitem [ref=e271]
+          - paragraph [ref=e273]: They understand both compliance and urgency.
+          - generic [ref=e277]:
+            - strong
+            - text: Managing Attorney
+      - group "1 / 3" [ref=e278]:
+        - generic [ref=e280]:
+          - list [ref=e282]:
+            - listitem [ref=e283]
+            - listitem [ref=e284]
+            - listitem [ref=e285]
+            - listitem [ref=e286]
+            - listitem [ref=e287]
+          - paragraph [ref=e289]: Deadlines are treated as non-negotiable.
+          - generic [ref=e293]:
+            - strong
+            - text: Mortgage Operations Executive
+      - group "2 / 3" [ref=e294]:
+        - generic [ref=e296]:
+          - list [ref=e298]:
+            - listitem [ref=e299]
+            - listitem [ref=e300]
+            - listitem [ref=e301]
+            - listitem [ref=e302]
+            - listitem [ref=e303]
+          - paragraph [ref=e305]: Consistent communication and fewer revisions than other AMCs.
+          - generic [ref=e309]:
+            - strong
+            - text: Loan Officer
+      - group "3 / 3" [ref=e310]:
+        - generic [ref=e312]:
+          - list [ref=e314]:
+            - listitem [ref=e315]
+            - listitem [ref=e316]
+            - listitem [ref=e317]
+            - listitem [ref=e318]
+            - listitem [ref=e319]
+          - paragraph [ref=e321]: They understand both compliance and urgency.
+          - generic [ref=e325]:
+            - strong
+            - text: Managing Attorney
+      - group "1 / 3" [ref=e326]:
+        - generic [ref=e328]:
+          - list [ref=e330]:
+            - listitem [ref=e331]
+            - listitem [ref=e332]
+            - listitem [ref=e333]
+            - listitem [ref=e334]
+            - listitem [ref=e335]
+          - paragraph [ref=e337]: Deadlines are treated as non-negotiable.
+          - generic [ref=e341]:
+            - strong
+            - text: Mortgage Operations Executive
+      - group "2 / 3" [ref=e342]:
+        - generic [ref=e344]:
+          - list [ref=e346]:
+            - listitem [ref=e347]
+            - listitem [ref=e348]
+            - listitem [ref=e349]
+            - listitem [ref=e350]
+            - listitem [ref=e351]
+          - paragraph [ref=e353]: Consistent communication and fewer revisions than other AMCs.
+          - generic [ref=e357]:
+            - strong
+            - text: Loan Officer
+    - generic [ref=e360]:
+      - list [ref=e363]:
+        - listitem [ref=e364]:
+          - generic [ref=e365]:
+            - link [ref=e366] [cursor=pointer]:
+              - /url: https://r3amc.com/appraisal-services-for-lenders-in-nevada-choosing-an-appraisal-vendor/
+              - img "appraisal services for lenders Nevada" [ref=e368]
+            - generic [ref=e369]: Appraisals
+            - generic [ref=e370]:
+              - heading [level=3] [ref=e371]:
+                - 'link "Appraisal Services for Lenders in Nevada: Choosing an Appraisal Vendor" [ref=e372] [cursor=pointer]':
+                  - /url: https://r3amc.com/appraisal-services-for-lenders-in-nevada-choosing-an-appraisal-vendor/
+              - paragraph [ref=e374]: Choosing an appraisal vendor is a procurement decision that gets treated as an administrative one, and the cost of getting
+              - 'link "Read more about Appraisal Services for Lenders in Nevada: Choosing an Appraisal Vendor" [ref=e375] [cursor=pointer]':
+                - /url: https://r3amc.com/appraisal-services-for-lenders-in-nevada-choosing-an-appraisal-vendor/
+                - text: Read More »
+            - generic [ref=e376]: September 8, 2026
+        - listitem [ref=e377]:
+          - generic [ref=e378]:
+            - link [ref=e379] [cursor=pointer]:
+              - /url: https://r3amc.com/which-appraisal-management-company-is-best-for-mixed-use-property-appraisals/
+              - img "AMC for Mixed-Use Property Appraisals" [ref=e381]
+            - generic [ref=e382]: AMC
+            - generic [ref=e383]:
+              - heading [level=3] [ref=e384]:
+                - link "Which Appraisal Management Company Is Best for Mixed-Use Property Appraisals?" [ref=e385] [cursor=pointer]:
+                  - /url: https://r3amc.com/which-appraisal-management-company-is-best-for-mixed-use-property-appraisals/
+              - paragraph [ref=e387]: "Quick Answer: The right AMC for mixed-use is the one that correctly determines, before assigning, whether the property is a"
+              - link "Read more about Which Appraisal Management Company Is Best for Mixed-Use Property Appraisals?" [ref=e388] [cursor=pointer]:
+                - /url: https://r3amc.com/which-appraisal-management-company-is-best-for-mixed-use-property-appraisals/
+                - text: Read More »
+            - generic [ref=e389]: September 4, 2026
+        - listitem [ref=e390]:
+          - generic [ref=e391]:
+            - link [ref=e392] [cursor=pointer]:
+              - /url: https://r3amc.com/which-appraisal-management-company-handles-manufactured-home-appraisals/
+              - img "AMC for Manufactured Home Appraisals" [ref=e394]
+            - generic [ref=e395]: AMC
+            - generic [ref=e396]:
+              - heading [level=3] [ref=e397]:
+                - link "Which Appraisal Management Company Handles Manufactured Home Appraisals?" [ref=e398] [cursor=pointer]:
+                  - /url: https://r3amc.com/which-appraisal-management-company-handles-manufactured-home-appraisals/
+              - paragraph [ref=e400]: "Quick Answer: Look for an AMC that can demonstrate a panel with genuine manufactured housing competency rather than one that"
+              - link "Read more about Which Appraisal Management Company Handles Manufactured Home Appraisals?" [ref=e401] [cursor=pointer]:
+                - /url: https://r3amc.com/which-appraisal-management-company-handles-manufactured-home-appraisals/
+                - text: Read More »
+            - generic [ref=e402]: September 1, 2026
+      - link "View All Blogs" [ref=e404] [cursor=pointer]:
+        - /url: /blog
+    - generic [ref=e408]:
+      - generic [ref=e409]:
+        - heading "Contact Details" [level=3] [ref=e411]
+        - generic [ref=e412]: The most important next step is a conversation. Call us directly or submit a request and we will route it immediately.
+        - generic [ref=e414]:
+          - link "Phone" [ref=e416] [cursor=pointer]:
+            - /url: tel:702-658-1191
+            - generic [aria-hidden] [ref=e417]: 
+          - generic [ref=e418]:
+            - heading [level=4] [ref=e419]:
+              - link "Phone" [ref=e420] [cursor=pointer]:
+                - /url: tel:702-658-1191
+            - paragraph [ref=e421]: 702-658-1191
+        - generic [ref=e423]:
+          - link "Email" [ref=e425] [cursor=pointer]:
+            - /url: mailto:orders@r3amc.com
+            - generic [aria-hidden] [ref=e426]: 
+          - generic [ref=e427]:
+            - heading [level=4] [ref=e428]:
+              - link "Email" [ref=e429] [cursor=pointer]:
+                - /url: mailto:orders@r3amc.com
+            - paragraph [ref=e430]: orders@r3amc.com
+        - generic [ref=e432]:
+          - generic [aria-hidden] [ref=e435]: 
+          - generic [ref=e436]:
+            - heading "Location" [level=4] [ref=e437]
+            - paragraph [ref=e438]: 9073 S Pecos Rd, Henderson, NV 89074
+      - generic [ref=e439]:
+        - heading "Request a Call Back" [level=3] [ref=e441]
+        - generic [ref=e442]: We will respond immediately to any request for information.
+        - form "New Form" [ref=e444]:
+          - generic [ref=e445]:
+            - generic [ref=e446]:
+              - generic [ref=e447] [cursor=pointer]: Name
+              - textbox "Name" [ref=e448]
+            - generic [ref=e449]:
+              - generic [ref=e450] [cursor=pointer]: Email
+              - textbox "Email" [ref=e451]
+            - generic [ref=e452]:
+              - generic [ref=e453] [cursor=pointer]: Phone
+              - textbox "Phone" [ref=e454]
+            - generic [ref=e455]:
+              - generic [ref=e456] [cursor=pointer]: Company Type
+              - combobox "Company Type" [ref=e458]:
+                - option "Company" [selected]
+                - option "Individual"
+            - generic [ref=e459]:
+              - generic [ref=e460] [cursor=pointer]: Inquiry Type
+              - combobox "Inquiry Type" [ref=e462]:
+                - option "Las Vegas Consumer Appraisal" [selected]
+                - option "Lender AMC Inquiry"
+                - option "Appraiser Panel Inquiry"
+                - option "Go Green Five"
+                - option "Other"
+            - generic [ref=e463]:
+              - generic [ref=e464] [cursor=pointer]: Message
+              - textbox "Message" [ref=e465]
+            - button "Submit Request" [ref=e468] [cursor=pointer]
+        - paragraph [ref=e472]: If you are unsure which option applies, choose the closest match. We will route it internally.
+  - contentinfo [ref=e473]:
+    - generic [ref=e475]:
+      - generic [ref=e476]:
+        - generic [ref=e477]: R3 AMC is an appraisal management company serving mortgage lenders and consumers nationwide with compliant appraisal services, private appraisals, and Listing Agent Engage marketing tools. Founded 2015 in Henderson, NV.
+        - generic [ref=e480]:
+          - heading "Quick Links" [level=4] [ref=e482]
+          - list [ref=e484]:
+            - listitem [ref=e485]:
+              - link "Las Vegas Appraisals" [ref=e486] [cursor=pointer]:
+                - /url: /appraiser-recruitment
+            - listitem [ref=e491]:
+              - link "AMC for Lenders" [ref=e492] [cursor=pointer]:
+                - /url: /amc-for-lenders
+            - listitem [ref=e497]:
+              - link "Appraisers" [ref=e498] [cursor=pointer]:
+                - /url: /appraisers
+            - listitem [ref=e503]:
+              - link "Blog" [ref=e504] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e509]:
+              - link "Faqs" [ref=e510] [cursor=pointer]:
+                - /url: https://r3amc.com/faqs/
+            - listitem [ref=e515]:
+              - link "Contact Us" [ref=e516] [cursor=pointer]:
+                - /url: /contact-us
+        - generic [ref=e521]:
+          - heading "Contact Us" [level=4] [ref=e523]
+          - list [ref=e525]:
+            - listitem [ref=e526]:
+              - generic [ref=e530]: Headquartered at 9073 S Pecos Rd, Henderson, NV 89074
+            - listitem [ref=e531]:
+              - link "(702) 658-1191" [ref=e532] [cursor=pointer]:
+                - /url: tel:(702)%20658-1191%20
+            - listitem [ref=e537]:
+              - link "orders@r3amc.com" [ref=e538] [cursor=pointer]:
+                - /url: mailto:orders@r3amc.com
+        - generic [ref=e543]:
+          - heading "Compliance Statement" [level=4] [ref=e545]
+          - generic [ref=e546]: All appraisal services are performed in compliance with USPAP and applicable state and federal regulations. Appraisers are independent contractors. Technology tools assist but do not replace professional judgment.
+      - paragraph [ref=e549]:
+        - strong [ref=e550]: R3 AMC – Appraisal Management Company
+        - text: Founded 2015 | Headquartered at 9073 S Pecos Rd, Henderson, NV 89074 | Serving Lenders & Consumers Nationwide
+      - generic [ref=e551]:
+        - generic [ref=e552]: © 2026 R3 Appraisal Management Company. All rights reserved.
+        - link "Linkedin" [ref=e558] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/brent-jones-90918595/

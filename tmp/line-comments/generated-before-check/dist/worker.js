@@ -1,0 +1,20 @@
+import { runPreparation } from './preparation.js';
+const controller = new AbortController();
+process.once('message', (payload) => {
+    const stop = (message) => {
+        if (message && typeof message === 'object' && 'type' in message && message.type === 'stop_preparation')
+            controller.abort();
+    };
+    process.on('message', stop);
+    const onStatus = (update) => { if (process.connected)
+        process.send?.(update); };
+    void runPreparation(payload, { onStatus, signal: controller.signal }).catch(() => {
+        onStatus({ type: 'status', status: 'failed', message: 'The preparation worker stopped unexpectedly.' });
+        process.exitCode = 1;
+    }).finally(() => {
+        process.removeListener('message', stop);
+        if (process.connected)
+            process.disconnect?.();
+    });
+});
+//# sourceMappingURL=worker.js.map
