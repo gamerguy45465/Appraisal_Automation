@@ -38,6 +38,18 @@
 * { box-sizing: border-box; }
 /* [L20] For elements matching body: Sets outer spacing to 0; Sets text size to 14px; Sets line spacing to 1.5. */
 body { margin: 0; font-size: 14px; line-height: 1.5; }
+.workspace-connection { margin-bottom: 28px; padding: 24px 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.workspace-connection h2 { margin: 0 0 14px; font-size: 19px; }
+.workspace-connection p { max-width: 760px; }
+.workspace-connection .field { max-width: 600px; }
+.workspace-connection .primary-button { max-width: 300px; margin-top: 16px; }
+.workspace-connection .secondary-button { width: auto; padding: 10px 16px; color: var(--teal-dark); border: 1px solid #9eb6b0; background: var(--soft-teal); }
+.workspace-connection .connection-error { color: var(--danger); overflow-wrap: anywhere; }
+.pairing-code-panel { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
+.pairing-code-panel ol { padding-left: 20px; }
+.pairing-code-panel li + li { margin-top: 8px; }
+.pairing-code-panel code { overflow-wrap: anywhere; }
+#pairing-token { font-family: Consolas, monospace; font-size: 14px; }
 /* [L21] For elements matching button, input, select: Sets font settings to inherit. */
 button, input, select { font: inherit; }
 /* [L22] For elements matching button, a, input, select, summary: Sets touch highlight color to transparent. */

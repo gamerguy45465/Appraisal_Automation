@@ -9,7 +9,7 @@ import multer from 'multer';
 // [L5] Imports cookieParser from cookie-parser for incoming session-cookie parsing middleware.
 import cookieParser from 'cookie-parser';
 // [L6] Imports randomBytes, timingSafeEqual from node:crypto for cryptographically random identifiers/tokens or timing-safe token comparison.
-import { randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 // [L7] Imports fileURLToPath from node:url for conversion of module-relative file URLs into local filesystem paths.
 import { fileURLToPath } from 'node:url';
 // [L8] Imports ZodError from zod for runtime schemas and validation-error handling.
@@ -20,18 +20,24 @@ import { DEFAULT_MODEL, DEFAULT_MODELS, DEFAULT_PROVIDER, inputSchema, MAX_PDF_B
 import { AppError, publicError } from './errors.js';
 // [L11] Imports createJobRunner, type JobRunner from ./jobs.js for owner-scoped isolated preparation worker management.
 import { createJobRunner } from './jobs.js';
+import { resolveHosting } from './hosting.js';
+import { createRelayJobRunner } from './relay.js';
 // [L15] Blank line separating the surrounding declarations, statements, or document blocks.
 // [L16] Existing explanatory comment: Local, single-user application: reject remote hosts/origins before parsing uploads.
-/** Local, single-user application: reject remote hosts/origins before parsing uploads. */
+/** Single-user workspace, local or HTTPS-hosted with an authenticated Windows companion. */
 // [L17] Exports the Express application factory, defaulting to an empty options object.
 export function createApp(options = {}) {
-    // [L18] Uses the injected job runner when supplied or creates the production worker runner.
-    const runner = options.runner ?? createJobRunner();
-    // [L19] Uses the requested local port or defaults to 3000.
-    const port = options.port ?? 3000;
-    // [L20] Builds the exact localhost and loopback HTTP origins accepted for this port.
-    // TODO: This may be something to change so that it is more dynamic so that it can be hosted on the web, such as on AWS Elastic Beanstalk
-    const origins = new Set([`http://localhost:${port}`, `http://127.0.0.1:${port}`]);
+    const hosting = options.hosting ?? resolveHosting({ PORT: String(options.port ?? 3000) });
+    const hosted = hosting.mode === 'hosted';
+    if (hosted && (!options.accessKey || !/^[\x21-\x7e]{32,256}$/.test(options.accessKey))) {
+        throw new Error('Hosted mode requires APPRAISAL_ACCESS_KEY with 32 to 256 non-space ASCII characters.');
+    }
+    // Never pass the workspace access key into the preparation worker.
+    const accessDigest = hosted ? createHash('sha256').update(options.accessKey).digest() : undefined;
+    const relay = hosted ? options.relay ?? createRelayJobRunner() : undefined;
+    const runner = relay ?? options.runner ?? createJobRunner();
+    const origins = new Set(hosting.allowedOrigins);
+    const hosts = new Set(hosting.allowedHosts);
     // [L21] Creates the Express application instance.
     const app = express();
     // [L22] Allocates the application's in-memory session map keyed by session identifier.
@@ -48,39 +54,84 @@ export function createApp(options = {}) {
     // [L26] Removes Express's identifying X-Powered-By response header.
     app.disable('x-powered-by');
     // [L27] Installs security headers and a same-origin content policy, allows inline data images, blocks framing, and disables HTTPS upgrade/HSTS behavior for local HTTP use.
-    app.use(helmet({ contentSecurityPolicy: { directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"], styleSrc: ["'self'"], imgSrc: ["'self'", 'data:'], connectSrc: ["'self'"], formAction: ["'self'"], frameAncestors: ["'none'"], upgradeInsecureRequests: null } }, strictTransportSecurity: false }));
+    app.use(helmet({ contentSecurityPolicy: { directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"], styleSrc: ["'self'"], imgSrc: ["'self'", 'data:'], connectSrc: ["'self'"], formAction: ["'self'"], frameAncestors: ["'none'"], upgradeInsecureRequests: hosted ? [] : null } }, strictTransportSecurity: hosted ? { maxAge: 31536000, includeSubDomains: false } : false }));
     // [L28] Adds Cache-Control: no-store to every response and advances to the next middleware.
     app.use((_req, res, next) => { res.setHeader('Cache-Control', 'no-store'); next(); });
     // [L29] Starts request middleware that validates the incoming host and browser origin before upload parsing.
     app.use((req, _res, next) => {
         // [L30] Rejects a Host header outside the configured localhost/loopback origin set with HTTP 403.
-        if (!origins.has(`http://${req.get('host')}`))
-            return next(new AppError('HOST_REJECTED', 'Open this application using its localhost address.', 403));
+        if (!hosts.has(req.get('host') ?? ''))
+            return next(new AppError('HOST_REJECTED', hosted ? 'Open this application using its configured HTTPS address.' : 'Open this application using its localhost address.', 403));
         // [L31] Reads the request's Origin header for cross-origin checks.
         const origin = req.get('origin');
         // [L32] Rejects an unapproved Origin header or explicitly cross-site browser request with HTTP 403.
         if ((origin && !origins.has(origin)) || req.get('sec-fetch-site') === 'cross-site')
-            return next(new AppError('ORIGIN_REJECTED', 'This request must come from the local application.', 403));
+            return next(new AppError('ORIGIN_REJECTED', 'This request must come from the application website.', 403));
         // [L33] Passes an accepted host/origin request to subsequent middleware.
         next();
         // [L34] Closes the scope or expression introduced here: Starts request middleware that validates the incoming host and browser origin before upload parsing.
     });
     // [L35] Parses incoming Cookie headers so session middleware can read the session identifier.
     app.use(cookieParser());
-    // [L36] Limits API requests to 120 per minute, emits draft-8 rate headers, and returns a fixed HTTP 429 JSON message when exceeded.
-    app.use('/api', rateLimit({ windowMs: 60000, limit: 120, standardHeaders: 'draft-8', legacyHeaders: false, handler: (_req, res) => { res.status(429).json({ error: { code: 'RATE_LIMITED', message: 'Too many requests. Wait a minute and try again.' } }); } }));
-    // [L37] Registers the session bootstrap endpoint that returns defaults and session-specific state.
-    app.get('/api/session', (req, res) => {
-        // [L38] Removes sessions older than one day whenever the bootstrap endpoint runs.
+    const cookieOptions = { httpOnly: true, sameSite: 'strict', secure: hosting.secureCookies, path: '/', maxAge: 86400000 };
+    const pruneSessions = () => {
         for (const [id, session] of sessions)
             if (Date.now() - session.createdAt > 86400000)
                 sessions.delete(id);
+    };
+    const newSession = (res) => {
+        pruneSessions();
+        if (sessions.size >= 500)
+            throw new AppError('SESSION_LIMIT', 'The workspace has reached its session limit. Try again later.', 503);
+        const id = randomBytes(32).toString('hex');
+        sessions.set(id, { token: randomBytes(32).toString('hex'), createdAt: Date.now() });
+        res.cookie('appraisalSession', id, cookieOptions);
+        return id;
+    };
+    const workspaceLoginRequired = () => new AppError('WORKSPACE_LOGIN_REQUIRED', 'Enter your workspace access code to continue.', 401);
+    const rateLimited = (_req, res) => { res.status(429).json({ error: { code: 'RATE_LIMITED', message: 'Too many requests. Wait a minute and try again.' } }); };
+    // Single-user buckets avoid trusting client-supplied proxy IP headers.
+    const globalLimit = (limit, windowMs = 60000) => rateLimit({ windowMs, limit, keyGenerator: () => 'workspace', standardHeaders: 'draft-8', legacyHeaders: false, handler: rateLimited });
+    app.get('/api/config', (_req, res) => { res.json({ hostingMode: hosting.mode }); });
+    if (hosted) {
+        app.post('/api/login', globalLimit(10, 15 * 60000), express.json({ limit: '2kb' }), (req, res) => {
+            // Login has no CSRF token yet, so require the exact browser Origin.
+            if (req.get('origin') !== hosting.publicOrigin)
+                throw new AppError('ORIGIN_REJECTED', 'Sign in from the application website.', 403);
+            const key = req.body?.accessKey;
+            req.body = {};
+            if (typeof key !== 'string' || key.length > 256 || !timingSafeEqual(createHash('sha256').update(key).digest(), accessDigest))
+                throw workspaceLoginRequired();
+            pruneSessions();
+            if (!sessions.has(req.cookies.appraisalSession))
+                newSession(res);
+            res.json({ ok: true });
+        });
+        const bearer = (req) => {
+            const match = /^Bearer ([A-Za-z0-9_-]{43})$/.exec(req.get('authorization') ?? '');
+            if (!match)
+                throw new AppError('COMPANION_AUTH', 'Connect the Windows companion using a new pairing code.', 401);
+            return match[1];
+        };
+        app.use('/api/companion', globalLimit(120));
+        app.post('/api/companion/connect', express.json({ limit: '2kb' }), (req, res) => { res.json(relay.connect(bearer(req))); });
+        app.post('/api/companion/exchange', express.json({ limit: '256kb' }), (req, res) => { res.json(relay.exchange(bearer(req), req.body)); });
+        app.use('/api/companion', (_req, _res, next) => next(new AppError('NOT_FOUND', 'The requested companion operation does not exist.', 404)));
+    }
+    // [L36] Limits API requests to 120 per minute, emits draft-8 rate headers, and returns a fixed HTTP 429 JSON message when exceeded.
+    app.use('/api', globalLimit(120));
+    // [L37] Registers the session bootstrap endpoint that returns defaults and session-specific state.
+    app.get('/api/session', (req, res) => {
+        // [L38] Removes sessions older than one day whenever the bootstrap endpoint runs.
+        pruneSessions();
         // [L39] Reads a string session cookie, falling back to an empty identifier for absent or malformed cookies.
         let id = typeof req.cookies.appraisalSession === 'string' ? req.cookies.appraisalSession : '';
         // [L40] Looks up the cookie's session in the server's in-memory map.
         let session = sessions.get(id);
         // [L41] Creates a new session only when the supplied cookie did not identify an existing one.
         if (!session) {
+            if (hosted)
+                throw workspaceLoginRequired();
             // [L42] Rejects creation once 500 sessions remain, asking the user to restart the local application.
             if (sessions.size >= 500)
                 throw new AppError('SESSION_LIMIT', 'Restart the local application to clear unused sessions.', 503);
@@ -89,11 +140,11 @@ export function createApp(options = {}) {
             session = { token: randomBytes(32).toString('hex'), createdAt: Date.now() };
             sessions.set(id, session);
             // [L44] Sends a one-day HTTP-only, Strict SameSite cookie scoped to the local application; secure is false for its HTTP server.
-            res.cookie('appraisalSession', id, { httpOnly: true, sameSite: 'strict', secure: false, path: '/', maxAge: 86400000 });
+            res.cookie('appraisalSession', id, cookieOptions);
             // [L45] Closes the scope or expression introduced here: Creates a new session only when the supplied cookie did not identify an existing one.
         }
         // [L46] Returns the CSRF token, default model/provider choices, and any active job belonging to this session.
-        res.json({ csrfToken: session.token, model: DEFAULT_MODEL, defaultProvider: DEFAULT_PROVIDER, modelDefaults: DEFAULT_MODELS, activeJob: runner.getActive?.(id) });
+        res.json({ csrfToken: session.token, model: DEFAULT_MODEL, defaultProvider: DEFAULT_PROVIDER, modelDefaults: DEFAULT_MODELS, activeJob: runner.getActive?.(id), hostingMode: hosting.mode, ...(relay ? { companion: relay.state(id) } : {}) });
         // [L47] Closes the scope or expression introduced here: Registers the session bootstrap endpoint that returns defaults and session-specific state.
     });
     // [L48] Adds session ownership and CSRF validation for all later API routes.
@@ -104,7 +155,7 @@ export function createApp(options = {}) {
         const session = typeof id === 'string' ? sessions.get(id) : undefined;
         // [L51] Rejects missing or expired sessions with HTTP 401 before accessing protected API routes.
         if (!session || Date.now() - session.createdAt > 86400000)
-            return next(new AppError('SESSION_REQUIRED', 'Refresh the page to start a local session.', 401));
+            return next(hosted ? workspaceLoginRequired() : new AppError('SESSION_REQUIRED', 'Refresh the page to start a local session.', 401));
         // [L52] Records the validated session identifier as the request's job owner.
         res.locals.owner = id;
         // [L53] Requires CSRF validation for methods other than GET and HEAD.
@@ -125,6 +176,15 @@ export function createApp(options = {}) {
         // [L60] Closes the scope or expression introduced here: Adds session ownership and CSRF validation for all later API routes.
     });
     // [L61] Registers job creation with multipart parsing for one required URLA field and at most one sales-contract field.
+    if (relay) {
+        app.post('/api/pairing', (_req, res) => { res.json(relay.pair(res.locals.owner)); });
+        app.get('/api/companion-status', (_req, res) => { res.json(relay.state(res.locals.owner)); });
+        app.post('/api/jobs', (_req, res, next) => {
+            if (!relay.state(res.locals.owner).connected)
+                return next(new AppError('COMPANION_OFFLINE', 'Connect your Windows companion before preparing an order.', 409));
+            next();
+        });
+    }
     app.post('/api/jobs', upload.fields([{ name: 'urla', maxCount: 1 }, { name: 'salesContract', maxCount: 1 }]), (req, res) => {
         // [L62] Interprets multer's uploaded files as named arrays that may be absent.
         const files = req.files;
@@ -175,7 +235,7 @@ export function createApp(options = {}) {
         if (!job)
             throw new AppError('JOB_NOT_FOUND', 'This preparation was not found in your session.', 404);
         // [L81] Returns the authorized job view as JSON.
-        res.json({ job });
+        res.json({ job, ...(relay ? { companion: relay.state(res.locals.owner) } : {}) });
         // [L82] Closes the scope or expression introduced here: Registers retrieval of an individual job by its URL identifier.
     });
     // [L83] Converts unmatched API operations into a fixed HTTP 404 application error.
@@ -184,6 +244,16 @@ export function createApp(options = {}) {
     app.use(express.static(fileURLToPath(new URL('../public', import.meta.url)), { etag: false, dotfiles: 'deny' }));
     // [L85] Defines the final Express error middleware with an unknown error type.
     const handleError = (error, _req, res, _next) => {
+        // Body parser failures may retain submitted secrets in error.body; expose fixed text only.
+        const bodyError = error;
+        if (bodyError?.type === 'entity.too.large') {
+            res.status(413).json({ error: { code: 'REQUEST_TOO_LARGE', message: 'The request is too large.' } });
+            return;
+        }
+        if (bodyError?.type === 'entity.parse.failed') {
+            res.status(400).json({ error: { code: 'INVALID_REQUEST', message: 'The request could not be read.' } });
+            return;
+        }
         // [L86] Converts Zod failures into HTTP 400 field-level JSON errors, joining nested paths with dots, then stops processing.
         if (error instanceof ZodError) {
             res.status(400).json({ error: { code: 'VALIDATION_ERROR', message: 'Check the highlighted form fields.', details: error.issues.map(i => ({ field: i.path.join('.'), message: i.message })) } });

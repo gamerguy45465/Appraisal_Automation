@@ -26,3 +26,7 @@
 #*.har
 # [L14] Tell Git to ignore matching files using the pattern auth.json.
 #auth.json
+
+# Generated Azure packages and iisnode runtime logs.
+/output/deployment/
+/iisnode/

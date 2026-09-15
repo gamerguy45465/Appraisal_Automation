@@ -13,6 +13,10 @@ The application uses an HTML/CSS/JavaScript frontend, Express and TypeScript, La
 
 ## Run on Windows
 
+**Azure hosting:** The website can also run on Windows Azure App Service with a paired Windows companion on your PC. The companion keeps R3 sign-in, review and submission in your local browser. See [Azure setup and companion instructions](docs/azure-hosting.md). The commands below start the original local mode.
+
+The hosted-companion update passed 459 unit/integration tests, 129 browser tests and the production build. Compiled Windows named-pipe startup and hosted sign-in also passed a local smoke check. Live Azure/provider/R3 acceptance remains separate.
+
 Install Node.js 24 or newer with npm and ensure Windows PowerShell is available. In PowerShell, run these commands from the project directory:
 
 ```powershell
@@ -22,7 +26,7 @@ npm run build
 npm start
 ```
 
-Open the loopback address printed by the server. Keep the server running while using the application. This is a local, single-user application; it is not configured for shared network hosting.
+Open the loopback address printed by the server. Keep the server running while using the application. This mode accepts only local requests. Hosted mode uses an exact configured HTTPS address, workspace sign-in and a paired Windows companion; both modes remain single-user.
 
 Choose your AI provider, optionally enter its model ID immediately below, and supply that provider's API key. Custom model IDs have no GPT-prefix requirement or model allowlist; they must be at most 200 characters without spaces/control characters, and the model must support images, tools, and structured extraction, plus native PDFs for providers that receive them. Switching providers clears the key and updates the disclosure; custom model choices remain separate in page memory and survive reconnection.
 

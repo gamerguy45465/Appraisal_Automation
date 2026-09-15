@@ -24,6 +24,7 @@ class FakeWorker extends EventEmitter {
   transferredUrla?: Buffer;
   // [L12] Declare class field `transferredContract` for assignment later.
   transferredContract?: Buffer;
+  transferredApiKey?: string;
   // [L13] Declare class field `controls` initialized to an empty array.
   readonly controls: string[] = [];
   // [L14] Declare class field `transferCallback` for assignment later.
@@ -36,6 +37,7 @@ class FakeWorker extends EventEmitter {
     if (command.type === 'stop_preparation') { this.controls.push(command.type); this.stopJobIds.push(command.jobId); callback(null); return true; }
     this.jobId = command.jobId;
     const payload = command.payload;
+    this.transferredApiKey = payload.input.apiKey;
     // [L18] Existing comment: IPC serialization makes the child's own copy before the send callback runs.
     // IPC serialization makes the child's own copy before the send callback runs.
     // [L19] Assign the result of `Buffer.from` using `payload.urla.buffer` to `this.transferredUrla`.
@@ -104,6 +106,14 @@ describe('isolated job process lifecycle', () => {
     // [L50] Assign the result of `createJobRunner` with no arguments to `runner`.
     runner = createJobRunner();
   // [L51] Close the callback or control-flow body and finish the surrounding syntax.
+  });
+  it('isolates companion workers from terminal Ctrl+C without losing owned cleanup', () => {
+    runner = createJobRunner({ detached: true });
+    runner.create('companion-owner', syntheticPayload());
+    expect(vi.mocked(fork).mock.calls[0]?.[2]).toMatchObject({ detached: true, windowsHide: true, stdio: ['ignore', 'ignore', 'ignore', 'ipc'] });
+    expect(children[0]!.kill).not.toHaveBeenCalled();
+    runner.shutdown();
+    expect(children[0]!.kill).toHaveBeenCalledOnce();
   });
   // [L52] Run this cleanup after every test in the group.
   afterEach(() => {
@@ -184,13 +194,14 @@ describe('isolated job process lifecycle', () => {
 // [L90] Blank line separating the surrounding declarations, statements, or document blocks.
 
   // [L91] Register a parameterized test that "wipes parent PDF buffers after IPC callback (transfer failed: %s)".
-  it.each([false, true])('wipes parent PDF buffers after IPC callback (transfer failed: %s)', (failed) => {
+  it.each([false, true])('clears parent key and PDF buffers after IPC callback (transfer failed: %s)', (failed) => {
     // [L92] Declare `payload` as the result of `syntheticPayload` with no arguments.
     const payload = syntheticPayload();
     // [L93] Declare `expectedUrla` as the result of `Buffer.from` using `payload.urla.buffer`.
     const expectedUrla = Buffer.from(payload.urla.buffer);
     // [L94] Declare `expectedContract` as the result of `Buffer.from` using `payload.salesContract!.buffer`.
     const expectedContract = Buffer.from(payload.salesContract!.buffer);
+    const expectedApiKey = payload.input.apiKey;
     // [L95] Declare `job` as the result of `runner.create` using "owner-a", `payload`.
     const job = runner.create('owner-a', payload);
     // [L96] Declare `child` as `children[0]`.
@@ -203,6 +214,8 @@ describe('isolated job process lifecycle', () => {
     expect(payload.urla.buffer.every(byte => byte === 0)).toBe(true);
     // [L100] Assert every byte in the parent sales-contract buffer is zero after IPC transfer completion.
     expect(payload.salesContract!.buffer.every(byte => byte === 0)).toBe(true);
+    expect(payload.input.apiKey).toBe('');
+    expect(child.transferredApiKey).toBe(expectedApiKey);
     // [L101] Assert that `child.transferredUrla` deeply equals `expectedUrla`.
     expect(child.transferredUrla).toEqual(expectedUrla);
     // [L102] Assert that `child.transferredContract` deeply equals `expectedContract`.

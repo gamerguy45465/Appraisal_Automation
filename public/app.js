@@ -96,12 +96,24 @@ let canStartAnother = false;
 let requestInProgress = false;
 // [L47] Starts without a previous rendered status for transition detection.
 let lastStatus = null;
+let hostingMode = "local";
+let companionState = { paired: false, connected: false };
+let companionTimer = null;
+let companionPollInProgress = false;
+let pairingExpiryTimer = null;
+let pairingInProgress = false;
+let formAvailable = false;
+let formLabel = "Prepare appraisal order";
+let workspaceGeneration = 0;
+const workspaceLoginForm = document.querySelector("#workspace-login-form");
+const workspaceAccessCode = document.querySelector("#workspace-access-code");
+const pairingButton = document.querySelector("#pairing-button");
 // [L48] Blank line separating the surrounding declarations, statements, or document blocks.
 
 // [L49] Defines an Error subclass carrying HTTP status and per-field details for interface failures.
 class WorkspaceError extends Error {
   // [L50] Constructs a workspace error with an optional HTTP status and details array.
-  constructor(message, status = 0, details = []) {
+  constructor(message, status = 0, details = [], code = "") {
     // [L51] Initializes the inherited error message and Error behavior.
     super(message);
     // [L52] Gives this error the WorkspaceError name.
@@ -110,6 +122,7 @@ class WorkspaceError extends Error {
     this.status = status;
     // [L54] Stores the detailed messages and field references used by the form error panel.
     this.details = details;
+    this.code = code;
   // [L55] Closes the enclosing block within WorkspaceError class.
   }
 // [L56] Closes the enclosing block within WorkspaceError class.
@@ -249,7 +262,7 @@ async function requestJson(url, options = {}) {
     // [L123] Handles a failure to decode the response as JSON.
     } catch {
       // [L124] Throws an unreadable-response error while preserving the response's HTTP status.
-      throw new WorkspaceError("The workspace returned an unreadable response. Check that the local application is still running.", response.status);
+      throw new WorkspaceError("The workspace returned an unreadable response. Reconnect to try again.", response.status);
     // [L125] Closes the enclosing block within requestJson.
     }
     // [L126] Checks whether the response status falls outside fetch's successful 200-299 range.
@@ -259,7 +272,7 @@ async function requestJson(url, options = {}) {
       // [L128] Uses the server's error-details array when valid, otherwise an empty array.
       const details = Array.isArray(body?.error?.details) ? body.error.details : [];
       // [L129] Throws a structured workspace error containing the message, status, and field details.
-      throw new WorkspaceError(message, response.status, details);
+      throw new WorkspaceError(message, response.status, details, typeof body?.error?.code === "string" ? body.error.code : "");
     // [L130] Closes the enclosing block within requestJson.
     }
     // [L131] Returns the parsed body of a successful response.
@@ -271,11 +284,11 @@ async function requestJson(url, options = {}) {
     // [L134] Checks whether the failure is the abort error produced by request cancellation.
     if (error instanceof Error && error.name === "AbortError") {
       // [L135] Converts an aborted request into a user-readable timeout error.
-      throw new WorkspaceError("The connection timed out. Check that the local application is still running.");
+      throw new WorkspaceError("The connection timed out. Check your connection and reconnect.");
     // [L136] Closes the enclosing block within requestJson.
     }
     // [L137] Converts remaining failures into a local-application connection error.
-    throw new WorkspaceError("Could not connect to the local application. Make sure it is running, then reconnect.");
+    throw new WorkspaceError("Could not connect to the workspace. Check your connection, then reconnect.");
   // [L138] Begins cleanup that runs whether the request succeeds or fails.
   } finally {
     // [L139] Cancels the timeout timer so it cannot abort after the request has finished.
@@ -288,11 +301,151 @@ async function requestJson(url, options = {}) {
 
 // [L143] Defines how the form's enabled state and submit label are updated together.
 function setFormAvailable(available, label = "Prepare appraisal order") {
-  orderFields.disabled = !available;
-  submitButton.disabled = !available;
-  submitLabel.textContent = label;
-  newOrderButton.disabled = !sessionReady || requestInProgress;
+  formAvailable = available;
+  formLabel = label;
+  refreshFormAvailability();
   form.setAttribute("aria-busy", String(requestInProgress));
+}
+
+function refreshFormAvailability() {
+  const companionReady = hostingMode !== "hosted" || companionState.connected;
+  orderFields.disabled = !formAvailable || !sessionReady;
+  submitButton.disabled = !formAvailable || !sessionReady || !companionReady;
+  submitLabel.textContent = formAvailable && sessionReady && !companionReady ? "Connect Windows companion" : formLabel;
+  newOrderButton.disabled = !sessionReady || requestInProgress || !companionReady;
+}
+
+function clearPairingCode() {
+  window.clearTimeout(pairingExpiryTimer);
+  document.querySelector("#pairing-token").value = "";
+  document.querySelector("#pairing-code-panel").hidden = true;
+  updateText("#pairing-expiry", "");
+  updateText("#pairing-copy-status", "");
+}
+
+function configureHostedWorkspace(session) {
+  if (session.hostingMode !== "hosted") return;
+  hostingMode = "hosted";
+  document.querySelector("#hosted-workspace").hidden = false;
+  workspaceLoginForm.hidden = sessionReady;
+  document.querySelector("#companion-panel").hidden = !sessionReady;
+  updateText("#workspace-mode-label", "Hosted workspace");
+  updateText("#r3-browser-help", "R3 AMC opens on your Windows PC. Sign in and complete any CAPTCHA there; preparation resumes automatically after you sign in.");
+  updateText("#step-prepare p", "Sign in through the R3 browser on your Windows PC.");
+  updateText("#login-notice strong", "Use the R3 AMC browser on your Windows PC.");
+  updateText("#review-notice strong", "Review in the R3 AMC browser on your Windows PC.");
+  if (session.companion) updateCompanion(session.companion);
+}
+
+function updateCompanion(state) {
+  if (hostingMode !== "hosted") return;
+  companionState = { paired: state?.paired === true, connected: state?.paired === true && state?.connected === true };
+  updateText("#companion-status", companionState.connected
+    ? "Windows companion connected. Keep it running while you prepare and review your order."
+    : document.querySelector("#pairing-token").value
+    ? "Waiting for your Windows companion. Enter the website address and one-time code on your PC."
+    : companionState.paired
+    ? "Your Windows companion is offline. Restart it on your PC; if it asks for a code, pair it again after finishing and closing any open R3 order. Your form entries are still here."
+    : "Connect your Windows PC to open R3 for sign-in and your final review.");
+  pairingButton.hidden = companionState.connected;
+  if (companionState.connected) {
+    clearPairingCode();
+    updateText("#pairing-error", "");
+  }
+  refreshFormAvailability();
+}
+
+function requireWorkspaceLogin() {
+  workspaceGeneration += 1;
+  sessionReady = false;
+  csrfToken = "";
+  companionState = { paired: false, connected: false };
+  window.clearTimeout(companionTimer);
+  window.clearTimeout(pollTimer);
+  clearPairingCode();
+  configureHostedWorkspace({ hostingMode: "hosted" });
+  setFormAvailable(false, "Workspace sign-in needed");
+  clearConnectionIssue();
+}
+
+function scheduleCompanionPoll() {
+  window.clearTimeout(companionTimer);
+  if (hostingMode === "hosted" && sessionReady) companionTimer = window.setTimeout(pollCompanion, 5000);
+}
+
+async function pollCompanion() {
+  if (hostingMode !== "hosted" || !sessionReady || companionPollInProgress) return;
+  if (activeJobId) { scheduleCompanionPoll(); return; }
+  companionPollInProgress = true;
+  const generation = workspaceGeneration;
+  try {
+    const state = await requestJson("/api/companion-status");
+    if (generation === workspaceGeneration) updateCompanion(state);
+  } catch (error) {
+    if (generation !== workspaceGeneration) return;
+    if (error.code === "WORKSPACE_LOGIN_REQUIRED") requireWorkspaceLogin();
+    else {
+      updateCompanion({ paired: companionState.paired, connected: false });
+      updateText("#companion-status", "Could not check your Windows companion. Reconnecting automatically; your form entries are still here.");
+    }
+  } finally {
+    companionPollInProgress = false;
+    scheduleCompanionPoll();
+  }
+}
+
+async function loginWorkspace(event) {
+  event.preventDefault();
+  const loginButton = document.querySelector("#workspace-login-button");
+  if (loginButton.disabled || !workspaceLoginForm.reportValidity()) return;
+  const accessKey = workspaceAccessCode.value;
+  workspaceAccessCode.value = "";
+  loginButton.disabled = true;
+  document.querySelector("#workspace-login-error").hidden = true;
+  try {
+    await requestJson("/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accessKey }) });
+    workspaceGeneration += 1;
+    await initializeSession();
+  } catch (error) {
+    updateText("#workspace-login-error", error.message);
+    document.querySelector("#workspace-login-error").hidden = false;
+    workspaceAccessCode.focus();
+  } finally {
+    workspaceAccessCode.value = "";
+    loginButton.disabled = false;
+  }
+}
+
+async function createPairingCode() {
+  if (!sessionReady || pairingInProgress || companionState.connected) return;
+  pairingInProgress = true;
+  pairingButton.disabled = true;
+  const generation = workspaceGeneration;
+  updateText("#pairing-error", "");
+  clearPairingCode();
+  try {
+    const pairing = await requestJson("/api/pairing", { method: "POST", headers: { "X-CSRF-Token": csrfToken } });
+    if (generation !== workspaceGeneration || companionState.connected) return;
+    const expiresAt = typeof pairing.expiresAt === "number" ? pairing.expiresAt : Date.parse(pairing.expiresAt);
+    if (typeof pairing.token !== "string" || !pairing.token || !Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+      throw new WorkspaceError("Could not create a current pairing code. Try again.");
+    }
+    document.querySelector("#pairing-token").value = pairing.token;
+    document.querySelector("#pairing-code-panel").hidden = false;
+    updateCompanion(companionState);
+    updateText("#pairing-expiry", `One-time code. Expires at ${new Date(expiresAt).toLocaleTimeString()}. Keep it private.`);
+    pairingExpiryTimer = window.setTimeout(() => {
+      clearPairingCode();
+      updateText("#pairing-error", "This pairing code expired. Create a new code to connect.");
+    }, Math.min(expiresAt - Date.now(), 2147483647));
+  } catch (error) {
+    if (generation !== workspaceGeneration) return;
+    if (error.code === "WORKSPACE_LOGIN_REQUIRED") requireWorkspaceLogin();
+    else updateText("#pairing-error", error.message);
+  } finally {
+    pairingInProgress = false;
+    pairingButton.disabled = false;
+  }
 }
 // [L149] Blank line separating the surrounding declarations, statements, or document blocks.
 
@@ -568,11 +721,14 @@ async function pollJob() {
     if (!isValidJob(body?.job) || body.job.id !== jobId) {
       throw new WorkspaceError("The workspace did not return order progress. Reconnect to check again.");
     }
+    if (body.companion) updateCompanion(body.companion);
     renderJob(body.job);
     clearConnectionIssue();
     schedulePoll();
   } catch (error) {
     if (!isCurrent()) return;
+    if (error.code === "WORKSPACE_LOGIN_REQUIRED") { requireWorkspaceLogin(); return; }
+    if (hostingMode === "hosted") updateCompanion({ paired: companionState.paired, connected: false });
     if (error.status === 404 || error.status === 410) {
       activeJobId = null;
       saveJobId(null);
@@ -581,7 +737,7 @@ async function pollJob() {
       statusCard.dataset.status = "failed";
       updateText("#status-badge", "Unavailable");
       updateText("#status-heading", "Order session unavailable.");
-      updateText("#status-message", "The local application no longer has progress for this order.");
+      updateText("#status-message", "The workspace no longer has progress for this order.");
       document.querySelector("#login-notice").hidden = true;
       document.querySelector("#review-notice").hidden = true;
       stepElements.forEach((element) => {
@@ -644,7 +800,7 @@ function acceptJob(job, scroll = true) {
 }
 
 function prepareAnotherOrder() {
-  if (!canStartAnother || requestInProgress || !sessionReady) return;
+  if (!canStartAnother || requestInProgress || !sessionReady || (hostingMode === "hosted" && !companionState.connected)) return;
   const reusingBrowser = ["awaiting_review", "user_submitted"].includes(lastStatus);
   predecessorJobId = lastJobId;
   jobGeneration += 1;
@@ -690,6 +846,7 @@ async function recoverAcceptedJob(previousJobId, generation) {
     const session = await requestJson("/api/session");
     if (generation !== jobGeneration) return false;
     if (typeof session?.csrfToken === "string" && session.csrfToken) csrfToken = session.csrfToken;
+    if (session.companion) updateCompanion(session.companion);
     if (!isValidJob(session?.activeJob) || session.activeJob.id === previousJobId) return false;
     acceptJob(session.activeJob);
     return true;
@@ -704,7 +861,7 @@ async function submitOrder(event) {
   // [L348] Stops the browser's normal form navigation so JavaScript can manage the request.
   event.preventDefault();
   // [L349] Ignores submission during another request, while a job is active, or before session readiness.
-  if (requestInProgress || activeJobId || !sessionReady) return;
+  if (requestInProgress || activeJobId || !sessionReady || (hostingMode === "hosted" && !companionState.connected)) return;
   // [L350] Clears previous form errors before validating the new request.
   clearErrors();
   // [L351] Revalidates both selected document inputs and refreshes their selection displays.
@@ -736,7 +893,9 @@ async function submitOrder(event) {
     // [L362] Shows a submit error only when an existing accepted order was not recovered.
     if (!recovered) {
       // [L363] Checks whether authentication or CSRF rejection requires workspace-session renewal.
-      if (error.status === 401 || error.status === 403) {
+      if (error.code === "WORKSPACE_LOGIN_REQUIRED") {
+        requireWorkspaceLogin();
+      } else if (error.status === 401 || error.status === 403) {
         // [L364] Marks the session unready after a 401 or 403 response.
         sessionReady = false;
         // [L365] Shows guidance to reconnect and renew the workspace session before retrying.
@@ -753,7 +912,7 @@ async function submitOrder(event) {
   } finally {
     // [L371] Clears the request-in-progress flag.
     requestInProgress = false;
-    newOrderButton.disabled = !sessionReady;
+    refreshFormAvailability();
     // [L372] Marks the form as no longer busy for assistive technology.
     form.setAttribute("aria-busy", "false");
   // [L373] Closes the enclosing block within submitOrder.
@@ -774,6 +933,8 @@ async function initializeSession() {
     }
     csrfToken = session.csrfToken;
     sessionReady = true;
+    configureHostedWorkspace(session);
+    scheduleCompanionPoll();
     configureProviders(session);
     clearConnectionIssue();
     if (isValidJob(session.activeJob) && session.activeJob.id !== predecessorJobId) {
@@ -791,6 +952,7 @@ async function initializeSession() {
     }
   } catch (error) {
     if (generation !== jobGeneration) return;
+    if (error.code === "WORKSPACE_LOGIN_REQUIRED") { requireWorkspaceLogin(); return; }
     sessionReady = false;
     setFormAvailable(false, "Workspace connection needed");
     showConnectionIssue(error.message);
@@ -802,6 +964,19 @@ async function initializeSession() {
 
 // [L408] Registers submitOrder as the handler for browser form-submit events.
 form.addEventListener("submit", submitOrder);
+workspaceLoginForm.addEventListener("submit", loginWorkspace);
+pairingButton.addEventListener("click", createPairingCode);
+document.querySelector("#copy-pairing-button").addEventListener("click", async () => {
+  const field = document.querySelector("#pairing-token");
+  if (!field.value) return;
+  try {
+    await navigator.clipboard.writeText(field.value);
+    updateText("#pairing-copy-status", "Pairing code copied.");
+  } catch {
+    field.focus(); field.select();
+    updateText("#pairing-copy-status", "Select and copy this code to your Windows companion.");
+  }
+});
 newOrderButton.addEventListener("click", prepareAnotherOrder);
 // [L409] Registers the handler that swaps provider-specific model values and key guidance.
 providerInput.addEventListener("change", () => {
@@ -844,7 +1019,12 @@ reconnectButton.addEventListener("click", async () => {
 // [L428] Registers a handler for page display, including restoration from the back-forward cache.
 window.addEventListener("pageshow", (event) => {
   // [L429] Clears API-key and file fields when the page is restored from a persisted browser page cache.
-  if (event.persisted) clearSensitiveFields();
+  if (event.persisted) {
+    clearSensitiveFields();
+    workspaceAccessCode.value = "";
+    clearPairingCode();
+    if (hostingMode === "hosted") void initializeSession();
+  }
 // [L430] Ends and registers the page-show callback.
 });
 // [L431] Blank line separating the surrounding declarations, statements, or document blocks.

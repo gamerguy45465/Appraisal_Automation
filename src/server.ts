@@ -1,15 +1,15 @@
 // [L1] Imports createApp from ./app.js for the local Express application factory.
 import { createApp } from './app.js';
+import { resolveHosting } from './hosting.js';
 // [L2] Blank line separating the surrounding declarations, statements, or document blocks.
 
-// [L3] Converts the PORT environment setting to a number, defaulting to 3000 when unset.
-const port = Number(process.env.PORT ?? 3000);
-// [L4] Rejects noninteger ports and values outside 1024 through 65535 before starting the server.
-if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('PORT must be an integer from 1024 to 65535.');
-// [L5] Creates the application and its worker runner configured for this port.
-const { app, runner } = createApp({ port });
-// [L6] Listens only on IPv4 loopback and prints the local application URL after successful startup.
-const server = app.listen(port, '127.0.0.1', () => { console.info(`Appraisal Desk is ready at http://127.0.0.1:${port}`); });
+// Hosting configuration preserves iisnode's named pipe rather than converting it to a number.
+const hosting = resolveHosting();
+const { app, runner } = createApp({ hosting, accessKey: process.env.APPRAISAL_ACCESS_KEY });
+const ready = (): void => { console.info(`Appraisal Desk is ready at ${hosting.publicOrigin}`); };
+const server = 'path' in hosting.listen
+  ? app.listen(hosting.listen.path, ready)
+  : app.listen(hosting.listen.port, hosting.listen.host, ready);
 // [L7] Limits the time allowed to receive a complete request to 60 seconds.
 server.requestTimeout = 60000;
 // [L8] Limits receipt of request headers to 15 seconds.

@@ -30,7 +30,7 @@ export function workerEnvironment(): NodeJS.ProcessEnv {
   return { ...Object.fromEntries(Object.entries(process.env).filter(([key]) => allowed.has(key.toUpperCase()))), LANGSMITH_TRACING: 'false', LANGCHAIN_TRACING_V2: 'false', LANGCHAIN_TRACING: 'false' };
 }
 
-export function createJobRunner(): JobRunner {
+export function createJobRunner(options: { readonly detached?: boolean } = {}): JobRunner {
   const jobs = new Map<string, JobRecord>();
   const hosts = new Set<WorkerHost>();
   let current: WorkerHost | undefined;
@@ -55,6 +55,7 @@ export function createJobRunner(): JobRunner {
     const isTypeScript = import.meta.url.endsWith('.ts');
     const workerOptions: ForkOptions & { windowsHide: boolean } = {
       execArgv: isTypeScript ? ['--import', 'tsx'] : [], env: workerEnvironment(), serialization: 'advanced', windowsHide: true, stdio: ['ignore', 'ignore', 'ignore', 'ipc'],
+      ...(options.detached ? { detached: true } : {}),
     };
     const child = fork(fileURLToPath(new URL(isTypeScript ? './worker.ts' : './worker.js', import.meta.url)), [], workerOptions);
     const host: WorkerHost = { child, owner, jobId, ready: false, retired: false, ended: false };
@@ -150,6 +151,7 @@ export function createJobRunner(): JobRunner {
       const transferred = (error: Error | null): void => {
         payload.urla.buffer.fill(0);
         payload.salesContract?.buffer.fill(0);
+        payload.input.apiKey = '';
         if (error && current === host && host.jobId === id && !host.retired) {
           stopTimer(host);
           host.transferFailed = true;

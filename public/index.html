@@ -26,7 +26,7 @@
 <!-- [L26] Closes the span element for 'brand-mark'. -->        </span>
 <!-- [L27] Defines an inline text or icon container. Supplies the text content 'Appraisal'. Applies CSS classes 'brand-light'. Supplies the text content 'Desk'. Closes the span element for 'brand-light'. Closes the span element. -->        <span>Appraisal<span class="brand-light">Desk</span></span>
 <!-- [L28] Closes the a element for 'brand'. -->      </a>
-<!-- [L29] Defines a layout/content container. Applies CSS classes 'workspace-label'. Defines an inline text or icon container. Applies CSS classes 'small-dot'. Sets aria-hidden to 'true' for assistive-technology visibility. Closes the span element for 'small-dot'. Supplies the text content 'Local workspace'. Closes the div element for 'workspace-label'. -->      <div class="workspace-label"><span class="small-dot" aria-hidden="true"></span> Local workspace</div>
+<!-- [L29] Defines a layout/content container. Applies CSS classes 'workspace-label'. Defines an inline text or icon container. Applies CSS classes 'small-dot'. Sets aria-hidden to 'true' for assistive-technology visibility. Closes the span element for 'small-dot'. Supplies the text content 'Local workspace'. Closes the div element for 'workspace-label'. -->      <div class="workspace-label"><span class="small-dot" aria-hidden="true"></span> <span id="workspace-mode-label">Local workspace</span></div>
 <!-- [L30] Closes the div element for 'header-inner'. -->    </div>
 <!-- [L31] Closes the header element for 'site-header'. -->  </header>
 <!-- [L32] Blank line separating the surrounding declarations, statements, or document blocks. -->
@@ -47,7 +47,40 @@
 <!-- [L47] Closes the div element for 'branch-tag'. -->      </div>
 <!-- [L48] Closes the div element for 'page-intro'. -->    </div>
 <!-- [L49] Blank line separating the surrounding declarations, statements, or document blocks. -->
-<!-- [L50] Defines a layout/content container. Applies CSS classes 'workspace-grid'. -->    <div class="workspace-grid">
+<!-- [L50] Defines a layout/content container. Applies CSS classes 'workspace-grid'. -->    <section id="hosted-workspace" class="workspace-connection" aria-labelledby="workspace-connection-heading" hidden>
+      <h2 id="workspace-connection-heading">Your connected workspace</h2>
+      <form id="workspace-login-form" autocomplete="off" hidden>
+        <p>Enter the access code for this private workspace.</p>
+        <div class="field">
+          <label for="workspace-access-code">Workspace access code</label>
+          <input id="workspace-access-code" type="password" required maxlength="512" autocomplete="off" spellcheck="false" aria-describedby="workspace-access-help" />
+          <p id="workspace-access-help" class="field-help">Use the workspace code supplied during setup. Enter your AI provider key in the order form after signing in.</p>
+        </div>
+        <p id="workspace-login-error" class="connection-error" role="alert" hidden></p>
+        <button id="workspace-login-button" class="primary-button" type="submit">Sign in to workspace</button>
+      </form>
+      <div id="companion-panel" hidden>
+        <p id="companion-status" role="status"></p>
+        <p class="field-help">Your documents and selected API key pass through Azure in memory to your Windows companion. It sends the required information to your chosen AI provider and opens R3 on your PC for your sign-in, review, and submission.</p>
+        <button id="pairing-button" class="secondary-button" type="button">Pair Windows companion</button>
+        <div id="pairing-code-panel" class="pairing-code-panel" hidden>
+          <ol>
+            <li>On your Windows PC, open this project's folder in PowerShell and run <code>npm run companion</code>.</li>
+            <li>Enter this website's address when prompted, then paste the one-time code below. Keep the companion running.</li>
+          </ol>
+          <div class="field">
+            <label for="pairing-token">One-time pairing code</label>
+            <input id="pairing-token" type="text" readonly autocomplete="off" spellcheck="false" aria-describedby="pairing-expiry" />
+          </div>
+          <p id="pairing-expiry" class="field-help"></p>
+          <button id="copy-pairing-button" class="secondary-button" type="button">Copy pairing code</button>
+          <p id="pairing-copy-status" class="field-help" role="status"></p>
+        </div>
+        <p id="pairing-error" class="connection-error" role="status"></p>
+      </div>
+    </section>
+
+    <div class="workspace-grid">
 <!-- [L51] Defines a layout/content container. Applies CSS classes 'form-column'. -->      <div class="form-column">
 <!-- [L52] Defines the appraisal-preparation form. Assigns ID 'order-form' for script, label, or accessibility references. Applies CSS classes 'order-card'. Targets form submission at '/api/jobs'. Uses the POST form-submission method. Encodes form submission as 'multipart/form-data', allowing file uploads. -->        <form id="order-form" class="order-card" action="/api/jobs" method="post" enctype="multipart/form-data">
 <!-- [L53] Defines a layout/content container. Applies CSS classes 'card-heading'. -->          <div class="card-heading">
@@ -95,7 +128,7 @@
 <!-- [L95] Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Assigns ID 'api-key-help' for script, label, or accessibility references. Supplies the text content 'Your PDFs and order details are sent to OpenAI. API usage is billed'. -->                <p class="field-help" id="api-key-help">Your PDFs and order details are sent to OpenAI. API usage is billed
 <!-- [L96] Supplies the text content 'to your OpenAI account.'. Closes the p element for 'api-key-help'. -->                  to your OpenAI account.</p>
 <!-- [L97] Closes the div element for 'field'. -->              </div>
-<!-- [L98] Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Supplies the text content 'R3 AMC opens separately. Sign in and complete any CAPTCHA there; preparation'. -->              <p class="field-help">R3 AMC opens separately. Sign in and complete any CAPTCHA there; preparation
+<!-- [L98] Defines a paragraph or status-message container. Applies CSS classes 'field-help'. Supplies the text content 'R3 AMC opens separately. Sign in and complete any CAPTCHA there; preparation'. -->              <p class="field-help" id="r3-browser-help">R3 AMC opens separately. Sign in and complete any CAPTCHA there; preparation
 <!-- [L99] Supplies the text content 'resumes automatically after you sign in.'. Closes the p element for 'field-help'. -->                resumes automatically after you sign in.</p>
 <!-- [L100] Closes the section element for 'form-section'. -->            </section>
 <!-- [L101] Blank line separating the surrounding declarations, statements, or document blocks. -->
