@@ -96,7 +96,7 @@ export async function runPreparation(payload, options) {
         // [L49] Reports that R3 order preparation is starting.
         sendStatus('preparing', 'Opening R3 and preparing the new order for your review.');
         // [L50] Creates the browser session with a callback that integrates browser status into timeout and lifecycle handling.
-        const browserOptions = { onStatus: (status, message) => {
+        const browserOptions = { ...options.browserOptions, onStatus: (status, message) => {
                 // [L51] Pauses the local preparation timeout while the user handles R3 sign-in.
                 if (status === 'awaiting_login')
                     timeout.pause();
@@ -133,6 +133,7 @@ export async function runPreparation(payload, options) {
         else {
             session = await createBrowserSession(browserOptions);
         }
+        options.onBrowserSession?.(session);
         // [L58] Waits for the user's completed R3 login, honoring automation cancellation.
         await session.waitForUserLogin({ signal });
         // [L59] Resumes the remaining local preparation time after sign-in.

@@ -35,6 +35,7 @@ class FakeWorker extends EventEmitter {
   send(command: WorkerCommand, callback: (error: Error | null) => void): boolean {
     // [L17] For stop-control payloads, record the control type, call the IPC callback with null to signal success, and return true without copying document buffers.
     if (command.type === 'stop_preparation') { this.controls.push(command.type); this.stopJobIds.push(command.jobId); callback(null); return true; }
+    if (command.type !== 'prepare') { callback(null); return true; }
     this.jobId = command.jobId;
     const payload = command.payload;
     this.transferredApiKey = payload.input.apiKey;

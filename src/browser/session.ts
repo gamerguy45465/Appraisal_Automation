@@ -10,6 +10,7 @@ import { chromium, type Browser, type BrowserContext, type Dialog, type Locator,
 import { z } from 'zod';
 // [L6] Imports the application's coded error base class.
 import { AppError } from '../errors.js';
+import { createHumanBrowserView, type HumanBrowserView } from './human-view.js';
 // [L7] Imports environment filtering, inspected-field matching, phone recovery normalization, and approved-value comparison helpers.
 import { browserEnvironment, matchesR3Field, phoneInputDigits, r3ContactIdentity, textValuesMatch } from './r3-fields.js';
 // [L8] Begins the grouped import of browser request guards and approved URLs.
@@ -102,11 +103,14 @@ export interface FieldVerification {
 export interface BrowserSessionOptions {
   // [L52] Requires a callback receiving the four browser/user lifecycle statuses and a descriptive message.
   onStatus: (status: 'awaiting_login' | 'awaiting_review' | 'user_submitted' | 'browser_closed', message: string) => void;
+  connectBrowser?: () => Promise<Browser>;
+  humanView?: boolean;
 // [L53] Ends the browser-session options interface.
 }
 
 export interface BrowserSession {
   tools: StructuredToolInterface[];
+  humanView?: HumanBrowserView;
   setFieldPlan(plan: FieldPlanEntry[]): void;
   waitForUserLogin(options?: { signal?: AbortSignal }): Promise<void>;
   navigateToOrder(): Promise<void>;
@@ -296,11 +300,12 @@ function getBrowserOwner(browser: Browser, context: BrowserContext, ownsBrowser:
   return creating;
 }
 
-/** Production always opens a visible, isolated browser and never saves authentication state. */
+/** Local mode opens visible Chromium; hosted mode may connect to an isolated cloud browser. Authentication is never saved. */
 // [L76] Defines the production browser-session factory.
 export async function createBrowserSession(options: BrowserSessionOptions): Promise<BrowserSession> {
-  // [L77] Launches visible Chromium with only the filtered environment variables.
-  const browser = await chromium.launch({ headless: false, env: browserEnvironment(process.env) });
+  // [L77] A trusted cloud connector can replace local launch without changing the guarded session.
+  const browser = options.connectBrowser ? await options.connectBrowser()
+    : await chromium.launch({ headless: false, env: browserEnvironment(process.env) });
   // [L78] Starts setup inside a cleanup-protected block after browser launch.
   try {
     // [L79] Creates a new isolated browser context with explicit restrictions.
@@ -370,6 +375,11 @@ export async function createGuardedSession(
   let toolQueue = Promise.resolve();
   // [L108] Tracks immediate revocation of further automated actions.
   let automationRevoked = false;
+  const humanController = options.humanView ? createHumanBrowserView(context, page, () => ({
+    phase,
+    canControl: !retired && !transferring && !closedResolved && (phase === 'authenticating' || phase === 'review' && automationRevoked),
+    closed: retired || closedResolved || browserOwner.isClosed(),
+  })) : undefined;
   // [L109] Stores the shared incomplete-handoff operation so repeated requests reuse it.
   let incompleteHandoff: Promise<boolean> | undefined;
   // [L110] Tracks preparation-phase intercepted routes that may need cancellation before human handoff.
@@ -396,6 +406,7 @@ export async function createGuardedSession(
     closedResolved = true;
     // [L120] Sets the session phase to closed, blocking subsequent guarded work.
     phase = 'closed';
+    humanController?.dispose();
     // [L121] Immediately disables further automation.
     automationRevoked = true;
     // [L122] Releases pending lookup waiters so queued work can observe closure.
@@ -1426,6 +1437,7 @@ export async function createGuardedSession(
     automationRevoked = true;
     // Block unload beacons, review timers, and popup writes before changing any browser surface.
     phase = 'preparing';
+    await humanController?.suspendAndDrain();
     for (const resolve of lookupWaiters) resolve();
     try {
       await browserOwner.closeSockets();
@@ -1437,7 +1449,10 @@ export async function createGuardedSession(
       await page.goto('about:blank', { waitUntil: 'domcontentloaded' });
       if (browserOwner.isClosed() || page.isClosed() || page.url() !== 'about:blank') throw new BrowserActionError('The prior order could not be retired.');
       // Install the fresh deny-by-default guard before removing this generation's interceptor.
-      const next = await createGuardedSession(browser, context, page, nextOptions, testTransport, ownsBrowser);
+      const next = await createGuardedSession(browser, context, page, {
+        ...options, ...nextOptions,
+      }, testTransport, ownsBrowser);
+      humanController?.dispose();
       await context.unroute('**/*', routeHandler);
       removeSessionObservers();
       references.clear();
@@ -1465,6 +1480,7 @@ export async function createGuardedSession(
   return {
     // [L609] Exposes the configured list of restricted LangChain browser tools.
     tools,
+    ...(humanController ? { humanView: humanController.view } : {}),
     startNextOrder,
     isClosed: (): boolean => retired || browserOwner.isClosed(),
     // [L610] Defines one-time installation of the application-approved field plan.
@@ -1634,6 +1650,10 @@ export async function createGuardedSession(
               await marker.dispose();
               // [L688] Stops if waiting finished meanwhile or the page left the approved landing URL.
               if (finished || !isAuthenticatedLandingUrl(page.url())) return;
+              // Stop and drain human input before authentication can give way to automated preparation.
+              await humanController?.suspendAndDrain();
+              if (finished) return;
+              if (!isAuthenticatedLandingUrl(page.url())) { humanController?.resume(); return; }
               // [L689] Explains that disabling Fetch resumes pending responses and may produce expected late continuation errors.
               // Fetch.disable resumes pending responses; their late completion errors are expected.
               // [L690] Marks redirect interception as stopping so expected late events/errors are ignored.
@@ -1753,6 +1773,7 @@ export async function createGuardedSession(
         automationRevoked = true;
         // [L740] Switches network/browser ownership to human review.
         phase = 'review';
+        humanController?.resume();
         // [L741] Attempts to bring the prepared order page forward and ignores focus failures.
         await page.bringToFront().catch(() => undefined);
         // [L742] If the browser remains open, reports successful preparation and instructs the user to review every field and submit personally.
@@ -1787,6 +1808,7 @@ export async function createGuardedSession(
         if (hasLoggedIn && phase !== 'authenticating') {
           // [L757] Enables human-review networking and disables preparation behavior through the phase change.
           phase = 'review';
+          humanController?.resume();
           // [L758] Attempts to bring the incomplete order page forward, ignoring focus failures.
           await page.bringToFront().catch(() => undefined);
           // [L759] Returns false if the browser closed while being brought forward.

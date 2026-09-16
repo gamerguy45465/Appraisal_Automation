@@ -1,10 +1,14 @@
 // [L1] Imports createApp from ./app.js for the local Express application factory.
 import { createApp } from './app.js';
-import { resolveHosting } from './hosting.js';
+import { resolveHosting, resolveBrowserMode } from './hosting.js';
+import { createAzureBrowserConnector, resolveAzureBrowserConfig } from './azure-browser.js';
 // [L2] Blank line separating the surrounding declarations, statements, or document blocks.
 // Hosting configuration preserves iisnode's named pipe rather than converting it to a number.
 const hosting = resolveHosting();
-const { app, runner } = createApp({ hosting, accessKey: process.env.APPRAISAL_ACCESS_KEY });
+const browserMode = resolveBrowserMode(process.env, hosting);
+const { app, runner } = createApp({ hosting, accessKey: process.env.APPRAISAL_ACCESS_KEY, browserMode,
+    ...(browserMode === 'azure' ? { connectBrowser: createAzureBrowserConnector(resolveAzureBrowserConfig(process.env)) } : {}),
+});
 const ready = () => { console.info(`Appraisal Desk is ready at ${hosting.publicOrigin}`); };
 const server = 'path' in hosting.listen
     ? app.listen(hosting.listen.path, ready)

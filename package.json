@@ -22,6 +22,7 @@
     "browsers:install": "playwright install chromium"
   },
   "dependencies": {
+    "@azure/identity": "4.13.3",
     "@langchain/anthropic": "^1.5.9",
     "@langchain/core": "^1.2.9",
     "@langchain/google": "^0.2.5",

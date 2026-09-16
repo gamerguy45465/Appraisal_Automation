@@ -50,6 +50,7 @@ const statusCard = document.querySelector("#status-card");
 const reconnectButton = document.querySelector("#reconnect-button");
 const newOrderButton = document.querySelector("#new-order-button");
 const newOrderNotice = document.querySelector("#new-order-notice");
+const openBrowserLink = document.querySelector("#open-browser-link");
 // [L27] Stores the connection-message element for network and session feedback.
 const connectionMessage = document.querySelector("#connection-message");
 // [L28] Collects the URLA and sales-contract file inputs by their element IDs.
@@ -97,6 +98,7 @@ let requestInProgress = false;
 // [L47] Starts without a previous rendered status for transition detection.
 let lastStatus = null;
 let hostingMode = "local";
+let browserMode = "local";
 let companionState = { paired: false, connected: false };
 let companionTimer = null;
 let companionPollInProgress = false;
@@ -308,7 +310,7 @@ function setFormAvailable(available, label = "Prepare appraisal order") {
 }
 
 function refreshFormAvailability() {
-  const companionReady = hostingMode !== "hosted" || companionState.connected;
+  const companionReady = browserMode !== "companion" || companionState.connected;
   orderFields.disabled = !formAvailable || !sessionReady;
   submitButton.disabled = !formAvailable || !sessionReady || !companionReady;
   submitLabel.textContent = formAvailable && sessionReady && !companionReady ? "Connect Windows companion" : formLabel;
@@ -324,11 +326,26 @@ function clearPairingCode() {
 }
 
 function configureHostedWorkspace(session) {
+  if (["local", "companion", "azure"].includes(session.browserMode)) browserMode = session.browserMode;
+  else if (session.hostingMode === "hosted" && browserMode !== "azure") browserMode = "companion";
   if (session.hostingMode !== "hosted") return;
   hostingMode = "hosted";
   document.querySelector("#hosted-workspace").hidden = false;
   workspaceLoginForm.hidden = sessionReady;
-  document.querySelector("#companion-panel").hidden = !sessionReady;
+  document.querySelector("#companion-panel").hidden = !sessionReady || browserMode !== "companion";
+  document.querySelector("#cloud-browser-panel").hidden = browserMode !== "azure";
+  if (browserMode === "azure") {
+    clearPairingCode();
+    window.clearTimeout(companionTimer);
+    updateText("#workspace-mode-label", "Azure browser workspace");
+    updateText("#r3-browser-help", "Use Open R3 browser to sign in and complete any CAPTCHA in your cloud browser. Preparation resumes automatically after you sign in.");
+    updateText("#step-prepare p", "Open your cloud R3 browser to sign in.");
+    updateText("#login-notice strong", "Open your cloud R3 browser to sign in.");
+    updateText("#review-notice strong", "Open your cloud R3 browser for final review.");
+    updateText("#review-notice p", "Review every field and warning, then submit yourself. Closing the viewer tab leaves the cloud browser running; Close cloud browser ends the session.");
+    refreshFormAvailability();
+    return;
+  }
   updateText("#workspace-mode-label", "Hosted workspace");
   updateText("#r3-browser-help", "R3 AMC opens on your Windows PC. Sign in and complete any CAPTCHA there; preparation resumes automatically after you sign in.");
   updateText("#step-prepare p", "Sign in through the R3 browser on your Windows PC.");
@@ -338,7 +355,7 @@ function configureHostedWorkspace(session) {
 }
 
 function updateCompanion(state) {
-  if (hostingMode !== "hosted") return;
+  if (browserMode !== "companion") return;
   companionState = { paired: state?.paired === true, connected: state?.paired === true && state?.connected === true };
   updateText("#companion-status", companionState.connected
     ? "Windows companion connected. Keep it running while you prepare and review your order."
@@ -363,18 +380,19 @@ function requireWorkspaceLogin() {
   window.clearTimeout(companionTimer);
   window.clearTimeout(pollTimer);
   clearPairingCode();
-  configureHostedWorkspace({ hostingMode: "hosted" });
+  configureHostedWorkspace({ hostingMode: "hosted", browserMode });
+  openBrowserLink.hidden = true;
   setFormAvailable(false, "Workspace sign-in needed");
   clearConnectionIssue();
 }
 
 function scheduleCompanionPoll() {
   window.clearTimeout(companionTimer);
-  if (hostingMode === "hosted" && sessionReady) companionTimer = window.setTimeout(pollCompanion, 5000);
+  if (browserMode === "companion" && sessionReady) companionTimer = window.setTimeout(pollCompanion, 5000);
 }
 
 async function pollCompanion() {
-  if (hostingMode !== "hosted" || !sessionReady || companionPollInProgress) return;
+  if (browserMode !== "companion" || !sessionReady || companionPollInProgress) return;
   if (activeJobId) { scheduleCompanionPoll(); return; }
   companionPollInProgress = true;
   const generation = workspaceGeneration;
@@ -417,7 +435,7 @@ async function loginWorkspace(event) {
 }
 
 async function createPairingCode() {
-  if (!sessionReady || pairingInProgress || companionState.connected) return;
+  if (browserMode !== "companion" || !sessionReady || pairingInProgress || companionState.connected) return;
   pairingInProgress = true;
   pairingButton.disabled = true;
   const generation = workspaceGeneration;
@@ -573,6 +591,9 @@ function renderJob(job) {
   const copy = STATUS_COPY[job.status];
   const terminal = job.status === "browser_closed"
     || (job.status === "failed" && job.canStartAnother !== false);
+  // A failed successor can retain its predecessor's review form; the endpoint decides availability.
+  openBrowserLink.hidden = browserMode !== "azure" || job.status === "browser_closed";
+  if (!openBrowserLink.hidden) openBrowserLink.href = `/browser.html#${encodeURIComponent(job.id)}`;
   // [L211] Stores the status in the card's data attribute for status-specific styling.
   statusCard.dataset.status = job.status;
   // [L212] Updates the status badge without rewriting unchanged text.
@@ -730,6 +751,7 @@ async function pollJob() {
     if (error.code === "WORKSPACE_LOGIN_REQUIRED") { requireWorkspaceLogin(); return; }
     if (hostingMode === "hosted") updateCompanion({ paired: companionState.paired, connected: false });
     if (error.status === 404 || error.status === 410) {
+      openBrowserLink.hidden = true;
       activeJobId = null;
       saveJobId(null);
       showConnectionIssue("This order session is no longer available. Check any open R3 AMC browser before preparing another order.");
@@ -800,7 +822,7 @@ function acceptJob(job, scroll = true) {
 }
 
 function prepareAnotherOrder() {
-  if (!canStartAnother || requestInProgress || !sessionReady || (hostingMode === "hosted" && !companionState.connected)) return;
+  if (!canStartAnother || requestInProgress || !sessionReady || (browserMode === "companion" && !companionState.connected)) return;
   const reusingBrowser = ["awaiting_review", "user_submitted"].includes(lastStatus);
   predecessorJobId = lastJobId;
   jobGeneration += 1;
@@ -813,6 +835,7 @@ function prepareAnotherOrder() {
   canStartAnother = false;
   newOrderButton.hidden = true;
   newOrderNotice.hidden = true;
+  openBrowserLink.hidden = true;
   clearSensitiveFields();
   document.querySelector("#loanNumber").value = "";
   document.querySelector("#fhaCaseNumber").value = "";
@@ -861,7 +884,7 @@ async function submitOrder(event) {
   // [L348] Stops the browser's normal form navigation so JavaScript can manage the request.
   event.preventDefault();
   // [L349] Ignores submission during another request, while a job is active, or before session readiness.
-  if (requestInProgress || activeJobId || !sessionReady || (hostingMode === "hosted" && !companionState.connected)) return;
+  if (requestInProgress || activeJobId || !sessionReady || (browserMode === "companion" && !companionState.connected)) return;
   // [L350] Clears previous form errors before validating the new request.
   clearErrors();
   // [L351] Revalidates both selected document inputs and refreshes their selection displays.
@@ -1030,4 +1053,12 @@ window.addEventListener("pageshow", (event) => {
 // [L431] Blank line separating the surrounding declarations, statements, or document blocks.
 
 // [L432] Starts asynchronous workspace-session initialization and explicitly discards its promise value.
-void initializeSession();
+async function initializeWorkspace() {
+  try {
+    configureHostedWorkspace(await requestJson("/api/config"));
+  } catch {
+    // The authenticated session is authoritative; older local servers omit this endpoint.
+  }
+  await initializeSession();
+}
+void initializeWorkspace();

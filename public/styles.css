@@ -282,6 +282,7 @@ input[type="file"]:disabled::file-selector-button { cursor: default; }
 .connection-message { font-size: 11px; line-height: 1.6; color: #ffe5be; margin: 18px 0 0; }
 /* [L136] For elements matching .secondary-button: Sets width to 100%; Sets top outer spacing to 14px; Sets inner spacing to 9px 12px; Sets border to 1px solid #9cbbb3; Sets corner rounding to 6px; Sets text/foreground color to #fff; Sets background to transparent; Sets text size to 12px. */
 .secondary-button { width: 100%; margin-top: 14px; padding: 9px 12px; border: 1px solid #9cbbb3; border-radius: 6px; color: #fff; background: transparent; font-size: 12px; }
+#open-browser-link { display: block; text-align: center; text-decoration: none; }
 /* [L137] For elements matching .secondary-button:hover: Sets background to #34555b. */
 .secondary-button:hover { background: #34555b; }
 /* [L138] For elements matching .review-card: Sets positioning mode to relative; Sets inner spacing to 23px; Sets border to 1px solid #dce4d7; Sets corner rounding to var(--radius); Sets background to #edf1e6. */

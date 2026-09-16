@@ -2,6 +2,8 @@
 import { z } from 'zod';
 // [L2] Imports the application's coded error class for input and business-rule failures.
 import { AppError } from './errors.js';
+import type { HumanBrowserAction, HumanBrowserFrame } from './browser/human-view.js';
+import type { AzureBrowserConnection } from './azure-browser.js';
 // [L3] Imports observed R3 appraisal-product labels and their constrained alternate-label resolver.
 import { OBSERVED_BASELINE_PRODUCTS, productLabelAliases } from './browser/r3-fields.js';
 // [L4] Blank line separating the surrounding declarations, statements, or document blocks.
@@ -53,10 +55,14 @@ export interface WorkerUpdate extends JobUpdate { readonly type: 'status' }
 // [L27] Adds a job identifier to the public status view.
 export interface JobView extends JobUpdate { readonly id: string; readonly canStartAnother?: boolean }
 // Correlation prevents a retired order's callbacks or cancellation from affecting its successor.
-export type WorkerCommand = { readonly type: 'prepare'; readonly jobId: string; readonly payload: JobPayload }
-  | { readonly type: 'stop_preparation'; readonly jobId: string };
+export type WorkerCommand = { readonly type: 'prepare'; readonly jobId: string; readonly payload: JobPayload; readonly cloudBrowser?: boolean }
+  | { readonly type: 'stop_preparation'; readonly jobId: string }
+  | { readonly type: 'browser_connection'; readonly jobId: string; readonly requestId: string; readonly connection?: AzureBrowserConnection }
+  | { readonly type: 'human_browser'; readonly jobId: string; readonly requestId: string; readonly operation: 'frame' | 'input' | 'close'; readonly action?: HumanBrowserAction };
 export type WorkerMessage = (WorkerUpdate & { readonly jobId: string })
-  | { readonly type: 'ready'; readonly jobId: string; readonly browserOpen: boolean };
+  | { readonly type: 'ready'; readonly jobId: string; readonly browserOpen: boolean }
+  | { readonly type: 'browser_connection_request'; readonly jobId: string; readonly requestId: string }
+  | { readonly type: 'human_browser_result'; readonly jobId: string; readonly requestId: string; readonly frame?: HumanBrowserFrame; readonly error?: 'unavailable' | 'locked' };
 // [L28] Blank line separating the surrounding declarations, statements, or document blocks.
 
 // [L29] Defines a reusable schema for a string value or null when unknown.

@@ -13,9 +13,9 @@ The application uses an HTML/CSS/JavaScript frontend, Express and TypeScript, La
 
 ## Run on Windows
 
-**Azure hosting:** The website can also run on Windows Azure App Service with a paired Windows companion on your PC. The companion keeps R3 sign-in, review and submission in your local browser. See [Azure setup and companion instructions](docs/azure-hosting.md). The commands below start the original local mode.
+**Azure hosting:** The website can run on Windows Azure App Service with either a paired Windows companion or an Azure Playwright workspace browser. The companion keeps R3 sign-in, review and submission in your local browser. The Azure option displays the remote browser in an authenticated website tab; you control sign-in and review, and input pauses during automated preparation. See [Azure hosting](docs/azure-hosting.md) and [Azure browser configuration](docs/azure-browser.md). The commands below start the original local mode.
 
-The hosted-companion update passed 459 unit/integration tests, 129 browser tests and the production build. Compiled Windows named-pipe startup and hosted sign-in also passed a local smoke check. Live Azure/provider/R3 acceptance remains separate.
+The Azure browser update passed 577 unit/integration tests, 148 browser tests, TypeScript checking and the production build. A synthetic live test in `Appraisal-Automation-t` verified native browser connection, routed HTTP/WebSocket traffic, CDP Fetch commands, screenshots, keyboard/mouse input and browser cleanup. App Service identity, deployed viewer and real R3/provider acceptance remain separate.
 
 Install Node.js 24 or newer with npm and ensure Windows PowerShell is available. In PowerShell, run these commands from the project directory:
 
@@ -26,7 +26,7 @@ npm run build
 npm start
 ```
 
-Open the loopback address printed by the server. Keep the server running while using the application. This mode accepts only local requests. Hosted mode uses an exact configured HTTPS address, workspace sign-in and a paired Windows companion; both modes remain single-user.
+Open the loopback address printed by the server. Keep the server running while using the application. This mode accepts only local requests. Hosted mode uses an exact configured HTTPS address, workspace sign-in and the selected companion or Azure browser; every mode remains single-user.
 
 Choose your AI provider, optionally enter its model ID immediately below, and supply that provider's API key. Custom model IDs have no GPT-prefix requirement or model allowlist; they must be at most 200 characters without spaces/control characters, and the model must support images, tools, and structured extraction, plus native PDFs for providers that receive them. Switching providers clears the key and updates the disclosure; custom model choices remain separate in page memory and survive reconnection.
 

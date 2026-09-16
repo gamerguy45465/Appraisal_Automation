@@ -78,6 +78,10 @@
         </div>
         <p id="pairing-error" class="connection-error" role="status"></p>
       </div>
+      <div id="cloud-browser-panel" hidden>
+        <p>Your R3 browser runs in Azure. After starting an order, choose <strong>Open R3 browser</strong> to sign in, review, and submit yourself.</p>
+        <p class="field-help">Your PDFs and selected API key are processed in Azure memory. Required documents, order details, and preparation screenshots are sent to your selected AI provider. R3 sign-in and browser activity pass through Azure; login credentials are not sent to the AI provider. Keep the cloud browser open until you finish your order. An application restart or expired browser session can lose unsaved work.</p>
+      </div>
     </section>
 
     <div class="workspace-grid">
@@ -265,6 +269,7 @@
 <!-- [L232] Defines an unordered message list. Assigns ID 'warnings-list' for script, label, or accessibility references. Closes the ul element for 'warnings-list'. -->            <ul id="warnings-list"></ul>
 <!-- [L233] Closes the div element for 'job-warnings'. -->          </div>
           <p id="new-order-notice" class="connection-message" hidden>Finish your current R3 order first. The next preparation will replace the current R3 form.</p>
+          <a id="open-browser-link" class="secondary-button" href="/browser.html" target="_blank" rel="noopener" hidden>Open R3 browser</a>
           <button id="new-order-button" class="secondary-button" type="button" aria-describedby="new-order-notice" hidden>Prepare another order</button>
 <!-- [L234] Defines a paragraph or status-message container. Assigns ID 'connection-message' for script, label, or accessibility references. Applies CSS classes 'connection-message'. Exposes the 'status' accessibility role. Initially hides this element until application state calls for it. Closes the p element for 'connection-message'. -->          <p id="connection-message" class="connection-message" role="status" hidden></p>
 <!-- [L235] Defines an interactive button. Assigns ID 'reconnect-button' for script, label, or accessibility references. Applies CSS classes 'secondary-button'. Uses the 'button' control type. Initially hides this element until application state calls for it. Supplies the text content 'Reconnect'. Closes the button element for 'reconnect-button'. -->          <button id="reconnect-button" class="secondary-button" type="button" hidden>Reconnect</button>

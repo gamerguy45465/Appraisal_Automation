@@ -22,6 +22,7 @@ import { AppError, publicError } from './errors.js';
 import { createJobRunner } from './jobs.js';
 import { resolveHosting } from './hosting.js';
 import { createRelayJobRunner } from './relay.js';
+import { validateHumanBrowserAction } from './browser/human-view.js';
 // [L15] Blank line separating the surrounding declarations, statements, or document blocks.
 // [L16] Existing explanatory comment: Local, single-user application: reject remote hosts/origins before parsing uploads.
 /** Single-user workspace, local or HTTPS-hosted with an authenticated Windows companion. */
@@ -29,13 +30,18 @@ import { createRelayJobRunner } from './relay.js';
 export function createApp(options = {}) {
     const hosting = options.hosting ?? resolveHosting({ PORT: String(options.port ?? 3000) });
     const hosted = hosting.mode === 'hosted';
+    const browserMode = options.browserMode ?? (hosted ? 'companion' : 'local');
+    if ((browserMode === 'local') === hosted)
+        throw new Error('The browser mode must match the hosting mode.');
+    if (browserMode === 'azure' && !options.runner && !options.connectBrowser)
+        throw new Error('Azure browser mode requires a configured workspace connection.');
     if (hosted && (!options.accessKey || !/^[\x21-\x7e]{32,256}$/.test(options.accessKey))) {
         throw new Error('Hosted mode requires APPRAISAL_ACCESS_KEY with 32 to 256 non-space ASCII characters.');
     }
     // Never pass the workspace access key into the preparation worker.
     const accessDigest = hosted ? createHash('sha256').update(options.accessKey).digest() : undefined;
-    const relay = hosted ? options.relay ?? createRelayJobRunner() : undefined;
-    const runner = relay ?? options.runner ?? createJobRunner();
+    const relay = browserMode === 'companion' ? options.relay ?? createRelayJobRunner() : undefined;
+    const runner = relay ?? options.runner ?? createJobRunner({ ...(browserMode === 'azure' ? { connectBrowser: options.connectBrowser } : {}) });
     const origins = new Set(hosting.allowedOrigins);
     const hosts = new Set(hosting.allowedHosts);
     // [L21] Creates the Express application instance.
@@ -64,8 +70,11 @@ export function createApp(options = {}) {
             return next(new AppError('HOST_REJECTED', hosted ? 'Open this application using its configured HTTPS address.' : 'Open this application using its localhost address.', 403));
         // [L31] Reads the request's Origin header for cross-origin checks.
         const origin = req.get('origin');
-        // [L32] Rejects an unapproved Origin header or explicitly cross-site browser request with HTTP 403.
-        if ((origin && !origins.has(origin)) || req.get('sec-fetch-site') === 'cross-site')
+        // External links may open only the hosted public sign-in shell as a top-level document.
+        const publicNavigation = hosted && req.method === 'GET' && (req.path === '/' || req.path === '/index.html')
+            && req.get('sec-fetch-mode') === 'navigate' && req.get('sec-fetch-dest') === 'document';
+        // [L32] An explicit unapproved Origin still fails, including on public navigation.
+        if ((origin !== undefined && !origins.has(origin)) || (req.get('sec-fetch-site') === 'cross-site' && !publicNavigation))
             return next(new AppError('ORIGIN_REJECTED', 'This request must come from the application website.', 403));
         // [L33] Passes an accepted host/origin request to subsequent middleware.
         next();
@@ -76,8 +85,10 @@ export function createApp(options = {}) {
     const cookieOptions = { httpOnly: true, sameSite: 'strict', secure: hosting.secureCookies, path: '/', maxAge: 86400000 };
     const pruneSessions = () => {
         for (const [id, session] of sessions)
-            if (Date.now() - session.createdAt > 86400000)
+            if (Date.now() - session.createdAt > 86400000) {
                 sessions.delete(id);
+                runner.endOwner?.(id);
+            }
     };
     const newSession = (res) => {
         pruneSessions();
@@ -92,7 +103,7 @@ export function createApp(options = {}) {
     const rateLimited = (_req, res) => { res.status(429).json({ error: { code: 'RATE_LIMITED', message: 'Too many requests. Wait a minute and try again.' } }); };
     // Single-user buckets avoid trusting client-supplied proxy IP headers.
     const globalLimit = (limit, windowMs = 60000) => rateLimit({ windowMs, limit, keyGenerator: () => 'workspace', standardHeaders: 'draft-8', legacyHeaders: false, handler: rateLimited });
-    app.get('/api/config', (_req, res) => { res.json({ hostingMode: hosting.mode }); });
+    app.get('/api/config', (_req, res) => { res.json({ hostingMode: hosting.mode, browserMode }); });
     if (hosted) {
         app.post('/api/login', globalLimit(10, 15 * 60000), express.json({ limit: '2kb' }), (req, res) => {
             // Login has no CSRF token yet, so require the exact browser Origin.
@@ -107,19 +118,28 @@ export function createApp(options = {}) {
                 newSession(res);
             res.json({ ok: true });
         });
-        const bearer = (req) => {
-            const match = /^Bearer ([A-Za-z0-9_-]{43})$/.exec(req.get('authorization') ?? '');
-            if (!match)
-                throw new AppError('COMPANION_AUTH', 'Connect the Windows companion using a new pairing code.', 401);
-            return match[1];
-        };
-        app.use('/api/companion', globalLimit(120));
-        app.post('/api/companion/connect', express.json({ limit: '2kb' }), (req, res) => { res.json(relay.connect(bearer(req))); });
-        app.post('/api/companion/exchange', express.json({ limit: '256kb' }), (req, res) => { res.json(relay.exchange(bearer(req), req.body)); });
-        app.use('/api/companion', (_req, _res, next) => next(new AppError('NOT_FOUND', 'The requested companion operation does not exist.', 404)));
+        if (relay) {
+            const bearer = (req) => {
+                const match = /^Bearer ([A-Za-z0-9_-]{43})$/.exec(req.get('authorization') ?? '');
+                if (!match)
+                    throw new AppError('COMPANION_AUTH', 'Connect the Windows companion using a new pairing code.', 401);
+                return match[1];
+            };
+            app.use('/api/companion', globalLimit(120));
+            app.post('/api/companion/connect', express.json({ limit: '2kb' }), (req, res) => { res.json(relay.connect(bearer(req))); });
+            app.post('/api/companion/exchange', express.json({ limit: '256kb' }), (req, res) => { res.json(relay.exchange(bearer(req), req.body)); });
+            app.use('/api/companion', (_req, _res, next) => next(new AppError('NOT_FOUND', 'The requested companion operation does not exist.', 404)));
+        }
     }
     // [L36] Limits API requests to 120 per minute, emits draft-8 rate headers, and returns a fixed HTTP 429 JSON message when exceeded.
-    app.use('/api', globalLimit(120));
+    const ordinaryLimit = globalLimit(120);
+    const viewerLimit = globalLimit(600);
+    app.use('/api', (req, res, next) => {
+        if (/^\/jobs\/[^/]+\/browser(?:\/|$)/.test(req.path))
+            viewerLimit(req, res, next);
+        else
+            ordinaryLimit(req, res, next);
+    });
     // [L37] Registers the session bootstrap endpoint that returns defaults and session-specific state.
     app.get('/api/session', (req, res) => {
         // [L38] Removes sessions older than one day whenever the bootstrap endpoint runs.
@@ -144,7 +164,7 @@ export function createApp(options = {}) {
             // [L45] Closes the scope or expression introduced here: Creates a new session only when the supplied cookie did not identify an existing one.
         }
         // [L46] Returns the CSRF token, default model/provider choices, and any active job belonging to this session.
-        res.json({ csrfToken: session.token, model: DEFAULT_MODEL, defaultProvider: DEFAULT_PROVIDER, modelDefaults: DEFAULT_MODELS, activeJob: runner.getActive?.(id), hostingMode: hosting.mode, ...(relay ? { companion: relay.state(id) } : {}) });
+        res.json({ csrfToken: session.token, model: DEFAULT_MODEL, defaultProvider: DEFAULT_PROVIDER, modelDefaults: DEFAULT_MODELS, activeJob: runner.getActive?.(id), hostingMode: hosting.mode, browserMode, ...(relay ? { companion: relay.state(id) } : {}) });
         // [L47] Closes the scope or expression introduced here: Registers the session bootstrap endpoint that returns defaults and session-specific state.
     });
     // [L48] Adds session ownership and CSRF validation for all later API routes.
@@ -154,8 +174,11 @@ export function createApp(options = {}) {
         // [L50] Looks up a session only if the cookie identifier is a string.
         const session = typeof id === 'string' ? sessions.get(id) : undefined;
         // [L51] Rejects missing or expired sessions with HTTP 401 before accessing protected API routes.
-        if (!session || Date.now() - session.createdAt > 86400000)
+        if (!session || Date.now() - session.createdAt > 86400000) {
+            if (typeof id === 'string')
+                runner.endOwner?.(id);
             return next(hosted ? workspaceLoginRequired() : new AppError('SESSION_REQUIRED', 'Refresh the page to start a local session.', 401));
+        }
         // [L52] Records the validated session identifier as the request's job owner.
         res.locals.owner = id;
         // [L53] Requires CSRF validation for methods other than GET and HEAD.
@@ -238,6 +261,41 @@ export function createApp(options = {}) {
         res.json({ job, ...(relay ? { companion: relay.state(res.locals.owner) } : {}) });
         // [L82] Closes the scope or expression introduced here: Registers retrieval of an individual job by its URL identifier.
     });
+    if (browserMode === 'azure') {
+        const requireBrowser = (owner, id) => {
+            if (!/^[0-9a-f-]{36}$/.test(id) || !runner.get(owner, id))
+                throw new AppError('JOB_NOT_FOUND', 'This preparation was not found in your session.', 404);
+        };
+        app.get('/api/jobs/:id/browser', async (req, res) => {
+            const owner = res.locals.owner;
+            requireBrowser(owner, req.params.id);
+            if (!runner.browserFrame)
+                throw new AppError('BROWSER_UNAVAILABLE', 'The cloud browser is not available.', 409);
+            res.json({ frame: await runner.browserFrame(owner, req.params.id) });
+        });
+        app.post('/api/jobs/:id/browser/input', express.json({ limit: '32kb' }), async (req, res) => {
+            const owner = res.locals.owner;
+            requireBrowser(owner, req.params.id);
+            if (req.get('origin') !== hosting.publicOrigin)
+                throw new AppError('ORIGIN_REJECTED', 'Use the browser viewer in this workspace.', 403);
+            const action = validateHumanBrowserAction(req.body);
+            req.body = {};
+            if (!runner.browserInput)
+                throw new AppError('BROWSER_UNAVAILABLE', 'The cloud browser is not available.', 409);
+            await runner.browserInput(owner, req.params.id, action);
+            res.json({ ok: true });
+        });
+        app.post('/api/jobs/:id/browser/close', async (req, res) => {
+            const owner = res.locals.owner;
+            requireBrowser(owner, req.params.id);
+            if (req.get('origin') !== hosting.publicOrigin)
+                throw new AppError('ORIGIN_REJECTED', 'Use the browser viewer in this workspace.', 403);
+            if (!runner.closeBrowser)
+                throw new AppError('BROWSER_UNAVAILABLE', 'The cloud browser is not available.', 409);
+            await runner.closeBrowser(owner, req.params.id);
+            res.json({ ok: true });
+        });
+    }
     // [L83] Converts unmatched API operations into a fixed HTTP 404 application error.
     app.use('/api', (_req, _res, next) => next(new AppError('NOT_FOUND', 'The requested operation does not exist.', 404)));
     // [L84] Serves the public directory resolved relative to this module, disabling ETags and denying dotfiles.

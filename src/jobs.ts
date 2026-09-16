@@ -4,11 +4,17 @@ import { fileURLToPath } from 'node:url';
 import type { JobPayload, JobView, WorkerCommand, WorkerMessage } from './domain.js';
 import { AppError } from './errors.js';
 import { createPausableTimeout } from './pausable-timeout.js';
+import type { AzureBrowserConnection } from './azure-browser.js';
+import type { HumanBrowserAction, HumanBrowserFrame } from './browser/human-view.js';
 
 export interface JobRunner {
   create(owner: string, payload: JobPayload): JobView;
   get(owner: string, id: string): JobView | undefined;
   getActive?(owner: string): JobView | undefined;
+  browserFrame?(owner: string, id: string): Promise<HumanBrowserFrame>;
+  browserInput?(owner: string, id: string, action: HumanBrowserAction): Promise<void>;
+  closeBrowser?(owner: string, id: string): Promise<void>;
+  endOwner?(owner: string): void;
   shutdown(): void;
 }
 interface JobRecord { readonly owner: string; view: JobView; readonly createdAt: number }
@@ -23,6 +29,9 @@ interface WorkerHost {
   transferFailed?: boolean;
   timeout?: ReturnType<typeof createPausableTimeout>;
   reapTimer?: ReturnType<typeof setTimeout>;
+  lifetimeTimer?: ReturnType<typeof setTimeout>;
+  connecting?: boolean;
+  closeRequest?: Promise<HumanBrowserFrame | undefined>;
 }
 
 export function workerEnvironment(): NodeJS.ProcessEnv {
@@ -30,10 +39,50 @@ export function workerEnvironment(): NodeJS.ProcessEnv {
   return { ...Object.fromEntries(Object.entries(process.env).filter(([key]) => allowed.has(key.toUpperCase()))), LANGSMITH_TRACING: 'false', LANGCHAIN_TRACING_V2: 'false', LANGCHAIN_TRACING: 'false' };
 }
 
-export function createJobRunner(options: { readonly detached?: boolean } = {}): JobRunner {
+export function createJobRunner(options: { readonly detached?: boolean; readonly connectBrowser?: () => Promise<AzureBrowserConnection> } = {}): JobRunner {
   const jobs = new Map<string, JobRecord>();
   const hosts = new Set<WorkerHost>();
   let current: WorkerHost | undefined;
+  const pending = new Map<string, { host: WorkerHost; jobId: string; workerJobId: string; operation: string; timer: ReturnType<typeof setTimeout>; resolve: (frame?: HumanBrowserFrame) => void; reject: (error: AppError) => void }>();
+  const unavailable = (status = 409) => new AppError('BROWSER_UNAVAILABLE', 'The cloud browser is not available. Check the order status before starting again.', status);
+  const rejectPending = (host: WorkerHost): void => {
+    for (const [id, request] of pending) if (request.host === host) {
+      clearTimeout(request.timer); pending.delete(id);
+      if (request.operation === 'close') request.resolve();
+      else request.reject(unavailable(410));
+    }
+  };
+  const canControl = (host: WorkerHost): boolean => {
+    if (host.closeRequest) return false;
+    const status = jobs.get(host.jobId)?.view.status;
+    return status === 'awaiting_login' || status === 'awaiting_review' || status === 'user_submitted' || (status === 'failed' && (host.ready || host.transferFailed === true));
+  };
+  const humanRequest = (owner: string, jobId: string, operation: 'frame' | 'input' | 'close', action?: HumanBrowserAction): Promise<HumanBrowserFrame | undefined> => {
+    const host = current;
+    if (!options.connectBrowser || !host || host.owner !== owner || host.jobId !== jobId || host.retired || host.ended) return Promise.reject(unavailable(410));
+    if (operation === 'close' && host.closeRequest) return host.closeRequest;
+    if (operation === 'input' && !canControl(host)) return Promise.reject(new AppError('BROWSER_LOCKED', 'Browser control is paused while the order is being prepared.', 409));
+    if (operation !== 'close' && (pending.size >= 32 || (operation === 'frame' && [...pending.values()].some(r => r.host === host && r.operation === 'frame')))) return Promise.reject(new AppError('BROWSER_BUSY', 'Wait for the current browser operation to finish.', 429));
+    const result = new Promise<HumanBrowserFrame | undefined>((resolve, reject) => {
+      const requestId = randomUUID();
+      const timer = setTimeout(() => { pending.delete(requestId); reject(unavailable()); }, 15000);
+      timer.unref();
+      const workerJobId = host.transferFailed && host.previousJobId ? host.previousJobId : jobId;
+      pending.set(requestId, { host, jobId, workerJobId, operation, timer, resolve, reject });
+      try {
+        host.child.send({ type: 'human_browser', jobId: workerJobId, requestId, operation, ...(action ? { action } : {}) } satisfies WorkerCommand, error => {
+          if (!error) return;
+          const request = pending.get(requestId);
+          if (request) { clearTimeout(request.timer); pending.delete(requestId); reject(unavailable()); }
+        });
+      } catch { clearTimeout(timer); pending.delete(requestId); reject(unavailable()); }
+    });
+    if (operation === 'close') {
+      host.closeRequest = result;
+      void result.then(() => { host.closeRequest = undefined; }, () => { host.closeRequest = undefined; });
+    }
+    return result;
+  };
 
   const stopTimer = (host: WorkerHost): void => { host.timeout?.clear(); host.timeout = undefined; };
   const reap = (host: WorkerHost): void => {
@@ -46,6 +95,8 @@ export function createJobRunner(options: { readonly detached?: boolean } = {}): 
     if (host.retired) return;
     host.retired = true;
     stopTimer(host);
+    clearTimeout(host.lifetimeTimer);
+    rejectPending(host);
     if (current === host) current = undefined;
     host.reapTimer = setTimeout(() => reap(host), 5000);
     host.reapTimer.unref();
@@ -60,8 +111,38 @@ export function createJobRunner(options: { readonly detached?: boolean } = {}): 
     const child = fork(fileURLToPath(new URL(isTypeScript ? './worker.ts' : './worker.js', import.meta.url)), [], workerOptions);
     const host: WorkerHost = { child, owner, jobId, ready: false, retired: false, ended: false };
     hosts.add(host);
+    if (options.connectBrowser) {
+      host.lifetimeTimer = setTimeout(() => {
+        void humanRequest(host.owner, host.jobId, 'close').catch(() => undefined).finally(() => { if (!host.ended) host.child.kill(); });
+      }, 86400000);
+      host.lifetimeTimer.unref();
+    }
     child.on('message', (message: WorkerMessage) => {
       if (!message) return;
+      if (message.type === 'human_browser_result') {
+        const request = pending.get(message.requestId);
+        if (!request || request.host !== host || request.workerJobId !== message.jobId) return;
+        clearTimeout(request.timer); pending.delete(message.requestId);
+        if (host.retired || host.ended || current !== host || host.jobId !== request.jobId || message.error) {
+          request.reject(message.error === 'locked' ? new AppError('BROWSER_LOCKED', 'Browser control is paused while the order is being prepared.', 409) : unavailable());
+        } else request.resolve(message.frame ? { ...message.frame, canControl: message.frame.canControl && canControl(host) } : undefined);
+        return;
+      }
+      if (message.type === 'browser_connection_request') {
+        if (!options.connectBrowser || current !== host || host.retired || host.ended || host.jobId !== message.jobId || host.connecting || !/^[0-9a-f-]{36}$/.test(message.requestId)) return;
+        host.connecting = true;
+        void options.connectBrowser().then(connection => {
+          const clear = (): void => { for (const key of Object.keys(connection.headers)) delete connection.headers[key]; };
+          if (current !== host || host.retired || host.ended || host.jobId !== message.jobId) { clear(); return; }
+          try { child.send({ type: 'browser_connection', jobId: message.jobId, requestId: message.requestId, connection } satisfies WorkerCommand, clear); }
+          catch (error) { clear(); throw error; }
+        }).catch(() => {
+          if (!host.ended && host.jobId === message.jobId) {
+            try { child.send({ type: 'browser_connection', jobId: message.jobId, requestId: message.requestId } satisfies WorkerCommand, () => undefined); } catch { /* The worker is already gone. */ }
+          }
+        }).finally(() => { host.connecting = false; });
+        return;
+      }
       if (message.jobId !== host.jobId) {
         // If transfer failed before the next command arrived, the retained browser still reports its previous job ID.
         if (host.transferFailed && message.jobId === host.previousJobId && message.type === 'status' && message.status === 'browser_closed') {
@@ -99,6 +180,8 @@ export function createJobRunner(options: { readonly detached?: boolean } = {}): 
     });
     child.on('close', () => {
       host.ended = true;
+      clearTimeout(host.lifetimeTimer);
+      rejectPending(host);
       stopTimer(host);
       clearTimeout(host.reapTimer);
       hosts.delete(host);
@@ -133,6 +216,7 @@ export function createJobRunner(options: { readonly detached?: boolean } = {}): 
       host.previousJobId = reused ? host.jobId : undefined;
       host.transferFailed = false;
       host.jobId = id;
+      rejectPending(host);
       host.ready = false;
       jobs.set(id, record);
       stopTimer(host);
@@ -147,7 +231,7 @@ export function createJobRunner(options: { readonly detached?: boolean } = {}): 
         };
         try { host.child.send(command, stopped); } catch { stopped(new Error('IPC unavailable')); }
       }, 12 * 60 * 1000);
-      const command: WorkerCommand = { type: 'prepare', jobId: id, payload };
+      const command: WorkerCommand = { type: 'prepare', jobId: id, payload, ...(options.connectBrowser ? { cloudBrowser: true } : {}) };
       const transferred = (error: Error | null): void => {
         payload.urla.buffer.fill(0);
         payload.salesContract?.buffer.fill(0);
@@ -166,8 +250,14 @@ export function createJobRunner(options: { readonly detached?: boolean } = {}): 
     },
     get(owner, id) { const record = jobs.get(id); return record?.owner === owner ? record.view : undefined; },
     getActive(owner) { return current?.owner === owner ? jobs.get(current.jobId)?.view : undefined; },
+    ...(options.connectBrowser ? {
+      async browserFrame(owner: string, id: string) { const frame = await humanRequest(owner, id, 'frame'); if (!frame) throw unavailable(); return frame; },
+      async browserInput(owner: string, id: string, action: HumanBrowserAction) { await humanRequest(owner, id, 'input', action); },
+      async closeBrowser(owner: string, id: string) { await humanRequest(owner, id, 'close'); },
+      endOwner(owner: string) { if (current?.owner === owner) void humanRequest(owner, current.jobId, 'close').catch(() => undefined); },
+    } : {}),
     shutdown() {
-      for (const host of hosts) { stopTimer(host); clearTimeout(host.reapTimer); if (!host.ended) host.child.kill(); }
+      for (const host of hosts) { stopTimer(host); clearTimeout(host.reapTimer); clearTimeout(host.lifetimeTimer); rejectPending(host); if (!host.ended) { if (options.connectBrowser && host.child.connected) host.child.disconnect(); else host.child.kill(); } }
       hosts.clear(); current = undefined; jobs.clear();
     },
   };

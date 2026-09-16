@@ -1,3 +1,11 @@
+export function resolveBrowserMode(env, hosting) {
+    const mode = env.APPRAISAL_BROWSER_MODE ?? (hosting.mode === 'hosted' ? 'companion' : 'local');
+    if (!['local', 'companion', 'azure'].includes(mode))
+        throw new Error('APPRAISAL_BROWSER_MODE must be local, companion, or azure.');
+    if ((hosting.mode === 'local') !== (mode === 'local'))
+        throw new Error('Azure and companion browsers require hosted mode; local browsers require local mode.');
+    return mode;
+}
 const ORIGIN_ERROR = 'APPRAISAL_PUBLIC_ORIGIN must be a canonical HTTPS origin with a DNS hostname, no trailing slash, path, query, fragment, credentials, or wildcard.';
 const PORT_ERROR = 'PORT must be an integer from 1024 to 65535, or a local Windows named pipe in hosted mode.';
 const PIPE_PATTERN = /^\\\\\.\\pipe\\[A-Za-z0-9_.-]{1,200}$/;

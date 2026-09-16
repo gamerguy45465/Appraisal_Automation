@@ -10,6 +10,7 @@ const accessKey = 'synthetic-workspace-access-code-1234567890';
 const pdf = Buffer.from('%PDF-1.7\n% synthetic relay fixture\n%%EOF');
 const form = { provider: 'google', model: 'synthetic-model', apiKey: 'synthetic-provider-key-1234567890', loanNumber: '685-2012345', paymentMethod: 'Invoice' };
 const relays: RelayJobRunner[] = [];
+const externalNavigation = { 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Dest': 'document' };
 
 function setup() {
   const relay = createRelayJobRunner();
@@ -40,7 +41,7 @@ describe('hosted workspace authentication and relay boundary', () => {
   it('serves the sign-in shell but never creates anonymous hosted sessions or accepts uploads', async () => {
     const { get, post } = setup();
     await get('/').expect(200);
-    expect((await get('/api/config').expect(200)).body).toEqual({ hostingMode: 'hosted' });
+    expect((await get('/api/config').expect(200)).body).toEqual({ hostingMode: 'hosted', browserMode: 'companion' });
     const response = await get('/api/session').expect(401);
     expect(response.body.error.code).toBe('WORKSPACE_LOGIN_REQUIRED');
     expect(response.headers['set-cookie']).toBeUndefined();
@@ -57,6 +58,90 @@ describe('hosted workspace authentication and relay boundary', () => {
     await request(app).get('/api/session').set('Host', 'attacker.example').set('X-Forwarded-Host', host).set('X-Forwarded-Proto', 'https').expect(403);
     await get('/api/session').set('X-Forwarded-Host', 'attacker.example').expect(401);
     await get('/api/session').set('Origin', `${origin}.attacker.example`).expect(403);
+  });
+
+  it.each(['/', '/index.html', '/?from=external', '/index.html?from=external'])('allows external document navigation to the public shell at %s without a session or secret', async path => {
+    const { get } = setup();
+    const response = await get(path).set(externalNavigation).expect(200);
+    expect(response.headers['content-type']).toContain('text/html');
+    expect(response.headers['set-cookie']).toBeUndefined();
+    expect(response.text).toContain('workspace-login-form');
+    expect(response.text).not.toContain(accessKey);
+    expect(response.text).not.toContain(form.apiKey);
+    expect(response.text).not.toContain('csrfToken');
+  });
+
+  it('keeps authenticated session details out of the public shell during external navigation', async () => {
+    const { get, login } = setup();
+    const user = await login();
+    const response = await get('/').set(externalNavigation).set('Cookie', user.cookie).expect(200);
+    expect(response.headers['set-cookie']).toBeUndefined();
+    expect(response.text).not.toContain(user.csrf);
+    expect(response.text).not.toContain(user.cookie);
+    expect(response.text).not.toContain(accessKey);
+  });
+
+  it('still rejects unapproved Host and every explicit unapproved Origin during public navigation', async () => {
+    const { get } = setup();
+    const wrongHost = await get('/').set(externalNavigation).set('Host', 'attacker.example').set('X-Forwarded-Host', host).expect(403);
+    expect(wrongHost.body.error.code).toBe('HOST_REJECTED');
+    for (const path of ['/', '/index.html']) {
+      for (const unapproved of ['https://attacker.example', 'null', '']) {
+        const response = await get(path).set(externalNavigation).set('Origin', unapproved).expect(403);
+        expect(response.body.error.code).toBe('ORIGIN_REJECTED');
+        expect(response.headers['set-cookie']).toBeUndefined();
+      }
+    }
+  });
+
+  it.each(['/api/session', '/api/config', '/api/jobs', '/api/companion-status', '/api/companion/exchange', '/app.js', '/INDEX.HTML'])('does not permit cross-site navigation to %s', async path => {
+    const { get } = setup();
+    const response = await get(path).set(externalNavigation).expect(403);
+    expect(response.body.error.code).toBe('ORIGIN_REJECTED');
+    expect(response.headers['set-cookie']).toBeUndefined();
+  });
+
+  it.each(['/', '/index.html', '/api/login'])('does not permit cross-site POST navigation to %s', async path => {
+    const { post } = setup();
+    const response = await post(path).set(externalNavigation).set('Origin', origin).send({ accessKey }).expect(403);
+    expect(response.body.error.code).toBe('ORIGIN_REJECTED');
+    expect(response.headers['set-cookie']).toBeUndefined();
+  });
+
+  it.each([
+    ['iframe', 'navigate', 'iframe'],
+    ['object', 'navigate', 'object'],
+    ['no-cors', 'no-cors', 'document'],
+    ['cors', 'cors', 'document'],
+    ['fetch', 'cors', 'empty'],
+    ['missing mode', undefined, 'document'],
+    ['missing destination', 'navigate', undefined],
+    ['missing metadata', undefined, undefined],
+  ])('rejects cross-site shell requests with %s metadata', async (_name, mode, destination) => {
+    const { get } = setup();
+    for (const path of ['/', '/index.html']) {
+      const pending = get(path).set('Sec-Fetch-Site', 'cross-site');
+      if (mode !== undefined) pending.set('Sec-Fetch-Mode', mode);
+      if (destination !== undefined) pending.set('Sec-Fetch-Dest', destination);
+      const response = await pending.expect(403);
+      expect(response.body.error.code).toBe('ORIGIN_REJECTED');
+      expect(response.headers['set-cookie']).toBeUndefined();
+    }
+  });
+
+  it('keeps cross-site HEAD shell requests and local-mode document navigation blocked', async () => {
+    const { app } = setup();
+    await request(app).head('/').set('Host', host).set(externalNavigation).expect(403);
+    const local = createApp();
+    try {
+      for (const path of ['/', '/index.html']) {
+        const response = await request(local.app).get(path).set('Host', '127.0.0.1:3000').set(externalNavigation).expect(403);
+        expect(response.body.error.code).toBe('ORIGIN_REJECTED');
+        expect(response.headers['set-cookie']).toBeUndefined();
+      }
+    } finally {
+      local.runner.shutdown();
+    }
   });
 
   it('sets secure HTTP-only cookies and preserves the owning session across repeat sign-in', async () => {

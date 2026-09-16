@@ -8,6 +8,7 @@ import { chromium } from 'playwright';
 import { z } from 'zod';
 // [L6] Imports the application's coded error base class.
 import { AppError } from '../errors.js';
+import { createHumanBrowserView } from './human-view.js';
 // [L7] Imports environment filtering, inspected-field matching, phone recovery normalization, and approved-value comparison helpers.
 import { browserEnvironment, matchesR3Field, phoneInputDigits, r3ContactIdentity, textValuesMatch } from './r3-fields.js';
 // [L8] Begins the grouped import of browser request guards and approved URLs.
@@ -172,11 +173,12 @@ function getBrowserOwner(browser, context, ownsBrowser) {
     browserOwners.set(context, creating);
     return creating;
 }
-/** Production always opens a visible, isolated browser and never saves authentication state. */
+/** Local mode opens visible Chromium; hosted mode may connect to an isolated cloud browser. Authentication is never saved. */
 // [L76] Defines the production browser-session factory.
 export async function createBrowserSession(options) {
-    // [L77] Launches visible Chromium with only the filtered environment variables.
-    const browser = await chromium.launch({ headless: false, env: browserEnvironment(process.env) });
+    // [L77] A trusted cloud connector can replace local launch without changing the guarded session.
+    const browser = options.connectBrowser ? await options.connectBrowser()
+        : await chromium.launch({ headless: false, env: browserEnvironment(process.env) });
     // [L78] Starts setup inside a cleanup-protected block after browser launch.
     try {
         // [L79] Creates a new isolated browser context with explicit restrictions.
@@ -243,6 +245,11 @@ testTransport, ownsBrowser = false) {
     let toolQueue = Promise.resolve();
     // [L108] Tracks immediate revocation of further automated actions.
     let automationRevoked = false;
+    const humanController = options.humanView ? createHumanBrowserView(context, page, () => ({
+        phase,
+        canControl: !retired && !transferring && !closedResolved && (phase === 'authenticating' || phase === 'review' && automationRevoked),
+        closed: retired || closedResolved || browserOwner.isClosed(),
+    })) : undefined;
     // [L109] Stores the shared incomplete-handoff operation so repeated requests reuse it.
     let incompleteHandoff;
     // [L110] Tracks preparation-phase intercepted routes that may need cancellation before human handoff.
@@ -272,6 +279,7 @@ testTransport, ownsBrowser = false) {
         closedResolved = true;
         // [L120] Sets the session phase to closed, blocking subsequent guarded work.
         phase = 'closed';
+        humanController?.dispose();
         // [L121] Immediately disables further automation.
         automationRevoked = true;
         // [L122] Releases pending lookup waiters so queued work can observe closure.
@@ -1353,6 +1361,7 @@ testTransport, ownsBrowser = false) {
         automationRevoked = true;
         // Block unload beacons, review timers, and popup writes before changing any browser surface.
         phase = 'preparing';
+        await humanController?.suspendAndDrain();
         for (const resolve of lookupWaiters)
             resolve();
         try {
@@ -1366,7 +1375,10 @@ testTransport, ownsBrowser = false) {
             if (browserOwner.isClosed() || page.isClosed() || page.url() !== 'about:blank')
                 throw new BrowserActionError('The prior order could not be retired.');
             // Install the fresh deny-by-default guard before removing this generation's interceptor.
-            const next = await createGuardedSession(browser, context, page, nextOptions, testTransport, ownsBrowser);
+            const next = await createGuardedSession(browser, context, page, {
+                ...options, ...nextOptions,
+            }, testTransport, ownsBrowser);
+            humanController?.dispose();
             await context.unroute('**/*', routeHandler);
             removeSessionObservers();
             references.clear();
@@ -1395,6 +1407,7 @@ testTransport, ownsBrowser = false) {
     return {
         // [L609] Exposes the configured list of restricted LangChain browser tools.
         tools,
+        ...(humanController ? { humanView: humanController.view } : {}),
         startNextOrder,
         isClosed: () => retired || browserOwner.isClosed(),
         // [L610] Defines one-time installation of the application-approved field plan.
@@ -1579,6 +1592,14 @@ testTransport, ownsBrowser = false) {
                             // [L688] Stops if waiting finished meanwhile or the page left the approved landing URL.
                             if (finished || !isAuthenticatedLandingUrl(page.url()))
                                 return;
+                            // Stop and drain human input before authentication can give way to automated preparation.
+                            await humanController?.suspendAndDrain();
+                            if (finished)
+                                return;
+                            if (!isAuthenticatedLandingUrl(page.url())) {
+                                humanController?.resume();
+                                return;
+                            }
                             // [L689] Explains that disabling Fetch resumes pending responses and may produce expected late continuation errors.
                             // Fetch.disable resumes pending responses; their late completion errors are expected.
                             // [L690] Marks redirect interception as stopping so expected late events/errors are ignored.
@@ -1712,6 +1733,7 @@ testTransport, ownsBrowser = false) {
                 automationRevoked = true;
                 // [L740] Switches network/browser ownership to human review.
                 phase = 'review';
+                humanController?.resume();
                 // [L741] Attempts to bring the prepared order page forward and ignores focus failures.
                 await page.bringToFront().catch(() => undefined);
                 // [L742] If the browser remains open, reports successful preparation and instructs the user to review every field and submit personally.
@@ -1751,6 +1773,7 @@ testTransport, ownsBrowser = false) {
                 if (hasLoggedIn && phase !== 'authenticating') {
                     // [L757] Enables human-review networking and disables preparation behavior through the phase change.
                     phase = 'review';
+                    humanController?.resume();
                     // [L758] Attempts to bring the incomplete order page forward, ignoring focus failures.
                     await page.bringToFront().catch(() => undefined);
                     // [L759] Returns false if the browser closed while being brought forward.

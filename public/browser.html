@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="referrer" content="same-origin" />
+  <title>Appraisal Desk · R3 cloud browser</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/browser.css" />
+  <script src="/browser.js" defer></script>
+</head>
+<body>
+  <header class="browser-header">
+    <a class="brand" href="/" target="_blank" rel="noopener">Appraisal<span class="brand-light">Desk</span></a>
+    <div class="browser-actions">
+      <button id="reconnect-browser" type="button" hidden>Reconnect viewer</button>
+      <button id="close-browser" class="danger-button" type="button" disabled>Close cloud browser</button>
+    </div>
+  </header>
+  <main class="browser-shell">
+    <div class="browser-heading">
+      <div><p class="eyebrow">YOUR R3 CLOUD BROWSER</p><h1 id="browser-heading">Connecting to your browser</h1></div>
+      <label id="page-picker-label" hidden>Browser page <select id="page-picker" disabled></select></label>
+    </div>
+    <p id="browser-status" role="status" aria-live="polite">Checking your workspace session.</p>
+    <p id="browser-help">Click the browser image to control R3. Type normally, paste text, or use Tab and arrow keys. Escape returns focus to the viewer controls. The image refreshes about once a second.</p>
+    <p id="input-notice" role="alert" hidden></p>
+    <section id="remote-dialog" class="remote-dialog" aria-labelledby="dialog-heading" hidden>
+      <h2 id="dialog-heading">R3 browser message</h2>
+      <p id="dialog-message"></p>
+      <label id="dialog-prompt-label" hidden>Response <input id="dialog-prompt" type="text" maxlength="4096" autocomplete="off" spellcheck="false" /></label>
+      <div class="browser-actions"><button id="accept-dialog" type="button" disabled>OK</button><button id="dismiss-dialog" type="button" disabled>Cancel</button></div>
+    </section>
+    <div id="browser-surface" class="browser-surface" aria-disabled="true">
+      <img id="browser-frame" alt="Live R3 browser. Use the keyboard input to interact after clicking the image." draggable="false" hidden />
+      <textarea id="browser-keyboard" aria-label="Keyboard input for R3 browser" aria-describedby="browser-help" autocomplete="off" autocapitalize="off" spellcheck="false" disabled></textarea>
+      <p id="empty-frame">Your browser will appear here when it is ready.</p>
+    </div>
+    <p class="browser-footer">Only you submit the order after reviewing every field. Closing this viewer tab leaves your cloud browser running. Use <strong>Close cloud browser</strong> only when you are finished; unsaved work will be lost.</p>
+  </main>
+</body>
+</html>
