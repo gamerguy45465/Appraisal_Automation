@@ -81,6 +81,14 @@ Keep `devErrorsEnabled` disabled: diagnosis belongs in private logs. The startup
 
 See Microsoft's [application logging instructions](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs), [503 troubleshooting](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-http-502-http-503), and [Windows Node.js troubleshooting](https://learn.microsoft.com/en-us/troubleshoot/azure/app-service/app-service-web-nodejs-best-practices-troubleshoot-guide).
 
+## Preparation fails while setting the job environment
+
+`Windows could not store the environment settings.` means the fixed `scripts/environment.ps1` helper exited unsuccessfully. Environment initialization runs before the selected AI provider or Azure browser connection, so this message alone does not indicate a provider-key or workspace-permission problem.
+
+The September 16 hosted failure was traced with a synthetic Kudu request to `Console.InputEncoding`: setting the encoding threw `The handle is invalid.` App Service supplies redirected pipes without guaranteeing an attached console. The helper now uses explicit UTF-8 readers/writers over `Console.OpenStandardInput`, `Console.OpenStandardOutput` and `Console.OpenStandardError`, avoiding console code-page changes. Stream setup is inside the guarded operation and failures produce only a fixed private error.
+
+Deploy the updated `scripts/environment.ps1` with the application. Submitted values remain literal JSON on stdin, only the five approved variable names are accepted, and Process scope keeps values out of User/Machine environment storage. Raw helper output from a real preparation can contain private values and must not be exposed in application logs or status messages. The helper's generic nonzero-exit error can also represent other failures; use synthetic values when diagnosing a recurrence.
+
 ## Open the cloud browser
 
 Use the signed-in website for the full workflow; see the [cloud browser workflow](azure-browser.md#human-browser-workflow).
@@ -102,6 +110,8 @@ PDFs and the selected provider key are processed in App Service, and human R3 in
 - PDFs, provider credentials, job state and browser access remain memory-based. JavaScript strings, network buffers and OS memory cannot be guaranteed securely erased. Provider retention terms apply; the feature does not promise zero retention by Azure, the OS, Chromium, R3 or AI providers.
 
 ## Verification
+
+The September 16 console-handle fix passed TypeScript checking, 529 unit/integration tests, 148 browser tests and the production build. Its final environment regression explicitly detaches a synthetic helper from the console, confirms the old encoding setter fails with `ERROR_INVALID_HANDLE`, and verifies the corrected helper in that same context, including private getters, Unicode/metacharacters and cleanup. The final 11-test environment suite also passed separately. The user's synthetic Kudu diagnostic established the original Azure failure; deployment of this correction and live provider/R3 acceptance remain separate.
 
 The September 16 companion removal passed `npm run check`: 528 unit/integration tests, 148 browser tests, TypeScript and the production build. Compiled startup on a Windows named pipe also verified the default Azure mode, missing pairing controls and anonymous-session rejection. The live site's public configuration still reported `companion` during inspection; the Azure-only build requires deployment and the configuration above before production acceptance.
 

@@ -72,6 +72,96 @@ describe.skipIf(process.platform !== 'win32')('PowerShell process environment', 
   });
 // [L37] Blank line separating the surrounding declarations, statements, or document blocks.
 
+  it('round-trips private UTF-8 settings through pipes without a Windows console', async () => {
+    // The fixture detaches its child from any console to reproduce the App Service host.
+    // The wrapper forwards only pipe data; private values never become command arguments or files.
+    const invocation = `
+$ErrorActionPreference = 'Stop'
+Add-Type -Namespace AppraisalConsoleFixture -Name Native -MemberDefinition '[System.Runtime.InteropServices.DllImport("kernel32.dll")] public static extern bool FreeConsole();'
+$null = [AppraisalConsoleFixture.Native]::FreeConsole()
+$consoleEncodingFailed = $false
+try { [Console]::InputEncoding = New-Object System.Text.UTF8Encoding($false) }
+catch { $consoleEncodingFailed = $_.Exception.InnerException.HResult -eq -2147024890 }
+if (!$consoleEncodingFailed) { exit 3 }
+& $env:APPRAISAL_TEST_HELPER_PATH -Operation $env:APPRAISAL_TEST_HELPER_OPERATION
+`;
+    const wrapper = `
+$ErrorActionPreference = 'Stop'
+$encoding = New-Object System.Text.UTF8Encoding($false)
+$requestReader = New-Object System.IO.StreamReader([Console]::OpenStandardInput(), $encoding)
+$requestText = $requestReader.ReadToEnd()
+$helper = New-Object System.Diagnostics.Process
+$helper.StartInfo.FileName = 'powershell.exe'
+$helper.StartInfo.Arguments = '-NoLogo -NoProfile -NonInteractive -EncodedCommand ${Buffer.from(invocation, 'utf16le').toString('base64')}'
+$helper.StartInfo.UseShellExecute = $false
+$helper.StartInfo.CreateNoWindow = $true
+$helper.StartInfo.RedirectStandardInput = $true
+$helper.StartInfo.RedirectStandardOutput = $true
+$helper.StartInfo.RedirectStandardError = $true
+$helper.StartInfo.StandardOutputEncoding = $encoding
+$helper.StartInfo.StandardErrorEncoding = $encoding
+$helperStarted = $false
+try {
+$null = $helper.Start()
+$helperStarted = $true
+$response = $helper.StandardOutput.ReadToEndAsync()
+$failure = $helper.StandardError.ReadToEndAsync()
+$requestWriter = New-Object System.IO.StreamWriter($helper.StandardInput.BaseStream, $encoding)
+$requestWriter.Write($requestText)
+$requestWriter.Dispose()
+if (!$helper.WaitForExit(10000)) { $helper.Kill(); exit 2 }
+$replyWriter = New-Object System.IO.StreamWriter([Console]::OpenStandardOutput(), $encoding)
+$replyWriter.Write($response.Result)
+$replyWriter.Flush()
+$errorWriter = New-Object System.IO.StreamWriter([Console]::OpenStandardError(), $encoding)
+$errorWriter.Write($failure.Result)
+$errorWriter.Flush()
+exit $helper.ExitCode
+} finally {
+    if ($helperStarted -and !$helper.HasExited) {
+        try { $helper.Kill() } catch { }
+        $null = $helper.WaitForExit(1000)
+    }
+    $helper.Dispose()
+}
+`;
+    const actual = await vi.importActual<typeof childProcess>('node:child_process');
+    vi.mocked(childProcess.spawn).mockImplementation((command, args, options) => actual.spawn(command,
+      ['-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(wrapper, 'utf16le').toString('base64')],
+      { ...options, timeout: 15000, env: { ...process.env,
+        APPRAISAL_TEST_HELPER_PATH: args?.[args.indexOf('-File') + 1],
+        APPRAISAL_TEST_HELPER_OPERATION: args?.[args.indexOf('-Operation') + 1],
+      } }));
+    const literal = 'synthetic-key-\u00e9\u6f22\u5b57\u{1f511} "quoted" \'single\' $([Environment]::Exit(13)); & | `tick`\nline two';
+    const environment = createEnvironmentTools({ ...input, apiKey: literal });
+    try {
+      await environment.initialize();
+      expect(await environment.retrieve('api_key')).toBe(literal);
+      expect(await environment.retrieve('loan_number')).toBe(input.loanNumber);
+      expect(process.env.APPRAISAL_AI_API_KEY).toBe(literal);
+      const secretResult = await environment.tools.find(candidate => candidate.name === 'get_api_key')!.invoke({});
+      expect(secretResult).toEqual({ configured: true, usage: 'Consumed privately by the backend; never exposed to the model.' });
+      expect(JSON.stringify(secretResult)).not.toContain(literal);
+
+      const launches = vi.mocked(childProcess.spawn).mock.calls;
+      expect(launches.length).toBeGreaterThan(0);
+      for (const [command, args] of launches) {
+        expect(command).toBe('powershell.exe');
+        expect(args).toContain('-File');
+        expect(args).not.toContain('-Command');
+        expect(args?.[args.indexOf('-File') + 1]).toMatch(/[\\/]scripts[\\/]environment\.ps1$/);
+        expect(JSON.stringify([command, args])).not.toContain('synthetic-key-');
+        expect(JSON.stringify([command, args])).not.toContain(input.loanNumber);
+      }
+    } finally {
+      environment.clear();
+      await environment.drain();
+    }
+    for (const name of Object.values(environmentNames)) expect(process.env[name]).toBeUndefined();
+    await expect(environment.retrieve('api_key')).rejects.toMatchObject({ code: 'ENVIRONMENT_CLOSED' });
+    expect(await runEnvironmentOperation('get', 'api_key')).toBe('');
+  }, 25000);
+
   // [L38] Register a parameterized test that "keeps %s credentials private in the generic environment and clears them at handoff".
   it.each(aiProviders)('keeps %s credentials private in the generic environment and clears them at handoff', async (provider) => {
     // [L39] Temporarily set environment variable "OPENAI_API_KEY" to "synthetic-unrelated-openai-key" for this test.
