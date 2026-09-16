@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "main": "startup.cjs",
-  "description": "Appraisal preparation with local or Azure hosting and a Windows companion for human review",
+  "description": "Appraisal preparation with an Azure Playwright browser for human sign-in and review",
   "engines": {
     "node": ">=24.0.0"
   },
@@ -12,8 +12,6 @@
     "dev": "tsx src/server.ts",
     "build": "tsc -p tsconfig.build.json",
     "start": "node startup.cjs",
-    "companion": "node dist/companion.js",
-    "companion:dev": "tsx src/companion.ts",
     "azure:package": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/package-azure.ps1",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

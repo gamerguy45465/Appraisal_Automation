@@ -1,9 +1,9 @@
 export function resolveBrowserMode(env, hosting) {
-    const mode = env.APPRAISAL_BROWSER_MODE ?? (hosting.mode === 'hosted' ? 'companion' : 'local');
-    if (!['local', 'companion', 'azure'].includes(mode))
-        throw new Error('APPRAISAL_BROWSER_MODE must be local, companion, or azure.');
+    const mode = env.APPRAISAL_BROWSER_MODE ?? (hosting.mode === 'hosted' ? 'azure' : 'local');
+    if (!['local', 'azure'].includes(mode))
+        throw new Error('APPRAISAL_BROWSER_MODE must be local or azure.');
     if ((hosting.mode === 'local') !== (mode === 'local'))
-        throw new Error('Azure and companion browsers require hosted mode; local browsers require local mode.');
+        throw new Error('Azure browsers require hosted mode; local browsers require local mode.');
     return mode;
 }
 const ORIGIN_ERROR = 'APPRAISAL_PUBLIC_ORIGIN must be a canonical HTTPS origin with a DNS hostname, no trailing slash, path, query, fragment, credentials, or wildcard.';

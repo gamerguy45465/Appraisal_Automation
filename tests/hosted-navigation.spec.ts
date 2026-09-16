@@ -38,7 +38,9 @@ test.beforeAll(async () => {
     mode: 'hosted', listen: { port, host: '0.0.0.0' }, secureCookies: true,
     publicOrigin: websiteUrl, allowedOrigins: [websiteUrl], allowedHosts: [`localhost:${port}`],
   };
-  const instance = createApp({ hosting, accessKey: 'synthetic-navigation-workspace-key-1234567890' });
+  const instance = createApp({ hosting, accessKey: 'synthetic-navigation-workspace-key-1234567890',
+    connectBrowser: async () => { throw new Error('Navigation fixture must not start a cloud browser.'); },
+  });
   serve = instance.app;
   stopRunner = () => instance.runner.shutdown();
   referringSite = createServer((_request, response) => {

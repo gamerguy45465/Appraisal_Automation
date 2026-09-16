@@ -1,8 +1,8 @@
 # Azure browser for Appraisal Desk
 
-`APPRAISAL_BROWSER_MODE=azure` runs preparation in Windows App Service and opens Chromium in the existing Azure Playwright workspace. The signed-in website displays the remote browser and accepts human input during sign-in and review. The user completes R3 sign-in, CAPTCHA, review, and final submission. Automatic preparation pauses human input; model tools never gain access to the viewer's keyboard, mouse, or dialog controls.
+Hosted mode runs preparation in Windows App Service and opens Chromium in the existing Azure Playwright workspace. `azure` is the default and only supported hosted browser mode. The signed-in website displays the remote browser and accepts human input during sign-in and review. The user completes R3 sign-in, CAPTCHA, review, and final submission. Automatic preparation pauses human input; model tools never gain access to the viewer's keyboard, mouse, or dialog controls.
 
-The existing local and Windows companion modes remain available. General Windows App Service startup, workspace access-code authentication, and ZIP packaging are described in [Azure hosting](azure-hosting.md).
+Windows companion pairing and its backend have been removed. Loopback local development remains available. General Windows App Service startup, workspace access-code authentication, and ZIP packaging are described in [Azure hosting](azure-hosting.md).
 
 ## Existing resources
 
@@ -37,7 +37,7 @@ The workspace showed local authentication disabled, reporting enabled, and regio
 | Setting | Value |
 | --- | --- |
 | `APPRAISAL_HOSTING_MODE` | `hosted` |
-| `APPRAISAL_BROWSER_MODE` | `azure` |
+| `APPRAISAL_BROWSER_MODE` | `azure` (optional; hosted default) |
 | `APPRAISAL_PUBLIC_ORIGIN` | `https://appraisal-automation-proto-h5drbvhhg4dhdeg3.westus3-01.azurewebsites.net` |
 | `PLAYWRIGHT_SERVICE_URL` | `wss://westus3.api.playwright.microsoft.com/playwrightworkspaces/671794d3-81e7-4fcd-8627-da08041d17fd/browsers` |
 | `APPRAISAL_AZURE_MANAGED_IDENTITY_CLIENT_ID` | Omit for system-assigned identity; otherwise the attached user-assigned identity's lowercase client GUID |
@@ -81,6 +81,6 @@ On September 16, 2026, this helper completed successfully against **Appraisal-Au
 
 Before production acceptance, run the project's local checks, the synthetic live probe, and an owner-authenticated test of the deployed viewer. Confirm manual sign-in/CAPTCHA, human input locked during preparation, guarded HTTP/WebSocket/redirect behavior, review handoff, disconnect behavior, and sequential-order ownership. Real R3 and paid-provider acceptance are separate checks; local fixtures do not establish those results. This guide does not claim that Azure configuration, deployment, or production acceptance has already occurred.
 
-## Mode selection and rollback
+## Migrate an existing hosted deployment
 
-Hosted mode defaults to `APPRAISAL_BROWSER_MODE=companion` when the setting is absent. Selecting `companion` preserves the Windows companion workflow and its local browser. Local hosting defaults to `local`; an explicit local mode cannot be combined with hosted configuration. Switching modes or deploying a replacement restarts the application, so finish or deliberately abandon any active cloud review before doing so.
+Hosted mode defaults to `azure` when `APPRAISAL_BROWSER_MODE` is absent. Remove an old `APPRAISAL_BROWSER_MODE=companion` setting or change it to `azure` before deploying this build; the retired value is rejected at startup. Configure the workspace endpoint and managed identity even when the browser-mode setting is omitted. There is no companion fallback if the Azure connection fails. Local development defaults to `local`, which cannot be combined with hosted configuration. Deployment or settings changes restart the application, so finish or deliberately abandon any active cloud review first.

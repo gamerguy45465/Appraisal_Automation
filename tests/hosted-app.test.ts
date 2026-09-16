@@ -1,21 +1,36 @@
 import request from 'supertest';
+import { randomUUID } from 'node:crypto';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createApp } from '../src/app.js';
 import { resolveHosting } from '../src/hosting.js';
-import { createRelayJobRunner, type RelayJobRunner } from '../src/relay.js';
+import type { JobRunner } from '../src/jobs.js';
+import type { JobView } from '../src/domain.js';
 
 const origin = 'https://appraisal.example.com';
 const host = 'appraisal.example.com';
 const accessKey = 'synthetic-workspace-access-code-1234567890';
-const pdf = Buffer.from('%PDF-1.7\n% synthetic relay fixture\n%%EOF');
+const pdf = Buffer.from('%PDF-1.7\n% synthetic hosted fixture\n%%EOF');
 const form = { provider: 'google', model: 'synthetic-model', apiKey: 'synthetic-provider-key-1234567890', loanNumber: '685-2012345', paymentMethod: 'Invoice' };
-const relays: RelayJobRunner[] = [];
 const externalNavigation = { 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Dest': 'document' };
 
+function syntheticRunner(): JobRunner {
+  const jobs = new Map<string, { owner: string; job: JobView }>();
+  return {
+    create: vi.fn(owner => {
+      const job: JobView = { id: randomUUID(), status: 'awaiting_review', message: 'Review in your Azure browser.', canStartAnother: true };
+      jobs.set(job.id, { owner, job });
+      return job;
+    }),
+    get: vi.fn((owner, id) => jobs.get(id)?.owner === owner ? jobs.get(id)?.job : undefined),
+    getActive: vi.fn(owner => [...jobs.values()].findLast(record => record.owner === owner)?.job),
+    endOwner: vi.fn(),
+    shutdown: vi.fn(),
+  };
+}
+
 function setup() {
-  const relay = createRelayJobRunner();
-  relays.push(relay);
-  const { app } = createApp({ hosting: resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin }), accessKey, relay });
+  const runner = syntheticRunner();
+  const { app } = createApp({ hosting: resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin }), accessKey, runner });
   const client = request(app);
   const get = (path: string) => client.get(path).set('Host', host);
   const post = (path: string) => client.post(path).set('Host', host);
@@ -25,23 +40,23 @@ function setup() {
     const session = await get('/api/session').set('Cookie', cookie).expect(200);
     return { cookie, csrf: session.body.csrfToken as string, response, session };
   };
-  return { app, relay, get, post, login };
+  return { app, runner, get, post, login };
 }
 
-afterEach(() => { for (const relay of relays.splice(0)) relay.shutdown(); vi.restoreAllMocks(); });
+afterEach(() => { vi.restoreAllMocks(); });
 
-describe('hosted workspace authentication and relay boundary', () => {
+describe('hosted Azure workspace authentication and ownership boundary', () => {
   it('requires a configured strong workspace secret before opening the hosted app', () => {
     const hosting = resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin });
     for (const key of [undefined, '', 'short', 'x'.repeat(31), 'with spaces'.repeat(5)]) {
-      expect(() => createApp({ hosting, accessKey: key })).toThrow('APPRAISAL_ACCESS_KEY');
+      expect(() => createApp({ hosting, accessKey: key, runner: syntheticRunner() })).toThrow('APPRAISAL_ACCESS_KEY');
     }
   });
 
   it('serves the sign-in shell but never creates anonymous hosted sessions or accepts uploads', async () => {
     const { get, post } = setup();
     await get('/').expect(200);
-    expect((await get('/api/config').expect(200)).body).toEqual({ hostingMode: 'hosted', browserMode: 'companion' });
+    expect((await get('/api/config').expect(200)).body).toEqual({ hostingMode: 'hosted', browserMode: 'azure' });
     const response = await get('/api/session').expect(401);
     expect(response.body.error.code).toBe('WORKSPACE_LOGIN_REQUIRED');
     expect(response.headers['set-cookie']).toBeUndefined();
@@ -151,7 +166,8 @@ describe('hosted workspace authentication and relay boundary', () => {
     expect(cookieHeader).toContain('Secure');
     expect(cookieHeader).toContain('HttpOnly');
     expect(cookieHeader).toContain('SameSite=Strict');
-    expect(signedIn.session.body).toMatchObject({ hostingMode: 'hosted', companion: { paired: false, connected: false } });
+    expect(signedIn.session.body).toMatchObject({ hostingMode: 'hosted', browserMode: 'azure' });
+    expect(signedIn.session.body.companion).toBeUndefined();
     expect(JSON.stringify(signedIn.session.body)).not.toContain(accessKey);
     expect(signedIn.session.headers['strict-transport-security']).toContain('max-age=31536000');
     expect(signedIn.session.headers['content-security-policy']).toContain('upgrade-insecure-requests');
@@ -170,58 +186,49 @@ describe('hosted workspace authentication and relay boundary', () => {
     await post('/api/login').set('Origin', origin).send({ accessKey }).expect(429);
   });
 
-  it('requires session CSRF for pairing and the separate one-time bearer for companion activation', async () => {
+  it('retires every companion endpoint even for an authenticated workspace owner', async () => {
     const { get, post, login } = setup();
     const user = await login();
-    await post('/api/pairing').set('Cookie', user.cookie).expect(403);
-    await post('/api/jobs').set('Cookie', user.cookie).set('X-CSRF-Token', user.csrf).expect(409);
-    const paired = await post('/api/pairing').set('Cookie', user.cookie).set('X-CSRF-Token', user.csrf).expect(200);
-    expect(paired.body.token).toMatch(/^[A-Za-z0-9_-]{43}$/);
-    await post('/api/companion/connect').send({ token: paired.body.token }).expect(401);
-    const connected = await post('/api/companion/connect').set('Authorization', `Bearer ${paired.body.token}`).send({}).expect(200);
-    expect(connected.body.token).not.toBe(paired.body.token);
-    await post('/api/companion/connect').set('Authorization', `Bearer ${paired.body.token}`).send({}).expect(401);
-    const status = await get('/api/companion-status').set('Cookie', user.cookie).expect(200);
-    expect(status.body).toEqual({ paired: true, connected: true });
-    expect(JSON.stringify(status.body)).not.toContain(connected.body.token);
-    await post('/api/companion/submit').set('Authorization', `Bearer ${connected.body.token}`).expect(404);
+    for (const path of ['/api/pairing', '/api/companion/connect', '/api/companion/exchange', '/api/companion/submit']) {
+      await post(path).set('Cookie', user.cookie).set('X-CSRF-Token', user.csrf).set('Origin', origin)
+        .set('Authorization', `Bearer ${'a'.repeat(43)}`).send({}).expect(404);
+    }
+    await get('/api/companion-status').set('Cookie', user.cookie).expect(404);
+    await post('/api/companion/connect').set('Authorization', `Bearer ${'a'.repeat(43)}`).send({}).expect(401);
   });
 
-  it('delivers documents only to the paired companion and supports acknowledged next orders', async () => {
-    const { get, post, login } = setup();
+  it('accepts cloud jobs without pairing and keeps their documents and status owner-scoped', async () => {
+    const { get, post, login, runner } = setup();
     const user = await login();
-    const pair = await post('/api/pairing').set('Cookie', user.cookie).set('X-CSRF-Token', user.csrf);
-    const connection = await post('/api/companion/connect').set('Authorization', `Bearer ${pair.body.token}`).send({});
-    const exchange = (body: object) => post('/api/companion/exchange').set('Authorization', `Bearer ${connection.body.token}`).send(body);
     const upload = () => post('/api/jobs').set('Cookie', user.cookie).set('X-CSRF-Token', user.csrf).set('Origin', origin).field(form).attach('urla', pdf, 'urla.pdf');
+    await post('/api/jobs').set('Cookie', user.cookie).set('Origin', origin).field(form).attach('urla', pdf, 'urla.pdf').expect(403);
+    expect(runner.create).not.toHaveBeenCalled();
     const first = await upload().expect(202);
     const id = first.body.job.id as string;
     expect(JSON.stringify(first.body)).not.toContain(form.apiKey);
-    const delivered = await exchange({ sequence: 0 }).expect(200);
-    expect(delivered.body.job).toMatchObject({ id, payload: { input: form, urla: pdf.toString('base64') } });
-    await post('/api/companion/exchange').set('Cookie', user.cookie).send({ sequence: 0 }).expect(401);
-    await upload().expect(409);
-    const ack = await exchange({ sequence: 1, acceptedJobId: id, update: { id, status: 'awaiting_review', message: 'Review in your local R3 window.', canStartAnother: true, browserOpen: true } }).expect(200);
-    expect(ack.body).toEqual({});
+    const owner = user.cookie.slice(user.cookie.indexOf('=') + 1);
+    expect(runner.create).toHaveBeenCalledWith(owner, expect.objectContaining({ input: expect.objectContaining(form), urla: { name: 'urla.pdf', buffer: pdf } }));
     const status = await get(`/api/jobs/${id}`).set('Cookie', user.cookie).expect(200);
-    expect(status.body).toMatchObject({ job: { id, status: 'awaiting_review', canStartAnother: true }, companion: { connected: true } });
+    expect(status.body).toMatchObject({ job: { id, status: 'awaiting_review', canStartAnother: true } });
+    expect(status.body.companion).toBeUndefined();
     expect(JSON.stringify(status.body)).not.toContain(form.apiKey);
+    expect(JSON.stringify(status.body)).not.toContain(pdf.toString('base64'));
     const outsider = await login();
     await get(`/api/jobs/${id}`).set('Cookie', outsider.cookie).expect(404);
-    await post('/api/pairing').set('Cookie', outsider.cookie).set('X-CSRF-Token', outsider.csrf).expect(409);
+    expect(outsider.session.body.activeJob).toBeUndefined();
     const second = await upload().expect(202);
     expect(second.body.job.id).not.toBe(id);
-    const next = await exchange({ sequence: 2, acceptedJobId: id }).expect(200);
-    expect(next.body.job.id).toBe(second.body.job.id);
+    expect((await get('/api/session').set('Cookie', user.cookie).expect(200)).body.activeJob.id).toBe(second.body.job.id);
   });
 
-  it('expires the workspace session without closing the remote review browser', async () => {
-    const { get, login, relay } = setup();
+  it.each(['/api/session', '/api/jobs/00000000-0000-4000-8000-000000000001/browser'])('ends the owning cloud browser when an expired session requests %s', async path => {
+    const { get, login, runner } = setup();
     const user = await login();
-    const shutdown = vi.spyOn(relay, 'shutdown');
+    const owner = user.cookie.slice(user.cookie.indexOf('=') + 1);
     const now = Date.now();
     vi.spyOn(Date, 'now').mockReturnValue(now + 86400001);
-    await get('/api/session').set('Cookie', user.cookie).expect(401);
-    expect(shutdown).not.toHaveBeenCalled();
+    await get(path).set('Cookie', user.cookie).expect(401);
+    expect(runner.endOwner).toHaveBeenCalledWith(owner);
+    expect(runner.shutdown).not.toHaveBeenCalled();
   });
 });

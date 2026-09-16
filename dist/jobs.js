@@ -94,7 +94,6 @@ export function createJobRunner(options = {}) {
         const isTypeScript = import.meta.url.endsWith('.ts');
         const workerOptions = {
             execArgv: isTypeScript ? ['--import', 'tsx'] : [], env: workerEnvironment(), serialization: 'advanced', windowsHide: true, stdio: ['ignore', 'ignore', 'ignore', 'ipc'],
-            ...(options.detached ? { detached: true } : {}),
         };
         const child = fork(fileURLToPath(new URL(isTypeScript ? './worker.ts' : './worker.js', import.meta.url)), [], workerOptions);
         const host = { child, owner, jobId, ready: false, retired: false, ended: false };

@@ -15,12 +15,12 @@ export type HostingConfig = HostingBase & (
   | { readonly mode: 'hosted'; readonly listen: HostingListener; readonly secureCookies: true }
 );
 
-export type BrowserMode = 'local' | 'companion' | 'azure';
+export type BrowserMode = 'local' | 'azure';
 
 export function resolveBrowserMode(env: NodeJS.ProcessEnv, hosting: HostingConfig): BrowserMode {
-  const mode = env.APPRAISAL_BROWSER_MODE ?? (hosting.mode === 'hosted' ? 'companion' : 'local');
-  if (!['local', 'companion', 'azure'].includes(mode)) throw new Error('APPRAISAL_BROWSER_MODE must be local, companion, or azure.');
-  if ((hosting.mode === 'local') !== (mode === 'local')) throw new Error('Azure and companion browsers require hosted mode; local browsers require local mode.');
+  const mode = env.APPRAISAL_BROWSER_MODE ?? (hosting.mode === 'hosted' ? 'azure' : 'local');
+  if (!['local', 'azure'].includes(mode)) throw new Error('APPRAISAL_BROWSER_MODE must be local or azure.');
+  if ((hosting.mode === 'local') !== (mode === 'local')) throw new Error('Azure browsers require hosted mode; local browsers require local mode.');
   return mode as BrowserMode;
 }
 

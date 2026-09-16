@@ -43,16 +43,16 @@ async function noStorage(page: Page) {
   expect(await page.evaluate(() => ({ local: { ...localStorage }, session: { ...sessionStorage } }))).toEqual({ local: {}, session: {} });
 }
 
-test('Azure mode discloses cloud processing and opens the owning job without companion gating', async ({ page }) => {
+test('Azure mode discloses cloud processing and opens the owning job with no pairing controls or requests', async ({ page }) => {
   let companionRequests = 0;
   await page.clock.install();
   await page.route('**/api/config', route => route.fulfill({ json: SESSION }));
   await page.route('**/api/session', route => route.fulfill({ json: SESSION }));
-  await page.route('**/api/companion-status', route => { companionRequests += 1; return route.fulfill({ json: {} }); });
+  page.on('request', request => { if (/\/api\/(?:pairing|companion)/.test(request.url())) companionRequests += 1; });
   await page.route('**/api/jobs', route => route.fulfill({ json: { job: JOB } }));
   await page.route(`**/api/jobs/${JOB_ID}`, route => route.fulfill({ json: { job: { ...JOB, status: 'awaiting_review', canStartAnother: true } } }));
   await page.goto(origin);
-  await expect(page.locator('#companion-panel')).toBeHidden();
+  await expect(page.locator('[id*="pairing"], [id*="companion"]')).toHaveCount(0);
   await expect(page.locator('#cloud-browser-panel')).toContainText('processed in Azure memory');
   await expect(page.locator('#submit-button')).toBeEnabled();
   await page.getByLabel('OpenAI API key', { exact: false }).fill('synthetic-provider-key');

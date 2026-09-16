@@ -48,7 +48,7 @@
 <!-- [L48] Closes the div element for 'page-intro'. -->    </div>
 <!-- [L49] Blank line separating the surrounding declarations, statements, or document blocks. -->
 <!-- [L50] Defines a layout/content container. Applies CSS classes 'workspace-grid'. -->    <section id="hosted-workspace" class="workspace-connection" aria-labelledby="workspace-connection-heading" hidden>
-      <h2 id="workspace-connection-heading">Your connected workspace</h2>
+      <h2 id="workspace-connection-heading">Your Azure workspace</h2>
       <form id="workspace-login-form" autocomplete="off" hidden>
         <p>Enter the access code for this private workspace.</p>
         <div class="field">
@@ -59,25 +59,6 @@
         <p id="workspace-login-error" class="connection-error" role="alert" hidden></p>
         <button id="workspace-login-button" class="primary-button" type="submit">Sign in to workspace</button>
       </form>
-      <div id="companion-panel" hidden>
-        <p id="companion-status" role="status"></p>
-        <p class="field-help">Your documents and selected API key pass through Azure in memory to your Windows companion. It sends the required information to your chosen AI provider and opens R3 on your PC for your sign-in, review, and submission.</p>
-        <button id="pairing-button" class="secondary-button" type="button">Pair Windows companion</button>
-        <div id="pairing-code-panel" class="pairing-code-panel" hidden>
-          <ol>
-            <li>On your Windows PC, open this project's folder in PowerShell and run <code>npm run companion</code>.</li>
-            <li>Enter this website's address when prompted, then paste the one-time code below. Keep the companion running.</li>
-          </ol>
-          <div class="field">
-            <label for="pairing-token">One-time pairing code</label>
-            <input id="pairing-token" type="text" readonly autocomplete="off" spellcheck="false" aria-describedby="pairing-expiry" />
-          </div>
-          <p id="pairing-expiry" class="field-help"></p>
-          <button id="copy-pairing-button" class="secondary-button" type="button">Copy pairing code</button>
-          <p id="pairing-copy-status" class="field-help" role="status"></p>
-        </div>
-        <p id="pairing-error" class="connection-error" role="status"></p>
-      </div>
       <div id="cloud-browser-panel" hidden>
         <p>Your R3 browser runs in Azure. After starting an order, choose <strong>Open R3 browser</strong> to sign in, review, and submit yourself.</p>
         <p class="field-help">Your PDFs and selected API key are processed in Azure memory. Required documents, order details, and preparation screenshots are sent to your selected AI provider. R3 sign-in and browser activity pass through Azure; login credentials are not sent to the AI provider. Keep the cloud browser open until you finish your order. An application restart or expired browser session can lose unsaved work.</p>

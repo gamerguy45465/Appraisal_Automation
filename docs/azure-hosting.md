@@ -1,19 +1,21 @@
 # Azure hosting
 
-Appraisal Desk runs on **Windows Azure App Service** with a choice of two browser modes. Hosted mode defaults to a Windows companion: extraction and the visible R3 browser run on your PC, and the relay delivers validated jobs and progress without browser-control APIs. The optional `azure` mode runs extraction in App Service and Chromium in Azure Playwright Workspaces, with an authenticated browser viewer on the website. Sign-in, CAPTCHA, review and final submission remain manual in both modes.
+Appraisal Desk runs on **Windows Azure App Service** with Chromium in **Azure Playwright Workspaces**. Extraction runs in App Service, and an authenticated browser viewer on the website provides manual sign-in, CAPTCHA, review and final submission. Azure is the default and only supported hosted browser mode; Windows companion pairing and its backend have been removed.
 
-Follow [Azure browser setup](azure-browser.md) for workspace permissions, managed identity, browser endpoint configuration, viewer behavior, and the separate live capability check. The companion instructions below apply when `APPRAISAL_BROWSER_MODE` is absent or set to `companion`.
+Follow [Azure browser setup](azure-browser.md) for workspace permissions, managed identity, browser endpoint configuration, viewer behavior, and the separate live capability check. Before deploying this build, remove an old `APPRAISAL_BROWSER_MODE=companion` setting or change it to `azure`. The retired value is rejected at startup. Configure the workspace endpoint and managed identity before starting the hosted application.
 
 ## Azure configuration
 
-Use Windows App Service with Node.js 24 and **one instance**. Keep one iisnode process per application (already set in `web.config`), disable automatic scale-out, enable **HTTPS Only** and **Always On**, and use one canonical website address. Sessions, jobs and browser ownership are process-local; companion pairing credentials and pending relay payloads also live in memory. Multiple instances are unsupported. Set these App Service environment variables:
+Use Windows App Service with Node.js 24 and **one instance**. Keep one iisnode process per application (already set in `web.config`), disable automatic scale-out, enable **HTTPS Only** and **Always On**, and use one canonical website address. Sessions, jobs and browser ownership are process-local and live in memory. Multiple instances are unsupported. Set these App Service environment variables:
 
 | Setting | Value |
 | --- | --- |
 | `WEBSITE_NODE_DEFAULT_VERSION` | `~24` |
 | `NODE_ENV` | `production` |
 | `APPRAISAL_HOSTING_MODE` | `hosted` |
-| `APPRAISAL_BROWSER_MODE` | `companion` (default), or `azure` with the [additional workspace settings](azure-browser.md#app-service-identity-and-settings) |
+| `APPRAISAL_BROWSER_MODE` | `azure` (optional; hosted default) |
+| `PLAYWRIGHT_SERVICE_URL` | Your workspace's canonical secure browser endpoint; see [workspace settings](azure-browser.md#app-service-identity-and-settings) |
+| `APPRAISAL_AZURE_MANAGED_IDENTITY_CLIENT_ID` | Omit for system-assigned identity; otherwise the attached user-assigned identity's lowercase client GUID |
 | `APPRAISAL_PUBLIC_ORIGIN` | Your exact address, e.g. `https://your-app.azurewebsites.net`, with no trailing slash |
 | `APPRAISAL_ACCESS_KEY` | A random workspace access code, 32–256 non-space ASCII characters |
 | `SCM_DO_BUILD_DURING_DEPLOYMENT` | `true` for the ZIP deployment below |
@@ -26,7 +28,7 @@ The workspace access code protects this single-user website and is separate from
 node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
 ```
 
-The application provides its own workspace sign-in. In companion mode, if you separately enable App Service Authentication/Easy Auth, its authentication must also permit the companion endpoints `/api/companion/connect` and `/api/companion/exchange`; these endpoints require their own high-entropy bearer tokens. Otherwise Easy Auth will reject the companion before its token reaches this application. Azure browser mode uses the signed-in website session and does not require companion pairing. Do not put the workspace access code in source files, deployment ZIPs or provider-key fields.
+The application provides its own workspace sign-in. The same authenticated website session protects cloud browser access. Keep the workspace access code configured; managed identity authenticates App Service to the Playwright workspace and does not replace website sign-in. Do not put the workspace access code in source files, deployment ZIPs or provider-key fields.
 
 Open and bookmark the full **HTTPS** website address. Hosted mode permits an ordinary top-level browser GET navigation to `/` or `/index.html` from another site, so a portal link can open the public sign-in page. That exception requires browser navigation/document metadata; it does not permit cross-site API requests, form submissions, frames, or an unapproved Host or explicit Origin. Earlier deployments rejected external sign-in-page links with `ORIGIN_REJECTED`; entering the complete HTTPS address in a fresh tab works around that older behavior.
 
@@ -55,7 +57,6 @@ site/wwwroot/
   package.json
   package-lock.json
   dist/server.js
-  dist/companion.js
   dist/...
   public/...
   scripts/environment.ps1
@@ -80,48 +81,34 @@ Keep `devErrorsEnabled` disabled: diagnosis belongs in private logs. The startup
 
 See Microsoft's [application logging instructions](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs), [503 troubleshooting](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-http-502-http-503), and [Windows Node.js troubleshooting](https://learn.microsoft.com/en-us/troubleshoot/azure/app-service/app-service-web-nodejs-best-practices-troubleshoot-guide).
 
-## Connect your Windows PC
+## Open the cloud browser
 
-This section applies to companion mode. In Azure browser mode, start the order on the website and choose **Open R3 browser** for manual sign-in and review; see the [cloud browser workflow](azure-browser.md#human-browser-workflow).
+Use the signed-in website for the full workflow; see the [cloud browser workflow](azure-browser.md#human-browser-workflow).
 
 1. Open the deployed HTTPS website and enter the workspace access code.
-2. Choose **Pair Windows companion** to generate a one-time pairing code.
-3. On your PC, install project dependencies, build, and install Chromium once:
+2. Enter the order details, selected provider key and PDFs, then start preparation.
+3. Choose **Open R3 browser** when it becomes available. Sign into R3 and complete any CAPTCHA in that viewer. Human input pauses while preparation fills the order.
+4. When preparation hands control back to you, review every field and submit manually in the same cloud browser.
 
-   ```powershell
-   npm ci
-   npm run build
-   npm run browsers:install
-   ```
-
-4. Start the companion from an interactive Windows terminal:
-
-   ```powershell
-   npm run companion
-   ```
-
-5. Enter the website's HTTPS address and paste the one-time pairing code into the hidden prompt. The code expires after ten minutes and can be used once. The companion connects outward over HTTPS; no inbound port, local browser extension, CORS bypass or router change is needed.
-6. Keep that terminal running. Once the website reports the companion connected, enter the order details, selected provider key and PDFs as usual. R3 opens on **your PC**. Sign in there, then review and submit there after preparation hands control back to you.
-
-The companion is bound to the browser session that paired it. Use that same browser session for uploads and refreshes. New orders reuse the local R3 window only after the existing job's cleanup has finished and you explicitly choose another order. Starting a successor can replace the old review form after new-document validation, so finish the previous order first.
+Browser access belongs to the website session that created the order. Use that same session for uploads and refreshes. New orders reuse the cloud browser only after the existing job's cleanup has finished and you explicitly choose another order. Starting a successor can replace the old review form after new-document validation, so finish the previous order first.
 
 ## Connection loss, stopping and data lifetime
 
-The following behaviors describe companion mode. In Azure browser mode, PDFs and the selected provider key are processed in App Service, and human R3 input, including login credentials, passes through App Service to the remote browser. That input is not exposed to model tools or stored as viewer history. Closing the viewer tab leaves the browser running; **Close cloud browser** ends it. Session expiry, App Service restart or browser connection loss can lose unsaved cloud work. Always On reduces idle unloading but does not make sessions durable. See [Azure browser data handling and lifetime](azure-browser.md#human-browser-workflow).
+PDFs and the selected provider key are processed in App Service, and human R3 input, including login credentials, passes through App Service to the remote browser. That input is not exposed to model tools or stored as viewer history. Closing the viewer tab leaves the browser running; **Close cloud browser** ends it. See [Azure browser data handling and lifetime](azure-browser.md#human-browser-workflow).
 
-- A brief internet interruption does not restart the local preparation or close R3. The companion retries with the same job identity, and the website blocks new work while the companion is offline.
-- PDFs and provider keys transit Azure memory before reaching the companion. The relay removes its payload when the companion acknowledges accepting it, or after five minutes waiting for acknowledgment. Delivered-but-unconfirmed work remains locked instead of being reassigned, because it may already be running locally. JavaScript strings, network buffers and OS memory cannot be guaranteed securely erased.
-- Pairing/bearer credentials are memory-only. The server keeps their hashes; the companion retains the bearer in its own memory. They are not exposed to the model, preparation-worker environment, URL query strings or files. R3 credentials and browser authentication stay in the local R3 browser.
-- Workspace sessions and companion connections expire after 24 hours. Restarting/redeploying Azure loses its in-memory session and relay state. If this happens during an order, finish in the existing local R3 window, close it, restart the companion, sign into the website again and pair with a new code. Do not resend the old order just because its website status disappeared.
-- Pressing Ctrl+C requests a graceful companion stop: it stops taking new jobs and waits for you to finish and close R3. Keep the terminal open until it exits. Force-closing the terminal, killing processes, logging off or shutting down Windows is not a graceful stop.
-- The app remains single-user. Review warning text and job status return through the relay to the owning website session. Existing provider retention terms apply; this feature does not promise zero retention by Azure, the OS, Chromium, R3 or AI providers.
+- Workspace sessions expire after 24 hours, and cloud browser workers have a 24-hour maximum lifetime. Finish the order and explicitly close the cloud browser when done.
+- Session expiry, App Service restart or browser connection loss can lose unsaved cloud work. Always On reduces idle unloading but does not make sessions durable. A replacement application deployment also loses in-memory sessions and ownership.
+- If the viewer disconnects, reconnect through the owning website session and check whether its browser is still available. Input with an uncertain result is not automatically retried. Confirm R3 acceptance before repeating an order or submission.
+- PDFs, provider credentials, job state and browser access remain memory-based. JavaScript strings, network buffers and OS memory cannot be guaranteed securely erased. Provider retention terms apply; the feature does not promise zero retention by Azure, the OS, Chromium, R3 or AI providers.
 
 ## Verification
 
-The September 15 Azure troubleshooting follow-up confirmed that the deployed site reaches its workspace sign-in page when opened using the full HTTPS address. A local browser regression reproduced rejection of an external link before the navigation fix and passed afterward, while an external link to the session API remained rejected. Validation for the follow-up changes passed 64 API/unit tests, 21 startup tests, two browser navigation tests, TypeScript checking and the production build. The navigation/logging updates require a subsequent GitHub deployment; workspace sign-in, companion pairing and order preparation have not been verified live in this follow-up.
+The September 16 companion removal passed `npm run check`: 528 unit/integration tests, 148 browser tests, TypeScript and the production build. Compiled startup on a Windows named pipe also verified the default Azure mode, missing pairing controls and anonymous-session rejection. The live site's public configuration still reported `companion` during inspection; the Azure-only build requires deployment and the configuration above before production acceptance.
+
+The September 15 Azure troubleshooting follow-up confirmed that the deployed site reaches its workspace sign-in page when opened using the full HTTPS address. A local browser regression reproduced rejection of an external link before the navigation fix and passed afterward, while an external link to the session API remained rejected. Validation for that follow-up passed 64 API/unit tests, 21 startup tests, two browser navigation tests, TypeScript checking and the production build. This historical result does not establish that the current Azure-only build has been deployed.
 
 September 15, 2026 local verification passed **459 unit/integration tests**, **129 browser tests**, TypeScript checking and the production build (**588 tests total**). A separate compiled-startup smoke check launched `startup.cjs` on a real Windows named pipe, verified anonymous rejection, workspace sign-in and a secure authenticated session, then closed only that helper process. Desktop/mobile hosted setup screens were visually inspected with synthetic fixtures. The generated 60-file deployment ZIP passed its application-file allowlist check. No Azure deployment, paid model call or live R3 preparation was performed for this change.
 
-Run `npm run check` for TypeScript, unit/integration tests, browser fixtures and the production build. The hosting tests cover exact origins, startup configuration, secure sessions, pairing, job delivery, retry deduplication, delayed acknowledgments and shutdown behavior using synthetic data. Azure browser regressions additionally cover owner-scoped input, phase locking, native dialogs, popup selection, stale requests and viewer expiry. These tests do not establish live Azure, paid-provider or R3 acceptance. After publishing, verify website sign-in and either companion pairing or the [Azure browser acceptance sequence](azure-browser.md#synthetic-live-capability-check), then run an explicitly authorized appraisal acceptance check with manual R3 sign-in and submission review.
+Run `npm run check` for TypeScript, unit/integration tests, browser fixtures and the production build. The hosting tests cover exact origins, startup configuration, secure sessions and rejection of the retired companion mode using synthetic data. Azure browser regressions cover owner-scoped input, phase locking, native dialogs, popup selection, stale requests and viewer expiry. These tests do not establish live Azure, paid-provider or R3 acceptance. After publishing, verify website sign-in and the [Azure browser acceptance sequence](azure-browser.md#synthetic-live-capability-check), then run an explicitly authorized appraisal acceptance check with manual R3 sign-in and submission review.
 
-The existing local mode is still available: leave the hosted settings unset and run `npm start` or `npm run dev`.
+Loopback local development is still available: leave the hosted settings unset and run `npm start` or `npm run dev`.

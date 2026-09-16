@@ -13,9 +13,9 @@ The application uses an HTML/CSS/JavaScript frontend, Express and TypeScript, La
 
 ## Run on Windows
 
-**Azure hosting:** The website can run on Windows Azure App Service with either a paired Windows companion or an Azure Playwright workspace browser. The companion keeps R3 sign-in, review and submission in your local browser. The Azure option displays the remote browser in an authenticated website tab; you control sign-in and review, and input pauses during automated preparation. See [Azure hosting](docs/azure-hosting.md) and [Azure browser configuration](docs/azure-browser.md). The commands below start the original local mode.
+**Azure hosting:** The website uses Windows Azure App Service and an Azure Playwright workspace browser. The remote browser opens in an authenticated website tab; you control sign-in and review, and input pauses during automated preparation. Hosted mode defaults to `azure` and requires the workspace endpoint and managed identity configuration. Windows companion pairing has been removed. See [Azure hosting](docs/azure-hosting.md) and [Azure browser configuration](docs/azure-browser.md). The commands below start the local development mode.
 
-The Azure browser update passed 577 unit/integration tests, 148 browser tests, TypeScript checking and the production build. A synthetic live test in `Appraisal-Automation-t` verified native browser connection, routed HTTP/WebSocket traffic, CDP Fetch commands, screenshots, keyboard/mouse input and browser cleanup. App Service identity, deployed viewer and real R3/provider acceptance remain separate.
+The Azure-only hosted build passed 528 unit/integration tests, 148 browser tests, TypeScript checking and the production build. A compiled Windows named-pipe smoke check verified default Azure mode, the absence of pairing controls and the workspace access-code requirement. The earlier synthetic live test in `Appraisal-Automation-t` verified native browser connection, routed HTTP/WebSocket traffic, CDP Fetch commands, screenshots, keyboard/mouse input and browser cleanup. This build has not been deployed; App Service identity, deployed viewer and real R3/provider acceptance remain separate.
 
 Install Node.js 24 or newer with npm and ensure Windows PowerShell is available. In PowerShell, run these commands from the project directory:
 
@@ -26,7 +26,7 @@ npm run build
 npm start
 ```
 
-Open the loopback address printed by the server. Keep the server running while using the application. This mode accepts only local requests. Hosted mode uses an exact configured HTTPS address, workspace sign-in and the selected companion or Azure browser; every mode remains single-user.
+Open the loopback address printed by the server. Keep the server running while using the application. This development mode accepts only local requests. Hosted mode uses an exact configured HTTPS address, workspace sign-in and the Azure browser; both modes remain single-user.
 
 Choose your AI provider, optionally enter its model ID immediately below, and supply that provider's API key. Custom model IDs have no GPT-prefix requirement or model allowlist; they must be at most 200 characters without spaces/control characters, and the model must support images, tools, and structured extraction, plus native PDFs for providers that receive them. Switching providers clears the key and updates the disclosure; custom model choices remain separate in page memory and survive reconnection.
 

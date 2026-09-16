@@ -20,19 +20,16 @@ import { DEFAULT_MODEL, DEFAULT_MODELS, DEFAULT_PROVIDER, inputSchema, MAX_PDF_B
 import { AppError, publicError } from './errors.js';
 // [L11] Imports createJobRunner, type JobRunner from ./jobs.js for owner-scoped isolated preparation worker management.
 import { createJobRunner } from './jobs.js';
-import { resolveHosting } from './hosting.js';
-import { createRelayJobRunner } from './relay.js';
+import { resolveHosting, resolveBrowserMode } from './hosting.js';
 import { validateHumanBrowserAction } from './browser/human-view.js';
 // [L15] Blank line separating the surrounding declarations, statements, or document blocks.
 // [L16] Existing explanatory comment: Local, single-user application: reject remote hosts/origins before parsing uploads.
-/** Single-user workspace, local or HTTPS-hosted with an authenticated Windows companion. */
+/** Single-user workspace: loopback development or HTTPS hosting with an Azure browser. */
 // [L17] Exports the Express application factory, defaulting to an empty options object.
 export function createApp(options = {}) {
     const hosting = options.hosting ?? resolveHosting({ PORT: String(options.port ?? 3000) });
     const hosted = hosting.mode === 'hosted';
-    const browserMode = options.browserMode ?? (hosted ? 'companion' : 'local');
-    if ((browserMode === 'local') === hosted)
-        throw new Error('The browser mode must match the hosting mode.');
+    const browserMode = resolveBrowserMode({ APPRAISAL_BROWSER_MODE: options.browserMode }, hosting);
     if (browserMode === 'azure' && !options.runner && !options.connectBrowser)
         throw new Error('Azure browser mode requires a configured workspace connection.');
     if (hosted && (!options.accessKey || !/^[\x21-\x7e]{32,256}$/.test(options.accessKey))) {
@@ -40,8 +37,7 @@ export function createApp(options = {}) {
     }
     // Never pass the workspace access key into the preparation worker.
     const accessDigest = hosted ? createHash('sha256').update(options.accessKey).digest() : undefined;
-    const relay = browserMode === 'companion' ? options.relay ?? createRelayJobRunner() : undefined;
-    const runner = relay ?? options.runner ?? createJobRunner({ ...(browserMode === 'azure' ? { connectBrowser: options.connectBrowser } : {}) });
+    const runner = options.runner ?? createJobRunner({ ...(browserMode === 'azure' ? { connectBrowser: options.connectBrowser } : {}) });
     const origins = new Set(hosting.allowedOrigins);
     const hosts = new Set(hosting.allowedHosts);
     // [L21] Creates the Express application instance.
@@ -118,18 +114,6 @@ export function createApp(options = {}) {
                 newSession(res);
             res.json({ ok: true });
         });
-        if (relay) {
-            const bearer = (req) => {
-                const match = /^Bearer ([A-Za-z0-9_-]{43})$/.exec(req.get('authorization') ?? '');
-                if (!match)
-                    throw new AppError('COMPANION_AUTH', 'Connect the Windows companion using a new pairing code.', 401);
-                return match[1];
-            };
-            app.use('/api/companion', globalLimit(120));
-            app.post('/api/companion/connect', express.json({ limit: '2kb' }), (req, res) => { res.json(relay.connect(bearer(req))); });
-            app.post('/api/companion/exchange', express.json({ limit: '256kb' }), (req, res) => { res.json(relay.exchange(bearer(req), req.body)); });
-            app.use('/api/companion', (_req, _res, next) => next(new AppError('NOT_FOUND', 'The requested companion operation does not exist.', 404)));
-        }
     }
     // [L36] Limits API requests to 120 per minute, emits draft-8 rate headers, and returns a fixed HTTP 429 JSON message when exceeded.
     const ordinaryLimit = globalLimit(120);
@@ -164,7 +148,7 @@ export function createApp(options = {}) {
             // [L45] Closes the scope or expression introduced here: Creates a new session only when the supplied cookie did not identify an existing one.
         }
         // [L46] Returns the CSRF token, default model/provider choices, and any active job belonging to this session.
-        res.json({ csrfToken: session.token, model: DEFAULT_MODEL, defaultProvider: DEFAULT_PROVIDER, modelDefaults: DEFAULT_MODELS, activeJob: runner.getActive?.(id), hostingMode: hosting.mode, browserMode, ...(relay ? { companion: relay.state(id) } : {}) });
+        res.json({ csrfToken: session.token, model: DEFAULT_MODEL, defaultProvider: DEFAULT_PROVIDER, modelDefaults: DEFAULT_MODELS, activeJob: runner.getActive?.(id), hostingMode: hosting.mode, browserMode });
         // [L47] Closes the scope or expression introduced here: Registers the session bootstrap endpoint that returns defaults and session-specific state.
     });
     // [L48] Adds session ownership and CSRF validation for all later API routes.
@@ -199,15 +183,6 @@ export function createApp(options = {}) {
         // [L60] Closes the scope or expression introduced here: Adds session ownership and CSRF validation for all later API routes.
     });
     // [L61] Registers job creation with multipart parsing for one required URLA field and at most one sales-contract field.
-    if (relay) {
-        app.post('/api/pairing', (_req, res) => { res.json(relay.pair(res.locals.owner)); });
-        app.get('/api/companion-status', (_req, res) => { res.json(relay.state(res.locals.owner)); });
-        app.post('/api/jobs', (_req, res, next) => {
-            if (!relay.state(res.locals.owner).connected)
-                return next(new AppError('COMPANION_OFFLINE', 'Connect your Windows companion before preparing an order.', 409));
-            next();
-        });
-    }
     app.post('/api/jobs', upload.fields([{ name: 'urla', maxCount: 1 }, { name: 'salesContract', maxCount: 1 }]), (req, res) => {
         // [L62] Interprets multer's uploaded files as named arrays that may be absent.
         const files = req.files;
@@ -258,7 +233,7 @@ export function createApp(options = {}) {
         if (!job)
             throw new AppError('JOB_NOT_FOUND', 'This preparation was not found in your session.', 404);
         // [L81] Returns the authorized job view as JSON.
-        res.json({ job, ...(relay ? { companion: relay.state(res.locals.owner) } : {}) });
+        res.json({ job });
         // [L82] Closes the scope or expression introduced here: Registers retrieval of an individual job by its URL identifier.
     });
     if (browserMode === 'azure') {

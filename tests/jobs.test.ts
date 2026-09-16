@@ -108,14 +108,6 @@ describe('isolated job process lifecycle', () => {
     runner = createJobRunner();
   // [L51] Close the callback or control-flow body and finish the surrounding syntax.
   });
-  it('isolates companion workers from terminal Ctrl+C without losing owned cleanup', () => {
-    runner = createJobRunner({ detached: true });
-    runner.create('companion-owner', syntheticPayload());
-    expect(vi.mocked(fork).mock.calls[0]?.[2]).toMatchObject({ detached: true, windowsHide: true, stdio: ['ignore', 'ignore', 'ignore', 'ipc'] });
-    expect(children[0]!.kill).not.toHaveBeenCalled();
-    runner.shutdown();
-    expect(children[0]!.kill).toHaveBeenCalledOnce();
-  });
   // [L52] Run this cleanup after every test in the group.
   afterEach(() => {
     // [L53] Call `runner.shutdown` without arguments.

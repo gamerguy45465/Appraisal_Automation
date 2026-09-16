@@ -8,8 +8,8 @@ const configurationAdvice = new Map([
   ['APPRAISAL_PUBLIC_ORIGIN must be a canonical HTTPS origin with a DNS hostname, no trailing slash, path, query, fragment, credentials, or wildcard.', 'APPRAISAL_PUBLIC_ORIGIN must be a canonical HTTPS origin with a DNS hostname, no trailing slash, path, query, fragment, credentials, or wildcard.'],
   ['PORT must be an integer from 1024 to 65535, or a local Windows named pipe in hosted mode.', 'PORT must be an integer from 1024 to 65535, or a local Windows named pipe in hosted mode. Let iisnode supply PORT in Azure.'],
   ['Hosted mode requires APPRAISAL_ACCESS_KEY with 32 to 256 non-space ASCII characters.', 'Set APPRAISAL_ACCESS_KEY to a random workspace sign-in code with 32 to 256 non-space ASCII characters.'],
-  ['APPRAISAL_BROWSER_MODE must be local, companion, or azure.', 'Set APPRAISAL_BROWSER_MODE to local, companion, or azure.'],
-  ['Azure and companion browsers require hosted mode; local browsers require local mode.', 'Use APPRAISAL_HOSTING_MODE=hosted with Azure or companion browsers.'],
+  ['APPRAISAL_BROWSER_MODE must be local or azure.', 'Set APPRAISAL_BROWSER_MODE to azure for the hosted website or local for loopback development.'],
+  ['Azure browsers require hosted mode; local browsers require local mode.', 'Use APPRAISAL_HOSTING_MODE=hosted with the Azure browser.'],
 ]);
 
 const moduleAdvice = new Map([

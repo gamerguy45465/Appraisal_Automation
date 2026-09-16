@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { describe, expect, it, vi } from 'vitest';
 import { createApp } from '../src/app.js';
-import { resolveHosting, resolveBrowserMode } from '../src/hosting.js';
+import { resolveHosting, resolveBrowserMode, type BrowserMode } from '../src/hosting.js';
 import type { JobRunner } from '../src/jobs.js';
 import type { JobView } from '../src/domain.js';
 
@@ -20,7 +20,7 @@ function fixture() {
     getActive: vi.fn(who => who === owner ? job : undefined),
     browserFrame: vi.fn(async () => frame), browserInput: vi.fn(async () => undefined), closeBrowser: vi.fn(async () => undefined), shutdown: vi.fn(),
   };
-  const { app } = createApp({ hosting: resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin }), accessKey: key, browserMode: 'azure', runner });
+  const { app } = createApp({ hosting: resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin }), accessKey: key, runner });
   const get = (path: string) => request(app).get(path).set('Host', host);
   const post = (path: string) => request(app).post(path).set('Host', host).set('Origin', origin);
   const login = async () => {
@@ -74,10 +74,25 @@ describe('cloud browser HTTP ownership boundary', () => {
   });
   it('keeps browser modes explicit and refuses cloud execution in local hosting', () => {
     const local = resolveHosting({}); const hosted = resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin });
-    expect(resolveBrowserMode({}, local)).toBe('local'); expect(resolveBrowserMode({}, hosted)).toBe('companion');
+    expect(resolveBrowserMode({}, local)).toBe('local'); expect(resolveBrowserMode({}, hosted)).toBe('azure');
     expect(resolveBrowserMode({ APPRAISAL_BROWSER_MODE: 'azure' }, hosted)).toBe('azure');
     expect(() => resolveBrowserMode({ APPRAISAL_BROWSER_MODE: 'azure' }, local)).toThrow();
     expect(() => resolveBrowserMode({ APPRAISAL_BROWSER_MODE: 'local' }, hosted)).toThrow();
     expect(() => resolveBrowserMode({ APPRAISAL_BROWSER_MODE: 'unknown' }, hosted)).toThrow();
+    expect(() => resolveBrowserMode({ APPRAISAL_BROWSER_MODE: 'companion' }, hosted)).toThrow('APPRAISAL_BROWSER_MODE must be local or azure.');
+  });
+  it.each([undefined, 'azure'] as const)('fails closed without a cloud connector for hosted browser mode %s', browserMode => {
+    const hosting = resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin });
+    expect(() => createApp({ hosting, accessKey: key, browserMode }))
+      .toThrow('Azure browser mode requires a configured workspace connection.');
+  });
+  it('rejects a retired companion mode from an untyped caller before accepting its runner', () => {
+    const hosting = resolveHosting({ APPRAISAL_PUBLIC_ORIGIN: origin });
+    // JavaScript callers and persisted configuration can bypass TypeScript's narrowed union.
+    const browserMode = 'companion' as BrowserMode;
+    const runner: JobRunner = { create: vi.fn(), get: vi.fn(), shutdown: vi.fn() };
+    expect(() => createApp({ hosting, accessKey: key, browserMode, runner }))
+      .toThrow('APPRAISAL_BROWSER_MODE must be local or azure.');
+    expect(runner.create).not.toHaveBeenCalled();
   });
 });

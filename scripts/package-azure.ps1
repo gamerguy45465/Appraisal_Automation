@@ -34,7 +34,7 @@ if (-not $SkipBuild) {
 
 # Package only application files. Customer PDFs, logs, credentials and local dependencies are excluded.
 $requiredFiles = @('package.json', 'package-lock.json', 'startup.cjs', 'web.config', 'scripts/environment.ps1')
-foreach ($relative in $requiredFiles + @('dist/server.js', 'dist/companion.js', 'public/index.html')) {
+foreach ($relative in $requiredFiles + @('dist/server.js', 'dist/azure-browser.js', 'dist/browser/human-view.js', 'public/index.html', 'public/browser.html', 'public/browser.js', 'public/browser.css')) {
     Assert-ProjectPath (Join-Path $projectRoot $relative)
     if (-not (Test-Path -LiteralPath (Join-Path $projectRoot $relative) -PathType Leaf)) {
         throw "Required application file is missing: $relative"
@@ -57,6 +57,8 @@ try {
         foreach ($entry in Get-ChildItem -LiteralPath $folder -Recurse -Force) { Assert-ProjectPath $entry.FullName }
         foreach ($file in Get-ChildItem -LiteralPath $folder -File -Recurse) {
             if ($file.Extension -notin @('.js', '.map', '.html', '.css', '.svg', '.ico', '.woff', '.woff2')) { continue }
+            # Exclude retired companion builds left by an older incremental compilation.
+            if ($directory -eq 'dist' -and $file.Name -match '^(companion(?:-client|-protocol)?|relay)\.js(?:\.map)?$') { continue }
             $relative = $file.FullName.Substring($projectRoot.Length + 1).Replace('\', '/')
             [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $file.FullName, $relative, [IO.Compression.CompressionLevel]::Optimal) | Out-Null
         }
