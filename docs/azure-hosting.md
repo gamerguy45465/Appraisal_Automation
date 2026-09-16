@@ -89,6 +89,12 @@ The September 16 hosted failure was traced with a synthetic Kudu request to `Con
 
 Deploy the updated `scripts/environment.ps1` with the application. Submitted values remain literal JSON on stdin, only the five approved variable names are accepted, and Process scope keeps values out of User/Machine environment storage. Raw helper output from a real preparation can contain private values and must not be exposed in application logs or status messages. The helper's generic nonzero-exit error can also represent other failures; use synthetic values when diagnosing a recurrence.
 
+### GitHub build stops before deployment
+
+For commit `26efda79`, [GitHub Actions run 35148475419](https://github.com/gamerguy45465/Appraisal_Automation/actions/runs/35148475419) installed dependencies and compiled successfully, but its first real PowerShell test failed after 10,063 milliseconds. The other 528 tests, including the consoleless helper regression, passed. Artifact upload and Azure deployment were skipped, so that run did not deliver the console-handle fix to App Service.
+
+The timing closely matches the former 10-second child-process limit and strongly suggests a cold Windows PowerShell startup timeout. Each production helper now has a finite 30-second limit, and the Windows integration tests allow enough total time for startup and their subsequent operations. A real helper delayed by 11 seconds verifies success beyond the old deadline; terminated helpers still fail without accepting their output, and cleanup waits for their closure. Do not bypass failing tests or change Azure credentials to repair this build failure. Push the corrected source so the normal workflow can build, test, and deploy it.
+
 ## Open the cloud browser
 
 Use the signed-in website for the full workflow; see the [cloud browser workflow](azure-browser.md#human-browser-workflow).
@@ -110,6 +116,8 @@ PDFs and the selected provider key are processed in App Service, and human R3 in
 - PDFs, provider credentials, job state and browser access remain memory-based. JavaScript strings, network buffers and OS memory cannot be guaranteed securely erased. Provider retention terms apply; the feature does not promise zero retention by Azure, the OS, Chromium, R3 or AI providers.
 
 ## Verification
+
+The deployment-timeout correction passed TypeScript checking, all 531 unit/integration tests, and the production build locally. This includes the delayed real helper and terminated-helper draining checks. These results do not establish a successful new GitHub run or live Azure deployment.
 
 The September 16 console-handle fix passed TypeScript checking, 529 unit/integration tests, 148 browser tests and the production build. Its final environment regression explicitly detaches a synthetic helper from the console, confirms the old encoding setter fails with `ERROR_INVALID_HANDLE`, and verifies the corrected helper in that same context, including private getters, Unicode/metacharacters and cleanup. The final 11-test environment suite also passed separately. The user's synthetic Kudu diagnostic established the original Azure failure; deployment of this correction and live provider/R3 acceptance remain separate.
 

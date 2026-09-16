@@ -69,8 +69,27 @@ describe.skipIf(process.platform !== 'win32')('PowerShell process environment', 
     // [L35] Assert that `process.env.APPRAISAL_AI_API_KEY` strictly equals `literal`.
     expect(process.env.APPRAISAL_AI_API_KEY).toBe(literal);
   // [L36] Close the callback or control-flow body and finish the surrounding syntax.
-  });
+  }, 45000);
 // [L37] Blank line separating the surrounding declarations, statements, or document blocks.
+
+  it('accepts a healthy helper that starts after the former ten-second deadline', async () => {
+    // Delay the real helper in the same PowerShell process, retaining the production kill deadline and stdin pipes.
+    const invocation = `
+$ErrorActionPreference = 'Stop'
+Start-Sleep -Seconds 11
+& $env:APPRAISAL_TEST_HELPER_PATH -Operation $env:APPRAISAL_TEST_HELPER_OPERATION
+`;
+    const actual = await vi.importActual<typeof childProcess>('node:child_process');
+    vi.mocked(childProcess.spawn).mockImplementationOnce((command, args, options) => actual.spawn(command,
+      ['-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(invocation, 'utf16le').toString('base64')],
+      { ...options, env: { ...process.env,
+        APPRAISAL_TEST_HELPER_PATH: args?.[args.indexOf('-File') + 1],
+        APPRAISAL_TEST_HELPER_OPERATION: args?.[args.indexOf('-Operation') + 1],
+      } }));
+    expect(await runEnvironmentOperation('set', 'api_key', input.apiKey)).toBe(input.apiKey);
+    expect(await runEnvironmentOperation('get', 'api_key')).toBe(input.apiKey);
+    expect(process.env.APPRAISAL_AI_API_KEY).toBe(input.apiKey);
+  }, 45000);
 
   it('round-trips private UTF-8 settings through pipes without a Windows console', async () => {
     // The fixture detaches its child from any console to reproduce the App Service host.
@@ -109,7 +128,7 @@ $failure = $helper.StandardError.ReadToEndAsync()
 $requestWriter = New-Object System.IO.StreamWriter($helper.StandardInput.BaseStream, $encoding)
 $requestWriter.Write($requestText)
 $requestWriter.Dispose()
-if (!$helper.WaitForExit(10000)) { $helper.Kill(); exit 2 }
+if (!$helper.WaitForExit(30000)) { $helper.Kill(); exit 2 }
 $replyWriter = New-Object System.IO.StreamWriter([Console]::OpenStandardOutput(), $encoding)
 $replyWriter.Write($response.Result)
 $replyWriter.Flush()
@@ -128,7 +147,7 @@ exit $helper.ExitCode
     const actual = await vi.importActual<typeof childProcess>('node:child_process');
     vi.mocked(childProcess.spawn).mockImplementation((command, args, options) => actual.spawn(command,
       ['-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(wrapper, 'utf16le').toString('base64')],
-      { ...options, timeout: 15000, env: { ...process.env,
+      { ...options, timeout: 40000, env: { ...process.env,
         APPRAISAL_TEST_HELPER_PATH: args?.[args.indexOf('-File') + 1],
         APPRAISAL_TEST_HELPER_OPERATION: args?.[args.indexOf('-Operation') + 1],
       } }));
@@ -160,7 +179,7 @@ exit $helper.ExitCode
     for (const name of Object.values(environmentNames)) expect(process.env[name]).toBeUndefined();
     await expect(environment.retrieve('api_key')).rejects.toMatchObject({ code: 'ENVIRONMENT_CLOSED' });
     expect(await runEnvironmentOperation('get', 'api_key')).toBe('');
-  }, 25000);
+  }, 60000);
 
   // [L38] Register a parameterized test that "keeps %s credentials private in the generic environment and clears them at handoff".
   it.each(aiProviders)('keeps %s credentials private in the generic environment and clears them at handoff', async (provider) => {
@@ -224,8 +243,8 @@ exit $helper.ExitCode
       expect(await runEnvironmentOperation('get', 'api_key')).toBe('');
     // [L68] Call `environment.clear` without arguments.
     } finally { environment.clear(); }
-  // [L69] Finish the test body and allow 25,000 milliseconds for its PowerShell subprocess checks.
-  }, 25000);
+  // [L69] Allow a cold helper startup plus the remaining PowerShell subprocess checks.
+  }, 45000);
 // [L70] Blank line separating the surrounding declarations, statements, or document blocks.
 
   // [L71] Register a parameterized test that "rejects an in-flight %s when its helper returns after cleanup".
@@ -274,7 +293,7 @@ exit $helper.ExitCode
     expect(spawn).toHaveBeenCalledOnce();
   // [L90] Close the callback or control-flow body and finish the surrounding syntax.
   });
-  it.each(['process', 'stdin'] as const)('drains a helper after a %s error and ignores its late successful response', async (errorSource) => {
+  it.each(['process', 'stdin', 'termination'] as const)('drains a helper after a %s failure and ignores its late successful response', async (errorSource) => {
     const child = Object.assign(new EventEmitter(), {
       stdin: new PassThrough(), stdout: new PassThrough(), stderr: new PassThrough(), kill: vi.fn(),
     });
@@ -285,14 +304,14 @@ exit $helper.ExitCode
     const rejected = expect(storing).rejects.toMatchObject({ code: 'ENVIRONMENT_FAILED' });
     await received;
     if (errorSource === 'process') child.emit('error', new Error('synthetic private helper failure'));
-    else child.stdin.emit('error', new Error('synthetic private helper failure'));
+    else if (errorSource === 'stdin') child.stdin.emit('error', new Error('synthetic private helper failure'));
     environment.clear();
     let drained = false;
     const draining = environment.drain().then(() => { drained = true; });
     await new Promise<void>(resolve => setImmediate(resolve));
     expect(drained).toBe(false);
     child.stdout.write(JSON.stringify({ value: input.apiKey }));
-    child.emit('close', 0);
+    child.emit('close', errorSource === 'termination' ? null : 0, errorSource === 'termination' ? 'SIGTERM' : null);
     await rejected;
     await draining;
     expect(process.env.APPRAISAL_AI_API_KEY).toBeUndefined();

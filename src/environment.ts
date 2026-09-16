@@ -36,8 +36,8 @@ export function runEnvironmentOperation(operation: 'set' | 'get', key: Environme
   if (process.platform !== 'win32') throw new AppError('WINDOWS_REQUIRED', 'Run this application on Windows.');
   // [L19] Wraps the child-process lifecycle in a promise returning the resulting setting value.
   return new Promise((resolve, reject) => {
-    // [L20] Starts the fixed PowerShell helper hidden, without profiles or interaction, using piped streams and a ten-second process timeout.
-    const child = spawn('powershell.exe', ['-NoLogo', '-NoProfile', '-NonInteractive', '-File', fileURLToPath(new URL('../scripts/environment.ps1', import.meta.url)), '-Operation', operation], { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'], timeout: 10000 });
+    // [L20] Allows a cold Windows PowerShell startup while bounding each hidden, noninteractive helper to thirty seconds.
+    const child = spawn('powershell.exe', ['-NoLogo', '-NoProfile', '-NonInteractive', '-File', fileURLToPath(new URL('../scripts/environment.ps1', import.meta.url)), '-Operation', operation], { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'], timeout: 30000 });
     // [L21] Initializes accumulation of the helper's standard-output JSON.
     let output = '';
     let helperError: AppError | undefined;
